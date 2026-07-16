@@ -1,0 +1,68 @@
+/**
+ * Advanced Image Widget Style Sheet
+ * Loaded conditionally only when widget is active on page.
+ */
+
+.elonix-advanced-image-wrapper {
+	width: 100%;
+	position: relative;
+	display: inline-block;
+	box-sizing: border-box;
+}
+
+.elonix-advanced-image-wrapper img {
+	display: inline-block;
+	max-width: 100%;
+	height: auto;
+	transition: all 0.3s ease;
+	vertical-align: middle;
+}
+
+/* Caption styling */
+.elonix-image-caption {
+	margin-top: 10px;
+	font-size: 14px;
+	line-height: 1.4;
+	color: #666666;
+}
+
+/* --- Hover Transition Effects (CSS Pure) --- */
+
+/* Zoom In */
+.elonix-effect-zoom-in {
+	overflow: hidden;
+}
+.elonix-effect-zoom-in img:hover {
+	transform: scale(1.1);
+}
+
+/* Zoom Out */
+.elonix-effect-zoom-out {
+	overflow: hidden;
+}
+.elonix-effect-zoom-out img:hover {
+	transform: scale(0.9);
+}
+
+/* Scale */
+.elonix-effect-scale {
+	overflow: hidden;
+}
+.elonix-effect-scale img:hover {
+	transform: scale(1.15);
+}
+
+/* Rotate */
+.elonix-effect-rotate img:hover {
+	transform: rotate(5deg);
+}
+
+/* Grayscale */
+.elonix-effect-grayscale img:hover {
+	filter: grayscale(100%);
+}
+
+/* Blur */
+.elonix-effect-blur img:hover {
+	filter: blur(3px);
+}

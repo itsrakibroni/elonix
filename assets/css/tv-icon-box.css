@@ -1,0 +1,128 @@
+/**
+ * Advanced Icon Box Widget Style Sheet
+ * Loaded conditionally only when widget is active on page.
+ */
+
+.elonix-advanced-icon-box {
+	display: flex;
+	box-sizing: border-box;
+	transition: all 0.3s ease;
+	width: 100%;
+}
+
+.elonix-icon-box-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: all 0.3s ease;
+	line-height: 1;
+}
+
+.elonix-icon-box-icon i,
+.elonix-icon-box-icon svg {
+	line-height: 1;
+}
+
+.elonix-icon-box-content {
+	flex: 1;
+	transition: all 0.3s ease;
+}
+
+.elonix-icon-box-title {
+	font-weight: 700;
+	margin: 0;
+	line-height: 1.3;
+}
+
+.elonix-icon-box-desc {
+	margin: 0;
+	font-size: 15px;
+	line-height: 1.6;
+}
+
+.elonix-icon-box-button {
+	margin-top: 15px;
+}
+
+/* --- Layout Options --- */
+
+/* Top Icon */
+.elonix-layout-top {
+	flex-direction: column;
+	align-items: center;
+	text-align: center;
+}
+.elonix-layout-top .elonix-icon-box-icon {
+	margin-bottom: 15px;
+}
+
+/* Left Icon */
+.elonix-layout-left {
+	flex-direction: row;
+	align-items: flex-start;
+}
+.elonix-layout-left .elonix-icon-box-icon {
+	margin-right: 20px;
+}
+
+/* Right Icon */
+.elonix-layout-right {
+	flex-direction: row-reverse;
+	align-items: flex-start;
+}
+.elonix-layout-right .elonix-icon-box-icon {
+	margin-left: 20px;
+}
+
+/* Stacked Layout */
+.elonix-layout-stacked {
+	flex-direction: column;
+	align-items: flex-start;
+}
+.elonix-layout-stacked .elonix-icon-box-icon {
+	margin-bottom: 20px;
+}
+
+/* Inline Layout */
+.elonix-layout-inline {
+	flex-direction: column;
+}
+.elonix-layout-inline .elonix-icon-box-header {
+	display: flex;
+	align-items: center;
+	margin-bottom: 10px;
+}
+.elonix-layout-inline .elonix-icon-box-icon {
+	margin-right: 15px;
+}
+
+
+/* --- Hover Effects (CSS Pure) --- */
+
+/* Lift Effect */
+.elonix-hover-lift:hover {
+	transform: translateY(-5px);
+}
+
+/* Scale Effect */
+.elonix-hover-scale:hover {
+	transform: scale(1.03);
+}
+
+/* Rotate Effect */
+.elonix-hover-rotate:hover {
+	transform: rotate(1deg);
+}
+
+/* Glow Effect */
+.elonix-hover-glow:hover {
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+/* Border Highlight Effect */
+.elonix-hover-border-highlight {
+	border: 1px solid transparent;
+}
+.elonix-hover-border-highlight:hover {
+	border-color: #333333;
+}

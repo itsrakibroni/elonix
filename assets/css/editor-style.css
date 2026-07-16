@@ -1,0 +1,115 @@
+/* Replicating ElementsKit Lite badge styling for Elonix – Toolkit for Elementor */
+.elementor-panel .elementor-element .icon {
+	position: relative;
+}
+
+/* Base class styling */
+
+/* Replicate ElementsKit style on .elonix-widget-icon and library data attributes */
+.elonix-widget-icon::after,
+[data-library-element-type^="tv-"] .icon::after,
+[data-library-element-type="elonix-newsletter"] .icon::after,
+[data-library-element-type="advanced-heading"] .icon::after,
+[data-library-element-type="advanced-button"] .icon::after,
+[data-library-element-type="advanced-image"] .icon::after,
+[data-library-element-type="advanced-icon-box"] .icon::after {
+	content: 'ESKIT';
+	position: absolute;
+	top: 3px;
+	left: 3px;
+	background-color: #9B51E0;
+	color: #ffffff;
+	font-size: 9px;
+	border: 1px solid #9B51E0;
+	font-weight: 700;
+	padding: 1px 2px;
+	line-height: 10px;
+	display: inline-block;
+	border-radius: 2px;
+	font-family: "Open Sans", Roboto, Helvetica, Arial, sans-serif;
+	letter-spacing: 0.5px;
+	z-index: 10;
+}
+
+/* Hover styles */
+.elementor-element-wrapper:hover .elonix-widget-icon::after,
+.elementor-element:hover [data-library-element-type^="tv-"] .icon::after,
+.elementor-element:hover [data-library-element-type="elonix-newsletter"] .icon::after,
+.elementor-element:hover [data-library-element-type="advanced-heading"] .icon::after,
+.elementor-element:hover [data-library-element-type="advanced-button"] .icon::after,
+.elementor-element:hover [data-library-element-type="advanced-image"] .icon::after,
+.elementor-element:hover [data-library-element-type="advanced-icon-box"] .icon::after {
+	background-color: #7d3ebd;
+	border-color: #7d3ebd;
+}
+
+/* Dark mode support */
+.elementor-editor-dark-mode .elonix-widget-icon::after,
+.elementor-editor-dark-mode [data-library-element-type^="tv-"] .icon::after,
+.elementor-editor-dark-mode [data-library-element-type="elonix-newsletter"] .icon::after,
+.elementor-editor-dark-mode [data-library-element-type="advanced-heading"] .icon::after,
+.elementor-editor-dark-mode [data-library-element-type="advanced-button"] .icon::after,
+.elementor-editor-dark-mode [data-library-element-type="advanced-image"] .icon::after,
+.elementor-editor-dark-mode [data-library-element-type="advanced-icon-box"] .icon::after {
+	border: 1px solid #9B51E0;
+}
+
+/* Dark mode hover styles */
+.elementor-editor-dark-mode .elementor-element-wrapper:hover .elonix-widget-icon::after,
+.elementor-editor-dark-mode .elementor-element:hover [data-library-element-type^="tv-"] .icon::after,
+.elementor-editor-dark-mode .elementor-element:hover [data-library-element-type="elonix-newsletter"] .icon::after,
+.elementor-editor-dark-mode .elementor-element:hover [data-library-element-type="advanced-heading"] .icon::after,
+.elementor-editor-dark-mode .elementor-element:hover [data-library-element-type="advanced-button"] .icon::after,
+.elementor-editor-dark-mode .elementor-element:hover [data-library-element-type="advanced-image"] .icon::after,
+.elementor-editor-dark-mode .elementor-element:hover [data-library-element-type="advanced-icon-box"] .icon::after {
+	background-color: #b070f0;
+	border-color: #b070f0;
+}
+
+[data-library-element-type^="tv-"] .icon,
+[data-library-element-type="elonix-newsletter"] .icon,
+[data-library-element-type="advanced-heading"] .icon,
+[data-library-element-type="advanced-button"] .icon,
+[data-library-element-type="advanced-image"] .icon,
+[data-library-element-type="advanced-icon-box"] .icon {
+	position: relative;
+}
+
+/* Layout selector is now standard Elementor Select2 control */
+
+/* ==================================================
+ * REPEATER BUILDER (Element Order)
+ * ================================================== */
+/* Custom Status Dot & Labels */
+.tv-builder-item {
+	display: inline-flex;
+	align-items: center;
+	gap: 6px;
+}
+.tv-builder-dot {
+	width: 6px;
+	height: 6px;
+	border-radius: 50%;
+	display: inline-block;
+}
+.tv-status-yes .tv-builder-dot {
+	background-color: #22c55e !important; /* Green */
+}
+.tv-status-no .tv-builder-dot {
+	background-color: #94a3b8 !important; /* Slate */
+}
+.tv-status-no .tv-builder-label {
+	color: #94a3b8 !important;
+	text-decoration: line-through;
+	opacity: 0.75;
+}
+
+/* Hide only Duplicate buttons in the Element Order repeater to prevent duplicate item cloning */
+.elementor-control-post_element_order .elementor-repeater-tool-duplicate,
+.elementor-control-post_element_order .elementor-repeater-row-tools .elementor-repeater-tool-duplicate,
+.elementor-control-post_element_order .elementor-repeater-row-tools .elementor-repeater-row-duplicate,
+.elementor-control-search_result_element_order .elementor-repeater-tool-duplicate,
+.elementor-control-search_result_element_order .elementor-repeater-row-tools .elementor-repeater-tool-duplicate,
+.elementor-control-search_result_element_order .elementor-repeater-row-tools .elementor-repeater-row-duplicate {
+	display: none !important;
+}

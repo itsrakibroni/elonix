@@ -1,0 +1,17 @@
+{
+    "id": "49188a1f0e8e613becb4348e9a097d11",
+    "slug": "search-template-one",
+    "title": "Search Template One",
+    "description": "",
+    "author": "Elonix",
+    "version": "1.0.0",
+    "type": "search",
+    "category": [
+        "Search Single"
+    ],
+    "tags": [],
+    "required_plugins": [
+        "elementor"
+    ],
+    "status": "Published"
+}

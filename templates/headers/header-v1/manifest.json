@@ -1,0 +1,17 @@
+{
+    "id": "30b4d2b47fcec9c801c86e419aa06bd4",
+    "slug": "header-v1",
+    "title": "Header V1",
+    "description": "",
+    "author": "Elonix",
+    "version": "1.0.0",
+    "type": "header",
+    "category": [
+        "Header"
+    ],
+    "tags": [],
+    "required_plugins": [
+        "elementor"
+    ],
+    "status": "Published"
+}

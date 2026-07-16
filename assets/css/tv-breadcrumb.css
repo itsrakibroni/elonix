@@ -1,0 +1,128 @@
+/* Elonix – Toolkit for Elementor Breadcrumb Stylesheet */
+
+.elonix-breadcrumbs-container {
+	display: block;
+	width: 100%;
+}
+
+.elonix-breadcrumbs {
+	display: flex;
+	align-items: center;
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}
+
+/* Layouts */
+.elonix-breadcrumbs.layout-horizontal {
+	flex-direction: row;
+	flex-wrap: nowrap;
+	overflow-x: auto;
+}
+
+.elonix-breadcrumbs.layout-wrapped {
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.elonix-breadcrumbs.layout-inline-flex {
+	display: inline-flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+}
+
+/* Alignments */
+.elonix-breadcrumbs.align-left {
+	justify-content: flex-start;
+}
+
+.elonix-breadcrumbs.align-center {
+	justify-content: center;
+}
+
+.elonix-breadcrumbs.align-right {
+	justify-content: flex-end;
+}
+
+/* Item Spacing & Structure */
+.elonix-breadcrumb-item {
+	display: inline-flex;
+	align-items: center;
+	font-size: inherit;
+	line-height: 1.2;
+	transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
+}
+
+.elonix-breadcrumb-item a {
+	color: inherit;
+	text-decoration: none;
+	display: inline-flex;
+	align-items: center;
+	transition: color 0.3s ease;
+}
+
+/* Separator */
+.elonix-breadcrumb-separator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.elonix-breadcrumb-separator-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* Animated Separator Hover Effects */
+.elonix-breadcrumbs.separator-animated .elonix-breadcrumb-separator:hover {
+	transform: scale(1.2) rotate(5deg);
+	opacity: 0.8;
+}
+
+/* Home Icon Styling */
+.elonix-breadcrumb-home-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+}
+
+.elonix-breadcrumb-home-icon svg,
+.elonix-breadcrumb-home-icon i {
+	width: auto;
+	height: auto;
+}
+
+/* Mobile Optimized */
+@media (max-width: 767px) {
+	.elonix-breadcrumbs.mobile-optimized {
+		overflow-x: auto;
+		white-space: nowrap;
+		-webkit-overflow-scrolling: touch;
+		padding-bottom: 4px;
+	}
+
+	.elonix-breadcrumbs.mobile-optimized::-webkit-scrollbar {
+		height: 3px;
+	}
+
+	.elonix-breadcrumbs.mobile-optimized::-webkit-scrollbar-thumb {
+		background-color: rgba(0,0,0,0.15);
+		border-radius: 2px;
+	}
+}
+
+/* Accessibility classes */
+.sr-only {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	padding: 0;
+	margin: -1px;
+	overflow: hidden;
+	clip: rect(0, 0, 0, 0);
+	border: 0;
+}

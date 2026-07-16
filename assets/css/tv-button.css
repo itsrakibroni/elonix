@@ -1,0 +1,976 @@
+/**
+ * Advanced Button Widget Style Sheet
+ * Load conditionally only when widget is active on page.
+ */
+
+.elonix-advanced-button-wrapper {
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.elonix-advanced-button {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+	font-weight: 600;
+	cursor: pointer;
+	box-sizing: border-box;
+	border-style: solid;
+	border-width: 0;
+	position: relative;
+	overflow: hidden;
+	outline: none;
+}
+
+.elonix-button-content-wrapper {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	gap: 8px;
+}
+
+.elonix-button-icon,
+.elonix-button-arrow {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	transition: transform 0.3s ease, background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+.elonix-button-text {
+	display: inline-block;
+	line-height: 1.2;
+}
+
+/* Accessibility Focus Indicators */
+.elonix-advanced-button:focus,
+.elonix-advanced-button:focus-visible {
+	outline-offset: 3px;
+}
+
+/* ==========================================
+	BUTTON PRESETS (Customizable overrides)
+	========================================== */
+
+/* Solid Button */
+.elonix-advanced-button.tv-btn-preset-solid {
+	background-color: #4f46e5;
+	color: #ffffff;
+	border-radius: 6px;
+	box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.15), 0 2px 4px -1px rgba(79, 70, 229, 0.1);
+}
+.elonix-advanced-button.tv-btn-preset-solid:hover {
+	background-color: #4338ca;
+	box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.3), 0 4px 6px -2px rgba(79, 70, 229, 0.15);
+}
+
+/* Outline Button */
+.elonix-advanced-button.tv-btn-preset-outline {
+	background-color: transparent;
+	border: 2px solid #4f46e5;
+	color: #4f46e5;
+	border-radius: 6px;
+}
+.elonix-advanced-button.tv-btn-preset-outline:hover {
+	background-color: #4f46e5;
+	color: #ffffff;
+}
+
+/* Modern CTA Button */
+.elonix-advanced-button.tv-btn-preset-modern-cta {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #4f46e5;   /* indigo brand default */
+	border-radius: 9999px;      /* large pill shape */
+	padding: var(--tv-cta-outer-padding, 8px 8px 8px 24px);  /* premium asymmetric padding */
+	gap: var(--tv-cta-text-arrow-gap, 12px);                  /* default gap */
+	border: none;
+	text-decoration: none;
+	transition: background-color 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease, transform 0.3s ease;
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-text-area {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #ffffff;  /* white inner text area */
+	color: #4f46e5;             /* indigo brand text */
+	border-radius: 9999px;      /* fully rounded text area */
+	padding: var(--tv-cta-text-padding, 10px 24px);         /* premium padding */
+	font-weight: 700;
+	gap: 8px;
+	box-shadow: 0 4px 10px rgba(79, 70, 229, 0.08); /* soft and elegant appearance */
+	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-arrow-area {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: var(--tv-cta-arrow-width, 36px);
+	height: var(--tv-cta-arrow-height, 36px);
+	border-radius: 9999px;      /* separate arrow area on the right */
+	background-color: transparent;
+	color: #ffffff;             /* white arrow */
+	padding: var(--tv-cta-arrow-padding, 0);
+	margin: var(--tv-cta-arrow-margin, 0);
+	transition: background-color 0.3s ease, color 0.3s ease, transform 0.3s ease;
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-arrow-area svg {
+	font-size: 14px;
+	transition: transform 0.3s ease, color 0.3s ease;
+}
+
+/* Hover transition duration/delay overrides */
+.elonix-advanced-button.tv-btn-preset-modern-cta,
+.elonix-advanced-button.tv-btn-preset-modern-cta *,
+.elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-arrow-area svg {
+	transition-duration: var(--tv-cta-anim-duration, 300ms);
+	transition-delay: var(--tv-cta-anim-delay, 0ms);
+}
+
+/* Hover States & Animations */
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover {
+	background-color: #4338ca; /* darker indigo brand outer bg */
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elonix-cta-text-area {
+	background-color: #f8fafc; /* very light slate inner text area */
+	color: #4338ca;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elonix-cta-arrow-area {
+	color: #ffffff;
+}
+
+/* Hover Animation 1: Slide */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-slide:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-slide:hover .elonix-cta-arrow-area svg {
+	transform: translateX(var(--tv-cta-anim-distance, 5px));
+}
+
+/* Hover Animation 2: Bounce */
+@keyframes tv-cta-bounce {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(calc(-1 * var(--tv-cta-anim-distance, 5px))); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-bounce:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-bounce:hover .elonix-cta-arrow-area svg {
+	animation: tv-cta-bounce var(--tv-cta-anim-duration, 300ms) infinite ease-in-out;
+}
+
+/* Hover Animation 3: Pulse */
+@keyframes tv-cta-pulse {
+	0%, 100% { transform: scale(1); }
+	50% { transform: scale(var(--tv-cta-anim-scale, 1.2)); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-pulse:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-pulse:hover .elonix-cta-arrow-area svg {
+	animation: tv-cta-pulse var(--tv-cta-anim-duration, 300ms) infinite ease-in-out;
+}
+
+/* Hover Animation 4: Rotate */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-rotate:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-rotate:hover .elonix-cta-arrow-area svg {
+	transform: rotate(var(--tv-cta-anim-rotation, 15deg));
+}
+
+/* Hover Animation 5: Swing */
+@keyframes tv-cta-swing {
+	0%, 100% { transform: rotate(0deg); }
+	25% { transform: rotate(var(--tv-cta-anim-rotation, 15deg)); }
+	75% { transform: rotate(calc(-1 * var(--tv-cta-anim-rotation, 15deg))); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-swing:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-swing:hover .elonix-cta-arrow-area svg {
+	animation: tv-cta-swing var(--tv-cta-anim-duration, 300ms) infinite ease-in-out;
+}
+
+/* Hover Animation 6: Move Right */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-move-right:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-move-right:hover .elonix-cta-arrow-area svg {
+	transform: translateX(var(--tv-cta-anim-distance, 8px));
+}
+
+/* Hover Animation 7: Move Left */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-move-left:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-move-left:hover .elonix-cta-arrow-area svg {
+	transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 8px)));
+}
+
+/* Hover Animation 8: Zoom */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-zoom:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-zoom:hover .elonix-cta-arrow-area svg {
+	transform: scale(var(--tv-cta-anim-scale, 1.25));
+}
+
+/* Hover Animation 9: Shake */
+@keyframes tv-cta-shake {
+	0%, 100% { transform: translateX(0); }
+	20%, 60% { transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 5px))); }
+	40%, 80% { transform: translateX(var(--tv-cta-anim-distance, 5px)); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-shake:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-shake:hover .elonix-cta-arrow-area svg {
+	animation: tv-cta-shake var(--tv-cta-anim-duration, 300ms) infinite ease-in-out;
+}
+
+/* Hover Animation 10: Background Fill */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-bg-fill::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.15);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform var(--tv-cta-anim-duration, 300ms) cubic-bezier(0.25, 0.8, 0.25, 1);
+	transition-delay: var(--tv-cta-anim-delay, 0ms);
+	z-index: 1;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-bg-fill:hover::before {
+	transform: scaleX(1);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-bg-fill * {
+	position: relative;
+	z-index: 2;
+}
+
+/* Hover Animation 11: Magnetic Hover */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-magnetic:hover {
+	transform: scale(var(--tv-cta-anim-scale, 1.05)) translateY(calc(-1 * var(--tv-cta-anim-distance, 3px)));
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover Animation 12: Premium CTA Hover */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-premium-cta:hover {
+	transform: scale(1.02);
+	box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-premium-cta:hover .elonix-cta-text-area {
+	transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 4px)));
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-premium-cta:hover .elonix-cta-arrow-area {
+	transform: scale(var(--tv-cta-anim-scale, 1.1)) rotate(var(--tv-cta-anim-rotation, 15deg));
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-premium-cta:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-premium-cta:hover .elonix-cta-arrow-area svg {
+	transform: translateX(var(--tv-cta-anim-distance, 3px));
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-expand:hover .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-cta-hover-expand:hover .elonix-cta-arrow-area svg {
+	transform: scale(1.25);
+}
+
+/* ==========================================
+	BUTTON SIZES SYSTEM
+	========================================== */
+
+/* Standard Button Sizes */
+.elonix-advanced-button.tv-btn-size-small {
+	font-size: 13px;
+	padding: 8px 18px;
+}
+.elonix-advanced-button.tv-btn-size-medium {
+	font-size: 15px;
+	padding: 12px 28px;
+}
+.elonix-advanced-button.tv-btn-size-large {
+	font-size: 18px;
+	padding: 16px 36px;
+}
+.elonix-advanced-button.tv-btn-size-xl {
+	font-size: 22px;
+	padding: 20px 48px;
+}
+
+/* Elonix CTA Button Sizes */
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-small {
+	padding: var(--tv-cta-outer-padding, 6px 6px 6px 16px);
+	gap: var(--tv-cta-text-arrow-gap, 8px);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-small .elonix-cta-text-area {
+	padding: var(--tv-cta-text-padding, 8px 16px);
+	font-size: 13px;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-small .elonix-cta-arrow-area {
+	width: var(--tv-cta-arrow-width, 28px);
+	height: var(--tv-cta-arrow-height, 28px);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-small .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-small .elonix-cta-arrow-area svg {
+	font-size: 11px;
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-medium {
+	padding: var(--tv-cta-outer-padding, 8px 8px 8px 24px);
+	gap: var(--tv-cta-text-arrow-gap, 12px);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-medium .elonix-cta-text-area {
+	padding: var(--tv-cta-text-padding, 10px 24px);
+	font-size: 15px;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-medium .elonix-cta-arrow-area {
+	width: var(--tv-cta-arrow-width, 36px);
+	height: var(--tv-cta-arrow-height, 36px);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-medium .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-medium .elonix-cta-arrow-area svg {
+	font-size: 14px;
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-large {
+	padding: var(--tv-cta-outer-padding, 10px 10px 10px 32px);
+	gap: var(--tv-cta-text-arrow-gap, 16px);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-large .elonix-cta-text-area {
+	padding: var(--tv-cta-text-padding, 12px 32px);
+	font-size: 18px;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-large .elonix-cta-arrow-area {
+	width: var(--tv-cta-arrow-width, 44px);
+	height: var(--tv-cta-arrow-height, 44px);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-large .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-large .elonix-cta-arrow-area svg {
+	font-size: 18px;
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-xl {
+	padding: var(--tv-cta-outer-padding, 12px 12px 12px 40px);
+	gap: var(--tv-cta-text-arrow-gap, 20px);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-xl .elonix-cta-text-area {
+	padding: var(--tv-cta-text-padding, 14px 40px);
+	font-size: 22px;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-xl .elonix-cta-arrow-area {
+	width: var(--tv-cta-arrow-width, 52px);
+	height: var(--tv-cta-arrow-height, 52px);
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-xl .elonix-cta-arrow-area i,
+.elonix-advanced-button.tv-btn-preset-modern-cta.tv-btn-size-xl .elonix-cta-arrow-area svg {
+	font-size: 22px;
+}
+
+/* ==========================================
+	ARROW SYSTEM STYLING
+	========================================== */
+
+/* Circle Arrow container */
+.elonix-button-arrow.tv-arrow-type-circle {
+	background-color: rgba(255, 255, 255, 0.2);
+	border-radius: 50%;
+	padding: 6px;
+}
+
+/* Box Arrow container */
+.elonix-button-arrow.tv-arrow-type-box {
+	background-color: rgba(0, 0, 0, 0.1);
+	border-radius: 4px;
+	padding: 6px;
+}
+
+/* Pill Arrow container */
+.elonix-button-arrow.tv-arrow-type-pill {
+	background-color: rgba(255, 255, 255, 0.15);
+	border-radius: 20px;
+	padding: 4px 10px;
+}
+
+/* Reveal Arrow (starts at opacity 0 / shifted, slides in on hover) */
+.elonix-button-arrow.tv-arrow-type-reveal {
+	opacity: 0;
+	transform: translateX(-8px);
+	width: 0;
+	margin-left: 0;
+	overflow: hidden;
+	transition: width 0.3s ease, opacity 0.3s ease, transform 0.3s ease, margin-left 0.3s ease;
+}
+.elonix-advanced-button:hover .elonix-button-arrow.tv-arrow-type-reveal {
+	opacity: 1;
+	width: 1em;
+	margin-left: 8px;
+	transform: translateX(0);
+}
+
+/* Offset Arrow */
+.elonix-button-arrow.tv-arrow-type-offset {
+	margin-left: 12px;
+}
+
+/* ==========================================
+	BOOK APPOINTMENT STYLE PRESET
+	========================================== */
+.elonix-advanced-button.tv-btn-preset-book-appointment {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	background-color: #4f46e5;
+	color: #ffffff;
+	border-radius: 9999px;
+	padding: 8px 8px 8px 24px;
+	gap: 16px;
+	text-decoration: none;
+	position: relative;
+	overflow: hidden;
+	box-sizing: border-box;
+	transition: all 0.3s ease-in-out;
+}
+
+.elonix-advanced-button.tv-btn-preset-book-appointment .elonix-button-content-wrapper {
+	display: inline-flex;
+	align-items: center;
+	justify-content: space-between;
+	width: 100%;
+	height: 100%;
+	gap: inherit;
+	transition: inherit;
+}
+
+.elonix-advanced-button.tv-btn-preset-book-appointment .elonix-button-text {
+	flex: 1;
+	font-weight: 700;
+	transition: inherit;
+	white-space: nowrap;
+}
+
+.elonix-advanced-button.tv-btn-preset-book-appointment .elonix-button-icon-container {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	width: 38px;
+	height: 38px;
+	border-radius: 50%;
+	background-color: #ffffff;
+	color: #4f46e5;
+	transition: inherit;
+	box-sizing: border-box;
+}
+
+.elonix-advanced-button.tv-btn-preset-book-appointment .elonix-button-icon-container i,
+.elonix-advanced-button.tv-btn-preset-book-appointment .elonix-button-icon-container svg {
+	font-size: 14px;
+	line-height: 1;
+	display: block;
+	transition: inherit;
+}
+
+/* Left position adjustments */
+.elonix-advanced-button.tv-btn-preset-book-appointment .elonix-button-content-wrapper.tv-ba-pos-left {
+	flex-direction: row-reverse;
+}
+.elonix-advanced-button.tv-btn-preset-book-appointment .elonix-button-content-wrapper.tv-ba-pos-left .elonix-button-text {
+	text-align: right;
+}
+
+/* ==========================================
+	SMART HOVER EFFECTS (CSS ONLY)
+	========================================== */
+
+/* Hover Style 1: Icon slides slightly right */
+.tv-ba-hover-style-1:hover .elonix-button-icon-container i,
+.tv-ba-hover-style-1:hover .elonix-button-icon-container svg {
+	transform: translateX(var(--tv-ba-anim-distance, 4px));
+}
+
+/* Hover Style 2: Icon rotates 15deg */
+.tv-ba-hover-style-2:hover .elonix-button-icon-container i,
+.tv-ba-hover-style-2:hover .elonix-button-icon-container svg {
+	transform: rotate(var(--tv-ba-anim-rotation, 15deg));
+}
+
+/* Hover Style 3: Arrow moves continuously */
+@keyframes tv-ba-continuous-arrow {
+	0% { transform: translateX(0); }
+	50% { transform: translateX(6px); }
+	100% { transform: translateX(0); }
+}
+.tv-ba-hover-style-3:hover .elonix-button-icon-container i,
+.tv-ba-hover-style-3:hover .elonix-button-icon-container svg {
+	animation: tv-ba-continuous-arrow 0.8s infinite ease-in-out;
+}
+
+/* Hover Style 4: Background fill animation */
+.tv-ba-hover-style-4::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.15);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+	z-index: 1;
+}
+.tv-ba-hover-style-4:hover::before {
+	transform: scaleX(1);
+}
+.tv-ba-hover-style-4 * {
+	position: relative;
+	z-index: 2;
+}
+
+/* Hover Style 5: Magnetic hover effect */
+.tv-ba-hover-style-5:hover {
+	transform: scale(var(--tv-ba-anim-scale, 1.05)) translateY(-2px);
+	box-shadow: 0 10px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Hover Style 6: Icon area expands slightly */
+.tv-ba-hover-style-6:hover .elonix-button-icon-container {
+	transform: scale(var(--tv-ba-anim-scale, 1.15));
+}
+
+/* Hover Style 7: Text shifts left while icon advances */
+.tv-ba-hover-style-7:hover .elonix-button-text {
+	transform: translateX(-4px);
+}
+.tv-ba-hover-style-7:hover .elonix-button-icon-container {
+	transform: translateX(var(--tv-ba-anim-distance, 5px));
+}
+
+/* Hover Style 8: Premium smooth micro-interaction */
+.tv-ba-hover-style-8:hover {
+	transform: scale(1.02);
+	box-shadow: 0 8px 16px rgba(15, 23, 42, 0.1);
+}
+.tv-ba-hover-style-8:hover .elonix-button-icon-container {
+	transform: scale(1.05) rotate(var(--tv-ba-anim-rotation, 5deg));
+}
+.tv-ba-hover-style-8:hover .elonix-button-icon-container i,
+.tv-ba-hover-style-8:hover .elonix-button-icon-container svg {
+	transform: translateX(var(--tv-ba-anim-distance, 3px));
+}
+
+/* ==========================================
+	MODERN CTA ADVANCED HOVER TRANSFORMS
+	========================================== */
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover {
+	transform: translate(var(--tv-cta-outer-translate-x, 0), var(--tv-cta-outer-translate-y, 0)) scale(var(--tv-cta-outer-scale, 1)) rotate(var(--tv-cta-outer-rotate, 0deg));
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elonix-cta-text-area {
+	transform: translate(var(--tv-cta-text-translate-x, 0), var(--tv-cta-text-translate-y, 0)) scale(var(--tv-cta-text-scale, 1)) rotate(var(--tv-cta-text-rotate, 0deg));
+}
+
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elonix-cta-arrow-area {
+	transform: translate(var(--tv-cta-arrow-translate-x, 0), var(--tv-cta-arrow-translate-y, 0)) scale(var(--tv-cta-arrow-scale, 1)) rotate(var(--tv-cta-arrow-rotate, 0deg));
+}
+
+/* ==========================================
+	ELEMENTOR-STYLE HOVER ANIMATION ADAPTERS
+	========================================== */
+
+/* Animation configuration overrides */
+.elonix-advanced-button.tv-btn-preset-modern-cta [class*="elementor-animation-"],
+.elonix-advanced-button.tv-btn-preset-modern-cta[class*="elementor-animation-"],
+.elonix-advanced-button.tv-btn-preset-modern-cta [class*="elementor-animation-"] i,
+.elonix-advanced-button.tv-btn-preset-modern-cta [class*="elementor-animation-"] svg {
+	transition: all var(--tv-cta-anim-duration, 300ms) var(--tv-cta-anim-timing, ease) !important;
+	transition-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Grow */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-grow:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-grow {
+	transform: scale(var(--tv-cta-anim-scale, 1.1)) !important;
+}
+
+/* Shrink */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-shrink:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-shrink {
+	transform: scale(calc(2 - var(--tv-cta-anim-scale, 1.1))) !important;
+}
+
+/* Pulse */
+@keyframes tv-cta-pulse-new {
+	25% { transform: scale(var(--tv-cta-anim-scale, 1.1)); }
+	75% { transform: scale(calc(2 - var(--tv-cta-anim-scale, 1.1))); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-pulse:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-pulse {
+	animation: tv-cta-pulse-new var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Pulse Grow */
+@keyframes tv-cta-pulse-grow {
+	to { transform: scale(var(--tv-cta-anim-scale, 1.1)); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-pulse-grow:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-pulse-grow {
+	animation: tv-cta-pulse-grow var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) alternate infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Pulse Shrink */
+@keyframes tv-cta-pulse-shrink {
+	to { transform: scale(calc(2 - var(--tv-cta-anim-scale, 1.1))); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-pulse-shrink:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-pulse-shrink {
+	animation: tv-cta-pulse-shrink var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) alternate infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Push */
+@keyframes tv-cta-push {
+	50% { transform: scale(calc(2 - var(--tv-cta-anim-scale, 1.1))); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-push:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-push {
+	animation: tv-cta-push var(--tv-cta-anim-duration, 300ms) var(--tv-cta-anim-timing, ease) 1 !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Pop */
+@keyframes tv-cta-pop {
+	50% { transform: scale(var(--tv-cta-anim-scale, 1.1)); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-pop:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-pop {
+	animation: tv-cta-pop var(--tv-cta-anim-duration, 300ms) var(--tv-cta-anim-timing, ease) 1 !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Bounce In */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-bounce-in:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-bounce-in {
+	transform: scale(var(--tv-cta-anim-scale, 1.1)) !important;
+	transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36) !important;
+}
+
+/* Bounce Out */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-bounce-out:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-bounce-out {
+	transform: scale(calc(2 - var(--tv-cta-anim-scale, 1.1))) !important;
+	transition-timing-function: cubic-bezier(0.47, 2.02, 0.31, -0.36) !important;
+}
+
+/* Rotate */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-rotate:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-rotate {
+	transform: rotate(var(--tv-cta-anim-rotation, 4deg)) !important;
+}
+
+/* Grow Rotate */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-grow-rotate:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-grow-rotate {
+	transform: scale(var(--tv-cta-anim-scale, 1.1)) rotate(var(--tv-cta-anim-rotation, 4deg)) !important;
+}
+
+/* Float */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-float:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-float {
+	transform: translateY(calc(-1 * var(--tv-cta-anim-distance, 8px))) !important;
+}
+
+/* Sink */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-sink:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-sink {
+	transform: translateY(var(--tv-cta-anim-distance, 8px)) !important;
+}
+
+/* Bob */
+@keyframes tv-cta-bob {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(calc(-1 * var(--tv-cta-anim-distance, 8px))); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-bob:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-bob {
+	animation: tv-cta-bob var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Hang */
+@keyframes tv-cta-hang {
+	0%, 100% { transform: translateY(0); }
+	50% { transform: translateY(var(--tv-cta-anim-distance, 8px)); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-hang:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-hang {
+	animation: tv-cta-hang var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Wobble Horizontal */
+@keyframes tv-cta-wobble-horizontal {
+	15% { transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 8px))); }
+	30% { transform: translateX(var(--tv-cta-anim-distance, 8px)); }
+	45% { transform: translateX(calc(-0.6 * var(--tv-cta-anim-distance, 8px))); }
+	60% { transform: translateX(calc(0.6 * var(--tv-cta-anim-distance, 8px))); }
+	75% { transform: translateX(calc(-0.3 * var(--tv-cta-anim-distance, 8px))); }
+	90% { transform: translateX(calc(0.3 * var(--tv-cta-anim-distance, 8px))); }
+	100% { transform: translateX(0); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-wobble-horizontal:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-wobble-horizontal {
+	animation: tv-cta-wobble-horizontal var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Wobble Vertical */
+@keyframes tv-cta-wobble-vertical {
+	15% { transform: translateY(calc(-1 * var(--tv-cta-anim-distance, 8px))); }
+	30% { transform: translateY(var(--tv-cta-anim-distance, 8px)); }
+	45% { transform: translateY(calc(-0.6 * var(--tv-cta-anim-distance, 8px))); }
+	60% { transform: translateY(calc(0.6 * var(--tv-cta-anim-distance, 8px))); }
+	75% { transform: translateY(calc(-0.3 * var(--tv-cta-anim-distance, 8px))); }
+	90% { transform: translateY(calc(0.3 * var(--tv-cta-anim-distance, 8px))); }
+	100% { transform: translateY(0); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-wobble-vertical:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-wobble-vertical {
+	animation: tv-cta-wobble-vertical var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Buzz */
+@keyframes tv-cta-buzz {
+	50% { transform: translateX(2px) rotate(2deg); }
+	100% { transform: translateX(-2px) rotate(-2deg); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-buzz:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-buzz {
+	animation: tv-cta-buzz var(--tv-cta-anim-duration, 150ms) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Forward */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-forward:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-forward {
+	transform: translateX(var(--tv-cta-anim-distance, 8px)) !important;
+}
+
+/* Backward */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-backward:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-backward {
+	transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 8px))) !important;
+}
+
+/* Buzz Out */
+@keyframes tv-cta-buzz-out {
+	10% { transform: translateX(calc(0.3 * var(--tv-cta-anim-distance, 8px))) rotate(var(--tv-cta-anim-rotation, 2deg)); }
+	20% { transform: translateX(calc(-0.3 * var(--tv-cta-anim-distance, 8px))) rotate(calc(-1 * var(--tv-cta-anim-rotation, 2deg))); }
+	30% { transform: translateX(calc(0.3 * var(--tv-cta-anim-distance, 8px))) rotate(var(--tv-cta-anim-rotation, 2deg)); }
+	40% { transform: translateX(calc(-0.3 * var(--tv-cta-anim-distance, 8px))) rotate(calc(-1 * var(--tv-cta-anim-rotation, 2deg))); }
+	50% { transform: translateX(calc(0.2 * var(--tv-cta-anim-distance, 8px))) rotate(calc(0.5 * var(--tv-cta-anim-rotation, 2deg))); }
+	60% { transform: translateX(calc(-0.2 * var(--tv-cta-anim-distance, 8px))) rotate(calc(-0.5 * var(--tv-cta-anim-rotation, 2deg))); }
+	70% { transform: translateX(calc(0.2 * var(--tv-cta-anim-distance, 8px))) rotate(calc(0.5 * var(--tv-cta-anim-rotation, 2deg))); }
+	80% { transform: translateX(calc(-0.2 * var(--tv-cta-anim-distance, 8px))) rotate(calc(-0.5 * var(--tv-cta-anim-rotation, 2deg))); }
+	90% { transform: translateX(calc(0.1 * var(--tv-cta-anim-distance, 8px))) rotate(0deg); }
+	100% { transform: translateX(calc(-0.1 * var(--tv-cta-anim-distance, 8px))) rotate(0deg); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-buzz-out:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-buzz-out {
+	animation: tv-cta-buzz-out var(--tv-cta-anim-duration, 0.75s) var(--tv-cta-anim-timing, ease) 1 !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Shake */
+@keyframes tv-cta-shake-attention {
+	0%, 100% { transform: translateX(0); }
+	20%, 60% { transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 8px))); }
+	40%, 80% { transform: translateX(var(--tv-cta-anim-distance, 8px)); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-shake:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-shake {
+	animation: tv-cta-shake-attention var(--tv-cta-anim-duration, 0.4s) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Swing */
+@keyframes tv-cta-swing-attention {
+	20% { transform: rotate(var(--tv-cta-anim-rotation, 15deg)); }
+	40% { transform: rotate(calc(-1 * var(--tv-cta-anim-rotation, 10deg))); }
+	60% { transform: rotate(calc(var(--tv-cta-anim-rotation, 15deg) * 0.5)); }
+	80% { transform: rotate(calc(-1 * var(--tv-cta-anim-rotation, 10deg) * 0.5)); }
+	100% { transform: rotate(0deg); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-swing:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-swing {
+	animation: tv-cta-swing-attention var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) 1 !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Tada */
+@keyframes tv-cta-tada {
+	0% { transform: scale(1); }
+	10%, 20% { transform: scale(calc(2 - var(--tv-cta-anim-scale, 1.1))) rotate(calc(-1 * var(--tv-cta-anim-rotation, 4deg))); }
+	30%, 50%, 70%, 90% { transform: scale(var(--tv-cta-anim-scale, 1.1)) rotate(var(--tv-cta-anim-rotation, 4deg)); }
+	40%, 60%, 80% { transform: scale(var(--tv-cta-anim-scale, 1.1)) rotate(calc(-1 * var(--tv-cta-anim-rotation, 4deg))); }
+	100% { transform: scale(1) rotate(0); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-tada:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-tada {
+	animation: tv-cta-tada var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Rubber Band */
+@keyframes tv-cta-rubber-band {
+	0% { transform: scale3d(1, 1, 1); }
+	30% { transform: scale3d(var(--tv-cta-anim-scale, 1.15), calc(2 - var(--tv-cta-anim-scale, 1.15)), 1); }
+	40% { transform: scale3d(calc(2 - var(--tv-cta-anim-scale, 1.15)), var(--tv-cta-anim-scale, 1.15), 1); }
+	50% { transform: scale3d(calc(1 + (var(--tv-cta-anim-scale, 1.15) - 1)*0.5), calc(1 - (var(--tv-cta-anim-scale, 1.15) - 1)*0.5), 1); }
+	65% { transform: scale3d(calc(1 - (var(--tv-cta-anim-scale, 1.15) - 1)*0.3), calc(1 + (var(--tv-cta-anim-scale, 1.15) - 1)*0.3), 1); }
+	75% { transform: scale3d(calc(1 + (var(--tv-cta-anim-scale, 1.15) - 1)*0.1), calc(1 - (var(--tv-cta-anim-scale, 1.15) - 1)*0.1), 1); }
+	100% { transform: scale3d(1, 1, 1); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-rubber-band:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-rubber-band {
+	animation: tv-cta-rubber-band var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) 1 !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Jello */
+@keyframes tv-cta-jello {
+	11.1% { transform: skewX(calc(-1 * var(--tv-cta-anim-rotation, 10deg))) skewY(calc(-1 * var(--tv-cta-anim-rotation, 10deg))); }
+	22.2% { transform: skewX(calc(0.8 * var(--tv-cta-anim-rotation, 10deg))) skewY(calc(0.8 * var(--tv-cta-anim-rotation, 10deg))); }
+	33.3% { transform: skewX(calc(-0.6 * var(--tv-cta-anim-rotation, 10deg))) skewY(calc(-0.6 * var(--tv-cta-anim-rotation, 10deg))); }
+	44.4% { transform: skewX(calc(0.4 * var(--tv-cta-anim-rotation, 10deg))) skewY(calc(0.4 * var(--tv-cta-anim-rotation, 10deg))); }
+	55.5% { transform: skewX(calc(-0.2 * var(--tv-cta-anim-rotation, 10deg))) skewY(calc(-0.2 * var(--tv-cta-anim-rotation, 10deg))); }
+	66.6% { transform: skewX(calc(0.1 * var(--tv-cta-anim-rotation, 10deg))) skewY(calc(0.1 * var(--tv-cta-anim-rotation, 10deg))); }
+	77.7% { transform: skewX(calc(-0.05 * var(--tv-cta-anim-rotation, 10deg))) skewY(calc(-0.05 * var(--tv-cta-anim-rotation, 10deg))); }
+	88.8% { transform: skewX(calc(0.02 * var(--tv-cta-anim-rotation, 10deg))) skewY(calc(0.02 * var(--tv-cta-anim-rotation, 10deg))); }
+	100% { transform: skewX(0) skewY(0); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-jello:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-jello {
+	animation: tv-cta-jello var(--tv-cta-anim-duration, 1s) var(--tv-cta-anim-timing, ease) 1 !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Arrow Slide Right */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-arrow-slide-right:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-arrow-slide-right {
+	transform: translateX(var(--tv-cta-anim-distance, 8px)) !important;
+}
+
+/* Arrow Slide Left */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-arrow-slide-left:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-arrow-slide-left {
+	transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 8px))) !important;
+}
+
+/* Arrow Bounce */
+@keyframes tv-cta-arrow-bounce {
+	0%, 100% { transform: translateX(0); }
+	50% { transform: translateX(var(--tv-cta-anim-distance, 8px)); }
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-arrow-bounce:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-arrow-bounce {
+	animation: tv-cta-arrow-bounce var(--tv-cta-anim-duration, 0.6s) var(--tv-cta-anim-timing, ease) infinite !important;
+	animation-delay: var(--tv-cta-anim-delay, 0ms) !important;
+}
+
+/* Arrow Expand */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-arrow-expand:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-arrow-expand {
+	transform: scale(var(--tv-cta-anim-scale, 1.2)) !important;
+}
+
+/* Arrow Rotate */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-arrow-rotate:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-arrow-rotate {
+	transform: rotate(var(--tv-cta-anim-rotation, 30deg)) !important;
+}
+
+/* Arrow Reveal */
+.elonix-advanced-button.tv-btn-preset-modern-cta .elementor-animation-arrow-reveal {
+	opacity: 0.3;
+	transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 8px)));
+	transition: opacity var(--tv-cta-anim-duration, 300ms) var(--tv-cta-anim-timing, ease), transform var(--tv-cta-anim-duration, 300ms) var(--tv-cta-anim-timing, ease) !important;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-arrow-reveal,
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-arrow-reveal:hover {
+	opacity: 1 !important;
+	transform: translateX(0) !important;
+}
+
+/* Background Sweep */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-background-sweep,
+.elonix-advanced-button.tv-btn-preset-modern-cta .elementor-animation-background-sweep {
+	position: relative;
+	overflow: hidden;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-background-sweep::before,
+.elonix-advanced-button.tv-btn-preset-modern-cta .elementor-animation-background-sweep::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.25), transparent);
+	transform: translateX(-100%);
+	transition: transform var(--tv-cta-anim-duration, 600ms) var(--tv-cta-anim-timing, ease) !important;
+	z-index: 1;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover.elementor-animation-background-sweep::before,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-background-sweep::before {
+	transform: translateX(100%);
+}
+
+/* Background Fill */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-background-fill,
+.elonix-advanced-button.tv-btn-preset-modern-cta .elementor-animation-background-fill {
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-background-fill::before,
+.elonix-advanced-button.tv-btn-preset-modern-cta .elementor-animation-background-fill::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(255, 255, 255, 0.1);
+	transform: scaleX(0);
+	transform-origin: left;
+	transition: transform var(--tv-cta-anim-duration, 300ms) var(--tv-cta-anim-timing, ease) !important;
+	z-index: -1;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover.elementor-animation-background-fill::before,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-background-fill::before {
+	transform: scaleX(1);
+}
+
+/* Background Sweep / Fill Child Layer Adjustment */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-background-sweep *,
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-background-fill *,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-background-sweep *,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-background-fill * {
+	position: relative;
+	z-index: 2;
+}
+
+/* Split CTA */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-split-cta:hover .elonix-cta-text-area {
+	transform: translateX(calc(-1 * var(--tv-cta-anim-distance, 4px))) !important;
+}
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-split-cta:hover .elonix-cta-arrow-area {
+	transform: translateX(var(--tv-cta-anim-distance, 4px)) !important;
+}
+
+/* Premium CTA Hover */
+.elonix-advanced-button.tv-btn-preset-modern-cta.elementor-animation-premium-cta-hover:hover,
+.elonix-advanced-button.tv-btn-preset-modern-cta:hover .elementor-animation-premium-cta-hover {
+	transform: scale(var(--tv-cta-anim-scale, 1.03)) rotate(var(--tv-cta-anim-rotation, 1deg)) !important;
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15) !important;
+}

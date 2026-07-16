@@ -1,0 +1,17 @@
+{
+    "id": "be018fccfb49c7b9d00c9a417b4660cd",
+    "slug": "single-post-one",
+    "title": "Single Post One",
+    "description": "",
+    "author": "Elonix",
+    "version": "1.0.0",
+    "type": "single",
+    "category": [
+        "Single"
+    ],
+    "tags": [],
+    "required_plugins": [
+        "elementor"
+    ],
+    "status": "Published"
+}

@@ -1,0 +1,200 @@
+/**
+ * Elonix – Toolkit for Elementor - Settings Page Styles
+ */
+
+/* Shared variables are loaded globally via dashboard.css */
+
+.elonix-settings-wrap {
+	margin: 24px 24px 0 0;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+}
+
+/* Tabs Navigation Styling */
+.elonix-settings-tabs {
+	border-bottom: 2px solid #e2e8f0 !important;
+	margin-bottom: 26px !important;
+	padding-bottom: 0 !important;
+	display: flex !important;
+	gap: 6px !important;
+}
+
+.elonix-settings-tabs .nav-tab {
+	font-weight: 600 !important;
+	font-size: 13.5px !important;
+	padding: 10px 20px !important;
+	border: 1px solid transparent !important;
+	background: transparent !important;
+	color: #64748b !important;
+	border-radius: 8px 8px 0 0 !important;
+	margin: 0 !important;
+	transition: all 0.2s ease !important;
+}
+
+.elonix-settings-tabs .nav-tab:hover {
+	background: #f1f5f9 !important;
+	color: #0f172a !important;
+}
+
+.elonix-settings-tabs .nav-tab-active,
+.elonix-settings-tabs .nav-tab-active:focus,
+.elonix-settings-tabs .nav-tab-active:hover {
+	background: #ffffff !important;
+	border: 2px solid #e2e8f0 !important;
+	border-bottom: 2px solid #ffffff !important;
+	color: #6366f1 !important;
+	position: relative !important;
+	bottom: -2px !important;
+	z-index: 10 !important;
+}
+
+/* Cards Section Wrapper */
+.elonix-settings-section-card {
+	background: #ffffff;
+	border: 1px solid #e2e8f0;
+	border-radius: 12px;
+	padding: 35px;
+	box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+	margin-bottom: 24px;
+}
+
+/* Form Tables overrides */
+.elonix-settings-section-card table.form-table {
+	margin-top: 0;
+	width: 100%;
+}
+
+.elonix-settings-section-card table.form-table tr {
+	border-bottom: 1px solid #f1f5f9;
+}
+
+.elonix-settings-section-card table.form-table tr:last-child {
+	border-bottom: none;
+}
+
+.elonix-settings-section-card table.form-table th {
+	font-weight: 700;
+	color: #0f172a;
+	width: 280px;
+	padding: 24px 16px 24px 0;
+	font-size: 14px;
+	vertical-align: middle;
+}
+
+.elonix-settings-section-card table.form-table td {
+	padding: 24px 0;
+	vertical-align: middle;
+}
+
+/* Switch Toggle Slider inside Form Table */
+.elonix-settings-section-card .elonix-switch {
+	position: relative;
+	display: inline-block;
+	width: 44px;
+	height: 24px;
+}
+
+.elonix-settings-section-card .elonix-switch input {
+	opacity: 0;
+	width: 0;
+	height: 0;
+}
+
+.elonix-settings-section-card .slider {
+	position: absolute;
+	cursor: pointer;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background-color: #cbd5e1;
+	transition: .25s ease;
+	border-radius: 24px;
+}
+
+.elonix-settings-section-card .slider:before {
+	position: absolute;
+	content: "";
+	height: 16px;
+	width: 16px;
+	left: 4px;
+	bottom: 4px;
+	background-color: #ffffff;
+	transition: .25s cubic-bezier(0.4, 0, 0.2, 1);
+	border-radius: 50%;
+}
+
+.elonix-settings-section-card input:checked + .slider {
+	background-color: #6366f1;
+}
+
+.elonix-settings-section-card input:focus + .slider {
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.25);
+}
+
+.elonix-settings-section-card input:checked + .slider:before {
+	transform: translateX(20px);
+}
+
+/* Input Fields styling */
+.elonix-settings-section-card input[type="text"].regular-text,
+.elonix-settings-section-card input[type="number"].small-text,
+.elonix-settings-section-card select {
+	border: 1px solid #cbd5e1 !important;
+	border-radius: 8px !important;
+	padding: 8px 12px !important;
+	font-size: 13px !important;
+	color: #334155 !important;
+	box-shadow: inset 0 1px 2px rgba(0,0,0,0.02) !important;
+	transition: all 0.2s ease !important;
+	background-color: #ffffff !important;
+}
+
+.elonix-settings-section-card input[type="text"].regular-text:focus,
+.elonix-settings-section-card input[type="number"].small-text:focus,
+.elonix-settings-section-card select:focus {
+	border-color: #6366f1 !important;
+	box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.15) !important;
+	outline: none !important;
+}
+
+.elonix-settings-section-card p.description {
+	margin-top: 8px;
+	color: #64748b;
+	font-size: 13px;
+	line-height: 1.5;
+}
+
+/* Save settings button customization */
+.elonix-settings-wrap input[type="submit"].button-primary {
+	background: #6366f1 !important;
+	border-color: #6366f1 !important;
+	color: #ffffff !important;
+	text-shadow: none !important;
+	font-weight: 700 !important;
+	font-size: 13px !important;
+	padding: 8px 24px !important;
+	height: auto !important;
+	border-radius: 8px !important;
+	box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.2) !important;
+	transition: all 0.2s ease !important;
+}
+
+.elonix-settings-wrap input[type="submit"].button-primary:hover {
+	background: #4f46e5 !important;
+	border-color: #4f46e5 !important;
+	box-shadow: 0 6px 10px -1px rgba(99, 102, 241, 0.3) !important;
+}
+
+/* Responsive Table */
+@media (max-width: 768px) {
+	.elonix-settings-section-card table.form-table th {
+		width: 100%;
+		display: block;
+		padding: 16px 0 6px 0;
+	}
+	.elonix-settings-section-card table.form-table td {
+		display: block;
+		width: 100%;
+		padding: 0 0 16px 0;
+	}
+}

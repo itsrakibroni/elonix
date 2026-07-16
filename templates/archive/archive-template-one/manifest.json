@@ -1,0 +1,17 @@
+{
+    "id": "cd1aec331eede751c37a6b3e4ebe8040",
+    "slug": "archive-template-one",
+    "title": "Archive Template One",
+    "description": "",
+    "author": "Elonix",
+    "version": "1.0.0",
+    "type": "archive",
+    "category": [
+        "Archive"
+    ],
+    "tags": [],
+    "required_plugins": [
+        "elementor"
+    ],
+    "status": "Published"
+}

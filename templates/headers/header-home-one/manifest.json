@@ -1,0 +1,17 @@
+{
+    "id": "751b43a2d13b0c0de2bc86b28d127de1",
+    "slug": "header-home-one",
+    "title": "Header Home One",
+    "description": "",
+    "author": "Elonix",
+    "version": "1.0.0",
+    "type": "header",
+    "category": [
+        "Header"
+    ],
+    "tags": [],
+    "required_plugins": [
+        "elementor"
+    ],
+    "status": "Published"
+}

@@ -1,0 +1,29 @@
+/**
+ * Advanced Heading Widget Style Sheet
+ * Load conditionally only when widget is active on page.
+ */
+
+.elonix-advanced-heading-wrapper {
+	position: relative;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+.elonix-heading-subtitle {
+	display: block;
+	font-weight: 600;
+	text-transform: uppercase;
+	margin: 0 0 10px 0;
+}
+
+.elonix-heading-title {
+	margin: 0 0 15px 0;
+	font-weight: 700;
+	line-height: 1.2;
+}
+
+.elonix-heading-description {
+	font-size: 16px;
+	line-height: 1.6;
+	margin: 0;
+}

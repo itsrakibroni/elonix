@@ -1,0 +1,126 @@
+/* Fix Elementor Flex Container (e-con) Swiper stretching bug */
+.elementor-widget-tv-feature-cards {
+	min-width: 0;
+}
+
+.elonix-feature-cards {
+	--tv-fc-gap-column: 30px;
+	--tv-fc-gap-row: 30px;
+	--tv-fc-radius: 12px;
+	--tv-fc-padding: 30px;
+	--tv-fc-border: none;
+	--tv-fc-shadow: 0 4px 15px rgba(0,0,0,0.05);
+	--tv-fc-shadow-hover: 0 10px 30px rgba(0,0,0,0.08);
+	--tv-fc-bg: #ffffff;
+	--tv-fc-bg-hover: #ffffff;
+	--tv-fc-transition: all 0.3s ease-in-out;
+	--tv-fc-icon-size: 50px;
+}
+
+.elonix-feature-cards .tv-fc-carousel {
+	width: 100%;
+	min-width: 0;
+}
+
+.elonix-feature-cards .tv-fc-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--tv-fc-columns, 3), 1fr);
+	column-gap: var(--tv-fc-gap-column);
+	row-gap: var(--tv-fc-gap-row);
+}
+
+.elonix-feature-cards .tv-fc-carousel .swiper-slide {
+	height: auto;
+}
+
+.tv-fc-card {
+	background: var(--tv-fc-bg);
+	border-radius: var(--tv-fc-radius);
+	border: var(--tv-fc-border);
+	box-shadow: var(--tv-fc-shadow);
+	transition: var(--tv-fc-transition);
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.tv-fc-card:hover {
+	background: var(--tv-fc-bg-hover);
+	box-shadow: var(--tv-fc-shadow-hover);
+}
+
+.tv-fc-card-inner {
+	padding: var(--tv-fc-padding);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.tv-fc-card-link-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+
+.tv-fc-card-link-wrapper ~ .tv-fc-card-inner .tv-fc-button,
+.tv-fc-card-link-wrapper ~ .tv-fc-card-inner a {
+	position: relative;
+	z-index: 20;
+}
+
+/* Hover Effects */
+.tv-hover-lift .tv-fc-card:hover {
+	transform: translateY(-10px);
+	will-change: transform;
+}
+.tv-hover-scale .tv-fc-card:hover {
+	transform: scale(1.03);
+	will-change: transform;
+}
+.tv-hover-glow .tv-fc-card:hover {
+	box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+}
+
+/* Base Styles */
+.tv-fc-icon {
+	font-size: var(--tv-fc-icon-size);
+	line-height: 1;
+	transition: var(--tv-fc-transition);
+}
+.tv-fc-icon svg {
+	width: var(--tv-fc-icon-size);
+	height: var(--tv-fc-icon-size);
+}
+
+.tv-fc-title {
+	margin: 15px 0 10px;
+}
+
+.tv-fc-badge {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	background: var(--e-global-color-accent);
+	color: #fff;
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	z-index: 5;
+}
+
+.tv-fc-rating-stars {
+	color: #ffb800;
+	margin-bottom: 10px;
+}
+
+/* Carousel Additions */
+.elonix-feature-cards .swiper-pagination {
+	position: static;
+	margin-top: var(--tv-fc-gap-row);
+}

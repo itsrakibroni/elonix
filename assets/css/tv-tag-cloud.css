@@ -1,0 +1,397 @@
+/**
+ * Elonix Smart Taxonomy Filter Style Sheet
+ *
+ * Outlines the grid alignments, glassmorphism filters, category card layout,
+ * active selectors, clear filter buttons, and high-visibility focus states.
+ *
+ * @package Elonix_Toolkit
+ */
+
+.tv-tag-cloud-wrap {
+	width: 100%;
+	position: relative;
+	box-sizing: border-box;
+}
+
+.tv-tag-cloud-container {
+	display: flex;
+	flex-wrap: wrap;
+	width: 100%;
+	box-sizing: border-box;
+}
+
+/* Grid declarations for Category Cards & Popular Topics */
+.tv-tag-cloud-container.tv-layout-category_cards,
+.tv-tag-cloud-container.tv-layout-popular_topics {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+}
+
+.tv-tag-cloud-container.tv-layout-classic_list {
+	display: flex;
+	flex-direction: column;
+}
+
+/* Standard tag element outline */
+.tv-tag-item {
+	box-sizing: border-box;
+	display: inline-flex;
+	align-items: center;
+	text-decoration: none;
+	cursor: pointer;
+	border: 1px solid transparent;
+	background: transparent;
+	transition: color .2s ease-in-out, background-color .2s ease-in-out, border-color .2s ease-in-out, box-shadow .2s ease-in-out;
+}
+
+/* WCAG: Focus outline configurations */
+.tv-tag-item:focus-visible {
+	outline: 2px solid #3b82f6 !important;
+	outline-offset: 2px;
+}
+
+/* Icons */
+.tv-tag-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	flex-shrink: 0;
+	box-sizing: border-box;
+}
+
+.tv-tag-icon img {
+	max-width: 100%;
+	height: auto;
+	display: block;
+}
+
+/* Counts and Badges */
+.tv-tag-count {
+	font-size: 12px;
+	color: #9ca3af;
+	margin-left: 6px;
+	transition: color .2s ease-in-out;
+}
+
+.tv-count-badge {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	background-color: #f3f4f6;
+	color: #4b5563;
+	padding: 2px 8px;
+	border-radius: 99px;
+	font-weight: 600;
+	min-width: 16px;
+	line-height: 1;
+	transition: background-color .2s ease-in-out, color .2s ease-in-out;
+}
+
+.tv-tag-item:hover .tv-count-badge,
+.tv-tag-item.tv-active .tv-count-badge {
+	background-color: rgba(0, 0, 0, 0.1);
+}
+
+.tv-tag-badge {
+	font-size: 9px;
+	font-weight: 700;
+	text-transform: uppercase;
+	color: #ffffff;
+	background-color: #ef4444;
+	padding: 2px 5px;
+	border-radius: 3px;
+	margin-left: 6px;
+	line-height: 1;
+}
+
+/* Layout definitions */
+
+/* 1. Tag Cloud Layout */
+.tv-layout-tag_cloud {
+	gap: 12px;
+	align-items: center;
+}
+
+.tv-layout-tag_cloud .tv-tag-item {
+	padding: 4px 8px;
+	line-height: 1.2;
+}
+
+/* 2. Pills Layout */
+.tv-layout-pills {
+	gap: 10px;
+}
+
+.tv-layout-pills .tv-tag-item {
+	background-color: #f3f4f6;
+	color: #374151;
+	border-radius: 99px;
+	padding: 8px 18px;
+	font-size: 14px;
+	font-weight: 500;
+}
+
+.tv-layout-pills .tv-tag-item:hover,
+.tv-layout-pills .tv-tag-item.tv-active {
+	background-color: #3b82f6;
+	color: #ffffff;
+}
+
+.tv-layout-pills .tv-tag-item:hover .tv-tag-count,
+.tv-layout-pills .tv-tag-item.tv-active .tv-tag-count {
+	color: rgba(255, 255, 255, 0.85);
+}
+
+/* 3. Modern Pills Layout */
+.tv-layout-modern_pills {
+	gap: 8px;
+}
+
+.tv-layout-modern_pills .tv-tag-item {
+	background-color: #ffffff;
+	color: #1f2937;
+	border: 1px solid #e5e7eb;
+	border-radius: 4px;
+	padding: 8px 14px;
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.tv-layout-modern_pills .tv-tag-item:hover,
+.tv-layout-modern_pills .tv-tag-item.tv-active {
+	border-color: #1f2937;
+	background-color: #1f2937;
+	color: #ffffff;
+}
+
+/* 4. Glass Pills Layout (Backdrop blurs) */
+.tv-layout-glass_pills {
+	gap: 10px;
+}
+
+.tv-layout-glass_pills .tv-tag-item {
+	background-color: rgba(255, 255, 255, 0.45);
+	backdrop-filter: blur(8px);
+	-webkit-backdrop-filter: blur(8px);
+	border: 1px solid rgba(255, 255, 255, 0.25);
+	border-radius: 30px;
+	color: #1f2937;
+	padding: 8px 18px;
+	font-size: 14px;
+}
+
+.tv-layout-glass_pills .tv-tag-item:hover,
+.tv-layout-glass_pills .tv-tag-item.tv-active {
+	background-color: rgba(255, 255, 255, 0.75);
+	border-color: rgba(59, 130, 246, 0.5);
+}
+
+/* 5. Icon Tags Layout */
+.tv-layout-icon_tags {
+	gap: 10px;
+}
+
+.tv-layout-icon_tags .tv-tag-item {
+	background-color: #f9fafb;
+	border: 1px solid #f3f4f6;
+	border-radius: 6px;
+	padding: 8px 14px;
+	font-size: 14px;
+}
+
+.tv-layout-icon_tags .tv-tag-item.tv-active {
+	background-color: #3b82f6;
+	color: #ffffff;
+}
+
+/* 6. Category Cards Layout */
+.tv-layout-category_cards {
+	gap: 20px;
+}
+
+.tv-layout-category_cards .tv-tag-card-item {
+	flex-direction: column;
+	background-color: #ffffff;
+	border: 1px solid #f3f4f6;
+	border-radius: 8px;
+	overflow: hidden;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.02);
+	text-align: left;
+	align-items: stretch;
+	padding: 0;
+}
+
+.tv-tag-card-image {
+	width: 100%;
+	aspect-ratio: 16/10;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.tv-tag-card-content {
+	padding: 18px;
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+}
+
+.tv-tag-card-title {
+	margin: 0 0 6px 0;
+	font-size: 16px;
+	font-weight: 600;
+	color: #1f2937;
+}
+
+.tv-tag-card-desc {
+	margin: 0 0 12px 0;
+	font-size: 13px;
+	color: #6b7280;
+	line-height: 1.5;
+}
+
+.tv-tag-card-count {
+	font-size: 12px;
+	font-weight: 700;
+	color: #3b82f6;
+	margin-top: auto;
+}
+
+/* 7. Popular Topics Layout */
+.tv-layout-popular_topics {
+	gap: 24px;
+}
+
+.tv-tag-topic-block {
+	display: flex;
+	flex-direction: column;
+	border: 1px solid #f3f4f6;
+	background-color: #ffffff;
+	border-radius: 6px;
+	padding: 18px;
+	box-sizing: border-box;
+}
+
+.tv-tag-topic-parent {
+	font-size: 16px;
+	font-weight: 700;
+	color: #1f2937;
+	border-bottom: 2px solid #f3f4f6;
+	padding-bottom: 8px;
+	margin-bottom: 12px;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	background: transparent;
+	border-top: none;
+	border-left: none;
+	border-right: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.tv-tag-topic-children {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.tv-tag-topic-child {
+	font-size: 13px;
+	color: #4b5563;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	width: 100%;
+	padding: 6px 0;
+	background: transparent;
+	border: none;
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.tv-tag-topic-child:hover,
+.tv-tag-topic-child.tv-active {
+	color: #3b82f6;
+}
+
+/* 8. AJAX Filter Tags Layout */
+.tv-layout-ajax_filter_tags {
+	gap: 10px;
+}
+
+.tv-layout-ajax_filter_tags .tv-tag-item {
+	background-color: #f3f4f6;
+	color: #4b5563;
+	border-radius: 4px;
+	padding: 8px 14px;
+	font-size: 13px;
+}
+
+.tv-layout-ajax_filter_tags .tv-tag-item.tv-active {
+	background-color: #3b82f6;
+	color: #ffffff;
+}
+
+.tv-layout-ajax_filter_tags .tv-tag-item.tv-active::before {
+	content: "✓";
+	margin-right: 6px;
+	font-weight: 700;
+}
+
+/* Clear filter triggers */
+.tv-tag-clear-filter-wrap {
+	margin-top: 20px;
+	width: 100%;
+	display: flex;
+	justify-content: flex-start;
+}
+
+.tv-tag-clear-filter-btn {
+	background-color: #ffffff;
+	color: #ef4444;
+	border: 1px solid #fca5a5;
+	padding: 8px 18px;
+	font-size: 12px;
+	font-weight: 600;
+	border-radius: 4px;
+	cursor: pointer;
+	line-height: 1;
+	transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.tv-tag-clear-filter-btn:hover {
+	background-color: #fef2f2;
+	border-color: #ef4444;
+}
+
+/* Standard css tooltips */
+[data-tv-tooltip] {
+	position: relative;
+}
+
+[data-tv-tooltip]::after {
+	content: attr(data-tv-tooltip);
+	position: absolute;
+	bottom: 125%;
+	left: 50%;
+	transform: translateX(-50%);
+	background-color: #1f2937;
+	color: #ffffff;
+	padding: 6px 12px;
+	border-radius: 4px;
+	font-size: 11px;
+	white-space: nowrap;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.15s ease-in-out, visibility 0.15s ease-in-out;
+	pointer-events: none;
+	z-index: 99;
+	line-height: 1.2;
+}
+
+[data-tv-tooltip]:hover::after {
+	opacity: 1;
+	visibility: visible;
+}

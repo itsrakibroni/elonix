@@ -1,0 +1,385 @@
+/**
+ * Elonix Premium Post List Widget Style Sheet
+ *
+ * Implements clean layouts for lists, grids, featured structures, and WooCommerce grids.
+ * Utilizes static transitions, animated loading spinners, and CSS-shine skeleton loaders.
+ *
+ * @package Elonix_Toolkit
+ */
+
+.tv-post-list-wrap {
+	width: 100%;
+	position: relative;
+}
+
+/* 1. Layout Container Enforcements */
+.tv-post-list-container {
+	width: 100%;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tv-post-list-container.tv-layout-classic_list,
+.tv-post-list-container.tv-layout-news_list,
+.tv-post-list-container.tv-layout-featured_list {
+	display: flex;
+	flex-direction: column;
+}
+
+/* 2. Core Card Structures */
+.tv-post-card {
+	box-sizing: border-box;
+	display: flex;
+	transition: background-color .2s ease, border-color .2s ease, box-shadow .2s ease;
+}
+
+.tv-post-thumbnail {
+	position: relative;
+	overflow: hidden;
+	display: block;
+	flex-shrink: 0;
+	margin: 0;
+}
+
+.tv-post-thumbnail a {
+	display: block;
+	width: 100%;
+	height: 100%;
+}
+
+.tv-post-thumbnail img {
+	display: block;
+	max-width: 100%;
+	width: 100%;
+	height: auto;
+	transition: opacity .2s ease;
+}
+
+.tv-post-content {
+	display: flex;
+	flex-direction: column;
+	flex-grow: 1;
+	box-sizing: border-box;
+}
+
+/* 3. Typography & Micro-elements */
+.tv-post-title {
+	margin: 0 0 10px 0;
+	padding: 0;
+	line-height: 1.4;
+	font-weight: 600;
+}
+
+.tv-post-title a {
+	text-decoration: none;
+	color: #1f2937;
+	transition: color .2s ease;
+}
+
+.tv-post-title a:hover {
+	color: #3b82f6;
+}
+
+.tv-post-meta {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	padding: 0;
+	margin: 0 0 12px 0;
+	font-size: 13px;
+	color: #6b7280;
+}
+
+.tv-meta-item {
+	display: inline-flex;
+	align-items: center;
+}
+
+.tv-post-meta .tv-meta-item:not(:last-child)::after {
+	content: "•";
+	margin-left: 12px;
+	margin-right: 12px;
+	color: #d1d5db;
+}
+
+.tv-post-meta a {
+	text-decoration: none;
+	color: #4b5563;
+	transition: color .2s ease;
+}
+
+.tv-post-meta a:hover {
+	color: #3b82f6;
+}
+
+.tv-post-excerpt {
+	margin: 0 0 16px 0;
+	font-size: 14px;
+	line-height: 1.6;
+	color: #4b5563;
+}
+
+.tv-post-readmore {
+	display: block;
+	margin: 0;
+}
+
+.tv-readmore-btn {
+	display: inline-block;
+	text-decoration: none;
+	font-size: 14px;
+	font-weight: 600;
+	color: #3b82f6;
+	transition: color .2s ease, background-color .2s ease, border-color .2s ease;
+}
+
+.tv-readmore-btn:hover {
+	color: #1d4ed8;
+}
+
+/* Badge Overlay */
+.tv-post-badge {
+	position: absolute;
+	top: 15px;
+	left: 15px;
+	z-index: 5;
+	background-color: #3b82f6;
+	color: #ffffff;
+	font-size: 11px;
+	font-weight: 700;
+	text-transform: uppercase;
+	padding: 4px 8px;
+	border-radius: 3px;
+	line-height: 1;
+}
+
+/* 4. Concrete Layout Implementations */
+
+/* Classic List Layout */
+.tv-layout-classic_list .tv-post-card {
+	flex-direction: column;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+	padding-bottom: 24px;
+	margin-bottom: 24px;
+}
+
+.tv-layout-classic_list .tv-post-card:last-child {
+	border-bottom: none;
+	margin-bottom: 0;
+	padding-bottom: 0;
+}
+
+
+
+/* News List Layout (Compact rows, inline images) */
+.tv-layout-news_list .tv-post-card {
+	flex-direction: row;
+	align-items: center;
+	padding: 12px 0;
+	border-bottom: 1px dashed rgba(0, 0, 0, 0.1);
+}
+
+.tv-layout-news_list .tv-post-card:last-child {
+	border-bottom: none;
+}
+
+.tv-layout-news_list .tv-post-card .tv-post-thumbnail {
+	width: 90px;
+	height: 65px;
+	margin-right: 16px;
+}
+
+.tv-layout-news_list .tv-post-card .tv-post-thumbnail img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+.tv-layout-news_list .tv-post-card .tv-post-excerpt,
+.tv-layout-news_list .tv-post-card .tv-post-readmore {
+	display: none !important;
+}
+
+/* Featured + List Layout (Prominent first item, rest are list style) */
+.tv-layout-featured_list {
+	gap: 20px;
+}
+
+.tv-layout-featured_list .tv-featured-card {
+	flex-direction: column;
+	background: #ffffff;
+	border-radius: 8px;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+	overflow: hidden;
+}
+
+.tv-layout-featured_list .tv-featured-card .tv-post-thumbnail {
+	width: 100%;
+}
+
+.tv-layout-featured_list .tv-featured-card .tv-post-content {
+	padding: 24px;
+}
+
+.tv-layout-featured_list .tv-standard-card {
+	flex-direction: row;
+	align-items: center;
+	padding: 16px 0;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+.tv-layout-featured_list .tv-standard-card:last-child {
+	border-bottom: none;
+}
+
+.tv-layout-featured_list .tv-standard-card .tv-post-thumbnail {
+	width: 120px;
+	height: 90px;
+	margin-right: 20px;
+}
+
+.tv-layout-featured_list .tv-standard-card .tv-post-thumbnail img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	border-radius: 4px;
+}
+
+
+
+/* 5. Pagination Buttons & Trigger styles */
+.tv-post-list-pagination {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	margin-top: 30px;
+}
+
+.tv-load-more-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	gap: 10px;
+	background-color: #1f2937;
+	color: #ffffff;
+	border: 1px solid transparent;
+	padding: 12px 28px;
+	font-size: 14px;
+	font-weight: 600;
+	border-radius: 4px;
+	cursor: pointer;
+	line-height: 1;
+	transition: background-color .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.tv-load-more-btn:hover {
+	background-color: #374151;
+}
+
+.tv-load-more-btn:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.tv-infinite-scroll-trigger {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 100%;
+	padding: 10px 0;
+}
+
+/* Animated Loading Spinner */
+.tv-spinner {
+	animation: tv-rotate 2s linear infinite;
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.tv-spinner .path {
+	stroke: currentColor;
+	stroke-linecap: round;
+	animation: tv-dash 1.5s ease-in-out infinite;
+}
+
+@keyframes tv-rotate {
+	100% {
+		transform: rotate(360deg);
+	}
+}
+
+@keyframes tv-dash {
+	0% {
+		stroke-dasharray: 1, 150;
+		stroke-dashoffset: 0;
+	}
+	50% {
+		stroke-dasharray: 90, 150;
+		stroke-dashoffset: -35;
+	}
+	100% {
+		stroke-dasharray: 90, 150;
+		stroke-dashoffset: -124;
+	}
+}
+
+/* 6. Dynamic Caching & Skeleton Loading Shines */
+.tv-skeleton-card {
+	pointer-events: none;
+	opacity: 0.85;
+}
+
+.tv-skeleton-thumb {
+	background-color: #e5e7eb;
+	background-image: linear-gradient(90deg, #e5e7eb 0px, #f3f4f6 40px, #e5e7eb 80px);
+	background-size: 200% 100%;
+	animation: tv-skeleton-shine 1.5s infinite linear;
+	min-height: 180px;
+}
+
+.tv-layout-news_list .tv-skeleton-thumb {
+	min-height: 65px !important;
+}
+
+.tv-layout-featured_list .tv-skeleton-thumb {
+	min-height: 120px;
+}
+
+.tv-skeleton-line {
+	background-color: #e5e7eb;
+	background-image: linear-gradient(90deg, #e5e7eb 0px, #f3f4f6 40px, #e5e7eb 80px);
+	background-size: 200% 100%;
+	animation: tv-skeleton-shine 1.5s infinite linear;
+	border-radius: 4px;
+	margin-bottom: 12px;
+}
+
+.tv-skeleton-title {
+	height: 18px;
+	width: 80%;
+}
+
+.tv-skeleton-meta {
+	height: 12px;
+	width: 45%;
+}
+
+.tv-skeleton-excerpt {
+	height: 14px;
+	width: 95%;
+	margin-bottom: 6px;
+}
+
+@keyframes tv-skeleton-shine {
+	0% {
+		background-position: -150px 0;
+	}
+	100% {
+		background-position: calc(100% + 150px) 0;
+	}
+}

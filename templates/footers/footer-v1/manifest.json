@@ -1,0 +1,18 @@
+{
+    "id": "517244d50840dbf613ca0fcfccd2e026",
+    "slug": "footer-v1",
+    "title": "Footer V1",
+    "description": "",
+    "author": "Elonix",
+    "version": "1.0.0",
+    "type": "footer",
+    "category": [
+        "Footer"
+    ],
+    "tags": [],
+    "required_plugins": [
+        "elementor",
+        "elonix"
+    ],
+    "status": "Published"
+}

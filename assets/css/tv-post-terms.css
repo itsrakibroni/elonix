@@ -1,0 +1,128 @@
+/**
+ * Elonix – Toolkit for Elementor Post Terms Widget Styles
+ */
+.tv-post-terms-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.tv-post-terms-container.tv-style-inline {
+	flex-direction: row;
+}
+
+.tv-post-terms-container.tv-style-block {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+/* Base Term Item (Display inline-flex ensures padding, margin, and gap behave exactly like inline-block) */
+.tv-post-term-item {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	word-break: break-word;
+	box-sizing: border-box;
+	line-height: 1.5;
+	transition: all 0.3s ease;
+}
+
+/* Links inside Term Item */
+.tv-post-term-item a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	color: inherit;
+	width: 100%;
+	height: 100%;
+	transition: all 0.3s ease;
+}
+
+/* Hover Transitions */
+.tv-post-term-item:hover,
+.tv-post-term-item a:hover {
+	transition: all 0.3s ease;
+}
+
+/* Badge Style Defaults */
+.tv-post-terms-container.tv-style-badge .tv-post-term-item {
+	padding: 4px 12px;
+	border-radius: 4px;
+	background-color: #f1f2f6;
+	font-size: 0.85em;
+	font-weight: 500;
+}
+
+/* Pill Style Defaults */
+.tv-post-terms-container.tv-style-pill .tv-post-term-item {
+	padding: 4px 16px;
+	border-radius: 50px;
+	background-color: #f1f2f6;
+	font-size: 0.85em;
+	font-weight: 500;
+}
+
+/* Icon */
+.tv-post-terms-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	transition: all 0.3s ease;
+}
+
+.tv-post-terms-icon i {
+	line-height: 1;
+}
+
+.tv-post-terms-icon svg {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+	transition: all 0.3s ease;
+}
+
+.tv-post-terms-icon.tv-icon-before {
+	margin-right: 6px;
+}
+
+.tv-post-terms-icon.tv-icon-after {
+	margin-left: 6px;
+}
+
+/* Label */
+.tv-post-terms-label {
+	display: inline-flex;
+	align-items: center;
+	font-weight: 600;
+	margin-right: 6px;
+}
+
+/* Separator */
+.tv-post-terms-separator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 4px;
+	color: inherit;
+}
+
+/* Remaining Count Badge (+X) */
+.tv-post-terms-remaining {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2px 8px;
+	border-radius: 4px;
+	background-color: #2ed573;
+	color: #ffffff;
+	font-size: 0.8em;
+	font-weight: 600;
+	margin-left: 4px;
+}

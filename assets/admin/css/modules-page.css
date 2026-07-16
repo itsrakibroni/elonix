@@ -1,0 +1,176 @@
+/**
+ * Elonix – Toolkit for Elementor - Premium Modules Manager Styles
+ */
+
+/* Import widgets-page.css to inherit layouts, headers, toolbars, grids, cards, transitions, and loading states */
+@import url("widgets-page.css");
+
+/* 1. BLUE COLOR SCHEME OVERRIDES */
+.tv-admin-header.header-blue .tv-header-logo svg {
+	filter: drop-shadow(0 4px 6px rgba(59, 130, 246, 0.15));
+}
+
+.tv-header-badge.badge-blue {
+	background: #eff6ff;
+	color: #1d4ed8;
+}
+
+/* Stat active pill overrides */
+.tv-stat-pill.enabled-stat.stat-blue {
+	background: #eff6ff;
+	border-color: #bfdbfe;
+}
+
+.tv-stat-pill.enabled-stat.stat-blue .stat-num {
+	color: #2563eb;
+}
+
+.tv-stat-pill.enabled-stat.stat-blue .stat-lbl {
+	color: #1d4ed8;
+}
+
+/* Bulk enable action button overrides */
+.tv-bulk-btn.btn-blue {
+	background: #3b82f6 !important;
+	border-color: #3b82f6 !important;
+	color: #ffffff !important;
+	box-shadow: 0 2px 4px rgba(59, 130, 246, 0.15) !important;
+}
+
+.tv-bulk-btn.btn-blue:hover {
+	background: #1d4ed8 !important;
+	border-color: #1d4ed8 !important;
+	box-shadow: 0 4px 6px rgba(59, 130, 246, 0.25) !important;
+}
+
+
+/* 2. CARD HOVER & TOGGLE SLIDER OVERRIDES */
+.tv-card-item:hover {
+	border-color: #3b82f6;
+}
+
+.tv-card-item:hover .tv-card-icon-box.card-icon-blue {
+	transform: scale(1.05);
+}
+
+.tv-card-spinner {
+	border-top-color: #3b82f6;
+}
+
+input:checked + .slider {
+	background-color: #3b82f6;
+}
+
+input:focus + .slider {
+	box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.2);
+}
+
+.tv-card-icon-box.card-icon-blue {
+	background: #eff6ff !important;
+	color: #3b82f6 !important;
+}
+
+.tv-badge-kit.badge-blue {
+	background: #eff6ff !important;
+	color: #1d4ed8 !important;
+	border-color: #dbeafe !important;
+}
+
+/* Dependencies Badges System */
+.tv-card-dependencies {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+	margin-top: 12px;
+}
+
+.dependency-badge {
+	display: inline-flex;
+	align-items: center;
+	gap: 4px;
+	font-size: 10px;
+	font-weight: 600;
+	padding: 2px 8px;
+	border-radius: 4px;
+}
+
+.badge-active-dep {
+	background: #f0fdf4;
+	color: #15803d;
+	border: 1px solid #bbf7d0;
+}
+
+.badge-inactive-dep {
+	background: #fef2f2;
+	color: #ef4444;
+	border: 1px solid #fee2e2;
+}
+
+.dependency-badge .dashicons {
+	font-size: 13px;
+	width: 13px;
+	height: 13px;
+	line-height: 1.3;
+}
+
+.tv-module-icon {
+	font-size: 20px;
+	width: 20px;
+	height: 20px;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+/* 3. COMING SOON MODULES STATE */
+.tv-card-item.is-coming-soon {
+	opacity: 0.88;
+	position: relative;
+	overflow: hidden;
+}
+
+.tv-card-item.is-coming-soon:hover {
+	border-color: #f59e0b; /* Amber */
+}
+
+.tv-card-item.is-coming-soon:hover .tv-card-icon-box.card-icon-blue {
+	background: #fffbeb !important;
+	color: #f59e0b !important;
+}
+
+.tv-card-ribbon {
+	position: absolute;
+	top: 15px;
+	right: -35px;
+	background: linear-gradient(135deg, #f59e0b 0%, #d97706 100%);
+	color: #fff;
+	padding: 5px 40px;
+	transform: rotate(45deg);
+	font-size: 10px;
+	font-weight: 700;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	box-shadow: 0 2px 4px rgba(217, 119, 6, 0.3);
+	z-index: 10;
+}
+
+.tv-status-badge.badge-coming-soon {
+	background: #fffbeb;
+	color: #d97706;
+	border: 1px solid #fde68a;
+}
+
+/* Disabled Switch for Coming Soon */
+.tv-card-item.is-coming-soon .elonix-switch {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+
+.tv-card-item.is-coming-soon .tv-toggle-input:disabled + .slider {
+	background-color: #cbd5e1;
+	cursor: not-allowed;
+}
+
+.tv-card-item.is-coming-soon .tv-toggle-input:disabled + .slider:before {
+	background-color: #f8fafc;
+}

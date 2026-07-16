@@ -1,0 +1,353 @@
+/**
+ * Elonix Accordion Widget Stylesheet
+ */
+
+/* Accordion Container */
+.tv-accordion-container {
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Accordion Item */
+.tv-accordion-item {
+  width: 100%;
+  box-sizing: border-box;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+/* Accordion Header */
+.tv-accordion-header {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  display: block;
+  box-sizing: border-box;
+  border: none;
+  background: none;
+}
+
+.tv-accordion-header-trigger {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  cursor: pointer;
+  text-decoration: none;
+  outline: none;
+  box-sizing: border-box;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  user-select: none;
+}
+
+/* Title and Numbers */
+.tv-accordion-title {
+  flex-grow: 1;
+  line-height: 1.4;
+}
+
+.tv-accordion-number {
+  font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tv-accordion-badge {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  padding: 3px 8px;
+  border-radius: 4px;
+  margin-right: 12px;
+  background-color: #ef4444;
+  color: #ffffff;
+}
+
+/* Icon Wrap Styles */
+.tv-accordion-icon-wrapper {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  transition:
+    transform 0.3s ease,
+    background-color 0.3s ease;
+}
+
+.tv-accordion-icon-wrapper i,
+.tv-accordion-icon-wrapper svg {
+  display: inline-block;
+  line-height: 1;
+  transition:
+    fill 0.3s ease,
+    color 0.3s ease;
+}
+
+/* Normal / Active Icon Switcher logic */
+.tv-accordion-icon-active {
+  display: none;
+}
+
+.tv-accordion-item.tv-active .tv-accordion-icon-active {
+  display: inline-flex;
+}
+
+.tv-accordion-item.tv-active .tv-accordion-icon-normal {
+  display: none;
+}
+
+/* Rotate Expand Icon Animation */
+.tv-accordion-container[data-icon-rotation="yes"] .tv-accordion-item.tv-active .tv-accordion-icon-wrapper {
+  transform: rotate(180deg);
+}
+
+/* Accordion Panel & Content Body */
+.tv-accordion-panel {
+  box-sizing: border-box;
+  overflow: hidden;
+}
+
+.tv-accordion-content {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  box-sizing: border-box;
+  line-height: 1.6;
+}
+
+.tv-accordion-item-image {
+  flex-shrink: 0;
+  max-width: 150px;
+}
+
+.tv-accordion-item-image img {
+  width: 100%;
+  height: auto;
+  border-radius: 6px;
+  object-fit: cover;
+}
+
+.tv-accordion-item-text {
+  flex-grow: 1;
+}
+
+/* =========================================================================
+	STYLE PRESETS (Polished Default Looks)
+	========================================================================= */
+
+/* 1. Classic Accordion */
+.tv-accordion-preset-classic .tv-accordion-item {
+  background-color: transparent;
+}
+
+.tv-accordion-preset-classic .tv-accordion-header-trigger {
+  padding: 18px 0;
+  color: #1e293b;
+}
+
+.tv-accordion-preset-classic .tv-accordion-header-trigger:hover {
+  color: #4f46e5;
+}
+
+.tv-accordion-preset-classic .tv-accordion-item.tv-active .tv-accordion-header-trigger {
+  color: #4f46e5;
+}
+
+.tv-accordion-preset-classic .tv-accordion-content {
+  padding: 0 0 20px 0;
+  color: #475569;
+}
+
+.tv-accordion-preset-classic .tv-accordion-icon-wrapper i {
+  color: #94a3b8;
+}
+
+.tv-accordion-preset-classic .tv-accordion-item.tv-active .tv-accordion-icon-wrapper i {
+  color: #4f46e5;
+}
+
+/* 2. Bordered Accordion */
+.tv-accordion-preset-bordered {
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background-color: #ffffff;
+}
+
+.tv-accordion-preset-bordered .tv-accordion-item:not(:last-child) {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tv-accordion-preset-bordered .tv-accordion-header-trigger {
+  padding: 20px 24px;
+  color: #1e293b;
+}
+
+.tv-accordion-preset-bordered .tv-accordion-header-trigger:hover {
+  background-color: #f8fafc;
+  color: #4f46e5;
+}
+
+.tv-accordion-preset-bordered .tv-accordion-item.tv-active .tv-accordion-header-trigger {
+  background-color: #f8fafc;
+  color: #4f46e5;
+}
+
+.tv-accordion-preset-bordered .tv-accordion-content {
+  padding: 0 24px 24px 24px;
+  color: #475569;
+  background-color: #f8fafc;
+}
+
+/* 3. Modern Card Accordion */
+.tv-accordion-preset-card .tv-accordion-item {
+  background-color: #ffffff;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  margin-bottom: 12px;
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.05),
+    0 2px 4px -1px rgba(0, 0, 0, 0.02);
+}
+
+.tv-accordion-preset-card .tv-accordion-item:hover {
+  border-color: #cbd5e1;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.08);
+}
+
+.tv-accordion-preset-card .tv-accordion-item.tv-active {
+  border-color: #4f46e5;
+  box-shadow: 0 10px 15px -3px rgba(79, 70, 229, 0.1);
+}
+
+.tv-accordion-preset-card .tv-accordion-header-trigger {
+  padding: 20px 24px;
+  color: #1e293b;
+}
+
+.tv-accordion-preset-card .tv-accordion-item.tv-active .tv-accordion-header-trigger {
+  color: #4f46e5;
+}
+
+.tv-accordion-preset-card .tv-accordion-content {
+  padding: 0 24px 24px 24px;
+  color: #475569;
+}
+
+/* 4. Icon Left Accordion */
+.tv-accordion-preset-icon-left .tv-accordion-item {
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.tv-accordion-preset-icon-left .tv-accordion-header-trigger {
+  padding: 18px 0;
+  color: #1e293b;
+  justify-content: flex-start;
+}
+
+.tv-accordion-preset-icon-left .tv-accordion-title {
+  margin-left: 12px;
+}
+
+.tv-accordion-preset-icon-left .tv-accordion-icon-wrapper {
+  order: -1;
+}
+
+.tv-accordion-preset-icon-left .tv-accordion-content {
+  padding: 0 0 20px 28px;
+  color: #475569;
+}
+
+/* 5. FAQ Accordion (Premium Q&A look) */
+.tv-accordion-preset-faq .tv-accordion-item {
+  background-color: #f8fafc;
+  border-left: 4px solid #cbd5e1;
+  margin-bottom: 16px;
+  border-radius: 0 8px 8px 0;
+}
+
+.tv-accordion-preset-faq .tv-accordion-item:hover {
+  border-left-color: #94a3b8;
+  background-color: #f1f5f9;
+}
+
+.tv-accordion-preset-faq .tv-accordion-item.tv-active {
+  border-left-color: #4f46e5;
+  background-color: #ffffff;
+  box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.05);
+  border-top: 1px solid #f1f5f9;
+  border-right: 1px solid #f1f5f9;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.tv-accordion-preset-faq .tv-accordion-header-trigger {
+  padding: 22px 28px;
+  color: #0f172a;
+  font-size: 16px;
+}
+
+.tv-accordion-preset-faq .tv-accordion-item.tv-active .tv-accordion-header-trigger {
+  color: #4f46e5;
+}
+
+.tv-accordion-preset-faq .tv-accordion-content {
+  padding: 0 28px 24px 28px;
+  color: #334155;
+  font-size: 15px;
+}
+
+.tv-accordion-preset-faq .tv-accordion-number {
+  background-color: #e0e7ff;
+  color: #4f46e5;
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  font-size: 12px;
+  margin-right: 12px;
+}
+
+/* Container Alignment Classes */
+.tv-accordion-align-left .tv-accordion-container {
+  margin-right: auto;
+  margin-left: 0;
+}
+.tv-accordion-align-center .tv-accordion-container {
+  margin-right: auto;
+  margin-left: auto;
+}
+.tv-accordion-align-right .tv-accordion-container {
+  margin-right: 0;
+  margin-left: auto;
+}
+
+/* Advanced Design Style Toggles */
+.tv-accordion-modern-card .tv-accordion-item {
+  margin-bottom: 16px;
+  border-radius: 12px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  box-shadow:
+    0 10px 25px -5px rgba(0, 0, 0, 0.05),
+    0 8px 10px -6px rgba(0, 0, 0, 0.05);
+  background-color: #ffffff;
+}
+
+.tv-accordion-soft-shadow .tv-accordion-item {
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.03),
+    0 1px 4px rgba(0, 0, 0, 0.04);
+  border: 1px solid rgba(0, 0, 0, 0.03);
+}
+
+.tv-accordion-glassmorphism .tv-accordion-item {
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  background-color: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.tv-accordion-border-glow .tv-accordion-item.tv-active {
+  box-shadow: 0 0 15px rgba(79, 70, 229, 0.4) !important;
+  border-color: #4f46e5 !important;
+}

@@ -1,0 +1,54 @@
+/* Core Structural Styles for Elonix – Toolkit for Elementor Widgets to prevent FOUC */
+
+/* Nav Menu Widget Reset */
+.tv-nav-menu-wrapper ul,
+.tv-nav-menu-wrapper li {
+	list-style: none !important;
+	margin: 0;
+	padding: 0;
+}
+.tv-nav-menu-wrapper > ul,
+.tv-nav-menu-wrapper > div > ul {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+}
+.tv-nav-menu-wrapper a {
+	text-decoration: none;
+	display: inline-block;
+}
+
+/* Search Widget Reset */
+.tv-search-container form {
+	display: flex;
+	align-items: center;
+	width: 100%;
+}
+.tv-search-input {
+	flex-grow: 1;
+}
+
+/* Categories Swiper Reset */
+.tv-categories-swiper {
+	display: flex;
+	overflow: hidden;
+}
+.tv-categories-swiper .swiper-slide {
+	flex-shrink: 0;
+}
+
+/* Tag Cloud / Taxonomy Reset */
+.tv-tag-cloud-wrapper ul {
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none !important;
+	margin: 0;
+	padding: 0;
+}
+
+/* Image Display block reset */
+.tv-image-wrapper img {
+	display: block;
+	max-width: 100%;
+	height: auto;
+}
