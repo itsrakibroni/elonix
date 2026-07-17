@@ -392,7 +392,7 @@ class Package_Generator {
 		}
 
 		// Save canonical slug for future exports
-		update_post_meta( $post_id, '_tv_package_slug', $slug );
+		update_post_meta( $post_id, '_es_package_slug', $slug );
 
 		// 4. Clear Cache & Refresh Library
 		Cache::instance()->clear_cache();
@@ -429,7 +429,7 @@ class Package_Generator {
 		}
 
 		// Locate Package Directory
-		$slug = get_post_meta( $post_id, '_tv_package_slug', true );
+		$slug = get_post_meta( $post_id, '_es_package_slug', true );
 		if ( empty( $slug ) ) {
 			$slug = $post->post_name; // Fallback
 		}

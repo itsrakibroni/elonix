@@ -12,27 +12,27 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 
 	public function get_name() {
-		return 'tv-marquee';
+		return 'es-marquee';
 	}
 
 	public function get_title() {
 		return esc_html__( 'Marquee', 'elonix' );
 	}
 
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-carousel';
 	}
 
 	public function get_keywords() {
-		return [ 'marquee', 'ticker', 'scroller', 'carousel', 'text', 'tvkit' ];
+		return [ 'marquee', 'ticker', 'scroller', 'carousel', 'text', 'eskit' ];
 	}
 
 	public function get_style_depends() {
-		return [ 'elonix-widget-tv-marquee' ];
+		return [ 'elonix-widget-es-marquee' ];
 	}
 
 	public function get_script_depends() {
-		return [ 'elonix-core-js', 'elonix-marquee-engine', 'elonix-widget-tv-marquee' ];
+		return [ 'elonix-core-js', 'elonix-marquee-engine', 'elonix-widget-es-marquee' ];
 	}
 
 		protected function register_controls() {
@@ -232,7 +232,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'size' => 400,
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee--vertical .tv-marquee__track' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee--vertical .es-marquee__track' => 'height: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'direction' => [ 'top', 'bottom' ],
@@ -254,7 +254,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'size' => 30,
 				],
 				'selectors'  => [
-					'{{WRAPPER}}' => '--tv-marquee-gap: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-marquee-gap: {{SIZE}}{{UNIT}};',
 				],
 				'frontend_available' => true,
 			]
@@ -281,7 +281,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				],
 				'default' => 'center',
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__track .js-marquee' => 'align-items: {{VALUE}};',
+					'{{WRAPPER}} .es-marquee__track .js-marquee' => 'align-items: {{VALUE}};',
 				],
 			]
 		);
@@ -348,7 +348,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'default'      => 'yes',
-				'prefix_class' => 'tv-marquee--pause-hover-',
+				'prefix_class' => 'es-marquee--pause-hover-',
 				'frontend_available' => true,
 			]
 		);
@@ -447,22 +447,22 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			[
 				'label'   => esc_html__( 'Animation Type', 'elonix' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
-				'default' => 'tvIconSpin',
+				'default' => 'esIconSpin',
 				'options' => [
 					'none'                => esc_html__( 'None', 'elonix' ),
-					'tvIconRotate'        => esc_html__( 'Rotate', 'elonix' ),
-					'tvIconRotateReverse' => esc_html__( 'Rotate Reverse', 'elonix' ),
-					'tvIconPulse'         => esc_html__( 'Pulse', 'elonix' ),
-					'tvIconBounce'        => esc_html__( 'Bounce', 'elonix' ),
-					'tvIconFloat'         => esc_html__( 'Float', 'elonix' ),
-					'tvIconWave'          => esc_html__( 'Wave', 'elonix' ),
-					'tvIconSwing'         => esc_html__( 'Swing', 'elonix' ),
-					'tvIconHeartbeat'     => esc_html__( 'Heartbeat', 'elonix' ),
-					'tvIconScale'         => esc_html__( 'Scale', 'elonix' ),
-					'tvIconSpin'          => esc_html__( 'Spin', 'elonix' ),
+					'esIconRotate'        => esc_html__( 'Rotate', 'elonix' ),
+					'esIconRotateReverse' => esc_html__( 'Rotate Reverse', 'elonix' ),
+					'esIconPulse'         => esc_html__( 'Pulse', 'elonix' ),
+					'esIconBounce'        => esc_html__( 'Bounce', 'elonix' ),
+					'esIconFloat'         => esc_html__( 'Float', 'elonix' ),
+					'esIconWave'          => esc_html__( 'Wave', 'elonix' ),
+					'esIconSwing'         => esc_html__( 'Swing', 'elonix' ),
+					'esIconHeartbeat'     => esc_html__( 'Heartbeat', 'elonix' ),
+					'esIconScale'         => esc_html__( 'Scale', 'elonix' ),
+					'esIconSpin'          => esc_html__( 'Spin', 'elonix' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--tv-icon-animation-name: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-icon-animation-name: {{VALUE}};',
 				],
 				'condition' => [
 					'enable_icon_animation' => 'yes',
@@ -484,7 +484,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'size' => 2,
 				],
 				'selectors'  => [
-					'{{WRAPPER}}' => '--tv-icon-animation-speed: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-icon-animation-speed: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'enable_icon_animation' => 'yes',
@@ -506,7 +506,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'ease-in-out' => 'Ease In Out',
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--tv-icon-animation-timing: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-icon-animation-timing: {{VALUE}};',
 				],
 				'condition' => [
 					'enable_icon_animation' => 'yes',
@@ -527,7 +527,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'alternate-reverse' => 'Alternate Reverse',
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--tv-icon-animation-direction: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-icon-animation-direction: {{VALUE}};',
 				],
 				'condition' => [
 					'enable_icon_animation' => 'yes',
@@ -545,7 +545,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					's' => [ 'min' => 0, 'max' => 20, 'step' => 0.1 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}}' => '--tv-icon-animation-delay: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-icon-animation-delay: {{SIZE}}{{UNIT}};',
 				],
 				'condition' => [
 					'enable_icon_animation' => 'yes',
@@ -568,7 +568,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'5' => '5',
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--tv-icon-animation-iteration: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-icon-animation-iteration: {{VALUE}};',
 				],
 				'condition' => [
 					'enable_icon_animation' => 'yes',
@@ -594,7 +594,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'left' => 'Left',
 				],
 				'selectors' => [
-					'{{WRAPPER}}' => '--tv-icon-transform-origin: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-icon-transform-origin: {{VALUE}};',
 				],
 				'condition' => [
 					'enable_icon_animation' => 'yes',
@@ -614,7 +614,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'pause'   => esc_html__( 'Pause On Hover', 'elonix' ),
 					'reverse' => esc_html__( 'Reverse On Hover', 'elonix' ),
 				],
-				'prefix_class' => 'tv-marquee--icon-hover-',
+				'prefix_class' => 'es-marquee--icon-hover-',
 				'condition' => [
 					'enable_icon_animation' => 'yes',
 				],
@@ -639,7 +639,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name'     => 'container_bg',
-				'selector' => '{{WRAPPER}} .tv-marquee__wrapper',
+				'selector' => '{{WRAPPER}} .es-marquee__wrapper',
 			]
 		);
 
@@ -649,7 +649,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Overlay Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__wrapper::before' => 'background-color: {{VALUE}}; content: ""; position: absolute; inset: 0; z-index: 1;',
+					'{{WRAPPER}} .es-marquee__wrapper::before' => 'background-color: {{VALUE}}; content: ""; position: absolute; inset: 0; z-index: 1;',
 				],
 			]
 		);
@@ -675,7 +675,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'luminosity' => 'Luminosity',
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__wrapper' => 'mix-blend-mode: {{VALUE}}',
+					'{{WRAPPER}} .es-marquee__wrapper' => 'mix-blend-mode: {{VALUE}}',
 				],
 			]
 		);
@@ -687,7 +687,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__wrapper' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -699,7 +699,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__wrapper' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -708,7 +708,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'container_border',
-				'selector' => '{{WRAPPER}} .tv-marquee__wrapper',
+				'selector' => '{{WRAPPER}} .es-marquee__wrapper',
 			]
 		);
 
@@ -719,7 +719,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
+					'{{WRAPPER}} .es-marquee__wrapper' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; overflow: hidden;',
 				],
 			]
 		);
@@ -728,7 +728,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'container_shadow',
-				'selector' => '{{WRAPPER}} .tv-marquee__wrapper',
+				'selector' => '{{WRAPPER}} .es-marquee__wrapper',
 			]
 		);
 
@@ -736,11 +736,11 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			[
 				'name' => 'container_backdrop_filter',
-				'selector' => '{{WRAPPER}} .tv-marquee__wrapper',
+				'selector' => '{{WRAPPER}} .es-marquee__wrapper',
 				'fields_options' => [
 					'blur' => [
 						'selectors' => [
-							'{{WRAPPER}} .tv-marquee__wrapper' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);',
+							'{{WRAPPER}} .es-marquee__wrapper' => 'backdrop-filter: blur({{SIZE}}px); -webkit-backdrop-filter: blur({{SIZE}}px);',
 						],
 					],
 				],
@@ -764,7 +764,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name'     => 'track_bg',
-				'selector' => '{{WRAPPER}} .tv-marquee__track',
+				'selector' => '{{WRAPPER}} .es-marquee__track',
 			]
 		);
 
@@ -772,7 +772,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'track_border',
-				'selector' => '{{WRAPPER}} .tv-marquee__track',
+				'selector' => '{{WRAPPER}} .es-marquee__track',
 			]
 		);
 
@@ -783,7 +783,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__track' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__track' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -795,7 +795,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__track' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__track' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -810,7 +810,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'px' => [ 'min' => 0, 'max' => 1000 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__track' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__track' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -840,7 +840,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name'     => 'item_bg',
-				'selector' => '{{WRAPPER}} .tv-marquee__item',
+				'selector' => '{{WRAPPER}} .es-marquee__item',
 			]
 		);
 
@@ -848,7 +848,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'item_border',
-				'selector' => '{{WRAPPER}} .tv-marquee__item',
+				'selector' => '{{WRAPPER}} .es-marquee__item',
 			]
 		);
 
@@ -856,7 +856,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_shadow',
-				'selector' => '{{WRAPPER}} .tv-marquee__item',
+				'selector' => '{{WRAPPER}} .es-marquee__item',
 			]
 		);
 
@@ -873,7 +873,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name'     => 'item_bg_hover',
-				'selector' => '{{WRAPPER}} .tv-marquee__item:hover',
+				'selector' => '{{WRAPPER}} .es-marquee__item:hover',
 			]
 		);
 
@@ -881,7 +881,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'item_border_hover',
-				'selector' => '{{WRAPPER}} .tv-marquee__item:hover',
+				'selector' => '{{WRAPPER}} .es-marquee__item:hover',
 			]
 		);
 
@@ -889,7 +889,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'item_shadow_hover',
-				'selector' => '{{WRAPPER}} .tv-marquee__item:hover',
+				'selector' => '{{WRAPPER}} .es-marquee__item:hover',
 			]
 		);
 
@@ -906,7 +906,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__item:hover' => 'transform: scale({{SIZE}});',
+					'{{WRAPPER}} .es-marquee__item:hover' => 'transform: scale({{SIZE}});',
 				],
 			]
 		);
@@ -924,7 +924,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__item:hover' => 'transform: translateY({{SIZE}}px);', // Note: could combine scale and translate but simple for now
+					'{{WRAPPER}} .es-marquee__item:hover' => 'transform: translateY({{SIZE}}px);', // Note: could combine scale and translate but simple for now
 				],
 			]
 		);
@@ -946,7 +946,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__item' => 'transition: all {{SIZE}}s ease;',
+					'{{WRAPPER}} .es-marquee__item' => 'transition: all {{SIZE}}s ease;',
 				],
 				'separator' => 'before',
 			]
@@ -959,7 +959,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__item' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -971,7 +971,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -983,7 +983,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__item' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1023,7 +1023,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => '--tv-marquee-title-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-marquee-title-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1032,7 +1032,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'title_text_shadow',
-				'selector' => '{{WRAPPER}} .tv-marquee__title',
+				'selector' => '{{WRAPPER}} .es-marquee__title',
 			]
 		);
 
@@ -1051,7 +1051,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hover Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__item:hover' => '--tv-marquee-title-color: {{VALUE}};',
+					'{{WRAPPER}} .es-marquee__item:hover' => '--es-marquee-title-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1060,7 +1060,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			[
 				'name'     => 'title_text_shadow_hover',
-				'selector' => '{{WRAPPER}} .tv-marquee__item:hover .tv-marquee__title',
+				'selector' => '{{WRAPPER}} .es-marquee__item:hover .es-marquee__title',
 			]
 		);
 
@@ -1072,7 +1072,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'title_typography',
-				'selector' => '{{WRAPPER}} .tv-marquee__title',
+				'selector' => '{{WRAPPER}} .es-marquee__title',
 			]
 		);
 
@@ -1080,7 +1080,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Text_Stroke::get_type(),
 			[
 				'name'     => 'title_text_stroke',
-				'selector' => '{{WRAPPER}} .tv-marquee__title',
+				'selector' => '{{WRAPPER}} .es-marquee__title',
 			]
 		);
 
@@ -1094,7 +1094,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'px' => [ 'min' => 0, 'max' => 100 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__title' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1114,7 +1114,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => '--tv-marquee-desc-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-marquee-desc-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1123,7 +1123,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			[
 				'name'     => 'desc_typography',
-				'selector' => '{{WRAPPER}} .tv-marquee__desc',
+				'selector' => '{{WRAPPER}} .es-marquee__desc',
 			]
 		);
 
@@ -1137,7 +1137,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'px' => [ 'min' => 0, 'max' => 100 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__desc' => 'margin-top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__desc' => 'margin-top: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1169,7 +1169,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}}' => '--tv-marquee-icon-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-marquee-icon-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1180,7 +1180,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__icon' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-marquee__icon' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1192,7 +1192,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => [ 'px', 'em', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}}' => '--tv-marquee-icon-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-marquee-icon-size: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1201,7 +1201,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'icon_border',
-				'selector' => '{{WRAPPER}} .tv-marquee__icon',
+				'selector' => '{{WRAPPER}} .es-marquee__icon',
 			]
 		);
 
@@ -1212,7 +1212,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__icon' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1224,7 +1224,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__icon' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1236,7 +1236,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__icon' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1251,7 +1251,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'deg' => [ 'min' => 0, 'max' => 360 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__icon' => 'transform: rotate({{SIZE}}{{UNIT}});',
+					'{{WRAPPER}} .es-marquee__icon' => 'transform: rotate({{SIZE}}{{UNIT}});',
 				],
 			]
 		);
@@ -1271,7 +1271,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hover Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__item:hover .tv-marquee__icon' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-marquee__item:hover .es-marquee__icon' => 'color: {{VALUE}};',
 				],
 			]
 		);
@@ -1282,7 +1282,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hover Background', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__item:hover .tv-marquee__icon' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-marquee__item:hover .es-marquee__icon' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -1291,7 +1291,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'icon_border_hover',
-				'selector' => '{{WRAPPER}} .tv-marquee__item:hover .tv-marquee__icon',
+				'selector' => '{{WRAPPER}} .es-marquee__item:hover .es-marquee__icon',
 			]
 		);
 
@@ -1305,7 +1305,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'deg' => [ 'min' => 0, 'max' => 360 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__item:hover .tv-marquee__icon' => 'transform: rotate({{SIZE}}{{UNIT}});',
+					'{{WRAPPER}} .es-marquee__item:hover .es-marquee__icon' => 'transform: rotate({{SIZE}}{{UNIT}});',
 				],
 			]
 		);
@@ -1327,7 +1327,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__icon' => 'transition: all {{SIZE}}s ease;',
+					'{{WRAPPER}} .es-marquee__icon' => 'transition: all {{SIZE}}s ease;',
 				],
 				'separator' => 'before',
 			]
@@ -1356,7 +1356,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'%'  => [ 'min' => 1, 'max' => 100 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__image img' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__image img' => 'width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1371,7 +1371,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'px' => [ 'min' => 1, 'max' => 1000 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__image img' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__image img' => 'height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1387,7 +1387,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'%'  => [ 'min' => 1, 'max' => 100 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__image img' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__image img' => 'max-width: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1402,7 +1402,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'px' => [ 'min' => 1, 'max' => 1000 ],
 				],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__image img' => 'max-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__image img' => 'max-height: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
@@ -1421,7 +1421,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					'scale-down' => esc_html__( 'Scale Down', 'elonix' ),
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__image img' => 'object-fit: {{VALUE}};',
+					'{{WRAPPER}} .es-marquee__image img' => 'object-fit: {{VALUE}};',
 				],
 			]
 		);
@@ -1430,7 +1430,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Background::get_type(),
 			[
 				'name'     => 'image_background',
-				'selector' => '{{WRAPPER}} .tv-marquee__image',
+				'selector' => '{{WRAPPER}} .es-marquee__image',
 			]
 		);
 
@@ -1438,7 +1438,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			[
 				'name'     => 'image_border',
-				'selector' => '{{WRAPPER}} .tv-marquee__image',
+				'selector' => '{{WRAPPER}} .es-marquee__image',
 				'separator' => 'before',
 			]
 		);
@@ -1450,8 +1450,8 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
-					'{{WRAPPER}} .tv-marquee__image img' => 'border-radius: inherit;',
+					'{{WRAPPER}} .es-marquee__image' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__image img' => 'border-radius: inherit;',
 				],
 			]
 		);
@@ -1463,7 +1463,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__image' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1475,7 +1475,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em', 'rem', 'vw' ],
 				'selectors'  => [
-					'{{WRAPPER}} .tv-marquee__image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-marquee__image' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 			]
 		);
@@ -1484,7 +1484,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
 				'name'     => 'image_box_shadow',
-				'selector' => '{{WRAPPER}} .tv-marquee__image',
+				'selector' => '{{WRAPPER}} .es-marquee__image',
 			]
 		);
 
@@ -1510,7 +1510,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__image img' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .es-marquee__image img' => 'opacity: {{SIZE}};',
 				],
 			]
 		);
@@ -1519,7 +1519,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			[
 				'name'     => 'image_css_filters',
-				'selector' => '{{WRAPPER}} .tv-marquee__image img',
+				'selector' => '{{WRAPPER}} .es-marquee__image img',
 			]
 		);
 
@@ -1545,7 +1545,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__item:hover .tv-marquee__image img' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .es-marquee__item:hover .es-marquee__image img' => 'opacity: {{SIZE}};',
 				],
 			]
 		);
@@ -1554,7 +1554,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			[
 				'name'     => 'image_css_filters_hover',
-				'selector' => '{{WRAPPER}} .tv-marquee__item:hover .tv-marquee__image img',
+				'selector' => '{{WRAPPER}} .es-marquee__item:hover .es-marquee__image img',
 			]
 		);
 
@@ -1575,7 +1575,7 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 					],
 				],
 				'selectors' => [
-					'{{WRAPPER}} .tv-marquee__image, {{WRAPPER}} .tv-marquee__image img' => 'transition: all {{SIZE}}s ease;',
+					'{{WRAPPER}} .es-marquee__image, {{WRAPPER}} .es-marquee__image img' => 'transition: all {{SIZE}}s ease;',
 				],
 				'separator' => 'before',
 			]
@@ -1589,9 +1589,9 @@ class Elonix_Toolkit_Marquee_Widget extends Elonix_Widget_Base {
 		$layout_mode = $settings['layout_mode'] ? $settings['layout_mode'] : 'marquee';
 		$skin = $settings['skin'] ? $settings['skin'] : 'style-1';
 
-		$this->add_render_attribute( 'wrapper', 'class', 'tv-marquee' );
-		$this->add_render_attribute( 'wrapper', 'class', 'tv-marquee--' . $skin );
-		$this->add_render_attribute( 'wrapper', 'class', 'tv-marquee--' . $layout_mode );
+		$this->add_render_attribute( 'wrapper', 'class', 'es-marquee' );
+		$this->add_render_attribute( 'wrapper', 'class', 'es-marquee--' . $skin );
+		$this->add_render_attribute( 'wrapper', 'class', 'es-marquee--' . $layout_mode );
 
 		?>
 		<div <?php $this->print_render_attribute_string( 'wrapper' ); ?>>

@@ -1,0 +1,351 @@
+/**
+ * Elonix Gallery Widget CSS
+ */
+
+/* -------------------------------------
+ * 1. CSS Variables
+ * ------------------------------------- */
+.es-gallery {
+  position: relative;
+  width: 100%;
+  --es-gallery-columns: 3;
+  --es-gallery-gap-x: 20px;
+  --es-gallery-gap-y: 20px;
+  --es-gallery-transition: 0.3s;
+}
+
+/* -------------------------------------
+ * 2. Base Widget
+ * ------------------------------------- */
+.es-gallery__wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* -------------------------------------
+ * 3. Layouts
+ * ------------------------------------- */
+/* Grid */
+.es-gallery__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--es-gallery-columns), 1fr);
+  column-gap: var(--es-gallery-gap-x);
+  row-gap: var(--es-gallery-gap-y);
+  align-items: stretch;
+}
+
+/* Masonry */
+.es-gallery__masonry .es-isotope-grid {
+  display: block;
+  width: calc(100% + var(--es-gallery-gap-x, 0px));
+  margin-inline-start: calc(-1 * var(--es-gallery-gap-x, 0px) / 2);
+}
+
+.es-gallery__masonry .es-gallery__item {
+  width: calc(100% / var(--es-gallery-columns) - var(--es-gallery-gap-x));
+  margin: 0 calc(var(--es-gallery-gap-x) / 2) var(--es-gallery-gap-y);
+  float: left;
+}
+
+
+
+/* -------------------------------------
+ * 4. Wrapper
+ * ------------------------------------- */
+/* Wrapper specific overrides if needed */
+
+/* -------------------------------------
+ * 5. Grid
+ * ------------------------------------- */
+/* Grid styles handled in Layouts */
+
+/* -------------------------------------
+ * 6. Item
+ * ------------------------------------- */
+.es-gallery__item {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #ffffff;
+  overflow: hidden;
+  transition: all var(--es-gallery-transition) ease;
+  margin: 0;
+  padding: 0;
+}
+
+/* -------------------------------------
+ * 7. Image
+ * ------------------------------------- */
+.es-gallery__image {
+  position: relative;
+  width: 100%;
+  overflow: hidden;
+}
+
+.es-gallery__image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: all var(--es-gallery-transition) ease;
+}
+
+/* -------------------------------------
+ * 8. Overlay
+ * ------------------------------------- */
+.es-gallery__overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  opacity: 0;
+  transition: all var(--es-gallery-transition) ease;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* -------------------------------------
+ * 9. Badge
+ * ------------------------------------- */
+.es-gallery__badge {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 4;
+  background-color: #333333;
+  color: #ffffff;
+  padding: 5px 12px;
+  font-size: 12px;
+  border-radius: 4px;
+}
+
+/* -------------------------------------
+ * 10. Content
+ * ------------------------------------- */
+.es-gallery__content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: 30px;
+  z-index: 3;
+  color: #ffffff;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all var(--es-gallery-transition) ease;
+  pointer-events: none;
+}
+
+.es-gallery__content-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.es-gallery__category {
+  font-size: 13px;
+  text-transform: uppercase;
+  margin-bottom: 5px;
+  color: inherit;
+}
+
+.es-gallery__title {
+  margin: 0 0 10px 0;
+  font-size: 20px;
+  color: inherit;
+}
+
+.es-gallery__subtitle {
+  margin: 0 0 5px 0;
+  font-size: 15px;
+  color: inherit;
+}
+
+.es-gallery__description {
+  font-size: 14px;
+  color: inherit;
+}
+
+/* -------------------------------------
+ * 13. Filters
+ * ------------------------------------- */
+.es-gallery__filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  gap: 15px;
+}
+
+.es-gallery__filter-btn {
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-size: 15px;
+  font-weight: 500;
+  color: #333333;
+  transition: all var(--es-gallery-transition) ease;
+  outline: none;
+}
+
+.es-gallery__filter-btn:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: 2px;
+}
+
+.es-gallery__filter-btn.es-active,
+.es-gallery__filter-btn:hover {
+  color: #000000;
+  text-decoration: underline;
+}
+
+
+
+/* -------------------------------------
+ * 16. Loader
+ * ------------------------------------- */
+.es-gallery__loader {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 50px 0;
+  width: 100%;
+}
+
+.es-gallery__loader-spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(0,0,0,0.1);
+  border-radius: 50%;
+  border-top-color: #333;
+  animation: es-gallery-spin 1s linear infinite;
+}
+
+@keyframes es-gallery-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* -------------------------------------
+ * 17. Empty State
+ * ------------------------------------- */
+.es-gallery__empty {
+  text-align: center;
+  padding: 50px;
+  background: #f8f9fa;
+  border-radius: 4px;
+  color: #666;
+}
+
+/* -------------------------------------
+ * 18. Lightbox
+ * ------------------------------------- */
+.es-gallery__link-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 5;
+  outline: none;
+}
+
+.es-gallery__link-overlay:focus-visible {
+  outline: 2px solid #000;
+  outline-offset: -2px;
+}
+
+/* -------------------------------------
+ * 19. Hover
+ * ------------------------------------- */
+
+
+.es-gallery__item:hover .es-gallery__overlay {
+  opacity: 1;
+}
+
+.es-gallery__item:hover .es-gallery__content {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* -------------------------------------
+ * 20. Active
+ * ------------------------------------- */
+/* Handled alongside Hover typically */
+
+/* -------------------------------------
+ * 21. Animation
+ * ------------------------------------- */
+/* Controlled by CSS variables */
+
+/* -------------------------------------
+ * 22. Responsive
+ * ------------------------------------- */
+/* Managed by Elementor dynamically via variables */
+
+/* -------------------------------------
+ * 23. RTL
+ * ------------------------------------- */
+[dir="rtl"] .es-gallery__masonry .es-gallery__item {
+  float: right;
+}
+
+/* -------------------------------------
+ * 24. Dark Mode
+ * ------------------------------------- */
+/* Inherits from Theme defaults */
+
+/* -------------------------------------
+ * 25. Reduced Motion
+ * ------------------------------------- */
+@media (prefers-reduced-motion: reduce) {
+  .es-gallery * {
+    transition: none !important;
+    animation: none !important;
+  }
+}
+
+/* Load More */
+.es-gallery__load-more-wrapper {
+	width: 100%;
+	margin-top: 30px;
+}
+.es-gallery__load-more-btn {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 12px 24px;
+	border: none;
+	background-color: var(--es-color-primary, #333);
+	color: #fff;
+	font-weight: 600;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: all 0.3s ease;
+}
+.es-gallery__load-more-btn:hover {
+	opacity: 0.9;
+}
+.es-gallery__load-more-btn.is-loading {
+	cursor: not-allowed;
+	opacity: 0.7;
+}
+.es-gallery__spinner {
+	display: inline-block;
+	width: 16px;
+	height: 16px;
+	margin-left: 8px;
+	border: 2px solid rgba(255, 255, 255, 0.3);
+	border-radius: 50%;
+	border-top-color: #fff;
+	animation: es-spin 1s ease-in-out infinite;
+}
+@keyframes es-spin {
+	to { transform: rotate(360deg); }
+}
+

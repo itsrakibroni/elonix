@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template-local variables are not globals
 
-$template_id = get_query_var( 'tv_matched_search_id' );
+$template_id = get_query_var( 'es_matched_search_id' );
 
 if ( ! $template_id ) {
 	$fallback_template = get_query_template( 'search' );
@@ -21,8 +21,8 @@ if ( ! $template_id ) {
 	return;
 }
 
-$show_header = get_post_meta( $template_id, '_tv_search_show_header', true ) !== 'no';
-$show_footer = get_post_meta( $template_id, '_tv_search_show_footer', true ) !== 'no';
+$show_header = get_post_meta( $template_id, '_es_search_show_header', true ) !== 'no';
+$show_footer = get_post_meta( $template_id, '_es_search_show_footer', true ) !== 'no';
 
 if ( $show_header ) {
 	get_header();
@@ -42,13 +42,13 @@ if ( $show_header ) {
 }
 ?>
 <style type="text/css">
-	.tv-search-canvas-content {
+	.es-search-canvas-content {
 		width: 100% !important;
 		max-width: 100% !important;
 		margin: 0 !important;
 		padding: 0 !important;
 	}
-	.tv-search-parent-fluid {
+	.es-search-parent-fluid {
 		width: 100% !important;
 		max-width: 100% !important;
 		margin-left: 0 !important;
@@ -58,13 +58,13 @@ if ( $show_header ) {
 		float: none !important;
 		flex: none !important;
 	}
-	div:has(> .tv-search-canvas-content),
-	section:has(> .tv-search-canvas-content),
-	article:has(> .tv-search-canvas-content),
-	.site-content:has(.tv-search-canvas-content),
-	.content-area:has(.tv-search-canvas-content),
-	.container:has(.tv-search-canvas-content),
-	#content:has(.tv-search-canvas-content) {
+	div:has(> .es-search-canvas-content),
+	section:has(> .es-search-canvas-content),
+	article:has(> .es-search-canvas-content),
+	.site-content:has(.es-search-canvas-content),
+	.content-area:has(.es-search-canvas-content),
+	.container:has(.es-search-canvas-content),
+	#content:has(.es-search-canvas-content) {
 		width: 100% !important;
 		max-width: 100% !important;
 		margin-left: 0 !important;
@@ -75,7 +75,7 @@ if ( $show_header ) {
 	}
 </style>
 
-<main id="tv-search-primary" class="tv-search-canvas-content tv-builder-container elementor-template-full-width" role="main" aria-label="<?php esc_attr_e( 'Search Results Content', 'elonix' ); ?>">
+<main id="es-search-primary" class="es-search-canvas-content es-builder-container elementor-template-full-width" role="main" aria-label="<?php esc_attr_e( 'Search Results Content', 'elonix' ); ?>">
 	<?php
 	echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
@@ -84,14 +84,14 @@ if ( $show_header ) {
 <script type="text/javascript">
 	(function() {
 		function makeParentsFluid() {
-			var canvas = document.getElementById('tv-search-primary');
+			var canvas = document.getElementById('es-search-primary');
 			if (canvas) {
 				var parent = canvas.parentElement;
 				while (parent && parent.tagName !== 'BODY' && parent.tagName !== 'HTML') {
 					if (parent.id === 'page' || parent.classList.contains('site') || parent.classList.contains('page-wrapper')) {
 						break;
 					}
-					parent.classList.add('tv-search-parent-fluid');
+					parent.classList.add('es-search-parent-fluid');
 					parent = parent.parentElement;
 				}
 			}

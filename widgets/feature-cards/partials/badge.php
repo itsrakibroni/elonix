@@ -9,6 +9,6 @@ if ( empty( $item['badge_text'] ) ) {
 	return;
 }
 ?>
-<div class="tv-fc-badge">
-	<span class="tv-fc-badge-text"><?php echo esc_html( $item['badge_text'] ); ?></span>
+<div class="es-fc-badge">
+	<span class="es-fc-badge-text"><?php echo esc_html( $item['badge_text'] ); ?></span>
 </div>

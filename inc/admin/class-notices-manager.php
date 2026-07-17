@@ -24,8 +24,8 @@ class Elonix_Admin_Notices_Manager {
 		add_action( 'admin_head', array( $this, 'filter_admin_notices' ), 1 );
 		add_action( 'in_admin_header', array( $this, 'filter_admin_notices' ), 1 );
 
-		// Hook into admin_head to output fallback suppression CSS.
-		add_action( 'admin_head', array( $this, 'print_suppression_css' ), 99 );
+		// Hook into admin_enqueue_scripts to output fallback suppression CSS.
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_suppression_css' ), 99 );
 	}
 
 	/**
@@ -288,34 +288,16 @@ class Elonix_Admin_Notices_Manager {
 	/**
 	 * Output inline CSS to hide known third-party plugin notices and ads as a fallback.
 	 */
-	public function print_suppression_css() {
+	public function enqueue_suppression_css() {
 		if ( ! $this->is_elonix_admin_page() ) {
 			return;
 		}
-		?>
-		<style id="elonix-notices-suppression-css">
-			/* Suppress known third-party plugin ads and promotional banners */
-			.ekit-admin-notice,
-			.elementskit-notice,
-			.elementskit-promo,
-			.elementskit-upsell,
-			.jeg-notice,
-			.jegkit-notice,
-			.jeg-theme-notice,
-			.eael-notice,
-			.essential-addons-elementor-notice,
-			.uael-notice,
-			.ultimate-addons-elementor-notice,
-			.ad-banner,
-			.plugin-promo-banner,
-			.third-party-ad,
-			#wpbody-content > .notice.elementskit-lite,
-			#wpbody-content > .notice.jeg-elementor-kit,
-			#wpbody-content > .notice.essential-addons,
-			#wpbody-content > .notice.ultimate-addons {
-				display: none !important;
-			}
-		</style>
-		<?php
+		
+		wp_enqueue_style(
+			'elonix-notices-suppression',
+			ELONIX_ACC_URL . 'assets/admin/css/notices-manager.css',
+			array(),
+			ELONIX_VERSION
+		);
 	}
 }

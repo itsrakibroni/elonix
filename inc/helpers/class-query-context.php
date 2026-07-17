@@ -26,7 +26,7 @@ class Elonix_Query_Context {
 
 		// Auto-detect if we are inside a Elonix Archive Builder template
 		$is_archive_template = false;
-		if ( get_query_var( 'tv_matched_archive_id' ) || defined( 'ELONIX_ARCHIVE_TEMPLATE_RENDERING' ) ) {
+		if ( get_query_var( 'es_matched_archive_id' ) || defined( 'ELONIX_ARCHIVE_TEMPLATE_RENDERING' ) ) {
 			$is_archive_template = true;
 		} elseif ( class_exists( '\ElementorPro\Modules\ThemeBuilder\Module' ) ) {
 			try {

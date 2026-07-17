@@ -20,9 +20,9 @@ class Elonix_Toolkit_Single_Preview {
 	}
 
 	/**
-	 * Check if the current request is editing or previewing a tv_single template.
+	 * Check if the current request is editing or previewing a es_single template.
 	 *
-	 * @return bool True if editing/previewing tv_single template, false otherwise.
+	 * @return bool True if editing/previewing es_single template, false otherwise.
 	 */
 	public function is_editing_single_template() {
 		if ( is_admin() ) {
@@ -43,13 +43,13 @@ class Elonix_Toolkit_Single_Preview {
 		} elseif ( isset( $_GET['p'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$post_id = intval( $_GET['p'] );
-		} elseif ( is_singular( 'tv_single' ) ) {
+		} elseif ( is_singular( 'es_single' ) ) {
 			$post_id = get_the_ID();
 		}
 
 		if ( $post_id ) {
 			$post = get_post( $post_id );
-			return ( $post && 'tv_single' === $post->post_type );
+			return ( $post && 'es_single' === $post->post_type );
 		}
 
 		return false;
@@ -88,7 +88,7 @@ class Elonix_Toolkit_Single_Preview {
 		if ( isset( $_GET['elementor-preview'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$post_id = intval( $_GET['elementor-preview'] );
-		} elseif ( is_singular( 'tv_single' ) ) {
+		} elseif ( is_singular( 'es_single' ) ) {
 			$post_id = get_the_ID();
 		}
 
@@ -97,8 +97,8 @@ class Elonix_Toolkit_Single_Preview {
 		}
 
 		// Load configured sample preview variables
-		$preview_type = get_post_meta( $post_id, '_tv_single_preview_type', true );
-		$preview_val  = get_post_meta( $post_id, '_tv_single_preview_id', true );
+		$preview_type = get_post_meta( $post_id, '_es_single_preview_type', true );
+		$preview_val  = get_post_meta( $post_id, '_es_single_preview_id', true );
 
 		$query->set( 'posts_per_page', 1 );
 		$query->set( 'post_status', 'publish' );

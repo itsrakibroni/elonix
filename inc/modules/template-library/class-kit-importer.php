@@ -154,7 +154,7 @@ class Kit_Importer {
 	 */
 	public function log_import( $kit_slug, $component_key, $assigned_id ) {
 		$user_id = get_current_user_id();
-		$history = get_user_meta( $user_id, 'tv_imported_kits', true );
+		$history = get_user_meta( $user_id, 'es_imported_kits', true );
 		if ( ! is_array( $history ) ) {
 			$history = array();
 		}
@@ -172,6 +172,6 @@ class Kit_Importer {
 			'time'        => time(),
 		);
 
-		update_user_meta( $user_id, 'tv_imported_kits', $history );
+		update_user_meta( $user_id, 'es_imported_kits', $history );
 	}
 }

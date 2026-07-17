@@ -41,7 +41,7 @@ class Elonix_Toolkit_404_Router {
 	 * @return string|false False to abort redirection, or url.
 	 */
 	public function handle_canonical_guessing( $redirect_url, $requested_url ) {
-		$disable_guessing = ( 'yes' === ( Elonix_Settings::get( 'tv_404_disable_url_guessing' ) ?? 'yes' ) ) || ( 'yes' === ( Elonix_Settings::get( 'tv_404_seo_disable_redirect_guessing' ) ?? 'yes' ) );
+		$disable_guessing = ( 'yes' === ( Elonix_Settings::get( 'es_404_disable_url_guessing' ) ?? 'yes' ) ) || ( 'yes' === ( Elonix_Settings::get( 'es_404_seo_disable_redirect_guessing' ) ?? 'yes' ) );
 		if ( $disable_guessing && is_404() ) {
 			return false; // Prevent guessing
 		}
@@ -55,7 +55,7 @@ class Elonix_Toolkit_404_Router {
 		// Verify if we should bypass or render the custom 404 template canvas
 		if ( ! $this->should_render_404_template() ) {
 			if ( ! is_404() ) {
-				$template_id = intval( Elonix_Settings::get( 'tv_404_selected_page_id' ) ?? 0 );
+				$template_id = intval( Elonix_Settings::get( 'es_404_selected_page_id' ) ?? 0 );
 				if ( $template_id && ( is_page( $template_id ) || get_queried_object_id() === $template_id ) ) {
 					// Ensure we do not redirect during Elementor editor, preview, or AJAX sessions
 					if ( class_exists( '\Elementor\Plugin' ) ) {
@@ -73,7 +73,7 @@ class Elonix_Toolkit_404_Router {
 					}
 
 					// Non-administrators are redirected to the homepage
-					$allow_admin = ( 'yes' === ( Elonix_Settings::get( 'tv_404_allow_admin_direct_access' ) ?? 'yes' ) );
+					$allow_admin = ( 'yes' === ( Elonix_Settings::get( 'es_404_allow_admin_direct_access' ) ?? 'yes' ) );
 					if ( ! ( $allow_admin && current_user_can( 'manage_options' ) ) ) {
 						wp_safe_redirect( home_url( '/' ) );
 						exit;
@@ -86,7 +86,7 @@ class Elonix_Toolkit_404_Router {
 		// Check if we need to force 404 after page load based on current conditions
 		$this->maybe_force_404_after_load();
 
-		$template_id = intval( Elonix_Settings::get( 'tv_404_selected_page_id' ) ?? 0 );
+		$template_id = intval( Elonix_Settings::get( 'es_404_selected_page_id' ) ?? 0 );
 
 		// If this is a real 404 request, proceed with headers, redirects, and logging
 		if ( is_404() ) {
@@ -94,7 +94,7 @@ class Elonix_Toolkit_404_Router {
 			$this->evaluate_redirect_rules();
 
 			// Record the 404 error log dynamically
-			if ( 'yes' === ( Elonix_Settings::get( 'tv_404_enable_logging' ) ?? 'yes' ) ) {
+			if ( 'yes' === ( Elonix_Settings::get( 'es_404_enable_logging' ) ?? 'yes' ) ) {
 				$url        = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 				$referrer   = isset( $_SERVER['HTTP_REFERER'] ) ? esc_url_raw( wp_unslash( $_SERVER['HTTP_REFERER'] ) ) : '';
 				$user_agent = isset( $_SERVER['HTTP_USER_AGENT'] ) ? sanitize_text_field( wp_unslash( $_SERVER['HTTP_USER_AGENT'] ) ) : '';
@@ -154,11 +154,11 @@ class Elonix_Toolkit_404_Router {
 			return false;
 		}
 
-		if ( 'yes' !== ( Elonix_Settings::get( 'tv_404_enable_custom_page' ) ?? 'no' ) ) {
+		if ( 'yes' !== ( Elonix_Settings::get( 'es_404_enable_custom_page' ) ?? 'no' ) ) {
 			return false;
 		}
 
-		$template_id = intval( Elonix_Settings::get( 'tv_404_selected_page_id' ) ?? 0 );
+		$template_id = intval( Elonix_Settings::get( 'es_404_selected_page_id' ) ?? 0 );
 		if ( ! $template_id ) {
 			return false;
 		}
@@ -169,7 +169,7 @@ class Elonix_Toolkit_404_Router {
 		}
 
 		// Case 2: Direct access to selected template page by administrator
-		$allow_admin = ( 'yes' === ( Elonix_Settings::get( 'tv_404_allow_admin_direct_access' ) ?? 'yes' ) );
+		$allow_admin = ( 'yes' === ( Elonix_Settings::get( 'es_404_allow_admin_direct_access' ) ?? 'yes' ) );
 		if ( $allow_admin && current_user_can( 'manage_options' ) ) {
 			if ( is_page( $template_id ) || get_queried_object_id() === $template_id ) {
 				return true;
@@ -186,7 +186,7 @@ class Elonix_Toolkit_404_Router {
 	 */
 	public function is_request_excluded() {
 		// 2. User Roles Exclusions
-		$excluded_roles = Elonix_Settings::get( 'tv_404_excluded_user_roles' ) ?? array();
+		$excluded_roles = Elonix_Settings::get( 'es_404_excluded_user_roles' ) ?? array();
 		if ( ! empty( $excluded_roles ) && is_user_logged_in() ) {
 			$user = wp_get_current_user();
 			foreach ( (array) $excluded_roles as $role ) {
@@ -199,7 +199,7 @@ class Elonix_Toolkit_404_Router {
 		$current_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 
 		// 3. Excluded URLs Check (sub-string / wildcard matches)
-		$excluded_urls = Elonix_Settings::get( 'tv_404_excluded_urls' ) ?? '';
+		$excluded_urls = Elonix_Settings::get( 'es_404_excluded_urls' ) ?? '';
 		if ( ! empty( $excluded_urls ) ) {
 			$urls_list = array_map( 'trim', explode( "\n", $excluded_urls ) );
 			foreach ( $urls_list as $exclude_url ) {
@@ -210,7 +210,7 @@ class Elonix_Toolkit_404_Router {
 		}
 
 		// 4. Excluded Post Types Check
-		$excluded_post_types = Elonix_Settings::get( 'tv_404_excluded_post_types' ) ?? array();
+		$excluded_post_types = Elonix_Settings::get( 'es_404_excluded_post_types' ) ?? array();
 		if ( ! empty( $excluded_post_types ) ) {
 			$queried_post_type = get_query_var( 'post_type' );
 			if ( ! empty( $queried_post_type ) && in_array( $queried_post_type, (array) $excluded_post_types, true ) ) {
@@ -219,7 +219,7 @@ class Elonix_Toolkit_404_Router {
 		}
 
 		// 5. Excluded Query Parameters Check
-		$excluded_queries = Elonix_Settings::get( 'tv_404_excluded_query_parameters' ) ?? '';
+		$excluded_queries = Elonix_Settings::get( 'es_404_excluded_query_parameters' ) ?? '';
 		if ( ! empty( $excluded_queries ) ) {
 			$params_list = array_map( 'trim', explode( ',', $excluded_queries ) );
 			foreach ( $params_list as $param ) {
@@ -237,7 +237,7 @@ class Elonix_Toolkit_404_Router {
 	 * Evaluate wildcard and regex custom redirect rules.
 	 */
 	private function evaluate_redirect_rules() {
-		$redirect_rules = Elonix_Settings::get( 'tv_404_custom_redirect_rules' ) ?? '';
+		$redirect_rules = Elonix_Settings::get( 'es_404_custom_redirect_rules' ) ?? '';
 		if ( empty( $redirect_rules ) ) {
 			return;
 		}
@@ -275,7 +275,7 @@ class Elonix_Toolkit_404_Router {
 			}
 
 			if ( $matched ) {
-				$status = intval( Elonix_Settings::get( 'tv_404_custom_status_code' ) ?? 301 );
+				$status = intval( Elonix_Settings::get( 'es_404_custom_status_code' ) ?? 301 );
 				if ( ! in_array( $status, array( 301, 302, 307, 308 ), true ) ) {
 					$status = 301;
 				}
@@ -289,8 +289,8 @@ class Elonix_Toolkit_404_Router {
 	 * Send 404 / 410 Gone / Custom HTTP status header codes.
 	 */
 	private function send_http_status_header() {
-		$send_410      = ( 'yes' === ( Elonix_Settings::get( 'tv_404_send_410_header' ) ?? 'no' ) ) || ( 'yes' === ( Elonix_Settings::get( 'tv_404_seo_410_header' ) ?? 'no' ) );
-		$custom_status = Elonix_Settings::get( 'tv_404_custom_status_code' );
+		$send_410      = ( 'yes' === ( Elonix_Settings::get( 'es_404_send_410_header' ) ?? 'no' ) ) || ( 'yes' === ( Elonix_Settings::get( 'es_404_seo_410_header' ) ?? 'no' ) );
+		$custom_status = Elonix_Settings::get( 'es_404_custom_status_code' );
 
 		if ( $send_410 ) {
 			status_header( 410, 'Gone' );
@@ -305,8 +305,8 @@ class Elonix_Toolkit_404_Router {
 	 * Hook to inject SEO meta instructions (noindex, nofollow, canonical) inside response headers.
 	 */
 	private function send_seo_robots_header() {
-		$noindex  = ( 'yes' === ( Elonix_Settings::get( 'tv_404_seo_noindex' ) ?? 'yes' ) );
-		$nofollow = ( 'yes' === ( Elonix_Settings::get( 'tv_404_seo_nofollow' ) ?? 'yes' ) );
+		$noindex  = ( 'yes' === ( Elonix_Settings::get( 'es_404_seo_noindex' ) ?? 'yes' ) );
+		$nofollow = ( 'yes' === ( Elonix_Settings::get( 'es_404_seo_nofollow' ) ?? 'yes' ) );
 
 		if ( $noindex || $nofollow ) {
 			$parts = array();
@@ -325,7 +325,7 @@ class Elonix_Toolkit_404_Router {
 	 * Check if force 404 after load options are set to override templates dynamically.
 	 */
 	private function maybe_force_404_after_load() {
-		if ( 'yes' === ( Elonix_Settings::get( 'tv_404_force_after_load' ) ?? 'no' ) ) {
+		if ( 'yes' === ( Elonix_Settings::get( 'es_404_force_after_load' ) ?? 'no' ) ) {
 			// Evaluates conditions to mark current request as 404 dynamically
 			$current_uri = isset( $_SERVER['REQUEST_URI'] ) ? esc_url_raw( wp_unslash( $_SERVER['REQUEST_URI'] ) ) : '';
 			if ( strpos( $current_uri, '/force-404' ) !== false ) {

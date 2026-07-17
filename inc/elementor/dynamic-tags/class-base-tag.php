@@ -67,7 +67,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_prefix',
+			'es_prefix',
 			[
 				'label' => esc_html__( 'Prefix', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
@@ -75,7 +75,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_suffix',
+			'es_suffix',
 			[
 				'label' => esc_html__( 'Suffix', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
@@ -83,7 +83,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_default_value',
+			'es_default_value',
 			[
 				'label' => esc_html__( 'Default Value', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::TEXT,
@@ -92,7 +92,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_case',
+			'es_case',
 			[
 				'label' => esc_html__( 'Text Case', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
@@ -107,7 +107,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_trim',
+			'es_trim',
 			[
 				'label' => esc_html__( 'Trim Whitespace', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -116,7 +116,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_strip_html',
+			'es_strip_html',
 			[
 				'label' => esc_html__( 'Strip HTML', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -125,7 +125,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_strip_shortcodes',
+			'es_strip_shortcodes',
 			[
 				'label' => esc_html__( 'Strip Shortcodes', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -134,7 +134,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_auto_p',
+			'es_auto_p',
 			[
 				'label' => esc_html__( 'Auto Paragraph (wpautop)', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -143,7 +143,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_url_encode',
+			'es_url_encode',
 			[
 				'label' => esc_html__( 'URL Formatting', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::SELECT,
@@ -157,7 +157,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_json_encode',
+			'es_json_encode',
 			[
 				'label' => esc_html__( 'JSON Encode', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -166,7 +166,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_number_format',
+			'es_number_format',
 			[
 				'label' => esc_html__( 'Number Format', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::SWITCHER,
@@ -176,7 +176,7 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		);
 
 		$this->add_control(
-			'tv_limit',
+			'es_limit',
 			[
 				'label' => esc_html__( 'Character Limit', 'elonix' ),
 				'type' => \Elementor\Controls_Manager::NUMBER,
@@ -197,27 +197,27 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 		$settings = $this->get_settings();
 
 		if ( empty( $value ) && '0' !== $value ) {
-			if ( ! empty( $settings['tv_default_value'] ) ) {
-				$value = $settings['tv_default_value'];
+			if ( ! empty( $settings['es_default_value'] ) ) {
+				$value = $settings['es_default_value'];
 			} else {
 				return '';
 			}
 		}
 
-		if ( ! empty( $settings['tv_strip_html'] ) && 'yes' === $settings['tv_strip_html'] ) {
+		if ( ! empty( $settings['es_strip_html'] ) && 'yes' === $settings['es_strip_html'] ) {
 			$value = wp_strip_all_tags( $value );
 		}
 
-		if ( ! empty( $settings['tv_strip_shortcodes'] ) && 'yes' === $settings['tv_strip_shortcodes'] ) {
+		if ( ! empty( $settings['es_strip_shortcodes'] ) && 'yes' === $settings['es_strip_shortcodes'] ) {
 			$value = strip_shortcodes( $value );
 		}
 
-		if ( ! empty( $settings['tv_trim'] ) && 'yes' === $settings['tv_trim'] ) {
+		if ( ! empty( $settings['es_trim'] ) && 'yes' === $settings['es_trim'] ) {
 			$value = trim( $value );
 		}
 
-		if ( ! empty( $settings['tv_case'] ) ) {
-			switch ( $settings['tv_case'] ) {
+		if ( ! empty( $settings['es_case'] ) ) {
+			switch ( $settings['es_case'] ) {
 				case 'uppercase':
 					$value = strtoupper( $value );
 					break;
@@ -230,41 +230,41 @@ abstract class Elonix_Dynamic_Tag extends \Elementor\Core\DynamicTags\Tag {
 			}
 		}
 
-		if ( ! empty( $settings['tv_number_format'] ) && 'yes' === $settings['tv_number_format'] ) {
+		if ( ! empty( $settings['es_number_format'] ) && 'yes' === $settings['es_number_format'] ) {
 			if ( is_numeric( $value ) ) {
 				$value = number_format_i18n( (float) $value );
 			}
 		}
 
-		if ( ! empty( $settings['tv_limit'] ) ) {
-			$limit = absint( $settings['tv_limit'] );
+		if ( ! empty( $settings['es_limit'] ) ) {
+			$limit = absint( $settings['es_limit'] );
 			if ( mb_strlen( $value ) > $limit ) {
 				$value = mb_substr( $value, 0, $limit ) . '&hellip;';
 			}
 		}
 
-		if ( ! empty( $settings['tv_url_encode'] ) ) {
-			if ( 'encode' === $settings['tv_url_encode'] ) {
+		if ( ! empty( $settings['es_url_encode'] ) ) {
+			if ( 'encode' === $settings['es_url_encode'] ) {
 				$value = urlencode( $value );
-			} elseif ( 'decode' === $settings['tv_url_encode'] ) {
+			} elseif ( 'decode' === $settings['es_url_encode'] ) {
 				$value = urldecode( $value );
 			}
 		}
 
-		if ( ! empty( $settings['tv_json_encode'] ) && 'yes' === $settings['tv_json_encode'] ) {
+		if ( ! empty( $settings['es_json_encode'] ) && 'yes' === $settings['es_json_encode'] ) {
 			$value = wp_json_encode( $value );
 		}
 
-		if ( ! empty( $settings['tv_auto_p'] ) && 'yes' === $settings['tv_auto_p'] ) {
+		if ( ! empty( $settings['es_auto_p'] ) && 'yes' === $settings['es_auto_p'] ) {
 			$value = wpautop( $value );
 		}
 
-		if ( ! empty( $settings['tv_prefix'] ) ) {
-			$value = $settings['tv_prefix'] . $value;
+		if ( ! empty( $settings['es_prefix'] ) ) {
+			$value = $settings['es_prefix'] . $value;
 		}
 
-		if ( ! empty( $settings['tv_suffix'] ) ) {
-			$value .= $settings['tv_suffix'];
+		if ( ! empty( $settings['es_suffix'] ) ) {
+			$value .= $settings['es_suffix'];
 		}
 
 		return apply_filters( 'elonix/dynamic_tags/apply_formatting', $value, $settings, $this );

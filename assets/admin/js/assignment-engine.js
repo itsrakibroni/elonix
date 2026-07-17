@@ -2,27 +2,27 @@ jQuery(document).ready(function($) {
 	var currentPostId = 0;
 	var currentPostType = '';
 
-	$(document).on('click', '.tv-open-assignment-drawer', function(e) {
+	$(document).on('click', '.es-open-assignment-drawer', function(e) {
 		e.preventDefault();
 		currentPostId = $(this).data('id');
 		currentPostType = $(this).data('type');
 
 		// Convert to navigation shortcut
-		window.location.href = tvAssignmentEngine.admin_url + 'post.php?post=' + currentPostId + '&action=edit#tv-display-conditions-focus';
+		window.location.href = esAssignmentEngine.admin_url + 'post.php?post=' + currentPostId + '&action=edit#es-display-conditions-focus';
 	});
 
-	$(document).on('click', '.tv-drawer-close, .tv-drawer-overlay', function() {
-		$('#tv-assignment-drawer').removeClass('tv-drawer-open');
+	$(document).on('click', '.es-drawer-close, .es-drawer-overlay', function() {
+		$('#es-assignment-drawer').removeClass('es-drawer-open');
 	});
 
-	$(document).on('click', '.tv-remove-rule', function() {
+	$(document).on('click', '.es-remove-rule', function() {
 		$(this).closest('li').remove();
 	});
 
 	function initSelect2Selectors() {
-		var optionsHtml = '<option value="">' + tvAssignmentEngine.strings.select_rule + '</option>';
+		var optionsHtml = '<option value="">' + esAssignmentEngine.strings.select_rule + '</option>';
 		
-		$.each(tvAssignmentEngine.rule_options, function(groupKey, group) {
+		$.each(esAssignmentEngine.rule_options, function(groupKey, group) {
 			optionsHtml += '<optgroup label="' + group.label + '">';
 			$.each(group.value, function(val, label) {
 				optionsHtml += '<option value="' + val + '">' + label + '</option>';
@@ -31,39 +31,39 @@ jQuery(document).ready(function($) {
 		});
 
 		var addBtnTemplate = `
-			<div class="tv-rule-selector-wrap" style="margin-top: 10px; display: none;">
-				<select class="tv-rule-primary-select" style="width: 100%;">
+			<div class="es-rule-selector-wrap" style="margin-top: 10px; display: none;">
+				<select class="es-rule-primary-select" style="width: 100%;">
 					${optionsHtml}
 				</select>
-				<select class="tv-rule-secondary-select" style="width: 100%; margin-top: 5px; display: none;"></select>
+				<select class="es-rule-secondary-select" style="width: 100%; margin-top: 5px; display: none;"></select>
 				<div style="margin-top: 10px;">
-					<button class="button button-primary tv-confirm-rule">${tvAssignmentEngine.strings.add_rule}</button>
-					<button class="button tv-cancel-rule">${tvAssignmentEngine.strings.cancel}</button>
+					<button class="button button-primary es-confirm-rule">${esAssignmentEngine.strings.add_rule}</button>
+					<button class="button es-cancel-rule">${esAssignmentEngine.strings.cancel}</button>
 				</div>
 			</div>
 		`;
 
-		$('.tv-add-rule-btn').each(function() {
+		$('.es-add-rule-btn').each(function() {
 			var $btn = $(this);
 			var $wrap = $(addBtnTemplate);
 			$btn.after($wrap);
 			
-			var $primary = $wrap.find('.tv-rule-primary-select');
-			var $secondary = $wrap.find('.tv-rule-secondary-select');
+			var $primary = $wrap.find('.es-rule-primary-select');
+			var $secondary = $wrap.find('.es-rule-secondary-select');
 			
 			$btn.on('click', function() {
 				$btn.hide();
 				$wrap.show();
 				if (!$primary.hasClass('select2-hidden-accessible')) {
 					$primary.select2({
-						placeholder: tvAssignmentEngine.strings.select_rule,
+						placeholder: esAssignmentEngine.strings.select_rule,
 						width: '100%',
-						dropdownParent: $('#tv-assignment-drawer')
+						dropdownParent: $('#es-assignment-drawer')
 					});
 				}
 			});
 
-			$wrap.find('.tv-cancel-rule').on('click', function() {
+			$wrap.find('.es-cancel-rule').on('click', function() {
 				$wrap.hide();
 				$btn.show();
 				$primary.val(null).trigger('change');
@@ -83,12 +83,12 @@ jQuery(document).ready(function($) {
 						$secondary.select2('destroy');
 					}
 					$secondary.empty().select2({
-						placeholder: tvAssignmentEngine.strings.search_sub,
+						placeholder: esAssignmentEngine.strings.search_sub,
 						width: '100%',
-						dropdownParent: $('#tv-assignment-drawer'),
+						dropdownParent: $('#es-assignment-drawer'),
 						minimumInputLength: 2,
 						ajax: {
-							url: tvAssignmentEngine.ajax_url,
+							url: esAssignmentEngine.ajax_url,
 							dataType: 'json',
 							type: 'POST',
 							delay: 250,
@@ -97,7 +97,7 @@ jQuery(document).ready(function($) {
 									q: params.term,
 									rule: val,
 									action: 'elonix_get_posts_by_query',
-									nonce: tvAssignmentEngine.search_nonce
+									nonce: esAssignmentEngine.search_nonce
 								};
 							},
 							processResults: function(data) {
@@ -110,7 +110,7 @@ jQuery(document).ready(function($) {
 				}
 			});
 
-			$wrap.find('.tv-confirm-rule').on('click', function() {
+			$wrap.find('.es-confirm-rule').on('click', function() {
 				var primaryVal = $primary.val();
 				var primaryText = $primary.find('option:selected').text();
 				var finalVal = primaryVal;
@@ -128,42 +128,42 @@ jQuery(document).ready(function($) {
 				}
 
 				var type = $btn.data('type');
-				var li = '<li data-rule="' + finalVal + '"><span class="rule-name">' + finalText + '</span><button class="tv-remove-rule">&times;</button></li>';
+				var li = '<li data-rule="' + finalVal + '"><span class="rule-name">' + finalText + '</span><button class="es-remove-rule">&times;</button></li>';
 				
 				if (type === 'include') {
-					$('#tv-include-list').append(li);
+					$('#es-include-list').append(li);
 				} else {
-					$('#tv-exclude-list').append(li);
+					$('#es-exclude-list').append(li);
 				}
 
-				$wrap.find('.tv-cancel-rule').trigger('click');
+				$wrap.find('.es-cancel-rule').trigger('click');
 			});
 		});
 	}
 
-	$(document).on('click', '.tv-save-assignments', function() {
+	$(document).on('click', '.es-save-assignments', function() {
 		var $btn = $(this);
-		$btn.prop('disabled', true).text(tvAssignmentEngine.strings.saving);
+		$btn.prop('disabled', true).text(esAssignmentEngine.strings.saving);
 
 		var include = [];
-		$('#tv-include-list li').each(function() {
+		$('#es-include-list li').each(function() {
 			include.push($(this).data('rule'));
 		});
 
 		var exclude = [];
-		$('#tv-exclude-list li').each(function() {
+		$('#es-exclude-list li').each(function() {
 			exclude.push($(this).data('rule'));
 		});
 
-		var priority = $('#tv-assign-priority').val();
-		var active = $('#tv-assign-active').is(':checked');
+		var priority = $('#es-assign-priority').val();
+		var active = $('#es-assign-active').is(':checked');
 
 		$.ajax({
-			url: tvAssignmentEngine.ajax_url,
+			url: esAssignmentEngine.ajax_url,
 			method: 'POST',
 			data: {
 				action: 'elonix_assignment_save',
-				nonce: tvAssignmentEngine.nonce,
+				nonce: esAssignmentEngine.nonce,
 				post_id: currentPostId,
 				post_type: currentPostType,
 				include: include,
@@ -173,9 +173,9 @@ jQuery(document).ready(function($) {
 			},
 			success: function(res) {
 				if (res.success) {
-					$btn.text(tvAssignmentEngine.strings.saved);
+					$btn.text(esAssignmentEngine.strings.saved);
 					setTimeout(function() {
-						$('#tv-assignment-drawer').removeClass('tv-drawer-open');
+						$('#es-assignment-drawer').removeClass('es-drawer-open');
 						$btn.prop('disabled', false).text('Save Conditions');
 						location.reload(); // Refresh list table
 					}, 1000);
@@ -183,24 +183,24 @@ jQuery(document).ready(function($) {
 					if (res.data && res.data.conflicts) {
 						$btn.prop('disabled', false).text('Save Conditions');
 						
-						if ($('#tv-conflict-warning').length === 0) {
+						if ($('#es-conflict-warning').length === 0) {
 							var conflictHtml = `
-								<div id="tv-conflict-warning" style="margin-top: 15px; padding: 10px; background: #fcf0f1; border-left: 4px solid #d63638;">
+								<div id="es-conflict-warning" style="margin-top: 15px; padding: 10px; background: #fcf0f1; border-left: 4px solid #d63638;">
 									<p style="margin:0 0 10px 0; color:#d63638;"><strong>Conflicts detected with priority!</strong></p>
-									<button class="button tv-force-save-btn">Force Save</button>
-									<button class="button tv-cancel-conflict-btn">Cancel</button>
+									<button class="button es-force-save-btn">Force Save</button>
+									<button class="button es-cancel-conflict-btn">Cancel</button>
 								</div>
 							`;
-							$('.tv-drawer-footer').prepend(conflictHtml);
+							$('.es-drawer-footer').prepend(conflictHtml);
 
-							$('.tv-force-save-btn').on('click', function() {
+							$('.es-force-save-btn').on('click', function() {
 								$(this).prop('disabled', true).text('Saving...');
 								$.ajax({
-									url: tvAssignmentEngine.ajax_url,
+									url: esAssignmentEngine.ajax_url,
 									method: 'POST',
 									data: {
 										action: 'elonix_assignment_save',
-										nonce: tvAssignmentEngine.nonce,
+										nonce: esAssignmentEngine.nonce,
 										post_id: currentPostId,
 										post_type: currentPostType,
 										include: include,
@@ -215,8 +215,8 @@ jQuery(document).ready(function($) {
 								});
 							});
 
-							$('.tv-cancel-conflict-btn').on('click', function() {
-								$('#tv-conflict-warning').remove();
+							$('.es-cancel-conflict-btn').on('click', function() {
+								$('#es-conflict-warning').remove();
 							});
 						}
 					}
@@ -226,8 +226,8 @@ jQuery(document).ready(function($) {
 	});
 
 	// Highlight logic on load for navigation shortcut
-	if (window.location.hash === '#tv-display-conditions-focus') {
-		var $panel = $('#tv_layout_assignments_box');
+	if (window.location.hash === '#es-display-conditions-focus') {
+		var $panel = $('#es_layout_assignments_box');
 		if ($panel.length) {
 			// Ensure metabox is expanded
 			if ($panel.hasClass('closed')) {

@@ -3,11 +3,11 @@
  */
 
 /* Ensure the parent container is relatively positioned to anchor the absolute button. */
-*:has(> .tv-edit-overlay__button) {
+*:has(> .es-edit-overlay__button) {
   position: relative;
 }
 
-.tv-edit-overlay__button {
+.es-edit-overlay__button {
   position: absolute;
   top: 12px;
   right: 12px;
@@ -31,14 +31,14 @@
 }
 
 /* Show button on hover of any parent container that holds it */
-*:hover > .tv-edit-overlay__button,
-*:focus-within > .tv-edit-overlay__button,
-.tv-edit-overlay__button:focus {
+*:hover > .es-edit-overlay__button,
+*:focus-within > .es-edit-overlay__button,
+.es-edit-overlay__button:focus {
   opacity: 1;
   visibility: visible;
 }
 
-.tv-edit-overlay__button:hover {
+.es-edit-overlay__button:hover {
   background-color: #111111;
   color: #ffffff;
   transform: scale(1.05);
@@ -46,19 +46,19 @@
 }
 
 /* Keyboard accessibility */
-.tv-edit-overlay__button:focus {
+.es-edit-overlay__button:focus {
   outline: 2px solid #3858e9;
   outline-offset: 2px;
 }
 
 /* Support for RTL */
-.rtl .tv-edit-overlay__button {
+.rtl .es-edit-overlay__button {
   right: auto;
   left: 12px;
 }
 
 /* Support for Dark Admin Bar */
-.admin-bar .tv-edit-overlay__button {
+.admin-bar .es-edit-overlay__button {
   /* The admin bar doesn't necessarily conflict here if top is 12px from the relative container,
 	   but keeping the structure scalable. */
 }

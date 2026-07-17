@@ -34,19 +34,19 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 		);
 
 		$element->add_control(
-			'tv_sticky_enable',
+			'es_sticky_enable',
 			[
 				'label'        => esc_html__( 'Enable Sticky', 'elonix' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
-				'prefix_class' => 'tv-sticky-element tv-sticky-',
+				'prefix_class' => 'es-sticky-element es-sticky-',
 				'frontend_available' => true,
 				'render_type'  => 'none',
 			]
 		);
 
 		$element->add_control(
-			'tv_sticky_devices',
+			'es_sticky_devices',
 			[
 				'label'       => esc_html__( 'Device', 'elonix' ),
 				'type'        => \Elementor\Controls_Manager::SELECT2,
@@ -60,7 +60,7 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 				],
 				'default'     => [ 'desktop', 'laptop', 'tablet_extra', 'tablet', 'mobile' ],
 				'condition'   => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 				'frontend_available' => true,
 				'render_type'  => 'none',
@@ -68,7 +68,7 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 		);
 
 		$element->add_control(
-			'tv_sticky_trigger',
+			'es_sticky_trigger',
 			[
 				'label'     => esc_html__( 'Sticky Trigger', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::SELECT,
@@ -78,7 +78,7 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 				],
 				'default'   => 'scroll_down',
 				'condition' => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 				'frontend_available' => true,
 				'render_type'  => 'none',
@@ -86,7 +86,7 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 		);
 
 		$element->add_control(
-			'tv_sticky_position',
+			'es_sticky_position',
 			[
 				'label'     => esc_html__( 'Sticky Position', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::SELECT,
@@ -96,7 +96,7 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 				],
 				'default'   => 'sticky',
 				'condition' => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 				'frontend_available' => true,
 				'render_type'  => 'none',
@@ -104,7 +104,7 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 		);
 
 		$element->add_control(
-			'tv_sticky_top_offset',
+			'es_sticky_top_offset',
 			[
 				'label'      => esc_html__( 'Top Offset', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
@@ -120,22 +120,22 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 					'unit' => 'px',
 				],
 				'condition'  => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 				'selectors'  => [
-					'{{WRAPPER}}.tv-sticky-element' => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.es-sticky-element' => 'top: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
 		$element->add_control(
-			'tv_sticky_hide_on_scroll',
+			'es_sticky_hide_on_scroll',
 			[
 				'label'        => esc_html__( 'Hide On Scroll', 'elonix' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
 				'return_value' => 'yes',
 				'condition'    => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 				'frontend_available' => true,
 				'render_type'  => 'none',
@@ -143,7 +143,7 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 		);
 
 		$element->add_control(
-			'tv_sticky_zindex',
+			'es_sticky_zindex',
 			[
 				'label'     => esc_html__( 'Z Index', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::NUMBER,
@@ -151,24 +151,24 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 				'max'       => 9999,
 				'default'   => 99,
 				'condition' => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}}.tv-sticky-element' => 'z-index: {{VALUE}};',
+					'{{WRAPPER}}.es-sticky-element' => 'z-index: {{VALUE}};',
 				],
 			]
 		);
 
 		$element->add_control(
-			'tv_sticky_bg_color',
+			'es_sticky_bg_color',
 			[
 				'label'     => esc_html__( 'Background Color (Sticky State)', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'condition' => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 				'selectors' => [
-					'{{WRAPPER}}.tv-sticky-element.is-sticking' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.es-sticky-element.is-sticking' => 'background-color: {{VALUE}};',
 				],
 			]
 		);
@@ -176,17 +176,17 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 		$element->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			[
-				'name'      => 'tv_sticky_box_shadow',
+				'name'      => 'es_sticky_box_shadow',
 				'label'     => esc_html__( 'Box Shadow (Sticky State)', 'elonix' ),
-				'selector'  => '{{WRAPPER}}.tv-sticky-element.is-sticking',
+				'selector'  => '{{WRAPPER}}.es-sticky-element.is-sticking',
 				'condition' => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 			]
 		);
 
 		$element->add_control(
-			'tv_sticky_transition_duration',
+			'es_sticky_transition_duration',
 			[
 				'label'      => esc_html__( 'Transition Duration', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
@@ -208,40 +208,40 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 					'unit' => 'ms',
 				],
 				'condition'  => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 				'selectors'  => [
-					'{{WRAPPER}}.tv-sticky-element' => 'transition-duration: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}.es-sticky-element' => 'transition-duration: {{SIZE}}{{UNIT}};',
 				],
 			]
 		);
 
 		$element->add_responsive_control(
-			'tv_sticky_border_radius',
+			'es_sticky_border_radius',
 			[
 				'label'      => esc_html__( 'Border Radius (Sticky State)', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
-					'{{WRAPPER}}.tv-sticky-element.is-sticking' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}.es-sticky-element.is-sticking' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 			]
 		);
 
 		$element->add_responsive_control(
-			'tv_sticky_padding',
+			'es_sticky_padding',
 			[
 				'label'      => esc_html__( 'Padding (Sticky State)', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => [ 'px', '%', 'em' ],
 				'selectors'  => [
-					'{{WRAPPER}}.tv-sticky-element.is-sticking' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}.es-sticky-element.is-sticking' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				],
 				'condition'  => [
-					'tv_sticky_enable' => 'yes',
+					'es_sticky_enable' => 'yes',
 				],
 			]
 		);
@@ -252,7 +252,7 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 	public function before_render( $element ) {
 		$settings = $element->get_settings_for_display();
 
-		if ( empty( $settings['tv_sticky_enable'] ) || 'yes' !== $settings['tv_sticky_enable'] ) {
+		if ( empty( $settings['es_sticky_enable'] ) || 'yes' !== $settings['es_sticky_enable'] ) {
 			return;
 		}
 
@@ -264,16 +264,16 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 		}
 
 		$config = [
-			'devices'       => ! empty( $settings['tv_sticky_devices'] ) ? $settings['tv_sticky_devices'] : [ 'desktop', 'tablet', 'mobile' ],
-			'trigger'       => ! empty( $settings['tv_sticky_trigger'] ) ? $settings['tv_sticky_trigger'] : 'scroll_down',
-			'position'      => ! empty( $settings['tv_sticky_position'] ) ? $settings['tv_sticky_position'] : 'sticky',
-			'hideOnScroll'  => ( ! empty( $settings['tv_sticky_hide_on_scroll'] ) && 'yes' === $settings['tv_sticky_hide_on_scroll'] ),
+			'devices'       => ! empty( $settings['es_sticky_devices'] ) ? $settings['es_sticky_devices'] : [ 'desktop', 'tablet', 'mobile' ],
+			'trigger'       => ! empty( $settings['es_sticky_trigger'] ) ? $settings['es_sticky_trigger'] : 'scroll_down',
+			'position'      => ! empty( $settings['es_sticky_position'] ) ? $settings['es_sticky_position'] : 'sticky',
+			'hideOnScroll'  => ( ! empty( $settings['es_sticky_hide_on_scroll'] ) && 'yes' === $settings['es_sticky_hide_on_scroll'] ),
 		];
 
 		// Inject configuration
 		$element->add_render_attribute(
 			'_wrapper',
-			'data-tv-sticky-config',
+			'data-es-sticky-config',
 			wp_json_encode( $config )
 		);
 	}
@@ -288,14 +288,14 @@ class Elonix_Sticky_Extension extends Elonix_Base_Extension {
 		
 		wp_register_style(
 			'elonix-sticky-element',
-			ELONIX_ACC_URL . 'assets/css/tv-sticky-element.css',
+			ELONIX_ACC_URL . 'assets/css/es-sticky-element.css',
 			[],
 			ELONIX_VERSION
 		);
 
 		wp_register_script(
 			'elonix-sticky-element',
-			ELONIX_ACC_URL . 'assets/js/tv-sticky-element.js',
+			ELONIX_ACC_URL . 'assets/js/es-sticky-element.js',
 			[],
 			ELONIX_VERSION,
 			true

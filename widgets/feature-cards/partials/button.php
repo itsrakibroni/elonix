@@ -18,19 +18,19 @@ if ( 'a' === $btn_tag ) {
 	$btn_attr = $this->get_render_attribute_string( 'button_link_' . $item['_id'] );
 }
 ?>
-<<?php echo esc_attr( $btn_tag ); ?> class="tv-fc-button" <?php echo $btn_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Safe attribute string from Elementor. ?>>
+<<?php echo esc_attr( $btn_tag ); ?> class="es-fc-button" <?php echo $btn_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Safe attribute string from Elementor. ?>>
 	<?php if ( $has_icon && 'before' === $item['button_icon_position'] ) : ?>
-		<span class="tv-fc-button-icon tv-fc-button-icon-before">
+		<span class="es-fc-button-icon es-fc-button-icon-before">
 			<?php \Elementor\Icons_Manager::render_icon( $item['button_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 		</span>
 	<?php endif; ?>
 
 	<?php if ( ! empty( $item['button_text'] ) ) : ?>
-		<span class="tv-fc-button-text"><?php echo esc_html( $item['button_text'] ); ?></span>
+		<span class="es-fc-button-text"><?php echo esc_html( $item['button_text'] ); ?></span>
 	<?php endif; ?>
 
 	<?php if ( $has_icon && 'after' === $item['button_icon_position'] ) : ?>
-		<span class="tv-fc-button-icon tv-fc-button-icon-after">
+		<span class="es-fc-button-icon es-fc-button-icon-after">
 			<?php \Elementor\Icons_Manager::render_icon( $item['button_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 		</span>
 	<?php endif; ?>

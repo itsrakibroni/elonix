@@ -1,0 +1,10 @@
+.es-archive-meta-row, .es-popup-meta-row, .es-search-meta-row, .es-single-meta-row { display: flex; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #eee; }
+.es-archive-meta-label, .es-popup-meta-label, .es-search-meta-label, .es-single-meta-label { width: 220px; font-weight: bold; padding-top: 4px; }
+.es-archive-meta-field, .es-popup-meta-field, .es-search-meta-field, .es-single-meta-field { flex: 1; }
+.es-archive-meta-field select, .es-archive-meta-field input[type="text"], .es-archive-meta-field input[type="number"],
+.es-popup-meta-field select, .es-popup-meta-field input[type="text"], .es-popup-meta-field input[type="number"],
+.es-search-meta-field select, .es-search-meta-field input[type="text"],
+.es-single-meta-field select, .es-single-meta-field input[type="text"], .es-single-meta-field input[type="number"] { width: 100%; max-width: 400px; }
+.es-popup-meta-field label { display: inline-block; margin-right: 15px; margin-bottom: 5px; }
+.es-archive-meta-section-title, .es-popup-meta-section-title, .es-search-meta-section-title, .es-single-meta-section-title { font-size: 14px; font-weight: bold; background: #f8fafc; padding: 8px 12px; margin: 15px 0 5px 0; border-left: 4px solid #3b82f6; }
+.es-desc { font-size: 12px; color: #666; margin-top: 4px; display: block; }

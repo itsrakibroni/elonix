@@ -197,8 +197,8 @@
 		constructor(element) {
 			this.wrapper      = element;
 			this.id           = this.wrapper.getAttribute('data-popup-id');
-			this.type         = this.wrapper.classList.contains('tv-popup-type-modal') ? 'modal' : 
-			                    (this.wrapper.classList.contains('tv-popup-type-slide_in') ? 'slide_in' : 'notification_bar');
+			this.type         = this.wrapper.classList.contains('es-popup-type-modal') ? 'modal' : 
+			                    (this.wrapper.classList.contains('es-popup-type-slide_in') ? 'slide_in' : 'notification_bar');
 			this.trigger      = this.wrapper.getAttribute('data-trigger');
 			this.triggerVal   = this.wrapper.getAttribute('data-trigger-val');
 			this.scrollVal    = this.wrapper.getAttribute('data-scroll-val');
@@ -252,7 +252,7 @@
 			if (isTablet && this.devices.indexOf('tablet') !== -1) return true;
 			if (isMobile && this.devices.indexOf('mobile') !== -1) return true;
 
-			document.body.classList.add('tv-popup-device-mismatch');
+			document.body.classList.add('es-popup-device-mismatch');
 			return false;
 		}
 
@@ -262,9 +262,9 @@
 		 * @return {boolean} True if suppressed.
 		 */
 		isSuppressed() {
-			const onceKey   = `tv_popup_once_${this.id}`;
-			const sessKey   = `tv_popup_sess_${this.id}`;
-			const cookieKey = `tv_popup_cookie_${this.id}`;
+			const onceKey   = `es_popup_once_${this.id}`;
+			const sessKey   = `es_popup_sess_${this.id}`;
+			const cookieKey = `es_popup_cookie_${this.id}`;
 
 			if ('show_once' === this.frequency) {
 				return !!localStorage.getItem(onceKey);
@@ -285,9 +285,9 @@
 		 * Mark the popup as shown to trigger frequency throttling rules.
 		 */
 		suppressFutureViews() {
-			const onceKey   = `tv_popup_once_${this.id}`;
-			const sessKey   = `tv_popup_sess_${this.id}`;
-			const cookieKey = `tv_popup_cookie_${this.id}`;
+			const onceKey   = `es_popup_once_${this.id}`;
+			const sessKey   = `es_popup_sess_${this.id}`;
+			const cookieKey = `es_popup_cookie_${this.id}`;
 
 			if ('show_once' === this.frequency) {
 				localStorage.setItem(onceKey, 'true');
@@ -357,14 +357,14 @@
 			// Force DOM reflow to trigger smooth CSS animations
 			this.wrapper.offsetHeight;
 
-			this.wrapper.classList.add('tv-popup-active');
+			this.wrapper.classList.add('es-popup-active');
 			this.wrapper.setAttribute('aria-hidden', 'false');
 
 			// Register frequency suppression rule
 			this.suppressFutureViews();
 
 			// Bind close button actions
-			const closeTargets = this.wrapper.querySelectorAll('.tv-popup-close-btn, .tv-popup-overlay');
+			const closeTargets = this.wrapper.querySelectorAll('.es-popup-close-btn, .es-popup-overlay');
 			closeTargets.forEach(target => {
 				target.addEventListener('click', (e) => {
 					e.preventDefault();
@@ -382,7 +382,7 @@
 		 * @param {Function} callback Callback triggered upon closing transition complete.
 		 */
 		dismiss(callback) {
-			this.wrapper.classList.remove('tv-popup-active');
+			this.wrapper.classList.remove('es-popup-active');
 			this.wrapper.setAttribute('aria-hidden', 'true');
 
 			// Restore focus to original trigger element (WCAG compliance)
@@ -408,7 +408,7 @@
 		 * Trap Focus within dialogue wrapper for WCAG compliance.
 		 */
 		trapAccessibilityFocus() {
-			const container = this.wrapper.querySelector('.tv-popup-container');
+			const container = this.wrapper.querySelector('.es-popup-container');
 			if (!container) {
 				return;
 			}
@@ -424,7 +424,7 @@
 			const lastEl  = elements[elements.length - 1];
 
 			// Set initial focus to close button
-			const closeBtn = this.wrapper.querySelector('.tv-popup-close-btn');
+			const closeBtn = this.wrapper.querySelector('.es-popup-close-btn');
 			if (closeBtn) {
 				closeBtn.focus();
 			} else {
@@ -503,7 +503,7 @@
 
 	// Initialize all matched popup wrappers in current page markup on DOMContentLoaded
 	document.addEventListener('DOMContentLoaded', () => {
-		const wrappers = document.querySelectorAll('.tv-popup-wrapper');
+		const wrappers = document.querySelectorAll('.es-popup-wrapper');
 		wrappers.forEach(el => {
 			new Elonix_Popup_Manager(el);
 		});

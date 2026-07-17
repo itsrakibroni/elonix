@@ -9,18 +9,18 @@ if ( empty( $item['title'] ) && empty( $item['subtitle'] ) && empty( $item['desc
 	return;
 }
 ?>
-<div class="tv-fc-meta">
+<div class="es-fc-meta">
 	<?php if ( ! empty( $item['subtitle'] ) ) : ?>
-		<div class="tv-fc-subtitle"><?php echo wp_kses_post( $item['subtitle'] ); ?></div>
+		<div class="es-fc-subtitle"><?php echo wp_kses_post( $item['subtitle'] ); ?></div>
 	<?php endif; ?>
 	
 	<?php if ( ! empty( $item['title'] ) ) : ?>
-		<<?php echo esc_attr( $settings['title_tag'] ); ?> class="tv-fc-title">
+		<<?php echo esc_attr( $settings['title_tag'] ); ?> class="es-fc-title">
 			<?php echo wp_kses_post( $item['title'] ); ?>
 		</<?php echo esc_attr( $settings['title_tag'] ); ?>>
 	<?php endif; ?>
 	
 	<?php if ( ! empty( $item['description'] ) ) : ?>
-		<div class="tv-fc-description"><?php echo wp_kses_post( $item['description'] ); ?></div>
+		<div class="es-fc-description"><?php echo wp_kses_post( $item['description'] ); ?></div>
 	<?php endif; ?>
 </div>

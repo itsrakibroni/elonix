@@ -9,6 +9,6 @@ if ( empty( $item['number_text'] ) ) {
 	return;
 }
 ?>
-<div class="tv-fc-number">
-	<span class="tv-fc-number-text"><?php echo esc_html( $item['number_text'] ); ?></span>
+<div class="es-fc-number">
+	<span class="es-fc-number-text"><?php echo esc_html( $item['number_text'] ); ?></span>
 </div>

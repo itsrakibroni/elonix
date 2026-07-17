@@ -42,7 +42,7 @@ class Elonix_Toolkit_Single_Renderer {
 		}
 
 		// Prevent single template from hijacking itself (fallback to preview engine)
-		if ( 'tv_single' === get_post_type() ) {
+		if ( 'es_single' === get_post_type() ) {
 			return false;
 		}
 
@@ -70,7 +70,7 @@ class Elonix_Toolkit_Single_Renderer {
 		}
 
 		// Prevent overriding Elonix Archive or Search Builder or Popups
-		if ( is_singular( array( 'tv_archive', 'tv_search', 'tv_single', 'elementor_library' ) ) ) {
+		if ( is_singular( array( 'es_archive', 'es_search', 'es_single', 'elementor_library' ) ) ) {
 			return false;
 		}
 
@@ -90,7 +90,7 @@ class Elonix_Toolkit_Single_Renderer {
 	 */
 	public function get_active_matched_single() {
 		if ( class_exists( 'Elonix_Assignment_Engine' ) ) {
-			return \Elonix_Assignment_Engine::instance()->get_matching_template( 'tv_single' );
+			return \Elonix_Assignment_Engine::instance()->get_matching_template( 'es_single' );
 		}
 		return 0;
 	}
@@ -118,7 +118,7 @@ class Elonix_Toolkit_Single_Renderer {
 		$custom_canvas = ELONIX_ACC_PATH . 'inc/modules/single-builder/templates/single-canvas.php';
 		if ( file_exists( $custom_canvas ) ) {
 			// Save matched ID to query state for canvas fetch
-			set_query_var( 'tv_matched_single_id', $matched_id );
+			set_query_var( 'es_matched_single_id', $matched_id );
 			return $custom_canvas;
 		}
 

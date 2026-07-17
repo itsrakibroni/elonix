@@ -28,12 +28,12 @@ class Assignment {
 	public function create_builder_assignment( $elementor_post_id, $type, $make_active = false ) {
 		$type = Type_Normalizer::normalize_template_type( $type );
 		$post_type_map = array(
-			'header'  => 'tv_header',
-			'footer'  => 'tv_footer',
-			'archive' => 'tv_archive',
-			'single'  => 'tv_single',
-			'search'  => 'tv_search_template',
-			'popup'   => 'tv_popup',
+			'header'  => 'es_header',
+			'footer'  => 'es_footer',
+			'archive' => 'es_archive',
+			'single'  => 'es_single',
+			'search'  => 'es_search_template',
+			'popup'   => 'es_popup',
 		);
 
 		if ( ! isset( $post_type_map[ $type ] ) ) {
@@ -100,13 +100,13 @@ class Assignment {
 					true // Active
 				);
 			} else {
-				update_post_meta( $builder_post_id, '_tv_target_include_locations', array( 'entire_site' ) );
+				update_post_meta( $builder_post_id, '_es_target_include_locations', array( 'entire_site' ) );
 			}
 		}
 
 		// Log History using User Meta, not Custom Table
 		$user_id = get_current_user_id();
-		$history = get_user_meta( $user_id, 'tv_imported_templates', true );
+		$history = get_user_meta( $user_id, 'es_imported_templates', true );
 		if ( ! is_array( $history ) ) {
 			$history = array();
 		}
@@ -118,7 +118,7 @@ class Assignment {
 			'timestamp'       => time(),
 		);
 
-		update_user_meta( $user_id, 'tv_imported_templates', $history );
+		update_user_meta( $user_id, 'es_imported_templates', $history );
 
 		return $builder_post_id;
 	}

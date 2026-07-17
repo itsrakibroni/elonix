@@ -24,7 +24,7 @@ class Elonix_Toolkit_Breadcrumb_Widget extends Elonix_Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-breadcrumb';
+		return 'es-breadcrumb';
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Elonix_Toolkit_Breadcrumb_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-navigation-horizontal';
 	}
 
@@ -50,7 +50,7 @@ class Elonix_Toolkit_Breadcrumb_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return array Keywords list.
 	 */
-	public function get_tv_widget_keywords() {
+	public function get_es_widget_keywords() {
 		return array( 'breadcrumb', 'navigation', 'seo', 'yoast', 'rankmath', 'woocommerce' );
 	}
 
@@ -60,7 +60,7 @@ class Elonix_Toolkit_Breadcrumb_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-breadcrumb' );
+		return array( 'elonix-widget-es-breadcrumb' );
 	}
 
 	/**

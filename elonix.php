@@ -163,7 +163,7 @@ new Elonix_Toolkit_Assets_Manager();
 // Load Search AJAX Handler globally
 add_action( 'plugins_loaded', 'elonix_init_search_ajax', 25 );
 function elonix_init_search_ajax() {
-	$ajax_path = ELONIX_ACC_PATH . 'widgets/tv-search/class-search-ajax.php';
+	$ajax_path = ELONIX_ACC_PATH . 'widgets/es-search/class-search-ajax.php';
 	if ( file_exists( $ajax_path ) ) {
 		require_once $ajax_path;
 		if ( class_exists( 'Elonix_Toolkit_Search_AJAX_Handler' ) ) {
@@ -175,7 +175,7 @@ function elonix_init_search_ajax() {
 // Load Search Results AJAX Handler globally
 add_action( 'plugins_loaded', 'elonix_init_search_results_ajax', 25 );
 function elonix_init_search_results_ajax() {
-	$ajax_path = ELONIX_ACC_PATH . 'widgets/tv-search-results/class-ajax-handler.php';
+	$ajax_path = ELONIX_ACC_PATH . 'widgets/es-search-results/class-ajax-handler.php';
 	if ( file_exists( $ajax_path ) ) {
 		require_once $ajax_path;
 		if ( class_exists( 'Elonix_Toolkit_Search_Results_AJAX_Handler' ) ) {
@@ -187,7 +187,7 @@ function elonix_init_search_results_ajax() {
 // Load Post List AJAX Handler globally
 add_action( 'plugins_loaded', 'elonix_init_post_list_ajax', 26 );
 function elonix_init_post_list_ajax() {
-	$ajax_path = ELONIX_ACC_PATH . 'widgets/tv-post-list/handler-ajax.php';
+	$ajax_path = ELONIX_ACC_PATH . 'widgets/es-post-list/handler-ajax.php';
 	if ( file_exists( $ajax_path ) ) {
 		require_once $ajax_path;
 	}
@@ -196,7 +196,7 @@ function elonix_init_post_list_ajax() {
 // Load Post Block AJAX Handler globally
 add_action( 'plugins_loaded', 'elonix_init_post_block_ajax', 27 );
 function elonix_init_post_block_ajax() {
-	$ajax_path = ELONIX_ACC_PATH . 'widgets/tv-post-block/handler-ajax.php';
+	$ajax_path = ELONIX_ACC_PATH . 'widgets/es-post-block/handler-ajax.php';
 	if ( file_exists( $ajax_path ) ) {
 		require_once $ajax_path;
 	}
@@ -205,7 +205,7 @@ function elonix_init_post_block_ajax() {
 // Load Gallery AJAX Handler globally
 add_action( 'plugins_loaded', 'elonix_init_gallery_ajax', 28 );
 function elonix_init_gallery_ajax() {
-	$ajax_path = ELONIX_ACC_PATH . 'widgets/tv-gallery/handler-ajax.php';
+	$ajax_path = ELONIX_ACC_PATH . 'widgets/es-gallery/handler-ajax.php';
 	if ( file_exists( $ajax_path ) ) {
 		require_once $ajax_path;
 	}
@@ -214,7 +214,7 @@ function elonix_init_gallery_ajax() {
 // Load Post Comments AJAX Handler globally
 add_action( 'plugins_loaded', 'elonix_init_post_comments_ajax', 28 );
 function elonix_init_post_comments_ajax() {
-	$ajax_path = ELONIX_ACC_PATH . 'widgets/tv-post-comments/class-ajax-handler.php';
+	$ajax_path = ELONIX_ACC_PATH . 'widgets/es-post-comments/class-ajax-handler.php';
 	if ( file_exists( $ajax_path ) ) {
 		require_once $ajax_path;
 	}
@@ -495,7 +495,7 @@ function elonix_activate() {
 		if ( ! is_array( $cpt_support ) ) {
 			$cpt_support = array( 'page', 'post' );
 		}
-		$builder_cpts = array( 'tv_header', 'tv_footer', 'tv_popup', 'tv_archive', 'tv_search_template' );
+		$builder_cpts = array( 'es_header', 'es_footer', 'es_popup', 'es_archive', 'es_search_template' );
 		if ( array_diff( $builder_cpts, $cpt_support ) ) {
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
 			update_option( 'elementor_cpt_support', array_values( array_unique( array_merge( $cpt_support, $post_types, $builder_cpts ) ) ) );

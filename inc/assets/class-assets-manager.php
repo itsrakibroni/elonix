@@ -66,14 +66,14 @@ class Elonix_Toolkit_Assets_Manager {
 
 		wp_register_style(
 			'elonix-notifications-css',
-			ELONIX_ACC_URL . 'assets/admin/css/tv-notifications.css',
+			ELONIX_ACC_URL . 'assets/admin/css/es-notifications.css',
 			array(),
 			$version
 		);
 
 		wp_register_script(
 			'elonix-notifications-js',
-			ELONIX_ACC_URL . 'assets/admin/js/tv-notifications.js',
+			ELONIX_ACC_URL . 'assets/admin/js/es-notifications.js',
 			array( 'jquery' ),
 			$version,
 			true
@@ -114,7 +114,7 @@ class Elonix_Toolkit_Assets_Manager {
 		$version = self::get_asset_version();
 
 		// Register Reset CSS
-		$reset_path = 'assets/css/core/tv-reset.css';
+		$reset_path = 'assets/css/core/es-reset.css';
 		if ( file_exists( ELONIX_ACC_PATH . $reset_path ) ) {
 			wp_register_style(
 				'elonix-reset',
@@ -135,7 +135,7 @@ class Elonix_Toolkit_Assets_Manager {
 			);
 		}
 
-		$core_js_path = "assets/js/tv-core.js";
+		$core_js_path = "assets/js/es-core.js";
 		if ( file_exists( ELONIX_ACC_PATH . $core_js_path ) ) {
 			wp_register_script(
 				'elonix-core-js',
@@ -193,8 +193,8 @@ class Elonix_Toolkit_Assets_Manager {
 			$style_rel  = "assets/css/{$slug}.css";
 			$script_rel = "assets/js/{$slug}.js";
 
-			// Fallback: If tv- prefix is present but files are named without prefix, look for those files instead.
-			if ( 0 === strpos( $slug, 'tv-' ) ) {
+			// Fallback: If es- prefix is present but files are named without prefix, look for those files instead.
+			if ( 0 === strpos( $slug, 'es-' ) ) {
 				$fallback_slug = substr( $slug, 3 );
 				if ( ! file_exists( ELONIX_ACC_PATH . $style_rel ) && file_exists( ELONIX_ACC_PATH . "assets/css/{$fallback_slug}.css" ) ) {
 					$style_rel = "assets/css/{$fallback_slug}.css";
@@ -222,8 +222,11 @@ class Elonix_Toolkit_Assets_Manager {
 					true
 				);
 
-				if ( 'tv-post-comments' === $slug ) {
-					wp_localize_script( 'elonix-widget-tv-post-comments', 'tv_post_comments_ajax', array( 'ajaxurl' => admin_url( 'admin-ajax.php' ) ) );
+				if ( 'es-post-comments' === $slug ) {
+					wp_localize_script( 'elonix-widget-es-post-comments', 'es_post_comments_ajax', array( 
+						'ajaxurl' => admin_url( 'admin-ajax.php' ),
+						'nonce'   => wp_create_nonce( 'elonix_comment_nonce' )
+					) );
 				}
 			}
 		}

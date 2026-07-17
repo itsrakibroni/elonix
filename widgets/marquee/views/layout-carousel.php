@@ -32,18 +32,18 @@ $carousel_settings['allow_css3_support']   = 'yes' === $settings['allow_css3_sup
 
 $data_settings = wp_json_encode( $carousel_settings );
 ?>
-<div class="tv-marquee__wrapper tv-marquee__carousel" data-settings="<?php echo esc_attr( $data_settings ); ?>">
-	<div class="tv-marquee__track">
+<div class="es-marquee__wrapper es-marquee__carousel" data-settings="<?php echo esc_attr( $data_settings ); ?>">
+	<div class="es-marquee__track">
 		<?php
 		if ( ! empty( $settings['items'] ) ) {
 			foreach ( $settings['items'] as $index => $item ) {
 				$item_key = 'item_' . $index;
 				
-				$this->add_render_attribute( $item_key, 'class', 'tv-marquee__item elementor-repeater-item-' . esc_attr( $item['_id'] ) );
+				$this->add_render_attribute( $item_key, 'class', 'es-marquee__item elementor-repeater-item-' . esc_attr( $item['_id'] ) );
 				
-				$this->add_render_attribute( $item_key . '_text', 'class', 'tv-marquee__text' );
-				$this->add_render_attribute( $item_key . '_icon', 'class', 'tv-marquee__icon' );
-				$this->add_render_attribute( $item_key . '_title', 'class', 'tv-marquee__title' );
+				$this->add_render_attribute( $item_key . '_text', 'class', 'es-marquee__text' );
+				$this->add_render_attribute( $item_key . '_icon', 'class', 'es-marquee__icon' );
+				$this->add_render_attribute( $item_key . '_title', 'class', 'es-marquee__title' );
 
 				$display_type = ! empty( $item['item_display_type'] ) ? $item['item_display_type'] : 'icon';
 				$has_icon     = ! empty( $item['item_icon']['value'] );
@@ -57,9 +57,9 @@ $data_settings = wp_json_encode( $carousel_settings );
 				}
 				?>
 				<<?php echo esc_attr( $tag ); ?> <?php $this->print_render_attribute_string( $item_key ); ?>>
-					<div class="tv-marquee__content">
+					<div class="es-marquee__content">
 						<?php if ( 'image' === $display_type && $has_image ) : ?>
-							<figure class="tv-marquee__image">
+							<figure class="es-marquee__image">
 								<?php $this->render_item_image( $item ); ?>
 							</figure>
 						<?php elseif ( 'icon' === $display_type && $has_icon ) : ?>
@@ -74,7 +74,7 @@ $data_settings = wp_json_encode( $carousel_settings );
 							<?php endif; ?>
 							
 							<?php if ( ! empty( $item['item_description'] ) ) : ?>
-								<span class="tv-marquee__desc"><?php echo wp_kses_post( $item['item_description'] ); ?></span>
+								<span class="es-marquee__desc"><?php echo wp_kses_post( $item['item_description'] ); ?></span>
 							<?php endif; ?>
 						</div>
 					</div>
@@ -86,8 +86,8 @@ $data_settings = wp_json_encode( $carousel_settings );
 	</div>
 	
 	<?php if ( $pause_button ) : ?>
-		<button class="tv-marquee__pause-btn" aria-label="<?php esc_attr_e( 'Pause/Play animation', 'elonix' ); ?>" aria-pressed="false">
-			<span class="tv-marquee__pause-icon" aria-hidden="true">
+		<button class="es-marquee__pause-btn" aria-label="<?php esc_attr_e( 'Pause/Play animation', 'elonix' ); ?>" aria-pressed="false">
+			<span class="es-marquee__pause-icon" aria-hidden="true">
 				<svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>
 			</span>
 		</button>

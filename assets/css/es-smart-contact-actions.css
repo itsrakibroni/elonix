@@ -1,0 +1,744 @@
+/* Elonix – Toolkit for Elementor Smart Contact Actions CSS */
+:root {
+	--es-sca-status-online: #4cd964;
+	--es-sca-status-offline: #8e8e93;
+	--es-sca-status-away: #ffcc00;
+	--es-sca-status-lunch: #5ac8fa;
+	--es-sca-font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+}
+
+/* Base Container */
+:where(.es-sca-container) {
+	position: fixed;
+	z-index: 99999;
+	font-family: var(--es-sca-font-family);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	box-sizing: border-box;
+}
+
+:where(.es-sca-container) * {
+	box-sizing: border-box;
+}
+
+/* Alignments & Pos Rules */
+:where(.es-sca-align-right) {
+	right: 30px;
+	left: auto;
+}
+:where(.es-sca-align-left) {
+	left: 30px;
+	right: auto;
+}
+
+:where(.es-sca-pos-top-left) {
+	top: 30px;
+	bottom: auto;
+	flex-direction: column-reverse;
+}
+:where(.es-sca-pos-top-right) {
+	top: 30px;
+	bottom: auto;
+	flex-direction: column-reverse;
+}
+:where(.es-sca-pos-bottom-left) {
+	bottom: 30px;
+	top: auto;
+	flex-direction: column;
+}
+:where(.es-sca-pos-bottom-right) {
+	bottom: 30px;
+	top: auto;
+	flex-direction: column;
+}
+:where(.es-sca-pos-center-left) {
+	top: 50%;
+	transform: translateY(-50%);
+	bottom: auto;
+	left: 30px;
+	right: auto;
+}
+:where(.es-sca-pos-center-right) {
+	top: 50%;
+	transform: translateY(-50%);
+	bottom: auto;
+	right: 30px;
+	left: auto;
+}
+
+/* Main Trigger Button */
+:where(.es-sca-trigger-btn) {
+	position: relative;
+	width: 60px;
+	height: 60px;
+	border-radius: 50%;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	text-decoration: none;
+}
+
+:where(.es-sca-trigger-btn):focus-visible {
+	outline: 3px solid #9B51E0;
+	outline-offset: 3px;
+}
+
+:where(.es-sca-trigger-btn) svg,
+:where(.es-sca-trigger-btn) i {
+	font-size: 24px;
+	width: 24px;
+	height: 24px;
+	display: inline-block;
+	fill: currentColor;
+	color: inherit;
+	transition: transform 0.3s ease;
+}
+
+/* Trigger Icon Rotations */
+:where(.es-sca-trigger-btn)[aria-expanded="true"] :where(.es-sca-trigger-icon-open) {
+	transform: scale(0) rotate(-90deg);
+	display: none;
+}
+:where(.es-sca-trigger-btn)[aria-expanded="true"] :where(.es-sca-trigger-icon-close) {
+	display: flex !important;
+	transform: scale(1) rotate(90deg);
+}
+
+/* Presets Styling */
+:where(.es-sca-bg-solid) {
+	background-color: #9B51E0;
+	color: #ffffff;
+}
+:where(.es-sca-bg-solid):hover {
+	background-color: #8238cc;
+}
+:where(.es-sca-bg-gradient) {
+	background: linear-gradient(135deg, #9B51E0 0%, #3081b9 100%);
+	color: #ffffff;
+}
+:where(.es-sca-bg-gradient):hover {
+	background: linear-gradient(135deg, #8238cc 0%, #256a99 100%);
+}
+:where(.es-sca-bg-glass) {
+	background: rgba(255, 255, 255, 0.7);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	border: 1px solid rgba(255, 255, 255, 0.3);
+	color: #333333;
+}
+:where(.es-sca-bg-glass):hover {
+	background: rgba(255, 255, 255, 0.85);
+}
+:where(.es-sca-bg-neumorphism) {
+	background: #e0e0e0;
+	color: #333333;
+	box-shadow: 6px 6px 12px #bebebe, -6px -6px 12px #ffffff;
+}
+:where(.es-sca-bg-neumorphism):hover {
+	background: #d5d5d5;
+}
+
+/* Attention Grab Animations */
+:where(.es-sca-anim-pulse) {
+	animation: es-sca-pulse 2s infinite;
+}
+:where(.es-sca-anim-wiggle) {
+	animation: es-sca-wiggle 1.5s infinite ease-in-out;
+}
+:where(.es-sca-anim-bounce) {
+	animation: es-sca-bounce 2s infinite;
+}
+
+@keyframes es-sca-pulse {
+	0% {
+		box-shadow: 0 0 0 0 rgba(155, 81, 224, 0.4);
+	}
+	70% {
+		box-shadow: 0 0 0 15px rgba(155, 81, 224, 0);
+	}
+	100% {
+		box-shadow: 0 0 0 0 rgba(155, 81, 224, 0);
+	}
+}
+@keyframes es-sca-wiggle {
+	0%, 100% { transform: rotate(0deg); }
+	15% { transform: rotate(-10deg) scale(1.05); }
+	30% { transform: rotate(10deg) scale(1.05); }
+	45% { transform: rotate(-5deg) scale(1.05); }
+	60% { transform: rotate(5deg) scale(1.05); }
+	75% { transform: rotate(-2deg); }
+}
+@keyframes es-sca-bounce {
+	0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+	40% { transform: translateY(-10px); }
+	60% { transform: translateY(-5px); }
+}
+
+/* Notification Badge Bubble */
+:where(.es-sca-badge) {
+	position: absolute;
+	top: -5px;
+	right: -5px;
+	background-color: #ff3b30;
+	color: #ffffff;
+	font-size: 11px;
+	font-weight: 700;
+	padding: 3px 8px;
+	border-radius: 12px;
+	box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+	line-height: 1;
+	white-space: nowrap;
+	z-index: 2;
+}
+
+/* Action Items & List */
+:where(.es-sca-item-list) {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	margin-bottom: 15px;
+	transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+:where(.es-sca-pos-top-left) :where(.es-sca-item-list),
+:where(.es-sca-pos-top-right) :where(.es-sca-item-list) {
+	margin-bottom: 0;
+	margin-top: 15px;
+	flex-direction: column-reverse;
+}
+
+:where(.es-sca-item) {
+	position: relative;
+	margin: 6px 0;
+	opacity: 0;
+	transform: scale(0.8);
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+
+:where(.es-sca-container.es-sca-dial-open) :where(.es-sca-item) {
+	opacity: 1;
+	transform: scale(1);
+}
+
+/* Action Item Button */
+:where(.es-sca-item-btn) {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	background-color: #016087;
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+	cursor: pointer;
+	text-decoration: none;
+	transition: all 0.2s ease;
+}
+
+:where(.es-sca-item-btn):hover {
+	background-color: #183ad6;
+	color: #ffffff;
+	transform: scale(1.1);
+	box-shadow: 0 6px 15px rgba(0, 0, 0, 0.2);
+}
+
+:where(.es-sca-item-btn) svg,
+:where(.es-sca-item-btn) i {
+	font-size: 18px;
+	width: 18px;
+	height: 18px;
+	display: inline-block;
+	fill: currentColor;
+	color: inherit;
+}
+
+/* Dynamic Radial Positioning classes (applied by JS) */
+:where(.es-sca-layout-radial) :where(.es-sca-item-list) {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: 0;
+}
+:where(.es-sca-layout-radial) :where(.es-sca-item) {
+	position: absolute;
+	margin: 0;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%) scale(0.8);
+	transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.2);
+}
+:where(.es-sca-layout-radial.es-sca-dial-open) :where(.es-sca-item) {
+	transform: translate(var(--es-sca-radial-x, -50%), var(--es-sca-radial-y, -50%)) scale(1);
+}
+
+/* Tooltips */
+:where(.es-sca-tooltip) {
+	position: absolute;
+	right: 60px;
+	top: 50%;
+	transform: translateY(-50%) translateX(10px);
+	background-color: #333333;
+	color: #ffffff;
+	padding: 5px 10px;
+	border-radius: 4px;
+	font-size: 12px;
+	font-weight: 500;
+	white-space: nowrap;
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.2s ease;
+	box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+	z-index: 10;
+}
+
+:where(.es-sca-align-left) :where(.es-sca-tooltip) {
+	right: auto;
+	left: 60px;
+	transform: translateY(-50%) translateX(-10px);
+}
+
+:where(.es-sca-item):hover :where(.es-sca-tooltip) {
+	opacity: 1;
+	transform: translateY(-50%) translateX(0);
+}
+
+/* Tooltip Arrow */
+:where(.es-sca-tooltip)::after {
+	content: "";
+	position: absolute;
+	top: 50%;
+	right: -8px;
+	transform: translateY(-50%);
+	border-width: 4px;
+	border-style: solid;
+	border-color: transparent transparent transparent #333333;
+}
+
+:where(.es-sca-align-left) :where(.es-sca-tooltip)::after {
+	right: auto;
+	left: -8px;
+	border-color: transparent #333333 transparent transparent;
+}
+
+/* Stack Panel Layouts (Vertical / Horizontal) */
+:where(.es-sca-stack-wrapper) {
+	display: flex;
+	border-radius: 8px;
+	padding: 8px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	gap: 8px;
+}
+
+:where(.es-sca-layout-vertical) :where(.es-sca-stack-wrapper) {
+	flex-direction: column;
+}
+:where(.es-sca-layout-horizontal) :where(.es-sca-stack-wrapper) {
+	flex-direction: row;
+}
+
+:where(.es-sca-layout-vertical) :where(.es-sca-item),
+:where(.es-sca-layout-horizontal) :where(.es-sca-item) {
+	opacity: 1;
+	transform: scale(1);
+	margin: 0;
+}
+
+/* Contact Card Drawer Layout */
+:where(.es-sca-card-drawer) {
+	position: absolute;
+	bottom: 80px;
+	right: 0;
+	width: 320px;
+	border-radius: 16px;
+	box-shadow: 0 12px 36px rgba(0,0,0,0.2);
+	overflow: hidden;
+	display: flex;
+	flex-direction: column;
+	background: #ffffff;
+	z-index: 10000;
+	transform: translateY(20px);
+	opacity: 0;
+	pointer-events: none;
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+:where(.es-sca-align-left) :where(.es-sca-card-drawer) {
+	right: auto;
+	left: 0;
+}
+
+:where(.es-sca-pos-top-left) :where(.es-sca-card-drawer),
+:where(.es-sca-pos-top-right) :where(.es-sca-card-drawer) {
+	bottom: auto;
+	top: 80px;
+	transform: translateY(-20px);
+}
+
+:where(.es-sca-container.es-sca-card-open) :where(.es-sca-card-drawer) {
+	opacity: 1;
+	transform: translateY(0);
+	pointer-events: auto;
+}
+
+/* Card Header */
+:where(.es-sca-card-header) {
+	background-color: #9B51E0;
+	color: #ffffff;
+	padding: 20px;
+}
+:where(.es-sca-card-header) h4 {
+	margin: 0 0 6px 0;
+	font-size: 18px;
+	font-weight: 600;
+	color: inherit;
+}
+:where(.es-sca-card-header) p {
+	margin: 0;
+	font-size: 13px;
+	opacity: 0.85;
+	color: inherit;
+	line-height: 1.4;
+}
+
+/* Card Body */
+:where(.es-sca-card-body) {
+	padding: 15px;
+	max-height: 380px;
+	overflow-y: auto;
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+	background-color: inherit;
+}
+
+/* Agent Row */
+:where(.es-sca-agent-row) {
+	display: flex;
+	align-items: center;
+	padding: 10px;
+	border-radius: 8px;
+	background: rgba(0,0,0,0.03);
+	transition: background 0.2s ease;
+	gap: 12px;
+}
+
+:where(.es-sca-agent-row):hover {
+	background: rgba(0,0,0,0.06);
+}
+
+:where(.es-sca-agent-avatar) {
+	position: relative;
+	width: 44px;
+	height: 44px;
+	flex-shrink: 0;
+}
+
+:where(.es-sca-agent-avatar) img {
+	width: 100%;
+	height: 100%;
+	border-radius: 50%;
+	object-fit: cover;
+}
+
+:where(.es-sca-status-indicator) {
+	position: absolute;
+	bottom: 0;
+	right: 0;
+	width: 12px;
+	height: 12px;
+	border-radius: 50%;
+	border: 2px solid #ffffff;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+}
+
+:where(.es-sca-status-online) {
+	background-color: var(--es-sca-status-online);
+}
+:where(.es-sca-status-offline) {
+	background-color: var(--es-sca-status-offline);
+}
+:where(.es-sca-status-away) {
+	background-color: var(--es-sca-status-away);
+}
+:where(.es-sca-status-lunch) {
+	background-color: var(--es-sca-status-lunch);
+}
+
+:where(.es-sca-agent-info) {
+	flex-grow: 1;
+	min-width: 0;
+}
+
+:where(.es-sca-agent-info) h5 {
+	margin: 0 0 3px 0;
+	font-size: 14px;
+	font-weight: 600;
+	color: #333;
+}
+
+:where(.es-sca-bg-glass) :where(.es-sca-agent-info) h5 {
+	color: inherit;
+}
+
+:where(.es-sca-agent-info) span {
+	font-size: 11px;
+	color: #777;
+	display: block;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+}
+
+:where(.es-sca-bg-glass) :where(.es-sca-agent-info) span {
+	color: inherit;
+	opacity: 0.8;
+}
+
+:where(.es-sca-agent-link-btn) {
+	width: 32px;
+	height: 32px;
+	border-radius: 50%;
+	background-color: #9B51E0;
+	color: #ffffff;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	transition: transform 0.2s ease;
+	flex-shrink: 0;
+}
+
+:where(.es-sca-agent-link-btn):hover {
+	background-color: #8238cc;
+	transform: scale(1.1);
+}
+
+:where(.es-sca-agent-link-btn) svg,
+:where(.es-sca-agent-link-btn) i {
+	font-size: 14px;
+	width: 14px;
+	height: 14px;
+	fill: currentColor;
+}
+
+/* Inline Shortcode Forms inside Drawer */
+:where(.es-sca-inline-form-wrapper) {
+	padding: 10px 5px;
+	border-top: 1px solid rgba(0,0,0,0.06);
+	margin-top: 4px;
+}
+
+:where(.es-sca-inline-form-wrapper) form {
+	margin: 0;
+}
+
+:where(.es-sca-inline-form-wrapper) input,
+:where(.es-sca-inline-form-wrapper) textarea,
+:where(.es-sca-inline-form-wrapper) select {
+	width: 100% !important;
+	box-sizing: border-box !important;
+	margin-bottom: 8px !important;
+	padding: 8px 10px !important;
+	border: 1px solid rgba(0,0,0,0.15) !important;
+	border-radius: 6px !important;
+	font-size: 13px !important;
+	background: #ffffff !important;
+}
+
+:where(.es-sca-inline-form-wrapper) button,
+:where(.es-sca-inline-form-wrapper) input[type="submit"] {
+	width: 100% !important;
+	background-color: #9B51E0 !important;
+	color: #ffffff !important;
+	padding: 10px !important;
+	border: none !important;
+	border-radius: 6px !important;
+	font-weight: 600 !important;
+	cursor: pointer !important;
+	transition: background 0.2s ease !important;
+}
+
+:where(.es-sca-inline-form-wrapper) button:hover,
+:where(.es-sca-inline-form-wrapper) input[type="submit"]:hover {
+	background-color: #8238cc !important;
+}
+
+/* Mini Toolbar Layout */
+:where(.es-sca-toolbar-panel) {
+	display: flex;
+	flex-direction: row;
+	border-radius: 30px;
+	padding: 6px;
+	box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+	gap: 6px;
+}
+
+:where(.es-sca-toolbar-panel) :where(.es-sca-item) {
+	opacity: 1;
+	transform: scale(1);
+	margin: 0;
+}
+
+:where(.es-sca-toolbar-panel) :where(.es-sca-item-btn) {
+	width: 40px;
+	height: 40px;
+}
+
+/* QR Code Modal Styling */
+:where(.es-sca-qr-modal) {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%) scale(0.9);
+	background: #ffffff;
+	border-radius: 12px;
+	box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+	width: 280px;
+	padding: 20px;
+	z-index: 100000;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.15);
+}
+
+:where(.es-sca-qr-modal.es-sca-qr-active) {
+	display: flex !important;
+	transform: translate(-50%, -50%) scale(1);
+}
+
+:where(.es-sca-qr-header) {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 15px;
+	border-bottom: 1px solid rgba(0,0,0,0.08);
+	padding-bottom: 8px;
+}
+
+:where(.es-sca-qr-header) span {
+	font-weight: 600;
+	font-size: 14px;
+	color: #333;
+}
+
+:where(.es-sca-qr-close) {
+	background: none;
+	border: none;
+	font-size: 20px;
+	line-height: 1;
+	cursor: pointer;
+	color: #999;
+	padding: 0 5px;
+}
+:where(.es-sca-qr-close):hover {
+	color: #333;
+}
+
+:where(.es-sca-qr-canvas-wrapper) {
+	background: #ffffff;
+	padding: 10px;
+	border: 1px solid rgba(0,0,0,0.05);
+	border-radius: 8px;
+}
+
+:where(.es-sca-qr-canvas) {
+	display: block;
+	max-width: 100%;
+}
+
+/* Modal Overlay backdrop */
+:where(.es-sca-qr-overlay) {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: rgba(0,0,0,0.5);
+	z-index: 99999;
+}
+
+/* Smart Visibility animations */
+:where(.es-sca-container.es-sca-hidden) {
+	transform: translateY(150px) scale(0.8);
+	opacity: 0;
+	pointer-events: none;
+}
+:where(.es-sca-pos-top-left.es-sca-hidden),
+:where(.es-sca-pos-top-right.es-sca-hidden) {
+	transform: translateY(-150px) scale(0.8);
+}
+
+/* FontAwesome SVG sizing fixes */
+:where(.es-sca-container) svg.svg-inline--fa {
+	width: 1em;
+	height: 1em;
+	vertical-align: -0.125em;
+}
+
+/* Responsive CSS rules */
+@media (max-width: 768px) {
+	:where(.es-sca-align-right) {
+		right: 15px;
+	}
+	:where(.es-sca-align-left) {
+		left: 15px;
+	}
+	:where(.es-sca-pos-bottom-right),
+	:where(.es-sca-pos-bottom-left) {
+		bottom: 15px;
+	}
+	:where(.es-sca-pos-top-right),
+	:where(.es-sca-pos-top-left) {
+		top: 15px;
+	}
+	:where(.es-sca-card-drawer) {
+		width: calc(100vw - 30px);
+		max-width: 320px;
+	}
+}
+
+/* Accessibility outline fixes */
+:where(.es-sca-item-btn):focus-visible,
+:where(.es-sca-agent-link-btn):focus-visible,
+:where(.es-sca-qr-close):focus-visible {
+	outline: 2px solid #9B51E0;
+	outline-offset: 2px;
+}
+
+/* RTL Symmetric Flip support */
+body.rtl :where(.es-sca-align-right) {
+	right: auto;
+	left: 30px;
+}
+body.rtl :where(.es-sca-align-left) {
+	left: auto;
+	right: 30px;
+}
+body.rtl :where(.es-sca-tooltip) {
+	right: auto;
+	left: 60px;
+	transform: translateY(-50%) translateX(-10px);
+}
+body.rtl :where(.es-sca-tooltip)::after {
+	right: auto;
+	left: -8px;
+	border-color: transparent #333333 transparent transparent;
+}
+body.rtl :where(.es-sca-card-drawer) {
+	right: auto;
+	left: 0;
+}
+body.rtl :where(.es-sca-align-left) :where(.es-sca-card-drawer) {
+	left: auto;
+	right: 0;
+}

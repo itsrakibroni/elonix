@@ -9,6 +9,6 @@ if ( empty( $item['image']['url'] ) ) {
 	return;
 }
 ?>
-<div class="tv-fc-image">
+<div class="es-fc-image">
 	<?php echo wp_kses_post( \Elementor\Group_Control_Image_Size::get_attachment_image_html( $item, 'image', 'image' ) ); ?>
 </div>

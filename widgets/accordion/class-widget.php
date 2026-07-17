@@ -17,7 +17,7 @@ class Elonix_Toolkit_Accordion_Widget extends Elonix_Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-accordion';
+		return 'es-accordion';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Elonix_Toolkit_Accordion_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-accordion';
 	}
 
@@ -43,8 +43,8 @@ class Elonix_Toolkit_Accordion_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return array Keywords list.
 	 */
-	public function get_tv_widget_keywords() {
-		return array( 'accordion', 'faq', 'toggle', 'tvkit' );
+	public function get_es_widget_keywords() {
+		return array( 'accordion', 'faq', 'toggle', 'eskit' );
 	}
 
 	/**
@@ -53,7 +53,7 @@ class Elonix_Toolkit_Accordion_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-accordion' );
+		return array( 'elonix-widget-es-accordion' );
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Elonix_Toolkit_Accordion_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_script_depends() {
-		return array( 'elonix-widget-tv-accordion' );
+		return array( 'elonix-widget-es-accordion' );
 	}
 
 	/**

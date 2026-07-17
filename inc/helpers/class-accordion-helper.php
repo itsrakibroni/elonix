@@ -376,15 +376,15 @@ namespace {
 		 */
 		public static function register_accordion_style_controls( $widget, $prefix = '', $selectors = array(), $condition = array() ) {
 
-			$container_sel    = isset( $selectors['container'] ) ? $selectors['container'] : '{{WRAPPER}} .tv-accordion-container';
-			$item_sel         = isset( $selectors['item'] ) ? $selectors['item'] : '{{WRAPPER}} .tv-accordion-item';
-			$header_sel       = isset( $selectors['header'] ) ? $selectors['header'] : '{{WRAPPER}} .tv-accordion-header';
-			$trigger_sel      = isset( $selectors['trigger'] ) ? $selectors['trigger'] : '{{WRAPPER}} .tv-accordion-header-trigger';
-			$title_sel        = isset( $selectors['title'] ) ? $selectors['title'] : '{{WRAPPER}} .tv-accordion-title';
-			$badge_sel        = isset( $selectors['badge'] ) ? $selectors['badge'] : '{{WRAPPER}} .tv-accordion-badge';
-			$icon_wrapper_sel = isset( $selectors['icon_wrapper'] ) ? $selectors['icon_wrapper'] : '{{WRAPPER}} .tv-accordion-icon-wrapper';
-			$content_sel      = isset( $selectors['content'] ) ? $selectors['content'] : '{{WRAPPER}} .tv-accordion-content';
-			$number_sel       = isset( $selectors['number'] ) ? $selectors['number'] : '{{WRAPPER}} .tv-accordion-number';
+			$container_sel    = isset( $selectors['container'] ) ? $selectors['container'] : '{{WRAPPER}} .es-accordion-container';
+			$item_sel         = isset( $selectors['item'] ) ? $selectors['item'] : '{{WRAPPER}} .es-accordion-item';
+			$header_sel       = isset( $selectors['header'] ) ? $selectors['header'] : '{{WRAPPER}} .es-accordion-header';
+			$trigger_sel      = isset( $selectors['trigger'] ) ? $selectors['trigger'] : '{{WRAPPER}} .es-accordion-header-trigger';
+			$title_sel        = isset( $selectors['title'] ) ? $selectors['title'] : '{{WRAPPER}} .es-accordion-title';
+			$badge_sel        = isset( $selectors['badge'] ) ? $selectors['badge'] : '{{WRAPPER}} .es-accordion-badge';
+			$icon_wrapper_sel = isset( $selectors['icon_wrapper'] ) ? $selectors['icon_wrapper'] : '{{WRAPPER}} .es-accordion-icon-wrapper';
+			$content_sel      = isset( $selectors['content'] ) ? $selectors['content'] : '{{WRAPPER}} .es-accordion-content';
+			$number_sel       = isset( $selectors['number'] ) ? $selectors['number'] : '{{WRAPPER}} .es-accordion-number';
 
 			// ==========================================
 			// 0. ACCORDION (Container)
@@ -448,7 +448,7 @@ namespace {
 						'center' => array( 'title' => esc_html__( 'Center', 'elonix' ), 'icon' => 'eicon-text-align-center' ),
 						'right'  => array( 'title' => esc_html__( 'Right', 'elonix' ), 'icon' => 'eicon-text-align-right' ),
 					),
-					'prefix_class' => 'tv-accordion-align%s-',
+					'prefix_class' => 'es-accordion-align%s-',
 				)
 			);
 
@@ -612,7 +612,7 @@ namespace {
 				Group_Control_Border::get_type(),
 				array(
 					'name'     => $prefix . 'item_border_active_main',
-					'selector' => $item_sel . '.tv-active',
+					'selector' => $item_sel . '.es-active',
 				)
 			);
 
@@ -730,7 +730,7 @@ namespace {
 				array(
 					'name'     => $prefix . 'item_background_active', // Backward compatibility with previous item background active
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-header-trigger',
+					'selector' => '{{WRAPPER}} .es-accordion-item.es-active .es-accordion-header-trigger',
 				)
 			);
 
@@ -738,7 +738,7 @@ namespace {
 				Group_Control_Border::get_type(),
 				array(
 					'name'     => $prefix . 'item_border_active',
-					'selector' => '{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-header-trigger',
+					'selector' => '{{WRAPPER}} .es-accordion-item.es-active .es-accordion-header-trigger',
 				)
 			);
 
@@ -749,7 +749,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-header-trigger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .es-accordion-item.es-active .es-accordion-header-trigger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -761,7 +761,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-header-trigger' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .es-accordion-item.es-active .es-accordion-header-trigger' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -866,7 +866,7 @@ namespace {
 					'label'     => esc_html__( 'Text Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						$item_sel . '.tv-active ' . $content_sel => 'color: {{VALUE}};',
+						$item_sel . '.es-active ' . $content_sel => 'color: {{VALUE}};',
 					),
 				)
 			);
@@ -876,7 +876,7 @@ namespace {
 				array(
 					'name'     => $prefix . 'content_bg_active',
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => $item_sel . '.tv-active ' . $content_sel,
+					'selector' => $item_sel . '.es-active ' . $content_sel,
 				)
 			);
 
@@ -884,7 +884,7 @@ namespace {
 				Group_Control_Border::get_type(),
 				array(
 					'name'     => $prefix . 'content_border_active',
-					'selector' => $item_sel . '.tv-active ' . $content_sel,
+					'selector' => $item_sel . '.es-active ' . $content_sel,
 				)
 			);
 
@@ -936,7 +936,7 @@ namespace {
 					'label'     => esc_html__( 'Text Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-accordion-item:hover .tv-accordion-title' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-accordion-item:hover .es-accordion-title' => 'color: {{VALUE}};',
 					),
 				)
 			);
@@ -950,7 +950,7 @@ namespace {
 					'label'     => esc_html__( 'Text Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-title' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-accordion-item.es-active .es-accordion-title' => 'color: {{VALUE}};',
 					),
 				)
 			);
@@ -1086,8 +1086,8 @@ namespace {
 					'label'     => esc_html__( 'Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-accordion-header-trigger:hover .tv-accordion-icon-wrapper i'   => 'color: {{VALUE}};',
-						'{{WRAPPER}} .tv-accordion-header-trigger:hover .tv-accordion-icon-wrapper svg' => 'fill: {{VALUE}};',
+						'{{WRAPPER}} .es-accordion-header-trigger:hover .es-accordion-icon-wrapper i'   => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-accordion-header-trigger:hover .es-accordion-icon-wrapper svg' => 'fill: {{VALUE}};',
 					),
 				)
 			);
@@ -1097,7 +1097,7 @@ namespace {
 				array(
 					'name'     => $prefix . 'icon_bg_hover',
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .tv-accordion-header-trigger:hover .tv-accordion-icon-wrapper',
+					'selector' => '{{WRAPPER}} .es-accordion-header-trigger:hover .es-accordion-icon-wrapper',
 				)
 			);
 
@@ -1110,8 +1110,8 @@ namespace {
 					'label'     => esc_html__( 'Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-header-trigger .tv-accordion-icon-wrapper i'   => 'color: {{VALUE}};',
-						'{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-header-trigger .tv-accordion-icon-wrapper svg' => 'fill: {{VALUE}};',
+						'{{WRAPPER}} .es-accordion-item.es-active .es-accordion-header-trigger .es-accordion-icon-wrapper i'   => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-accordion-item.es-active .es-accordion-header-trigger .es-accordion-icon-wrapper svg' => 'fill: {{VALUE}};',
 					),
 				)
 			);
@@ -1121,7 +1121,7 @@ namespace {
 				array(
 					'name'     => $prefix . 'icon_bg_active',
 					'types'    => array( 'classic', 'gradient' ),
-					'selector' => '{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-header-trigger .tv-accordion-icon-wrapper',
+					'selector' => '{{WRAPPER}} .es-accordion-item.es-active .es-accordion-header-trigger .es-accordion-icon-wrapper',
 				)
 			);
 
@@ -1187,7 +1187,7 @@ namespace {
 					'label'     => esc_html__( 'Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-accordion-item:hover .tv-accordion-number' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-accordion-item:hover .es-accordion-number' => 'color: {{VALUE}};',
 					),
 				)
 			);
@@ -1201,7 +1201,7 @@ namespace {
 					'label'     => esc_html__( 'Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-accordion-item.tv-active .tv-accordion-number' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-accordion-item.es-active .es-accordion-number' => 'color: {{VALUE}};',
 					),
 				)
 			);
@@ -1246,7 +1246,7 @@ namespace {
 
 			if ( ! empty( $json['mainEntity'] ) ) {
 				?>
-				<script type="application/ld+json"><?php echo wp_json_encode( $json, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE ); ?></script>
+				<script type="application/ld+json"><?php echo wp_json_encode( $json ); ?></script>
 				<?php
 			}
 		}
@@ -1316,27 +1316,27 @@ namespace {
 				self::render_faq_schema( $items );
 			}
 
-			$accordion_id = 'tv-accordion-' . esc_attr( $widget->get_id() );
+			$accordion_id = 'es-accordion-' . esc_attr( $widget->get_id() );
 
 			// Accordion Container classes
 			$container_classes = array(
-				'tv-accordion-container',
-				'tv-accordion-preset-' . $preset,
+				'es-accordion-container',
+				'es-accordion-preset-' . $preset,
 			);
 			if ( 'yes' === $toggle_animation ) {
-				$container_classes[] = 'tv-accordion-animated';
+				$container_classes[] = 'es-accordion-animated';
 			}
 			if ( 'yes' === $enable_glassmorphism ) {
-				$container_classes[] = 'tv-accordion-glassmorphism';
+				$container_classes[] = 'es-accordion-glassmorphism';
 			}
 			if ( 'yes' === $enable_border_glow ) {
-				$container_classes[] = 'tv-accordion-border-glow';
+				$container_classes[] = 'es-accordion-border-glow';
 			}
 			if ( 'yes' === $enable_modern_card ) {
-				$container_classes[] = 'tv-accordion-modern-card';
+				$container_classes[] = 'es-accordion-modern-card';
 			}
 			if ( 'yes' === $enable_soft_shadow ) {
-				$container_classes[] = 'tv-accordion-soft-shadow';
+				$container_classes[] = 'es-accordion-soft-shadow';
 			}
 
 			$container_attrs = array(
@@ -1377,9 +1377,9 @@ namespace {
 					$panel_id  = $accordion_id . '-panel-' . $index;
 
 					$is_item_active = ! empty( $active_items[$index] );
-					$item_classes   = array( 'tv-accordion-item' );
+					$item_classes   = array( 'es-accordion-item' );
 					if ( $is_item_active ) {
-						$item_classes[] = 'tv-active';
+						$item_classes[] = 'es-active';
 					}
 
 					$item_attrs = array(
@@ -1389,7 +1389,7 @@ namespace {
 
 					// Header / Trigger Attributes
 					$trigger_attrs = array(
-						'class'         => 'tv-accordion-header-trigger',
+						'class'         => 'es-accordion-header-trigger',
 						'role'          => 'button',
 						'id'            => $header_id,
 						'aria-expanded' => $is_item_active ? 'true' : 'false',
@@ -1400,7 +1400,7 @@ namespace {
 
 					// Panel / Content Attributes
 					$panel_attrs = array(
-						'class'           => 'tv-accordion-panel',
+						'class'           => 'es-accordion-panel',
 						'id'              => $panel_id,
 						'role'            => 'region',
 						'aria-labelledby' => $header_id,
@@ -1414,17 +1414,17 @@ namespace {
 					<div <?php $widget->print_render_attribute_string( 'item_attr_' . $index ); ?>>
 
 						<!-- Accordion Header -->
-						<div class="tv-accordion-header" id="<?php echo esc_attr( $header_id ); ?>">
+						<div class="es-accordion-header" id="<?php echo esc_attr( $header_id ); ?>">
 							<div <?php $widget->print_render_attribute_string( 'trigger_attr_' . $index ); ?>>
 
 								<!-- Left Icon -->
 								<?php if ( ( 'left' === $icon_pos || 'both' === $icon_pos ) && ! empty( $item['item_icon']['value'] ) ) : ?>
-									<span class="tv-accordion-icon-wrapper tv-icon-left">
-										<span class="tv-accordion-icon-normal">
+									<span class="es-accordion-icon-wrapper es-icon-left">
+										<span class="es-accordion-icon-normal">
 											<?php \Elementor\Icons_Manager::render_icon( $item['item_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 										</span>
 										<?php if ( ! empty( $item['item_active_icon']['value'] ) ) : ?>
-											<span class="tv-accordion-icon-active">
+											<span class="es-accordion-icon-active">
 												<?php \Elementor\Icons_Manager::render_icon( $item['item_active_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 											</span>
 										<?php endif; ?>
@@ -1433,7 +1433,7 @@ namespace {
 
 								<!-- Item Badge -->
 								<?php if ( ! empty( $item['item_badge'] ) ) : ?>
-									<span class="tv-accordion-badge"><?php echo esc_html( $item['item_badge'] ); ?></span>
+									<span class="es-accordion-badge"><?php echo esc_html( $item['item_badge'] ); ?></span>
 								<?php endif; ?>
 
 								<!-- Numbering -->
@@ -1441,20 +1441,20 @@ namespace {
 								if ( 'yes' === $enable_numbering ) :
 									$formatted_num = self::format_number( $index, $number_format );
 								?>
-									<span class="tv-accordion-number" aria-hidden="true"><?php echo esc_html( $number_prefix . $formatted_num . $number_suffix ); ?></span>
+									<span class="es-accordion-number" aria-hidden="true"><?php echo esc_html( $number_prefix . $formatted_num . $number_suffix ); ?></span>
 								<?php endif; ?>
 
 								<!-- Title -->
-								<span class="tv-accordion-title"><?php echo esc_html( $item['item_title'] ); ?></span>
+								<span class="es-accordion-title"><?php echo esc_html( $item['item_title'] ); ?></span>
 
 								<!-- Right Icon -->
 								<?php if ( ( 'right' === $icon_pos || 'both' === $icon_pos ) && ! empty( $item['item_icon']['value'] ) ) : ?>
-									<span class="tv-accordion-icon-wrapper tv-icon-right">
-										<span class="tv-accordion-icon-normal">
+									<span class="es-accordion-icon-wrapper es-icon-right">
+										<span class="es-accordion-icon-normal">
 											<?php \Elementor\Icons_Manager::render_icon( $item['item_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 										</span>
 										<?php if ( ! empty( $item['item_active_icon']['value'] ) ) : ?>
-											<span class="tv-accordion-icon-active">
+											<span class="es-accordion-icon-active">
 												<?php \Elementor\Icons_Manager::render_icon( $item['item_active_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 											</span>
 										<?php endif; ?>
@@ -1466,13 +1466,13 @@ namespace {
 
 						<!-- Accordion Panel Body -->
 						<div <?php $widget->print_render_attribute_string( 'panel_attr_' . $index ); ?>>
-							<div class="tv-accordion-content">
+							<div class="es-accordion-content">
 								<?php if ( ! empty( $item['item_image']['url'] ) ) : ?>
-									<div class="tv-accordion-item-image">
+									<div class="es-accordion-item-image">
 										<?php echo wp_get_attachment_image( $item['item_image']['id'], 'medium' ); ?>
 									</div>
 								<?php endif; ?>
-								<div class="tv-accordion-item-text">
+								<div class="es-accordion-item-text">
 									<?php echo do_shortcode( wp_kses_post( $item['item_content'] ) ); ?>
 								</div>
 							</div>

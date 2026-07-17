@@ -1,0 +1,136 @@
+/* Elonix Notifier CSS */
+.es-notifier-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0,0,0,0.5);
+    z-index: 999999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.es-notifier-overlay.show {
+    opacity: 1;
+    visibility: visible;
+}
+.es-notifier-overlay.hide {
+    opacity: 0;
+    visibility: hidden;
+}
+.es-notifier-dialog {
+    background: #fff;
+    width: 400px;
+    max-width: 90%;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    overflow: hidden;
+    transform: translateY(-20px);
+    transition: transform 0.3s ease;
+}
+.es-notifier-overlay.show .es-notifier-dialog {
+    transform: translateY(0);
+}
+.es-notifier-header {
+    padding: 20px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+.es-notifier-header h2 {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+.es-notifier-body {
+    padding: 20px;
+    font-size: 14px;
+    color: #475569;
+}
+.es-notifier-details {
+    margin-top: 15px;
+    border-top: 1px solid #e2e8f0;
+    padding-top: 15px;
+}
+.es-notifier-details-toggle {
+    cursor: pointer;
+    color: #2563eb;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+.es-notifier-details-content {
+    margin-top: 10px;
+    background: #f1f5f9;
+    padding: 10px;
+    border-radius: 4px;
+    font-family: monospace;
+    font-size: 12px;
+    max-height: 150px;
+    overflow-y: auto;
+}
+.es-notifier-details-content pre {
+    margin: 0;
+    white-space: pre-wrap;
+}
+.es-notifier-footer {
+    padding: 15px 20px;
+    background: #f8fafc;
+    border-top: 1px solid #e2e8f0;
+    text-align: right;
+}
+.es-notifier-footer button {
+    margin-left: 10px;
+}
+
+/* Toast Overrides (if any) */
+.es-toast-container {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.es-toast {
+    background: #fff;
+    border-left: 4px solid #3b82f6;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    padding: 12px 20px;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    transform: translateX(100%);
+    opacity: 0;
+    transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55), opacity 0.3s;
+}
+.es-toast.es-toast-success { border-color: #10b981; }
+.es-toast.es-toast-error { border-color: #ef4444; }
+.es-toast.es-toast-warning { border-color: #f59e0b; }
+.es-toast.es-toast-info { border-color: #3b82f6; }
+
+.es-toast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+.es-toast.hide {
+    transform: translateX(100%);
+    opacity: 0;
+}
+.es-toast .dashicons {
+    font-size: 20px;
+    width: 20px;
+    height: 20px;
+}
+.es-toast.es-toast-success .dashicons { color: #10b981; }
+.es-toast.es-toast-error .dashicons { color: #ef4444; }
+.es-toast.es-toast-warning .dashicons { color: #f59e0b; }
+.es-toast.es-toast-info .dashicons { color: #3b82f6; }

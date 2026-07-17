@@ -69,7 +69,7 @@ class Elonix_Dynamic_Inspector {
 		}
 
 		$css = "
-		#tv-dev-inspector-overlay {
+		#es-dev-inspector-overlay {
 			position: fixed;
 			bottom: 20px;
 			left: 20px;
@@ -90,7 +90,7 @@ class Elonix_Dynamic_Inspector {
 			box-shadow: 0 4px 10px rgba(0,0,0,0.5);
 			min-width: 250px;
 		}
-		#tv-dev-inspector-overlay.tv-inspector-visible {
+		#es-dev-inspector-overlay.es-inspector-visible {
 			opacity: 1;
 			visibility: visible;
 		}
@@ -102,21 +102,21 @@ class Elonix_Dynamic_Inspector {
 
 		$js = "
 		document.addEventListener('DOMContentLoaded', function() {
-			var overlay = document.getElementById('tv-dev-inspector-overlay');
+			var overlay = document.getElementById('es-dev-inspector-overlay');
 			if (!overlay) return;
 
 			document.body.addEventListener('mouseover', function(e) {
-				var target = e.target.closest ? e.target.closest('[data-tv-inspector]') : null;
+				var target = e.target.closest ? e.target.closest('[data-es-inspector]') : null;
 				if (target) {
-					overlay.textContent = target.getAttribute('data-tv-inspector');
-					overlay.classList.add('tv-inspector-visible');
+					overlay.textContent = target.getAttribute('data-es-inspector');
+					overlay.classList.add('es-inspector-visible');
 				} else {
-					overlay.classList.remove('tv-inspector-visible');
+					overlay.classList.remove('es-inspector-visible');
 				}
 			});
 			
 			document.body.addEventListener('mouseleave', function(e) {
-				overlay.classList.remove('tv-inspector-visible');
+				overlay.classList.remove('es-inspector-visible');
 			});
 		});
 		";
@@ -130,7 +130,7 @@ class Elonix_Dynamic_Inspector {
 		if ( ! $this->is_active() ) {
 			return;
 		}
-		echo '<div id="tv-dev-inspector-overlay"></div>';
+		echo '<div id="es-dev-inspector-overlay"></div>';
 	}
 
 	public function before_render( $widget ) {
@@ -159,6 +159,6 @@ class Elonix_Dynamic_Inspector {
 		$info .= "  Is Archive: " . ( is_archive() ? "Yes" : "No" ) . "\n";
 		$info .= "  Is Search: " . ( is_search() ? "Yes" : "No" ) . "\n";
 
-		$widget->add_render_attribute( '_wrapper', 'data-tv-inspector', $info );
+		$widget->add_render_attribute( '_wrapper', 'data-es-inspector', $info );
 	}
 }

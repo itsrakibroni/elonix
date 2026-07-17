@@ -62,11 +62,11 @@ $show_debug = ( class_exists( 'Elonix_Settings' ) && \Elonix_Settings::is_templa
 			height: 100% !important;
 			background: #f1f5f9 !important;
 		}
-		.tv-site-header {
+		.es-site-header {
 			width: 100% !important;
 		}
 		<?php if ( $show_debug ) : ?>
-		.tv-preview-debug-bar {
+		.es-preview-debug-bar {
 			background: #1e293b;
 			color: #f1f5f9;
 			padding: 10px 20px;
@@ -79,13 +79,13 @@ $show_debug = ( class_exists( 'Elonix_Settings' ) && \Elonix_Settings::is_templa
 			z-index: 999999;
 			position: relative;
 		}
-		.tv-preview-debug-bar span {
+		.es-preview-debug-bar span {
 			font-weight: bold;
 		}
-		.tv-preview-debug-bar .success {
+		.es-preview-debug-bar .success {
 			color: #22c55e;
 		}
-		.tv-preview-debug-bar .failure {
+		.es-preview-debug-bar .failure {
 			color: #ef4444;
 		}
 		<?php endif; ?>
@@ -96,7 +96,7 @@ $show_debug = ( class_exists( 'Elonix_Settings' ) && \Elonix_Settings::is_templa
 
 	<?php if ( $show_debug ) : ?>
 		<!-- Temporary Debug Report -->
-		<div class="tv-preview-debug-bar">
+		<div class="es-preview-debug-bar">
 			<div><span>Template ID:</span> <?php echo (int) $template_id; ?></div>
 			<div><span>Template Type:</span> <?php echo esc_html( $template_type ); ?></div>
 			<div><span>Rendering Method:</span> Elementor frontend get_builder_content()</div>
@@ -113,9 +113,9 @@ $show_debug = ( class_exists( 'Elonix_Settings' ) && \Elonix_Settings::is_templa
 	<?php
 	// Output content exactly as Elementor outputs it
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template scope variable.
-	$is_header = ( 'tv_header' === $template_type );
+	$is_header = ( 'es_header' === $template_type );
 	if ( $is_header ) {
-		echo '<header class="tv-site-header">';
+		echo '<header class="es-site-header">';
 	}
 
 	echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped

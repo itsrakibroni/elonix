@@ -32,7 +32,7 @@ class Elonix_Dynamic_Visibility extends Elonix_Base_Extension {
 		);
 
 		$element->add_control(
-			'tv_visibility_enable',
+			'es_visibility_enable',
 			array(
 				'label'        => esc_html__( 'Enable Dynamic Visibility', 'elonix' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
@@ -74,20 +74,20 @@ class Elonix_Dynamic_Visibility extends Elonix_Base_Extension {
 		);
 
 		$element->add_control(
-			'tv_visibility_conditions',
+			'es_visibility_conditions',
 			array(
 				'label'       => esc_html__( 'Conditions', 'elonix' ),
 				'type'        => \Elementor\Controls_Manager::REPEATER,
 				'fields'      => $repeater->get_controls(),
 				'condition'   => array(
-					'tv_visibility_enable' => 'yes',
+					'es_visibility_enable' => 'yes',
 				),
 				'title_field' => '{{{ condition_type }}}',
 			)
 		);
 
 		$element->add_control(
-			'tv_visibility_relation',
+			'es_visibility_relation',
 			array(
 				'label'     => esc_html__( 'Relation', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::SELECT,
@@ -97,7 +97,7 @@ class Elonix_Dynamic_Visibility extends Elonix_Base_Extension {
 				),
 				'default'   => 'AND',
 				'condition' => array(
-					'tv_visibility_enable' => 'yes',
+					'es_visibility_enable' => 'yes',
 				),
 			)
 		);
@@ -112,16 +112,16 @@ class Elonix_Dynamic_Visibility extends Elonix_Base_Extension {
 
 		$settings = $element->get_settings_for_display();
 
-		if ( empty( $settings['tv_visibility_enable'] ) || 'yes' !== $settings['tv_visibility_enable'] ) {
+		if ( empty( $settings['es_visibility_enable'] ) || 'yes' !== $settings['es_visibility_enable'] ) {
 			return $should_render;
 		}
 
-		$conditions = isset( $settings['tv_visibility_conditions'] ) ? $settings['tv_visibility_conditions'] : array();
+		$conditions = isset( $settings['es_visibility_conditions'] ) ? $settings['es_visibility_conditions'] : array();
 		if ( empty( $conditions ) ) {
 			return $should_render;
 		}
 
-		$relation = isset( $settings['tv_visibility_relation'] ) ? $settings['tv_visibility_relation'] : 'AND';
+		$relation = isset( $settings['es_visibility_relation'] ) ? $settings['es_visibility_relation'] : 'AND';
 		$results  = array();
 
 		$debug_log = '---- EVALUATING WIDGET ' . $element->get_name() . " ----\n";

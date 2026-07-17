@@ -1,0 +1,415 @@
+/* ==========================================================================
+	Elonix Back To Top Widget CSS Core (es-back-to-top)
+	========================================================================== */
+
+/* 1. Viewport Containers */
+.es-back-to-top-container {
+	position: fixed;
+	bottom: 30px;
+	z-index: 99999;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	transition: opacity 0.4s ease, transform 0.4s ease, visibility 0.4s ease;
+	opacity: 0;
+	visibility: hidden;
+	pointer-events: none;
+}
+
+/* Container Visibility Toggle */
+.es-back-to-top-container.es-visible {
+	opacity: 1;
+	visibility: visible;
+	pointer-events: auto;
+}
+
+/* Inactivity Auto-Fade State */
+.es-back-to-top-container.es-inactive {
+	opacity: 0.25;
+}
+.es-back-to-top-container.es-inactive:hover {
+	opacity: 1;
+}
+
+/* Responsive Alignment Positions */
+.es-back-to-top-container.es-align-right {
+	right: 30px;
+	left: auto;
+}
+.es-back-to-top-container.es-align-left {
+	left: 30px;
+	right: auto;
+}
+.es-back-to-top-container.es-align-center {
+	left: 50%;
+	right: auto;
+	transform: translateX(-50%);
+}
+
+/* Absolute Page Boundary Mode overrides container */
+.es-back-to-top-container.es-absolute {
+	position: absolute;
+}
+
+/* 2. Core Button Layout */
+.es-back-to-top-button {
+	position: relative;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 46px;
+	height: 46px;
+	border: none;
+	outline: none;
+	cursor: pointer;
+	font-family: inherit;
+	line-height: 1;
+	transition: background 0.3s ease, border-color 0.3s ease, color 0.3s ease, box-shadow 0.3s ease, transform 0.2s active;
+	box-sizing: border-box;
+	overflow: visible;
+}
+
+.es-button-content-wrapper {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+	pointer-events: none;
+}
+
+/* Shape Templates */
+.es-layout-circle,
+.es-layout-glass,
+.es-layout-neumorphic,
+.es-layout-progress_ring {
+	border-radius: 50%;
+}
+.es-layout-square {
+	border-radius: 0px;
+}
+.es-layout-rounded {
+	border-radius: 8px;
+}
+
+/* Layout Style Presets */
+.es-layout-glass {
+	background-color: rgba(255, 255, 255, 0.25) !important;
+	border: 1px solid rgba(255, 255, 255, 0.3) !important;
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1) !important;
+	backdrop-filter: blur(10px) !important;
+	-webkit-backdrop-filter: blur(10px) !important;
+	color: #ffffff !important;
+}
+.es-layout-glass .es-back-to-top-icon svg,
+.es-layout-glass .es-back-to-top-icon-complete svg {
+	fill: #ffffff !important;
+}
+
+.es-layout-neumorphic {
+	background-color: #f1f1f1 !important;
+	box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6), -6px -6px 12px rgba(255, 255, 255, 0.8) !important;
+	color: #333333 !important;
+}
+.es-layout-neumorphic .es-back-to-top-icon svg,
+.es-layout-neumorphic .es-back-to-top-icon-complete svg {
+	fill: #333333 !important;
+}
+
+.es-layout-progress_ring {
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+.es-layout-pill {
+	width: auto !important;
+	padding: 0 16px;
+	border-radius: 30px;
+}
+.es-layout-dot {
+	width: 16px !important;
+	height: 16px !important;
+	border-radius: 50%;
+	box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+}
+.es-layout-dot .es-button-content-wrapper {
+	display: none;
+}
+
+/* 3. Preset Background Options */
+.es-bg-solid {
+	background-size: cover;
+}
+
+.es-bg-gradient {
+	background-image: linear-gradient(135deg, var(--es-gradient-start, #016087), var(--es-gradient-end, #183ad6));
+}
+
+.es-bg-glass {
+	background-color: rgba(255, 255, 255, 0.4);
+	border: 1px solid rgba(255, 255, 255, 0.4);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.15);
+}
+
+.es-bg-neumorphism {
+	--es-neumorphic-angle: 135deg;
+	background-color: #f1f1f1;
+	/* Computes light highlights and dark shadows dynamically using CSS trigonometry or directional offsets */
+	box-shadow: 6px 6px 12px rgba(163, 177, 198, 0.6), -6px -6px 12px rgba(255, 255, 255, 0.8);
+}
+.es-bg-neumorphism:hover {
+	box-shadow: inset 3px 3px 6px rgba(163, 177, 198, 0.6), inset -3px -3px 6px rgba(255, 255, 255, 0.8);
+}
+
+/* 4. Graphical Elements (Progress indicators) */
+.es-svg-progress-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 1;
+	box-sizing: border-box;
+}
+
+.es-progress-svg {
+	width: 100%;
+	height: 100%;
+	transform: rotate(-90deg);
+}
+
+.es-progress-ring-track {
+	fill: none;
+	stroke: rgba(255, 255, 255, 0.2);
+}
+
+.es-progress-ring-fill {
+	fill: none;
+	stroke-linecap: round;
+	stroke: #ffffff;
+	transition: stroke-dashoffset 0.1s linear;
+}
+
+/* Numeric Text indicator styling */
+.es-progress-percent-text {
+	font-size: 11px;
+	font-weight: 700;
+	margin-top: 2px;
+}
+
+.es-reading-time-text {
+	font-size: 9px;
+	font-weight: 600;
+	margin-top: 3px;
+	opacity: 0.9;
+}
+
+/* Horizontal top/bottom progress bar tracker */
+.es-progress-bar-track {
+	position: fixed;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	z-index: 999999;
+	background-color: rgba(0, 0, 0, 0.1);
+	pointer-events: none;
+	opacity: 0;
+	visibility: hidden;
+	transition: opacity 0.4s ease, visibility 0.4s ease;
+}
+
+.es-progress-bar-track.es-visible {
+	opacity: 1;
+	visibility: visible;
+}
+
+.es-progress-bar-top {
+	top: 0;
+}
+
+.es-progress-bar-bottom {
+	bottom: 0;
+}
+
+.es-progress-bar-fill {
+	width: 0%;
+	height: 100%;
+	transition: width 0.1s linear;
+}
+
+/* Inline Linear Progress Bar inside button */
+.es-linear-progress-bar-track {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	height: 4px;
+	background-color: rgba(255, 255, 255, 0.2);
+	z-index: 3;
+	overflow: hidden;
+}
+
+.es-linear-progress-bar-fill {
+	height: 100%;
+	background-color: #3858e9;
+	width: 0%;
+}
+
+/* Elementor Editor Preview Overrides for viewport progress bar */
+.elementor-editor-active .es-progress-bar-track {
+	opacity: 1 !important;
+	visibility: visible !important;
+}
+
+/* 5. Icons & Media graphics */
+.es-back-to-top-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.es-back-to-top-icon-complete {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.es-back-to-top-button i {
+	font-size: 16px;
+	color: inherit;
+	display: inline-block;
+	line-height: 1;
+}
+
+.es-back-to-top-icon svg,
+.es-back-to-top-icon-complete svg {
+	width: 16px;
+	height: 16px;
+	fill: currentColor;
+	display: inline-block;
+	vertical-align: middle;
+}
+
+.es-svg-icon {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+	display: inline-block;
+}
+
+.es-img-icon {
+	width: 16px;
+	height: 16px;
+	object-fit: contain;
+	display: inline-block;
+}
+
+
+
+/* Swappable icons trigger states */
+.es-back-to-top-button.es-complete .es-back-to-top-icon.es-swappable {
+	display: none !important;
+}
+
+.es-back-to-top-button.es-complete .es-back-to-top-icon-complete {
+	display: inline-flex !important;
+}
+
+/* 6. Animations (Entrance & Micro-hover shifts) */
+
+/* Entrance Transitions */
+.es-motion-in-fade {
+	transition: opacity 0.4s ease, visibility 0.4s ease !important;
+}
+
+.es-motion-in-slide_up {
+	transform: translateY(20px);
+}
+.es-motion-in-slide_up.es-visible {
+	transform: translateY(0);
+}
+/* For Center alignment slide-up */
+.es-align-center.es-motion-in-slide_up {
+	transform: translate(-50%, 20px);
+}
+.es-align-center.es-motion-in-slide_up.es-visible {
+	transform: translate(-50%, 0);
+}
+
+.es-motion-in-scale {
+	transform: scale(0.6);
+}
+.es-motion-in-scale.es-visible {
+	transform: scale(1);
+}
+.es-align-center.es-motion-in-scale {
+	transform: translate(-50%, 0) scale(0.6);
+}
+.es-align-center.es-motion-in-scale.es-visible {
+	transform: translate(-50%, 0) scale(1);
+}
+
+.es-motion-in-rotate {
+	transform: scale(0.6) rotate(-180deg);
+}
+.es-motion-in-rotate.es-visible {
+	transform: scale(1) rotate(0);
+}
+.es-align-center.es-motion-in-rotate {
+	transform: translate(-50%, 0) scale(0.6) rotate(-180deg);
+}
+.es-align-center.es-motion-in-rotate.es-visible {
+	transform: translate(-50%, 0) scale(1) rotate(0);
+}
+
+/* Hover Animations */
+.es-motion-hover-scale:hover {
+	transform: scale(1.1);
+}
+.es-align-center.es-motion-hover-scale:hover {
+	transform: translate(-50%, 0) scale(1.1);
+}
+
+.es-motion-hover-float:hover {
+	transform: translateY(-6px);
+}
+.es-align-center.es-motion-hover-float:hover {
+	transform: translate(-50%, -6px);
+}
+
+.es-motion-hover-bounce:hover .es-back-to-top-icon {
+	animation: es-arrow-bounce 1s infinite alternate;
+}
+
+@keyframes es-arrow-bounce {
+	0% { transform: translateY(0); }
+	100% { transform: translateY(-5px); }
+}
+
+.es-motion-hover-rotate:hover .es-back-to-top-icon {
+	transform: rotate(360deg);
+}
+
+/* Active tactile response */
+.es-back-to-top-button:active {
+	transform: scale(0.95);
+}
+
+/* WCAG Focus Visible Outline styling */
+.es-back-to-top-button:focus-visible {
+	outline: 3px solid #3858e9;
+	outline-offset: 4px;
+	box-shadow: 0 0 0 4px rgba(56, 88, 233, 0.4);
+}
+
+/* 7. Elementor Editor Preview Overrides */
+.elementor-editor-active .es-back-to-top-container {
+	opacity: 1 !important;
+	visibility: visible !important;
+	pointer-events: auto !important;
+}

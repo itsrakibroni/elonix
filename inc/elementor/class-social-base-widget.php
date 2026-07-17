@@ -74,7 +74,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} {{CURRENT_ITEM}}' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} {{CURRENT_ITEM}} .tv-social-icon-box' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} {{CURRENT_ITEM}} .es-social-icon-box' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -85,7 +85,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} {{CURRENT_ITEM}} .tv-social-icon-box' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} {{CURRENT_ITEM}} .es-social-icon-box' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -107,7 +107,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
 					'{{WRAPPER}} {{CURRENT_ITEM}}:hover' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} {{CURRENT_ITEM}}:hover .tv-social-icon-box' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} {{CURRENT_ITEM}}:hover .es-social-icon-box' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -118,7 +118,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hover Background Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} {{CURRENT_ITEM}}:hover .tv-social-icon-box' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} {{CURRENT_ITEM}}:hover .es-social-icon-box' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -152,7 +152,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'inline'     => esc_html__( 'Inline Flex', 'elonix' ),
 					'grid'       => esc_html__( 'Grid Layout', 'elonix' ),
 				),
-				'prefix_class' => 'tv-social-layout-',
+				'prefix_class' => 'es-social-layout-',
 			)
 		);
 
@@ -183,7 +183,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'condition'    => array(
 					'layout_type!' => 'grid',
 				),
-				'prefix_class' => 'tv-social-align%s-',
+				'prefix_class' => 'es-social-align%s-',
 			)
 		);
 
@@ -247,8 +247,8 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'size' => 18,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-icon-box'     => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-social-icon-box svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-icon-box'     => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-icon-box svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -262,7 +262,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label_off'    => esc_html__( 'No', 'elonix' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
-				'prefix_class' => 'tv-use-height-width-',
+				'prefix_class' => 'es-use-height-width-',
 			)
 		);
 
@@ -279,8 +279,8 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}}'                     => '--tv-icon-width: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-social-icon-box' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}'                     => '--es-icon-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-icon-box' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -301,7 +301,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'use_height_equals_width!' => 'yes',
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-icon-box' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-icon-box' => 'height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -319,7 +319,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-icon-box' => 'line-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-icon-box' => 'line-height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -341,7 +341,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'size' => 12,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-icon-box' => 'padding: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-icon-box' => 'padding: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -384,7 +384,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'size' => 0,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-icon-box' => 'transform: rotate({{SIZE}}deg);',
+					'{{WRAPPER}} .es-social-icon-box' => 'transform: rotate({{SIZE}}deg);',
 				),
 			)
 		);
@@ -402,7 +402,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'rounded' => esc_html__( 'Rounded Square', 'elonix' ),
 					'hexagon' => esc_html__( 'Hexagon', 'elonix' ),
 				),
-				'prefix_class' => 'tv-social-shape-',
+				'prefix_class' => 'es-social-shape-',
 			)
 		);
 
@@ -419,7 +419,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'icon_only'  => esc_html__( 'Icon Only', 'elonix' ),
 					'label_only' => esc_html__( 'Label Only', 'elonix' ),
 				),
-				'prefix_class' => 'tv-social-pos-',
+				'prefix_class' => 'es-social-pos-',
 			)
 		);
 
@@ -454,7 +454,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'border_glow'   => esc_html__( 'Style 7: Border Glow Effect', 'elonix' ),
 					'neumorphism'   => esc_html__( 'Style 8: Neumorphic Depth', 'elonix' ),
 				),
-				'prefix_class' => 'tv-social-preset-',
+				'prefix_class' => 'es-social-preset-',
 			)
 		);
 
@@ -482,7 +482,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label_off'    => esc_html__( 'No', 'elonix' ),
 				'return_value' => 'yes',
 				'default'      => '',
-				'prefix_class' => 'tv-social-tooltip-',
+				'prefix_class' => 'es-social-tooltip-',
 			)
 		);
 
@@ -501,7 +501,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'condition'    => array(
 					'enable_tooltip' => 'yes',
 				),
-				'prefix_class' => 'tv-tooltip-dir-',
+				'prefix_class' => 'es-tooltip-dir-',
 			)
 		);
 
@@ -519,7 +519,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'condition'    => array(
 					'enable_tooltip' => 'yes',
 				),
-				'prefix_class' => 'tv-tooltip-anim-',
+				'prefix_class' => 'es-tooltip-anim-',
 			)
 		);
 
@@ -548,7 +548,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label_off'    => esc_html__( 'No', 'elonix' ),
 				'return_value' => 'yes',
 				'default'      => 'yes',
-				'prefix_class' => 'tv-social-brand-colors-',
+				'prefix_class' => 'es-social-brand-colors-',
 			)
 		);
 
@@ -585,7 +585,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'label_typography',
 				'label'    => esc_html__( 'Label Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-social-label',
+				'selector' => '{{WRAPPER}} .es-social-label',
 			)
 		);
 
@@ -596,8 +596,8 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-item'     => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-social-icon-box' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-social-item'     => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-social-icon-box' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'brand_colors!' => 'yes',
@@ -612,7 +612,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-icon-box' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-social-icon-box' => 'background-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'brand_colors!' => 'yes',
@@ -625,7 +625,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'icon_border',
 				'label'    => esc_html__( 'Border', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-social-icon-box',
+				'selector' => '{{WRAPPER}} .es-social-icon-box',
 			)
 		);
 
@@ -636,7 +636,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-icon-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-icon-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'icon_shape!' => 'hexagon',
@@ -649,7 +649,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'icon_box_shadow',
 				'label'    => esc_html__( 'Box Shadow', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-social-icon-box',
+				'selector' => '{{WRAPPER}} .es-social-icon-box',
 			)
 		);
 
@@ -660,7 +660,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-item' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -682,7 +682,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'size' => 1.0,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-item' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .es-social-item' => 'opacity: {{SIZE}};',
 				),
 			)
 		);
@@ -703,8 +703,8 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon & Label Hover Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-item:hover' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-social-item:hover .tv-social-icon-box' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-social-item:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-social-item:hover .es-social-icon-box' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 				'condition' => array(
 					'brand_colors!' => 'yes',
@@ -718,7 +718,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Hover Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-item:hover .tv-social-icon-box' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-social-item:hover .es-social-icon-box' => 'background-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'brand_colors!' => 'yes',
@@ -731,7 +731,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'icon_border_hover',
 				'label'    => esc_html__( 'Border Hover', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-social-item:hover .tv-social-icon-box',
+				'selector' => '{{WRAPPER}} .es-social-item:hover .es-social-icon-box',
 			)
 		);
 
@@ -742,7 +742,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-item:hover .tv-social-icon-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-item:hover .es-social-icon-box' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'icon_shape!' => 'hexagon',
@@ -755,7 +755,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'icon_box_shadow_hover',
 				'label'    => esc_html__( 'Box Shadow Hover', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-social-item:hover .tv-social-icon-box',
+				'selector' => '{{WRAPPER}} .es-social-item:hover .es-social-icon-box',
 			)
 		);
 
@@ -772,7 +772,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-item:hover' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .es-social-item:hover' => 'opacity: {{SIZE}};',
 				),
 			)
 		);
@@ -796,7 +796,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'glow'       => esc_html__( 'Shadow Glow', 'elonix' ),
 					'flip'       => esc_html__( '3D Flip Over', 'elonix' ),
 				),
-				'prefix_class' => 'tv-social-hover-',
+				'prefix_class' => 'es-social-hover-',
 			)
 		);
 
@@ -817,7 +817,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 					'size' => 300,
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-item, {{WRAPPER}} .tv-social-icon-box' => 'transition-duration: {{SIZE}}ms;',
+					'{{WRAPPER}} .es-social-item, {{WRAPPER}} .es-social-icon-box' => 'transition-duration: {{SIZE}}ms;',
 				),
 			)
 		);
@@ -838,8 +838,8 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon & Label Active Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-item:active' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-social-item:active .tv-social-icon-box' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-social-item:active' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-social-item:active .es-social-icon-box' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -850,7 +850,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Active Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-item:active .tv-social-icon-box' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-social-item:active .es-social-icon-box' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -860,7 +860,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'icon_box_shadow_active',
 				'label'    => esc_html__( 'Box Shadow Active', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-social-item:active .tv-social-icon-box',
+				'selector' => '{{WRAPPER}} .es-social-item:active .es-social-icon-box',
 			)
 		);
 
@@ -889,7 +889,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'tooltip_typography',
 				'label'    => esc_html__( 'Tooltip Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-social-tooltip',
+				'selector' => '{{WRAPPER}} .es-social-tooltip',
 			)
 		);
 
@@ -900,7 +900,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-tooltip' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-social-tooltip' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -912,11 +912,11 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#0f172a',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-social-tooltip' => 'background-color: {{VALUE}};',
-					'{{WRAPPER}}.tv-tooltip-dir-top .tv-social-tooltip::after' => 'border-top-color: {{VALUE}};',
-					'{{WRAPPER}}.tv-tooltip-dir-bottom .tv-social-tooltip::after' => 'border-bottom-color: {{VALUE}};',
-					'{{WRAPPER}}.tv-tooltip-dir-left .tv-social-tooltip::after' => 'border-left-color: {{VALUE}};',
-					'{{WRAPPER}}.tv-tooltip-dir-right .tv-social-tooltip::after' => 'border-right-color: {{VALUE}};',
+					'{{WRAPPER}} .es-social-tooltip' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}}.es-tooltip-dir-top .es-social-tooltip::after' => 'border-top-color: {{VALUE}};',
+					'{{WRAPPER}}.es-tooltip-dir-bottom .es-social-tooltip::after' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}}.es-tooltip-dir-left .es-social-tooltip::after' => 'border-left-color: {{VALUE}};',
+					'{{WRAPPER}}.es-tooltip-dir-right .es-social-tooltip::after' => 'border-right-color: {{VALUE}};',
 				),
 			)
 		);
@@ -928,7 +928,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-tooltip' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-tooltip' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -940,7 +940,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-social-tooltip' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-social-tooltip' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -950,7 +950,7 @@ abstract class Elonix_Social_Base_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'tooltip_box_shadow',
 				'label'    => esc_html__( 'Box Shadow', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-social-tooltip',
+				'selector' => '{{WRAPPER}} .es-social-tooltip',
 			)
 		);
 

@@ -17,7 +17,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-error-code';
+		return 'es-error-code';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-number-field';
 	}
 
@@ -43,7 +43,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return array Widget keywords.
 	 */
-	public function get_tv_widget_keywords() {
+	public function get_es_widget_keywords() {
 		return array( 'error', 'code', 'number', '404', '410', 'status' );
 	}
 
@@ -56,11 +56,11 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 		// Mock inside Elementor Editor / Preview modes
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			if ( \Elementor\Plugin::$instance->editor->is_edit_mode() || \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
-				$send_410 = ( 'yes' === ( Elonix_Settings::get( 'tv_404_send_410_header' ) ?? 'no' )  ) || ( 'yes' === ( Elonix_Settings::get( 'tv_404_seo_410_header' ) ?? 'no' )  );
+				$send_410 = ( 'yes' === ( Elonix_Settings::get( 'es_404_send_410_header' ) ?? 'no' )  ) || ( 'yes' === ( Elonix_Settings::get( 'es_404_seo_410_header' ) ?? 'no' )  );
 				if ( $send_410 ) {
 					return 410;
 				}
-				$custom_status = intval( Elonix_Settings::get( 'tv_404_custom_status_code' ) ?? 404  );
+				$custom_status = intval( Elonix_Settings::get( 'es_404_custom_status_code' ) ?? 404  );
 				return $custom_status ? $custom_status : 404;
 			}
 		}
@@ -73,11 +73,11 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 
 		// Fallback to active query
 		if ( is_404() ) {
-			$send_410 = ( 'yes' === ( Elonix_Settings::get( 'tv_404_send_410_header' ) ?? 'no' )  ) || ( 'yes' === ( Elonix_Settings::get( 'tv_404_seo_410_header' ) ?? 'no' )  );
+			$send_410 = ( 'yes' === ( Elonix_Settings::get( 'es_404_send_410_header' ) ?? 'no' )  ) || ( 'yes' === ( Elonix_Settings::get( 'es_404_seo_410_header' ) ?? 'no' )  );
 			if ( $send_410 ) {
 				return 410;
 			}
-			$custom_status = intval( Elonix_Settings::get( 'tv_404_custom_status_code' ) ?? 404  );
+			$custom_status = intval( Elonix_Settings::get( 'es_404_custom_status_code' ) ?? 404  );
 			return $custom_status ? $custom_status : 404;
 		}
 
@@ -173,7 +173,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'code_typography',
-				'selector' => '{{WRAPPER}} .tv-error-code',
+				'selector' => '{{WRAPPER}} .es-error-code',
 			)
 		);
 
@@ -184,7 +184,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#1f2937',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-error-code' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-error-code' => 'color: {{VALUE}};',
 				),
 				'condition' => array(
 					'effect_outline!' => 'yes',
@@ -277,7 +277,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 					'size' => 2,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-error-code' => '-webkit-text-stroke-width: {{SIZE}}{{UNIT}}; text-stroke-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-error-code' => '-webkit-text-stroke-width: {{SIZE}}{{UNIT}}; text-stroke-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -289,7 +289,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 				'type'      => \Elementor\Controls_Manager::COLOR,
 				'default'   => '#ef4444',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-error-code' => '-webkit-text-stroke-color: {{VALUE}}; text-stroke-color: {{VALUE}};',
+					'{{WRAPPER}} .es-error-code' => '-webkit-text-stroke-color: {{VALUE}}; text-stroke-color: {{VALUE}};',
 				),
 			)
 		);
@@ -298,7 +298,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Text_Shadow::get_type(),
 			array(
 				'name'     => 'code_shadow',
-				'selector' => '{{WRAPPER}} .tv-error-code',
+				'selector' => '{{WRAPPER}} .es-error-code',
 			)
 		);
 
@@ -320,7 +320,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 					'size' => 1,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-error-code' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}} .es-error-code' => 'opacity: {{SIZE}};',
 				),
 			)
 		);
@@ -336,7 +336,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 		$code     = $this->get_current_error_code();
 
 		// Construct CSS animation classes dynamically
-		$classes = array( 'tv-error-code' );
+		$classes = array( 'es-error-code' );
 
 		if ( 'yes' === $settings['effect_outline'] ) {
 			$classes[] = 'effect-outline';
@@ -351,7 +351,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 			$classes[] = 'effect-pulse';
 		}
 
-		$wrapper_classes = array( 'tv-error-code-wrapper' );
+		$wrapper_classes = array( 'es-error-code-wrapper' );
 		if ( 'yes' === $settings['effect_watermark'] ) {
 			$wrapper_classes[] = 'effect-watermark';
 		}
@@ -379,32 +379,32 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 		// Internal CSS definitions for keyframe animations (injected once cleanly inline)
 		?>
 		<style>
-		@keyframes tv-float {
+		@keyframes es-float {
 			0% { transform: translateY(0px); }
 			50% { transform: translateY(-12px); }
 			100% { transform: translateY(0px); }
 		}
-		@keyframes tv-pulse {
+		@keyframes es-pulse {
 			0% { transform: scale(1); }
 			50% { transform: scale(1.06); }
 			100% { transform: scale(1); }
 		}
-		.tv-error-code.effect-floating {
-			animation: tv-float 4s ease-in-out infinite;
+		.es-error-code.effect-floating {
+			animation: es-float 4s ease-in-out infinite;
 			display: inline-block;
 		}
-		.tv-error-code.effect-pulse {
-			animation: tv-pulse 2.5s ease-in-out infinite;
+		.es-error-code.effect-pulse {
+			animation: es-pulse 2.5s ease-in-out infinite;
 			display: inline-block;
 		}
-		.tv-error-code.effect-floating.effect-pulse {
-			animation: tv-float 4s ease-in-out infinite, tv-pulse 2.5s ease-in-out infinite;
+		.es-error-code.effect-floating.effect-pulse {
+			animation: es-float 4s ease-in-out infinite, es-pulse 2.5s ease-in-out infinite;
 		}
-		.tv-error-code.effect-outline {
+		.es-error-code.effect-outline {
 			color: transparent !important;
 			-webkit-text-fill-color: transparent !important;
 		}
-		.tv-error-code.effect-glass {
+		.es-error-code.effect-glass {
 			background: rgba(255, 255, 255, 0.08);
 			backdrop-filter: blur(12px);
 			-webkit-backdrop-filter: blur(12px);

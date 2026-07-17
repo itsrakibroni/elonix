@@ -29,9 +29,9 @@ class Renderer {
 	public function render_loader() {
 		$custom_class    = ! empty( $this->settings['custom_class'] ) ? esc_attr( $this->settings['custom_class'] ) : '';
 		$animation       = ! empty( $this->settings['animation'] ) ? esc_attr( $this->settings['animation'] ) : 'fade';
-		$wrapper_classes = trim( "tv-screen-loader-wrapper tv-loader--{$animation} {$custom_class}" );
+		$wrapper_classes = trim( "es-screen-loader-wrapper es-loader--{$animation} {$custom_class}" );
 		?>
-		<div id="tv-screen-loader" class="<?php echo esc_attr( $wrapper_classes ); ?>" role="alert" aria-live="assertive" aria-busy="true">
+		<div id="es-screen-loader" class="<?php echo esc_attr( $wrapper_classes ); ?>" role="alert" aria-live="assertive" aria-busy="true">
 			<?php
 			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			echo $this->engine->get_markup( $this->settings );

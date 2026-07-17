@@ -323,7 +323,7 @@ class Elonix_Toolkit_Settings_Page {
 					// Output security fields for Settings API
 					settings_fields( 'elonix_settings_group' );
 					?>
-					<input type="hidden" name="elonix_settings[tv_active_tab]" value="<?php echo esc_attr( $active_tab ); ?>" />
+					<input type="hidden" name="elonix_settings[es_active_tab]" value="<?php echo esc_attr( $active_tab ); ?>" />
 					<?php
 					echo '<div class="elonix-settings-section-card">';
 

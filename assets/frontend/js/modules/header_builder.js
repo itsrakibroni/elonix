@@ -8,7 +8,7 @@
 		'elementor/frontend/init',
 		function () {
 			var $window  = $( window );
-			var $headers = $( '.tv-site-header' );
+			var $headers = $( '.es-site-header' );
 
 			if ($headers.length === 0) {
 				return;
@@ -18,9 +18,9 @@
 			var handleScroll = function () {
 				var scrollTop = $window.scrollTop();
 				if (scrollTop > 50) { // Toggle after scrolling 50px
-					$headers.addClass( 'tv-header-sticky' );
+					$headers.addClass( 'es-header-sticky' );
 				} else {
-					$headers.removeClass( 'tv-header-sticky' );
+					$headers.removeClass( 'es-header-sticky' );
 				}
 			};
 

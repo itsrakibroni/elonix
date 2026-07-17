@@ -1,0 +1,304 @@
+/* Elonix – Toolkit for Elementor Progress Bar */
+
+.es-progress {
+  --es-progress-track-color: #f1f2f6;
+  --es-progress-track-height: 10px;
+  --es-progress-track-radius: 5px;
+
+  --es-progress-fill-color: #3b5998;
+  --es-progress-fill-height: 10px;
+  --es-progress-fill-radius: 5px;
+
+  --es-progress-duration: 1500ms;
+  --es-progress-delay: 0ms;
+  --es-progress-easing: ease-in-out;
+  --es-progress-counter-duration: var(--es-progress-duration);
+  --es-progress-counter-delay: var(--es-progress-delay);
+  --es-progress-value: 0%;
+
+  /* Defaults for Premium Marker */
+  --es-progress-marker-offset-x: 0px;
+  --es-progress-marker-offset-y: -40px;
+  --es-progress-marker-arrow-size: 4px;
+
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+}
+
+.es-progress__wrapper {
+  position: relative;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Linear */
+.es-progress--linear .es-progress__track {
+  width: 100%;
+  background: var(--es-progress-track-color);
+  height: var(--es-progress-track-height);
+  border-radius: var(--es-progress-track-radius);
+  position: relative;
+  overflow: visible;
+  transition: all 0.3s ease;
+}
+.es-progress:hover .es-progress__track {
+  background: var(--es-progress-track-hover-color, var(--es-progress-track-color));
+  box-shadow: var(--es-progress-track-hover-shadow, none);
+}
+
+.es-progress--linear .es-progress__fill {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  height: var(--es-progress-fill-height);
+  background: var(--es-progress-fill-color);
+  border-radius: var(--es-progress-fill-radius);
+  width: 0%;
+  transition: width var(--es-progress-duration) var(--es-progress-easing) var(--es-progress-delay), background-color 0.3s ease, box-shadow 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+}
+.es-progress:hover .es-progress__fill {
+  background-color: var(--es-progress-fill-hover-color, var(--es-progress-fill-color));
+  box-shadow: var(--es-progress-fill-hover-shadow, none);
+}
+
+.es-progress.is-animated.es-progress--linear .es-progress__fill {
+  width: var(--es-progress-value);
+}
+
+/* Striped Fill */
+.es-progress--striped-yes .es-progress__fill {
+  background-image: linear-gradient(45deg, rgba(255, 255, 255, 0.15) 25%, transparent 25%, transparent 50%, rgba(255, 255, 255, 0.15) 50%, rgba(255, 255, 255, 0.15) 75%, transparent 75%, transparent);
+  background-size: 1rem 1rem;
+}
+
+.es-progress--animated-stripe-yes .es-progress__fill {
+  animation: es-progress-stripes 1s linear infinite;
+}
+
+@keyframes es-progress-stripes {
+  from {
+    background-position: 1rem 0;
+  }
+  to {
+    background-position: 0 0;
+  }
+}
+
+/* Target Line */
+.es-progress__target {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background-color: #000;
+  z-index: 2;
+  transform: translateX(-50%);
+}
+
+/* Circle & Semi-Circle */
+.es-progress__circle-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.es-progress__circle-svg {
+  transform: rotate(-90deg);
+  width: var(--es-progress-circle-size, 150px);
+  height: var(--es-progress-circle-size, 150px);
+}
+
+.es-progress--semi-circle .es-progress__circle-svg {
+  transform: rotate(180deg);
+  height: calc(var(--es-progress-circle-size, 150px) / 2);
+}
+
+.es-progress__circle-track,
+.es-progress__circle-fill {
+  fill: none;
+  stroke-width: var(--es-progress-track-height);
+}
+
+.es-progress__circle-track {
+  stroke: var(--es-progress-track-color);
+}
+
+.es-progress__circle-fill {
+  stroke: var(--es-progress-fill-color);
+  stroke-dasharray: var(--es-progress-dasharray, 1000);
+  stroke-dashoffset: var(--es-progress-dasharray, 1000);
+  transition: stroke-dashoffset var(--es-progress-duration) var(--es-progress-easing) var(--es-progress-delay);
+}
+
+.es-progress.is-animated .es-progress__circle-fill {
+  stroke-dashoffset: var(--es-progress-dashoffset, 0);
+}
+
+.es-progress__circle-content {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  inset: 0;
+}
+
+.es-progress--semi-circle .es-progress__circle-content {
+  top: auto;
+  bottom: 0;
+  height: 50%;
+}
+
+/* Multi & Step */
+.es-progress--multi .es-progress__track {
+  display: flex;
+  width: 100%;
+  background: var(--es-progress-track-color);
+  height: var(--es-progress-track-height);
+  border-radius: var(--es-progress-track-radius);
+}
+
+.es-progress--multi .es-progress__segment {
+  height: 100%;
+  transition: width var(--es-progress-duration) var(--es-progress-easing) var(--es-progress-delay);
+  width: 0%;
+}
+
+.es-progress.is-animated.es-progress--multi .es-progress__segment {
+  width: var(--es-segment-value, 0%);
+}
+
+/* Typography & Header */
+.es-progress__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: var(--es-progress-header-gap, 10px);
+}
+
+.es-progress__title,
+.es-progress__subtitle {
+  margin: 0;
+  padding: 0;
+}
+
+/* Premium Marker / Tooltip */
+.es-progress__marker {
+  position: absolute;
+  top: var(--es-progress-marker-top, -40px);
+
+  /* Perfect Clamping Logic */
+  left: 0%;
+  transform: translateX(0%);
+
+  display: inline-block;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+
+  background: var(--es-progress-marker-bg, #000);
+  color: var(--es-progress-marker-color, #fff);
+  padding: 6px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1;
+  white-space: nowrap;
+
+  opacity: 0;
+  transition:
+    left var(--es-progress-duration) var(--es-progress-easing) var(--es-progress-delay),
+    transform var(--es-progress-duration) var(--es-progress-easing) var(--es-progress-delay),
+    opacity var(--es-progress-duration) var(--es-progress-easing) var(--es-progress-delay),
+    background-color 0.3s ease,
+    color 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+}
+.es-progress:hover .es-progress__marker {
+  background: var(--es-progress-marker-hover-bg, var(--es-progress-marker-bg, #000));
+  color: var(--es-progress-marker-hover-color, var(--es-progress-marker-color, #fff));
+}
+
+.es-progress.is-animated .es-progress__marker {
+  opacity: 1;
+  left: var(--es-progress-value);
+  transform: translateX(calc(var(--es-progress-value) * -1));
+}
+
+/* Marker Arrow */
+.es-progress__marker::before {
+  position: absolute;
+  content: "";
+
+  bottom: var(--es-progress-marker-arrow-y, -8px);
+
+  border-top: var(--es-progress-marker-arrow-size, 4px) solid var(--es-progress-marker-bg, #000);
+  border-right: var(--es-progress-marker-arrow-size, 4px) solid transparent;
+  border-left: var(--es-progress-marker-arrow-size, 4px) solid transparent;
+  border-bottom: 0;
+
+  /* Arrow Tracking Logic */
+  right: 0%;
+  transform: translateX(-50%);
+  transition: left var(--es-progress-duration) var(--es-progress-easing) var(--es-progress-delay);
+}
+
+/* .es-progress.is-animated .es-progress__marker::before {
+  left: var(--es-progress-value);
+} */
+
+/* RTL Support */
+.rtl .es-progress__marker {
+  left: auto;
+  right: 0%;
+  transform: translateX(0%);
+}
+.rtl .es-progress.is-animated .es-progress__marker {
+  right: var(--es-progress-value);
+  transform: translateX(var(--es-progress-value));
+}
+.rtl .es-progress__marker::before {
+  left: auto;
+  right: 0%;
+  transform: translateX(50%);
+}
+.rtl .es-progress.is-animated .es-progress__marker::before {
+  right: var(--es-progress-value);
+}
+
+/* Circle Layout Marker overrides */
+.es-progress--circle .es-progress__marker,
+.es-progress--semi-circle .es-progress__marker {
+  position: relative;
+  top: auto;
+  left: auto;
+  right: auto;
+  transform: none;
+  opacity: 1;
+}
+.es-progress--circle .es-progress__marker::before,
+.es-progress--semi-circle .es-progress__marker::before {
+  display: none;
+}
+
+/* A11y */
+@media (prefers-reduced-motion: reduce) {
+  .es-progress__fill,
+  .es-progress__circle-fill,
+  .es-progress__segment,
+  .es-progress__marker,
+  .es-progress__marker::before {
+    transition: none !important;
+    animation: none !important;
+  }
+}

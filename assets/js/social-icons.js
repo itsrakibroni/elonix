@@ -5,11 +5,11 @@
  */
 
 jQuery(window).on('elementor/frontend/init', () => {
-	elementorFrontend.hooks.addAction('frontend/element_ready/tv-social-icons.default', ($element) => {
+	elementorFrontend.hooks.addAction('frontend/element_ready/es-social-icons.default', ($element) => {
 		const wrapper = $element.find('.elonix-social-icons-wrapper')[0];
 		if (!wrapper) return;
 
-		const items = wrapper.querySelectorAll('.tv-social-item');
+		const items = wrapper.querySelectorAll('.es-social-item');
 		
 		items.forEach((item) => {
 			// Keydown keyboard accessibility for Spacebar key
@@ -22,11 +22,11 @@ jQuery(window).on('elementor/frontend/init', () => {
 
 			// Focus state class toggle helpers
 			item.addEventListener('focus', () => {
-				item.classList.add('tv-focused');
+				item.classList.add('es-focused');
 			});
 			
 			item.addEventListener('blur', () => {
-				item.classList.remove('tv-focused');
+				item.classList.remove('es-focused');
 			});
 		});
 	});

@@ -12,14 +12,14 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 
 	public function get_name() {
-		return 'tv-feature-cards';
+		return 'es-feature-cards';
 	}
 
 	public function get_title() {
 		return esc_html__( 'Feature Cards', 'elonix' );
 	}
 
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-gallery-grid';
 	}
 
@@ -28,11 +28,11 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 	}
 
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-feature-cards', 'swiper' );
+		return array( 'elonix-widget-es-feature-cards', 'swiper' );
 	}
 
 	public function get_script_depends() {
-		return array( 'elonix-widget-tv-feature-cards', 'swiper' );
+		return array( 'elonix-widget-es-feature-cards', 'swiper' );
 	}
 
 	protected function register_controls() {
@@ -41,20 +41,20 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 		$this->register_content_layout_controls();
 		$this->register_content_carousel_controls();
 
-		\Elonix_Style_Manager::register_card_style( $this, 'section_style_card', 'card', '{{WRAPPER}} .tv-fc-card', '{{WRAPPER}} .elonix-feature-cards' );
+		\Elonix_Style_Manager::register_card_style( $this, 'section_style_card', 'card', '{{WRAPPER}} .es-fc-card', '{{WRAPPER}} .elonix-feature-cards' );
 		$this->register_style_card_inner_controls();
 
-		\Elonix_Style_Manager::register_icon_style( $this, 'section_style_icon', 'icon', '{{WRAPPER}} .tv-fc-icon', '{{WRAPPER}} .tv-fc-card:hover .tv-fc-icon' );
+		\Elonix_Style_Manager::register_icon_style( $this, 'section_style_icon', 'icon', '{{WRAPPER}} .es-fc-icon', '{{WRAPPER}} .es-fc-card:hover .es-fc-icon' );
 		$this->register_style_image_controls();
 
-		\Elonix_Style_Manager::register_title_style( $this, 'section_style_title', 'title', '{{WRAPPER}} .tv-fc-title', '{{WRAPPER}} .tv-fc-card:hover .tv-fc-title' );
+		\Elonix_Style_Manager::register_title_style( $this, 'section_style_title', 'title', '{{WRAPPER}} .es-fc-title', '{{WRAPPER}} .es-fc-card:hover .es-fc-title' );
 		$this->register_style_subtitle_controls();
 		$this->register_style_description_controls();
 
-		\Elonix_Style_Manager::register_badge_style( $this, 'section_style_badge', 'badge', '{{WRAPPER}} .tv-fc-badge', '{{WRAPPER}} .tv-fc-card:hover .tv-fc-badge' );
+		\Elonix_Style_Manager::register_badge_style( $this, 'section_style_badge', 'badge', '{{WRAPPER}} .es-fc-badge', '{{WRAPPER}} .es-fc-card:hover .es-fc-badge' );
 		$this->register_style_number_controls();
 
-		\Elonix_Style_Manager::register_button_style( $this, 'section_style_button', 'button', '{{WRAPPER}} .tv-fc-button' );
+		\Elonix_Style_Manager::register_button_style( $this, 'section_style_button', 'button', '{{WRAPPER}} .es-fc-button' );
 
 		$this->register_style_footer_controls();
 		$this->register_style_navigation_controls();
@@ -331,7 +331,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'max'       => 6,
 				'default'   => 3,
 				'selectors' => array(
-					'{{WRAPPER}} .elonix-feature-cards' => '--tv-fc-columns: {{VALUE}};',
+					'{{WRAPPER}} .elonix-feature-cards' => '--es-fc-columns: {{VALUE}};',
 				),
 				'condition' => array( 'layout_mode' => 'grid' ),
 			)
@@ -350,7 +350,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .elonix-feature-cards' => '--tv-fc-gap-column: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elonix-feature-cards' => '--es-fc-gap-column: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -368,7 +368,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .elonix-feature-cards' => '--tv-fc-gap-row: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .elonix-feature-cards' => '--es-fc-gap-row: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -483,7 +483,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Padding', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array( '{{WRAPPER}} .elonix-feature-cards' => '--tv-fc-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .elonix-feature-cards' => '--es-fc-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -492,7 +492,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Margin', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-card-inner' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-card-inner' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -507,7 +507,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'max' => 1000,
 					),
 				),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-card-inner' => 'min-height: {{SIZE}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-card-inner' => 'min-height: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -529,7 +529,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'icon'  => 'eicon-text-align-right',
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-card-inner, {{WRAPPER}} .tv-fc-card-body, {{WRAPPER}} .tv-fc-meta' => 'align-items: {{VALUE}}; text-align: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-card-inner, {{WRAPPER}} .es-fc-card-body, {{WRAPPER}} .es-fc-meta' => 'align-items: {{VALUE}}; text-align: {{VALUE}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -555,7 +555,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'icon'  => 'eicon-v-align-stretch',
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-card-inner' => 'justify-content: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-card-inner' => 'justify-content: {{VALUE}};' ),
 			)
 		);
 		$this->end_controls_section();
@@ -586,7 +586,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'max' => 1000,
 					),
 				),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-image img' => 'width: {{SIZE}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-image img' => 'width: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -595,7 +595,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Height', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'vh' ),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-image img' => 'height: {{SIZE}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-image img' => 'height: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_control(
@@ -609,14 +609,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 					'contain' => 'Contain',
 					'fill'    => 'Fill',
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-image img' => 'object-fit: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-image img' => 'object-fit: {{VALUE}};' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			array(
 				'name'     => 'image_border',
-				'selector' => '{{WRAPPER}} .tv-fc-image img',
+				'selector' => '{{WRAPPER}} .es-fc-image img',
 			)
 		);
 		$this->add_responsive_control(
@@ -625,14 +625,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Border Radius', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-image img' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'image_box_shadow',
-				'selector' => '{{WRAPPER}} .tv-fc-image img',
+				'selector' => '{{WRAPPER}} .es-fc-image img',
 			)
 		);
 		$this->add_control(
@@ -647,14 +647,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'step' => 0.01,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-image img' => 'opacity: {{SIZE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-image img' => 'opacity: {{SIZE}};' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			array(
 				'name'     => 'image_css_filters',
-				'selector' => '{{WRAPPER}} .tv-fc-image img',
+				'selector' => '{{WRAPPER}} .es-fc-image img',
 			)
 		);
 		$this->end_controls_tab();
@@ -664,14 +664,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Border::get_type(),
 			array(
 				'name'     => 'image_border_hover',
-				'selector' => '{{WRAPPER}} .tv-fc-card:hover .tv-fc-image img',
+				'selector' => '{{WRAPPER}} .es-fc-card:hover .es-fc-image img',
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'image_box_shadow_hover',
-				'selector' => '{{WRAPPER}} .tv-fc-card:hover .tv-fc-image img',
+				'selector' => '{{WRAPPER}} .es-fc-card:hover .es-fc-image img',
 			)
 		);
 		$this->add_control(
@@ -686,7 +686,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'step' => 0.01,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-card:hover .tv-fc-image img' => 'opacity: {{SIZE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-card:hover .es-fc-image img' => 'opacity: {{SIZE}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -701,14 +701,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'step' => 0.1,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-card:hover .tv-fc-image img' => 'transform: scale({{SIZE}});' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-card:hover .es-fc-image img' => 'transform: scale({{SIZE}});' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Css_Filter::get_type(),
 			array(
 				'name'     => 'image_css_filters_hover',
-				'selector' => '{{WRAPPER}} .tv-fc-card:hover .tv-fc-image img',
+				'selector' => '{{WRAPPER}} .es-fc-card:hover .es-fc-image img',
 			)
 		);
 		$this->end_controls_tab();
@@ -734,7 +734,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'subtitle_typography',
-				'selector' => '{{WRAPPER}} .tv-fc-subtitle',
+				'selector' => '{{WRAPPER}} .es-fc-subtitle',
 			)
 		);
 		$this->add_control(
@@ -742,7 +742,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-subtitle' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-subtitle' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -751,7 +751,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Margin', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-subtitle' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
 			)
 		);
 		$this->end_controls_tab();
@@ -762,7 +762,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-card:hover .tv-fc-subtitle' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-card:hover .es-fc-subtitle' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->end_controls_tab();
@@ -786,7 +786,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'description_typography',
-				'selector' => '{{WRAPPER}} .tv-fc-description',
+				'selector' => '{{WRAPPER}} .es-fc-description',
 			)
 		);
 		$this->add_control(
@@ -794,7 +794,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-description' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-description' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -803,7 +803,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Margin', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-description' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
 			)
 		);
 		$this->end_controls_tab();
@@ -814,7 +814,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-card:hover .tv-fc-description' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-card:hover .es-fc-description' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->end_controls_tab();
@@ -840,7 +840,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'number_typography',
-				'selector' => '{{WRAPPER}} .tv-fc-number',
+				'selector' => '{{WRAPPER}} .es-fc-number',
 			)
 		);
 		$this->add_control(
@@ -848,21 +848,21 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-number' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-number' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			array(
 				'name'     => 'number_bg',
-				'selector' => '{{WRAPPER}} .tv-fc-number',
+				'selector' => '{{WRAPPER}} .es-fc-number',
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			array(
 				'name'     => 'number_border',
-				'selector' => '{{WRAPPER}} .tv-fc-number',
+				'selector' => '{{WRAPPER}} .es-fc-number',
 			)
 		);
 		$this->add_responsive_control(
@@ -871,7 +871,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Border Radius', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-number' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-number' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -885,7 +885,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'max' => 200,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-number' => 'width: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-number' => 'width: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -899,7 +899,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'max' => 200,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-number' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-number' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_control(
@@ -921,7 +921,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'icon'  => 'eicon-text-align-right',
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-number' => 'text-align: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-number' => 'text-align: {{VALUE}};' ),
 			)
 		);
 		$this->end_controls_tab();
@@ -932,14 +932,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-card:hover .tv-fc-number' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-card:hover .es-fc-number' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			array(
 				'name'     => 'number_bg_hover',
-				'selector' => '{{WRAPPER}} .tv-fc-card:hover .tv-fc-number',
+				'selector' => '{{WRAPPER}} .es-fc-card:hover .es-fc-number',
 			)
 		);
 		$this->end_controls_tab();
@@ -965,7 +965,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			\Elementor\Group_Control_Typography::get_type(),
 			array(
 				'name'     => 'footer_typography',
-				'selector' => '{{WRAPPER}} .tv-fc-footer',
+				'selector' => '{{WRAPPER}} .es-fc-footer',
 			)
 		);
 		$this->add_control(
@@ -973,7 +973,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-footer' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-footer' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -982,7 +982,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Padding', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array( '{{WRAPPER}} .tv-fc-footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-fc-footer' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -996,7 +996,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'max' => 20,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-fc-footer' => 'border-top-width: {{SIZE}}{{UNIT}}; border-top-style: solid;' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-footer' => 'border-top-width: {{SIZE}}{{UNIT}}; border-top-style: solid;' ),
 			)
 		);
 		$this->add_control(
@@ -1004,7 +1004,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Border Top Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-footer' => 'border-top-color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-footer' => 'border-top-color: {{VALUE}};' ),
 			)
 		);
 		$this->end_controls_tab();
@@ -1015,7 +1015,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-card:hover .tv-fc-footer' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-card:hover .es-fc-footer' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->end_controls_tab();
@@ -1046,7 +1046,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'max' => 100,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-swiper-button-prev, {{WRAPPER}} .tv-swiper-button-next' => 'font-size: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-swiper-button-prev, {{WRAPPER}} .es-swiper-button-next' => 'font-size: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_control(
@@ -1054,21 +1054,21 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-swiper-button-prev, {{WRAPPER}} .tv-swiper-button-next' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-swiper-button-prev, {{WRAPPER}} .es-swiper-button-next' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			array(
 				'name'     => 'nav_bg',
-				'selector' => '{{WRAPPER}} .tv-swiper-button-prev, {{WRAPPER}} .tv-swiper-button-next',
+				'selector' => '{{WRAPPER}} .es-swiper-button-prev, {{WRAPPER}} .es-swiper-button-next',
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Border::get_type(),
 			array(
 				'name'     => 'nav_border',
-				'selector' => '{{WRAPPER}} .tv-swiper-button-prev, {{WRAPPER}} .tv-swiper-button-next',
+				'selector' => '{{WRAPPER}} .es-swiper-button-prev, {{WRAPPER}} .es-swiper-button-next',
 			)
 		);
 		$this->add_responsive_control(
@@ -1077,7 +1077,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 				'label'      => esc_html__( 'Border Radius', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
-				'selectors'  => array( '{{WRAPPER}} .tv-swiper-button-prev, {{WRAPPER}} .tv-swiper-button-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
+				'selectors'  => array( '{{WRAPPER}} .es-swiper-button-prev, {{WRAPPER}} .es-swiper-button-next' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -1091,7 +1091,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'max' => 150,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-swiper-button-prev, {{WRAPPER}} .tv-swiper-button-next' => 'width: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-swiper-button-prev, {{WRAPPER}} .es-swiper-button-next' => 'width: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -1105,14 +1105,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'max' => 150,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-swiper-button-prev, {{WRAPPER}} .tv-swiper-button-next' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-swiper-button-prev, {{WRAPPER}} .es-swiper-button-next' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'nav_shadow',
-				'selector' => '{{WRAPPER}} .tv-swiper-button-prev, {{WRAPPER}} .tv-swiper-button-next',
+				'selector' => '{{WRAPPER}} .es-swiper-button-prev, {{WRAPPER}} .es-swiper-button-next',
 			)
 		);
 		$this->end_controls_tab();
@@ -1123,14 +1123,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Color', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::COLOR,
-				'selectors' => array( '{{WRAPPER}} .tv-swiper-button-prev:hover, {{WRAPPER}} .tv-swiper-button-next:hover' => 'color: {{VALUE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-swiper-button-prev:hover, {{WRAPPER}} .es-swiper-button-next:hover' => 'color: {{VALUE}};' ),
 			)
 		);
 		$this->add_group_control(
 			\Elementor\Group_Control_Background::get_type(),
 			array(
 				'name'     => 'nav_bg_hover',
-				'selector' => '{{WRAPPER}} .tv-swiper-button-prev:hover, {{WRAPPER}} .tv-swiper-button-next:hover',
+				'selector' => '{{WRAPPER}} .es-swiper-button-prev:hover, {{WRAPPER}} .es-swiper-button-next:hover',
 			)
 		);
 		$this->end_controls_tab();
@@ -1148,7 +1148,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'step' => 0.1,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .tv-swiper-button-prev.swiper-button-disabled, {{WRAPPER}} .tv-swiper-button-next.swiper-button-disabled' => 'opacity: {{SIZE}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-swiper-button-prev.swiper-button-disabled, {{WRAPPER}} .es-swiper-button-next.swiper-button-disabled' => 'opacity: {{SIZE}};' ),
 			)
 		);
 		$this->end_controls_tab();
@@ -1295,7 +1295,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Icon / Image Gap', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::SLIDER,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-icon, {{WRAPPER}} .tv-fc-image' => 'margin-bottom: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-icon, {{WRAPPER}} .es-fc-image' => 'margin-bottom: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -1303,7 +1303,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Title Gap', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::SLIDER,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-title' => 'margin-bottom: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-title' => 'margin-bottom: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -1311,7 +1311,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Description Gap', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::SLIDER,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-description' => 'margin-bottom: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-description' => 'margin-bottom: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -1319,7 +1319,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Button Gap', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::SLIDER,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-button' => 'margin-top: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-button' => 'margin-top: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->add_responsive_control(
@@ -1327,7 +1327,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'     => esc_html__( 'Footer Gap', 'elonix' ),
 				'type'      => \Elementor\Controls_Manager::SLIDER,
-				'selectors' => array( '{{WRAPPER}} .tv-fc-footer' => 'margin-top: {{SIZE}}{{UNIT}};' ),
+				'selectors' => array( '{{WRAPPER}} .es-fc-footer' => 'margin-top: {{SIZE}}{{UNIT}};' ),
 			)
 		);
 		$this->end_controls_section();
@@ -1346,14 +1346,14 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 			array(
 				'label'   => esc_html__( 'Hover Effect', 'elonix' ),
 				'type'    => \Elementor\Controls_Manager::SELECT,
-				'default' => 'tv-hover-lift',
+				'default' => 'es-hover-lift',
 				'options' => array(
 					'none'                 => 'None',
-					'tv-hover-lift'        => 'Lift',
-					'tv-hover-scale'       => 'Scale',
-					'tv-hover-glow'        => 'Glow',
-					'tv-hover-border-glow' => 'Border Glow',
-					'tv-hover-shadow-grow' => 'Shadow Grow',
+					'es-hover-lift'        => 'Lift',
+					'es-hover-scale'       => 'Scale',
+					'es-hover-glow'        => 'Glow',
+					'es-hover-border-glow' => 'Border Glow',
+					'es-hover-shadow-grow' => 'Shadow Grow',
 				),
 			)
 		);
@@ -1368,7 +1368,7 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						'step' => 0.1,
 					),
 				),
-				'selectors' => array( '{{WRAPPER}} .elonix-feature-cards' => '--tv-fc-transition: all {{SIZE}}s ease-in-out;' ),
+				'selectors' => array( '{{WRAPPER}} .elonix-feature-cards' => '--es-fc-transition: all {{SIZE}}s ease-in-out;' ),
 			)
 		);
 		$this->end_controls_section();
@@ -1410,11 +1410,11 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						}
 					}
 					?>
-				<div class="tv-fc-carousel" data-settings='<?php echo wp_json_encode( $carousel_settings ); ?>'>
+				<div class="es-fc-carousel" data-settings="<?php echo esc_attr( wp_json_encode( $carousel_settings ) ); ?>">
 					<div class="swiper-container swiper">
 						<div class="swiper-wrapper">
 			<?php else : ?>
-				<div class="tv-fc-grid">
+				<div class="es-fc-grid">
 			<?php endif; ?>
 
 			<?php
@@ -1450,8 +1450,8 @@ class Elonix_Toolkit_Feature_Cards_Widget extends Elonix_Widget_Base {
 						<?php endif; ?>
 					</div>
 					<?php if ( 'yes' === $settings['navigation'] ) : ?>
-						<div class="tv-swiper-button-prev"><i class="eicon-chevron-left" aria-hidden="true"></i></div>
-						<div class="tv-swiper-button-next"><i class="eicon-chevron-right" aria-hidden="true"></i></div>
+						<div class="es-swiper-button-prev"><i class="eicon-chevron-left" aria-hidden="true"></i></div>
+						<div class="es-swiper-button-next"><i class="eicon-chevron-right" aria-hidden="true"></i></div>
 					<?php endif; ?>
 				</div>
 			<?php else : ?>

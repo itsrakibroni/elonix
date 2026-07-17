@@ -103,10 +103,10 @@ class Elonix_Toolkit_404_Builder {
 	 * Run dynamic log database migrations if schema is not registered.
 	 */
 	private function maybe_install_table() {
-		$db_version = Elonix_Settings::get( 'tv_404_db_version' ) ?? '0' ;
+		$db_version = Elonix_Settings::get( 'es_404_db_version' ) ?? '0' ;
 		if ( version_compare( $db_version, '1.0.0', '<' ) ) {
 			global $wpdb;
-			$table_name      = $wpdb->prefix . 'tv_404_logs';
+			$table_name      = $wpdb->prefix . 'es_404_logs';
 			$charset_collate = $wpdb->get_charset_collate();
 
 			$sql = "CREATE TABLE $table_name (
@@ -126,7 +126,7 @@ class Elonix_Toolkit_404_Builder {
 			require_once ABSPATH . 'wp-admin/includes/upgrade.php';
 			dbDelta( $sql );
 
-			update_option( 'tv_404_db_version', '1.0.0' );
+			update_option( 'es_404_db_version', '1.0.0' );
 		}
 	}
 }

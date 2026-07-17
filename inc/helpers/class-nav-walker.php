@@ -48,7 +48,7 @@ class Elonix_Nav_Menu_Walker extends Walker_Nav_Menu {
 	 */
 	public function start_lvl( &$output, $depth = 0, $args = null ) {
 		$indent  = str_repeat( "\t", $depth );
-		$classes = array( 'tv-dropdown', 'tv-submenu-panel' );
+		$classes = array( 'es-dropdown', 'es-submenu-panel' );
 
 		/**
 		 * Filter submenu classes.
@@ -74,7 +74,7 @@ class Elonix_Nav_Menu_Walker extends Walker_Nav_Menu {
 		$classes = empty( $item->classes ) ? array() : (array) $item->classes;
 
 		if ( in_array( 'menu-item-has-children', $classes, true ) ) {
-			$classes[] = 'tv-dropdown-has';
+			$classes[] = 'es-dropdown-has';
 		}
 
 		/**
@@ -113,20 +113,20 @@ class Elonix_Nav_Menu_Walker extends Walker_Nav_Menu {
 
 		// Scan for badge settings from menu item meta, with backward compatibility fallback for CSS class badges
 		$badge_html     = '';
-		$badge_enabled  = isset( $item->tv_badge_enabled ) ? $item->tv_badge_enabled : '';
-		$badge_type     = isset( $item->tv_badge_type ) ? $item->tv_badge_type : 'none';
-		$badge_text     = isset( $item->tv_badge_text ) ? $item->tv_badge_text : '';
-		$badge_color    = isset( $item->tv_badge_color ) ? $item->tv_badge_color : '';
-		$badge_bg       = isset( $item->tv_badge_bg ) ? $item->tv_badge_bg : '';
-		$badge_position = isset( $item->tv_badge_position ) ? $item->tv_badge_position : 'top-right';
-		$badge_offset_x = isset( $item->tv_badge_offset_x ) ? $item->tv_badge_offset_x : '';
-		$badge_offset_y = isset( $item->tv_badge_offset_y ) ? $item->tv_badge_offset_y : '';
+		$badge_enabled  = isset( $item->es_badge_enabled ) ? $item->es_badge_enabled : '';
+		$badge_type     = isset( $item->es_badge_type ) ? $item->es_badge_type : 'none';
+		$badge_text     = isset( $item->es_badge_text ) ? $item->es_badge_text : '';
+		$badge_color    = isset( $item->es_badge_color ) ? $item->es_badge_color : '';
+		$badge_bg       = isset( $item->es_badge_bg ) ? $item->es_badge_bg : '';
+		$badge_position = isset( $item->es_badge_position ) ? $item->es_badge_position : 'top-right';
+		$badge_offset_x = isset( $item->es_badge_offset_x ) ? $item->es_badge_offset_x : '';
+		$badge_offset_y = isset( $item->es_badge_offset_y ) ? $item->es_badge_offset_y : '';
 
 		// Backward compatibility: check if class-based badge exists
 		if ( 'yes' !== $badge_enabled || 'none' === $badge_type ) {
 			foreach ( $classes as $class ) {
-				if ( strpos( $class, 'tv-badge-' ) === 0 ) {
-					$badge_name    = str_replace( 'tv-badge-', '', $class );
+				if ( strpos( $class, 'es-badge-' ) === 0 ) {
+					$badge_name    = str_replace( 'es-badge-', '', $class );
 					$badge_key     = strtolower( $badge_name );
 					$badge_enabled = 'yes';
 					$badge_type    = in_array( $badge_key, array( 'new', 'hot', 'sale' ), true ) ? $badge_key : 'custom';
@@ -157,24 +157,24 @@ class Elonix_Nav_Menu_Walker extends Walker_Nav_Menu {
 				$inline_styles[] = 'background-color: ' . esc_attr( $badge_bg ) . ';';
 			}
 
-			$badge_classes = array( 'tv-menu-badge', 'tv-badge-' . esc_attr( $badge_type ) );
+			$badge_classes = array( 'es-menu-badge', 'es-badge-' . esc_attr( $badge_type ) );
 
 			// Position styling presets
 			if ( 'top-right' === $badge_position ) {
 				$inline_styles[] = 'position: absolute; top: 0; right: 0; transform: translateY(-50%) !important;';
-				$badge_classes[] = 'tv-badge-pos-top-right';
+				$badge_classes[] = 'es-badge-pos-top-right';
 			} elseif ( 'top-left' === $badge_position ) {
 				$inline_styles[] = 'position: absolute; top: 0; left: 0; transform: translateY(-50%) !important;';
-				$badge_classes[] = 'tv-badge-pos-top-left';
+				$badge_classes[] = 'es-badge-pos-top-left';
 			} elseif ( 'bottom-right' === $badge_position ) {
 				$inline_styles[] = 'position: absolute; bottom: 0; right: 0; transform: translateY(50%) !important;';
-				$badge_classes[] = 'tv-badge-pos-bottom-right';
+				$badge_classes[] = 'es-badge-pos-bottom-right';
 			} elseif ( 'bottom-left' === $badge_position ) {
 				$inline_styles[] = 'position: absolute; bottom: 0; left: 0; transform: translateY(50%) !important;';
-				$badge_classes[] = 'tv-badge-pos-bottom-left';
+				$badge_classes[] = 'es-badge-pos-bottom-left';
 			} else {
 				$inline_styles[] = 'position: relative;';
-				$badge_classes[] = 'tv-badge-pos-custom';
+				$badge_classes[] = 'es-badge-pos-custom';
 				if ( ! empty( $badge_offset_x ) ) {
 					$inline_styles[] = 'margin-left: ' . esc_attr( $badge_offset_x ) . ';';
 				}
@@ -193,7 +193,7 @@ class Elonix_Nav_Menu_Walker extends Walker_Nav_Menu {
 			if ( ! empty( $this->indicator_icon ) ) {
 				$submenu_indicator = ' ' . $this->indicator_icon;
 			} else {
-				$submenu_indicator = ' <i class="fas fa-chevron-down tv-submenu-indicator" aria-hidden="true"></i>';
+				$submenu_indicator = ' <i class="fas fa-chevron-down es-submenu-indicator" aria-hidden="true"></i>';
 			}
 		}
 
@@ -209,7 +209,7 @@ class Elonix_Nav_Menu_Walker extends Walker_Nav_Menu {
 		 */
 		$mega_menu_html = apply_filters( 'elonix_mega_menu_content', '', $item, $depth, $args );
 		if ( ! empty( $mega_menu_html ) ) {
-			$item_output .= '<div class="tv-megamenu-panel">' . $mega_menu_html . '</div>';
+			$item_output .= '<div class="es-megamenu-panel">' . $mega_menu_html . '</div>';
 		}
 
 		// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WordPress Core hook

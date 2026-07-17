@@ -1052,10 +1052,10 @@ namespace {
 			// ==========================================
 			// MODERN CTA STYLE CONTROLS
 			// ==========================================
-			$cta_outer_selector      = '{{WRAPPER}} .elonix-advanced-button.tv-btn-preset-modern-cta';
-			$cta_text_selector       = '{{WRAPPER}} .elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-text-area';
-			$cta_arrow_selector      = '{{WRAPPER}} .elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-arrow-area';
-			$cta_arrow_icon_selector = '{{WRAPPER}} .elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-arrow-area i, {{WRAPPER}} .elonix-advanced-button.tv-btn-preset-modern-cta .elonix-cta-arrow-area svg';
+			$cta_outer_selector      = '{{WRAPPER}} .elonix-advanced-button.es-btn-preset-modern-cta';
+			$cta_text_selector       = '{{WRAPPER}} .elonix-advanced-button.es-btn-preset-modern-cta .elonix-cta-text-area';
+			$cta_arrow_selector      = '{{WRAPPER}} .elonix-advanced-button.es-btn-preset-modern-cta .elonix-cta-arrow-area';
+			$cta_arrow_icon_selector = '{{WRAPPER}} .elonix-advanced-button.es-btn-preset-modern-cta .elonix-cta-arrow-area i, {{WRAPPER}} .elonix-advanced-button.es-btn-preset-modern-cta .elonix-cta-arrow-area svg';
 
 			// Section 4: Modern CTA - Outer Container
 			$widget->start_controls_section(
@@ -1086,7 +1086,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector => 'gap: {{SIZE}}{{UNIT}}; --tv-cta-text-arrow-gap: {{SIZE}}{{UNIT}};',
+						$cta_outer_selector => 'gap: {{SIZE}}{{UNIT}}; --es-cta-text-arrow-gap: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1147,7 +1147,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						$cta_outer_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; --tv-cta-outer-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						$cta_outer_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; --es-cta-outer-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1239,7 +1239,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover' => '--tv-cta-outer-scale: {{SIZE}};',
+						$cta_outer_selector . ':hover' => '--es-cta-outer-scale: {{SIZE}};',
 					),
 				)
 			);
@@ -1258,7 +1258,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover' => '--tv-cta-outer-rotate: {{SIZE}}deg;',
+						$cta_outer_selector . ':hover' => '--es-cta-outer-rotate: {{SIZE}}deg;',
 					),
 				)
 			);
@@ -1276,7 +1276,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover' => '--tv-cta-outer-translate-x: {{SIZE}}{{UNIT}};',
+						$cta_outer_selector . ':hover' => '--es-cta-outer-translate-x: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1294,7 +1294,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover' => '--tv-cta-outer-translate-y: {{SIZE}}{{UNIT}};',
+						$cta_outer_selector . ':hover' => '--es-cta-outer-translate-y: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1427,7 +1427,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						$cta_text_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; --tv-cta-text-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						$cta_text_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; --es-cta-text-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1556,7 +1556,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover .elonix-cta-text-area' => '--tv-cta-text-scale: {{SIZE}};',
+						$cta_outer_selector . ':hover .elonix-cta-text-area' => '--es-cta-text-scale: {{SIZE}};',
 					),
 				)
 			);
@@ -1575,7 +1575,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover .elonix-cta-text-area' => '--tv-cta-text-rotate: {{SIZE}}deg;',
+						$cta_outer_selector . ':hover .elonix-cta-text-area' => '--es-cta-text-rotate: {{SIZE}}deg;',
 					),
 				)
 			);
@@ -1593,7 +1593,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover .elonix-cta-text-area' => '--tv-cta-text-translate-x: {{SIZE}}{{UNIT}};',
+						$cta_outer_selector . ':hover .elonix-cta-text-area' => '--es-cta-text-translate-x: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1611,7 +1611,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover .elonix-cta-text-area' => '--tv-cta-text-translate-y: {{SIZE}}{{UNIT}};',
+						$cta_outer_selector . ':hover .elonix-cta-text-area' => '--es-cta-text-translate-y: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1701,7 +1701,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_arrow_selector => 'width: {{SIZE}}{{UNIT}}; --tv-cta-arrow-width: {{SIZE}}{{UNIT}};',
+						$cta_arrow_selector => 'width: {{SIZE}}{{UNIT}}; --es-cta-arrow-width: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1719,7 +1719,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_arrow_selector => 'height: {{SIZE}}{{UNIT}}; --tv-cta-arrow-height: {{SIZE}}{{UNIT}};',
+						$cta_arrow_selector => 'height: {{SIZE}}{{UNIT}}; --es-cta-arrow-height: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1731,7 +1731,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						$cta_arrow_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; --tv-cta-arrow-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						$cta_arrow_selector => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; --es-cta-arrow-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1743,7 +1743,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						$cta_arrow_selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; --tv-cta-arrow-margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						$cta_arrow_selector => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}}; --es-cta-arrow-margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -1880,7 +1880,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover .elonix-cta-arrow-area' => '--tv-cta-arrow-scale: {{SIZE}};',
+						$cta_outer_selector . ':hover .elonix-cta-arrow-area' => '--es-cta-arrow-scale: {{SIZE}};',
 					),
 				)
 			);
@@ -1899,7 +1899,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover .elonix-cta-arrow-area' => '--tv-cta-arrow-rotate: {{SIZE}}deg;',
+						$cta_outer_selector . ':hover .elonix-cta-arrow-area' => '--es-cta-arrow-rotate: {{SIZE}}deg;',
 					),
 				)
 			);
@@ -1917,7 +1917,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover .elonix-cta-arrow-area' => '--tv-cta-arrow-translate-x: {{SIZE}}{{UNIT}};',
+						$cta_outer_selector . ':hover .elonix-cta-arrow-area' => '--es-cta-arrow-translate-x: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -1935,7 +1935,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector . ':hover .elonix-cta-arrow-area' => '--tv-cta-arrow-translate-y: {{SIZE}}{{UNIT}};',
+						$cta_outer_selector . ':hover .elonix-cta-arrow-area' => '--es-cta-arrow-translate-y: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -2060,7 +2060,7 @@ namespace {
 						'unit' => 'ms',
 					),
 					'selectors'  => array(
-						$cta_outer_selector => '--tv-cta-anim-duration: {{SIZE}}ms;',
+						$cta_outer_selector => '--es-cta-anim-duration: {{SIZE}}ms;',
 					),
 				)
 			);
@@ -2079,7 +2079,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						$cta_outer_selector => '--tv-cta-anim-delay: {{SIZE}}ms;',
+						$cta_outer_selector => '--es-cta-anim-delay: {{SIZE}}ms;',
 					),
 				)
 			);
@@ -2099,7 +2099,7 @@ namespace {
 						'ease-in-out' => esc_html__( 'Ease In Out', 'elonix' ),
 					),
 					'selectors' => array(
-						$cta_outer_selector => '--tv-cta-anim-timing: {{VALUE}};',
+						$cta_outer_selector => '--es-cta-anim-timing: {{VALUE}};',
 					),
 				)
 			);
@@ -2121,7 +2121,7 @@ namespace {
 						'unit' => 'px',
 					),
 					'selectors'  => array(
-						$cta_outer_selector => '--tv-cta-anim-distance: {{SIZE}}{{UNIT}};',
+						$cta_outer_selector => '--es-cta-anim-distance: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -2144,7 +2144,7 @@ namespace {
 						'unit' => 'ratio',
 					),
 					'selectors'  => array(
-						$cta_outer_selector => '--tv-cta-anim-scale: {{SIZE}};',
+						$cta_outer_selector => '--es-cta-anim-scale: {{SIZE}};',
 					),
 				)
 			);
@@ -2167,7 +2167,7 @@ namespace {
 						'unit' => 'deg',
 					),
 					'selectors'  => array(
-						$cta_outer_selector => '--tv-cta-anim-rotation: {{SIZE}}deg;',
+						$cta_outer_selector => '--es-cta-anim-rotation: {{SIZE}}deg;',
 					),
 				)
 			);
@@ -2216,7 +2216,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => 'width: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => 'width: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -2235,7 +2235,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => 'height: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => 'height: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -2248,7 +2248,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -2261,7 +2261,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -2280,7 +2280,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => 'gap: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => 'gap: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -2290,7 +2290,7 @@ namespace {
 				Group_Control_Typography::get_type(),
 				array(
 					'name'     => $prefix . 'ba_typography',
-					'selector' => '{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-text',
+					'selector' => '{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-text',
 				)
 			);
 
@@ -2318,7 +2318,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-icon-container' => 'width: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-icon-container' => 'width: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -2337,7 +2337,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-icon-container' => 'height: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-icon-container' => 'height: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -2350,7 +2350,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-icon-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-icon-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -2363,7 +2363,7 @@ namespace {
 					'type'       => Controls_Manager::DIMENSIONS,
 					'size_units' => array( 'px', '%', 'em', 'rem' ),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-icon-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-icon-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 					),
 				)
 			);
@@ -2382,7 +2382,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-icon-container' => 'transform: translateX({{SIZE}}{{UNIT}});',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-icon-container' => 'transform: translateX({{SIZE}}{{UNIT}});',
 					),
 				)
 			);
@@ -2405,7 +2405,7 @@ namespace {
 					'label'     => esc_html__( 'Button Background', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => 'background-color: {{VALUE}};',
 					),
 				)
 			);
@@ -2417,7 +2417,7 @@ namespace {
 					'label'     => esc_html__( 'Button Text Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-text' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-text' => 'color: {{VALUE}};',
 					),
 				)
 			);
@@ -2429,7 +2429,7 @@ namespace {
 					'label'     => esc_html__( 'Icon Area Background', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-icon-container' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-icon-container' => 'background-color: {{VALUE}};',
 					),
 				)
 			);
@@ -2441,8 +2441,8 @@ namespace {
 					'label'     => esc_html__( 'Icon Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-icon-container i' => 'color: {{VALUE}};',
-						'{{WRAPPER}} .tv-btn-preset-book-appointment .elonix-button-icon-container svg' => 'fill: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-icon-container i' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment .elonix-button-icon-container svg' => 'fill: {{VALUE}};',
 					),
 				)
 			);
@@ -2454,7 +2454,7 @@ namespace {
 					'label'     => esc_html__( 'Border Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => 'border-color: {{VALUE}}; border-style: solid; border-width: 1px;',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => 'border-color: {{VALUE}}; border-style: solid; border-width: 1px;',
 					),
 				)
 			);
@@ -2464,7 +2464,7 @@ namespace {
 				Group_Control_Box_Shadow::get_type(),
 				array(
 					'name'     => $prefix . 'ba_box_shadow',
-					'selector' => '{{WRAPPER}} .tv-btn-preset-book-appointment',
+					'selector' => '{{WRAPPER}} .es-btn-preset-book-appointment',
 				)
 			);
 
@@ -2482,7 +2482,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => 'backdrop-filter: blur({{SIZE}}{{UNIT}}); -webkit-backdrop-filter: blur({{SIZE}}{{UNIT}});',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => 'backdrop-filter: blur({{SIZE}}{{UNIT}}); -webkit-backdrop-filter: blur({{SIZE}}{{UNIT}});',
 					),
 				)
 			);
@@ -2504,7 +2504,7 @@ namespace {
 					'label'     => esc_html__( 'Button Hover Background', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment:hover' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment:hover' => 'background-color: {{VALUE}};',
 					),
 				)
 			);
@@ -2516,7 +2516,7 @@ namespace {
 					'label'     => esc_html__( 'Button Hover Text Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment:hover .elonix-button-text' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment:hover .elonix-button-text' => 'color: {{VALUE}};',
 					),
 				)
 			);
@@ -2528,7 +2528,7 @@ namespace {
 					'label'     => esc_html__( 'Icon Area Hover Background', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment:hover .elonix-button-icon-container' => 'background-color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment:hover .elonix-button-icon-container' => 'background-color: {{VALUE}};',
 					),
 				)
 			);
@@ -2540,8 +2540,8 @@ namespace {
 					'label'     => esc_html__( 'Icon Hover Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment:hover .elonix-button-icon-container i' => 'color: {{VALUE}};',
-						'{{WRAPPER}} .tv-btn-preset-book-appointment:hover .elonix-button-icon-container svg' => 'fill: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment:hover .elonix-button-icon-container i' => 'color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment:hover .elonix-button-icon-container svg' => 'fill: {{VALUE}};',
 					),
 				)
 			);
@@ -2553,7 +2553,7 @@ namespace {
 					'label'     => esc_html__( 'Border Hover Color', 'elonix' ),
 					'type'      => Controls_Manager::COLOR,
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment:hover' => 'border-color: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment:hover' => 'border-color: {{VALUE}};',
 					),
 				)
 			);
@@ -2591,7 +2591,7 @@ namespace {
 						'unit' => 'ms',
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment, {{WRAPPER}} .tv-btn-preset-book-appointment *, {{WRAPPER}} .elonix-button-icon-container i, {{WRAPPER}} .elonix-button-icon-container svg' => 'transition-duration: {{SIZE}}ms !important;',
+						'{{WRAPPER}} .es-btn-preset-book-appointment, {{WRAPPER}} .es-btn-preset-book-appointment *, {{WRAPPER}} .elonix-button-icon-container i, {{WRAPPER}} .elonix-button-icon-container svg' => 'transition-duration: {{SIZE}}ms !important;',
 					),
 				)
 			);
@@ -2611,7 +2611,7 @@ namespace {
 						),
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment, {{WRAPPER}} .tv-btn-preset-book-appointment *, {{WRAPPER}} .elonix-button-icon-container i, {{WRAPPER}} .elonix-button-icon-container svg' => 'transition-delay: {{SIZE}}ms;',
+						'{{WRAPPER}} .es-btn-preset-book-appointment, {{WRAPPER}} .es-btn-preset-book-appointment *, {{WRAPPER}} .elonix-button-icon-container i, {{WRAPPER}} .elonix-button-icon-container svg' => 'transition-delay: {{SIZE}}ms;',
 					),
 				)
 			);
@@ -2632,7 +2632,7 @@ namespace {
 						'cubic-bezier(0.68, -0.6, 0.32, 1.6)' => esc_html__( 'Smooth Bounce', 'elonix' ),
 					),
 					'selectors' => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment, {{WRAPPER}} .tv-btn-preset-book-appointment *, {{WRAPPER}} .elonix-button-icon-container i, {{WRAPPER}} .elonix-button-icon-container svg' => 'transition-timing-function: {{VALUE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment, {{WRAPPER}} .es-btn-preset-book-appointment *, {{WRAPPER}} .elonix-button-icon-container i, {{WRAPPER}} .elonix-button-icon-container svg' => 'transition-timing-function: {{VALUE}};',
 					),
 				)
 			);
@@ -2656,7 +2656,7 @@ namespace {
 						'unit' => 'ratio',
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => '--tv-ba-anim-scale: {{SIZE}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => '--es-ba-anim-scale: {{SIZE}};',
 					),
 				)
 			);
@@ -2680,7 +2680,7 @@ namespace {
 						'unit' => 'deg',
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => '--tv-ba-anim-rotation: {{SIZE}}deg;',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => '--es-ba-anim-rotation: {{SIZE}}deg;',
 					),
 				)
 			);
@@ -2703,7 +2703,7 @@ namespace {
 						'unit' => 'px',
 					),
 					'selectors'  => array(
-						'{{WRAPPER}} .tv-btn-preset-book-appointment' => '--tv-ba-anim-distance: {{SIZE}}{{UNIT}};',
+						'{{WRAPPER}} .es-btn-preset-book-appointment' => '--es-ba-anim-distance: {{SIZE}}{{UNIT}};',
 					),
 				)
 			);
@@ -2738,10 +2738,10 @@ namespace {
 
 			// Base and Preset Classes
 			$classes   = array( 'elonix-advanced-button' );
-			$classes[] = 'tv-btn-preset-' . $preset;
+			$classes[] = 'es-btn-preset-' . $preset;
 
 			$size      = isset( $settings[ $prefix . 'button_size' ] ) ? $settings[ $prefix . 'button_size' ] : 'medium';
-			$classes[] = 'tv-btn-size-' . $size;
+			$classes[] = 'es-btn-size-' . $size;
 
 			$cta_animation   = '';
 			$cta_anim_target = 'button';
@@ -2755,7 +2755,7 @@ namespace {
 				}
 			} elseif ( 'book-appointment' === $preset ) {
 				$hover_style = isset( $settings[ $prefix . 'ba_hover_style' ] ) ? $settings[ $prefix . 'ba_hover_style' ] : 'style-1';
-				$classes[]   = 'tv-ba-hover-' . $hover_style;
+				$classes[]   = 'es-ba-hover-' . $hover_style;
 			}
 
 			if ( ! empty( $extra_classes ) ) {
@@ -2864,7 +2864,7 @@ namespace {
 				$ba_icon_pos = isset( $settings[ $prefix . 'ba_icon_position' ] ) ? $settings[ $prefix . 'ba_icon_position' ] : 'right';
 				?>
 				<a <?php $widget->print_render_attribute_string( $prefix . 'button_attr' ); ?>>
-					<span class="elonix-button-content-wrapper tv-ba-pos-<?php echo esc_attr( $ba_icon_pos ); ?>">
+					<span class="elonix-button-content-wrapper es-ba-pos-<?php echo esc_attr( $ba_icon_pos ); ?>">
 						<?php if ( 'left' === $ba_icon_pos ) : ?>
 							<span class="elonix-button-icon-container">
 								<?php if ( ! empty( $ba_icon['value'] ) ) : ?>
@@ -2922,7 +2922,7 @@ namespace {
 						// Render Arrow System Element
 						if ( 'none' !== $arrow_type && ! empty( $arrow_icon['value'] ) ) :
 							?>
-							<span class="elonix-button-arrow tv-arrow-type-<?php echo esc_attr( $arrow_type ); ?> <?php echo esc_attr( $prefix ); ?>elonix-button-arrow">
+							<span class="elonix-button-arrow es-arrow-type-<?php echo esc_attr( $arrow_type ); ?> <?php echo esc_attr( $prefix ); ?>elonix-button-arrow">
 								<?php \Elementor\Icons_Manager::render_icon( $arrow_icon, array( 'aria-hidden' => 'true' ) ); ?>
 							</span>
 						<?php endif; ?>
@@ -2943,11 +2943,11 @@ namespace Elementor {
 
 	use Elonix_Button_Helper;
 
-	if ( ! function_exists( 'Elementor\tv_button_controls' ) ) {
+	if ( ! function_exists( 'Elementor\es_button_controls' ) ) {
 		/**
 		 * Wrapper function to register controls dynamically in components.
 		 */
-		function tv_button_controls( $widget, $prefix = 'button', $section_label = 'Button Settings', $condition = array() ) {
+		function es_button_controls( $widget, $prefix = 'button', $section_label = 'Button Settings', $condition = array() ) {
 			$section_args = array(
 				'label' => $section_label,
 				'tab'   => Controls_Manager::TAB_CONTENT,
@@ -3024,11 +3024,11 @@ namespace Elementor {
 		}
 	}
 
-	if ( ! function_exists( 'Elementor\tv_render_button' ) ) {
+	if ( ! function_exists( 'Elementor\es_render_button' ) ) {
 		/**
 		 * Wrapper function to render component buttons dynamically.
 		 */
-		function tv_render_button( $settings, $prefix = 'button' ) {
+		function es_render_button( $settings, $prefix = 'button' ) {
 			$button_enable = isset( $settings[ $prefix . '_enable' ] ) ? $settings[ $prefix . '_enable' ] : 'yes';
 
 			if ( 'yes' !== $button_enable ) {
@@ -3053,10 +3053,10 @@ namespace Elementor {
 
 			// Classes
 			$classes   = array( 'elonix-advanced-button', $prefix . '_elonix-button' );
-			$classes[] = 'tv-btn-preset-' . $preset;
+			$classes[] = 'es-btn-preset-' . $preset;
 
 			$size      = isset( $settings[ $prefix . '_button_size' ] ) ? $settings[ $prefix . '_button_size' ] : 'medium';
-			$classes[] = 'tv-btn-size-' . $size;
+			$classes[] = 'es-btn-size-' . $size;
 
 			$cta_animation   = '';
 			$cta_anim_target = 'button';
@@ -3070,7 +3070,7 @@ namespace Elementor {
 				}
 			} elseif ( 'book-appointment' === $preset ) {
 				$hover_style = isset( $settings[ $prefix . '_ba_hover_style' ] ) ? $settings[ $prefix . '_ba_hover_style' ] : 'style-1';
-				$classes[]   = 'tv-ba-hover-' . $hover_style;
+				$classes[]   = 'es-ba-hover-' . $hover_style;
 			}
 
 			// Link Attributes
@@ -3159,7 +3159,7 @@ namespace Elementor {
 						$ba_icon     = isset( $settings[ $prefix . '_ba_icon' ] ) ? $settings[ $prefix . '_ba_icon' ] : array();
 						$ba_icon_pos = isset( $settings[ $prefix . '_ba_icon_position' ] ) ? $settings[ $prefix . '_ba_icon_position' ] : 'right';
 						?>
-						<span class="elonix-button-content-wrapper tv-ba-pos-<?php echo esc_attr( $ba_icon_pos ); ?>">
+						<span class="elonix-button-content-wrapper es-ba-pos-<?php echo esc_attr( $ba_icon_pos ); ?>">
 							<?php if ( 'left' === $ba_icon_pos ) : ?>
 								<span class="elonix-button-icon-container">
 									<?php if ( ! empty( $ba_icon['value'] ) ) : ?>
@@ -3213,7 +3213,7 @@ namespace Elementor {
 							// Render Arrow
 							if ( 'none' !== $arrow_type && ! empty( $arrow_icon['value'] ) ) :
 								?>
-								<span class="elonix-button-arrow tv-arrow-type-<?php echo esc_attr( $arrow_type ); ?> <?php echo esc_attr( $prefix ); ?>_elonix-button-arrow elonix-button-arrow">
+								<span class="elonix-button-arrow es-arrow-type-<?php echo esc_attr( $arrow_type ); ?> <?php echo esc_attr( $prefix ); ?>_elonix-button-arrow elonix-button-arrow">
 									<?php Icons_Manager::render_icon( $arrow_icon, array( 'aria-hidden' => 'true' ) ); ?>
 								</span>
 							<?php endif; ?>

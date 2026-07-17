@@ -28,11 +28,11 @@ class Hybrid_Engine implements Loader_Engine_Interface {
 		
 		if ( ! $image_url ) {
 			// Fallback to text if no image
-			return '<div class="tv-hybrid-loader tv-loader-' . esc_attr( $this->id ) . '" aria-hidden="true"><span>Loading...</span></div>';
+			return '<div class="es-hybrid-loader es-loader-' . esc_attr( $this->id ) . '" aria-hidden="true"><span>Loading...</span></div>';
 		}
 
 		$markup = sprintf(
-			'<div class="tv-hybrid-loader tv-loader-%s" aria-hidden="true"><img src="%s" alt="%s"></div>',
+			'<div class="es-hybrid-loader es-loader-%s" aria-hidden="true"><img src="%s" alt="%s"></div>',
 			esc_attr( $this->id ),
 			esc_url( $image_url ),
 			esc_attr__( 'Loading...', 'elonix' )

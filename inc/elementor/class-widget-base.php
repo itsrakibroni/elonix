@@ -38,7 +38,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 		$post_css->get_stylesheet()->add_raw_css( $css );
 	}
 
-	public function get_tv_widget_category() {
+	public function get_es_widget_category() {
 		return 'elonix-widgets';
 	}
 
@@ -54,7 +54,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 				return array( $widget_data['category'] );
 			}
 		}
-		return array( $this->get_tv_widget_category() );
+		return array( $this->get_es_widget_category() );
 	}
 
 	/**
@@ -62,7 +62,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 	 *
 	 * @return array Search keywords.
 	 */
-	public function get_tv_widget_keywords() {
+	public function get_es_widget_keywords() {
 		return array( 'elonix', 'toolkit' );
 	}
 
@@ -73,7 +73,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 	 */
 	public function get_keywords() {
 		$default_keywords = array( 'elonix', 'Elonix', 'ESKIT', 'toolkit' );
-		$custom_keywords  = $this->get_tv_widget_keywords();
+		$custom_keywords  = $this->get_es_widget_keywords();
 		return array_unique( array_merge( $default_keywords, $custom_keywords ) );
 	}
 
@@ -82,7 +82,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 	 *
 	 * @return string Default icon slug.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-code';
 	}
 
@@ -93,18 +93,18 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 	 */
 	public function get_icon() {
 		$categories     = $this->get_categories();
-		$is_tv_category = false;
+		$is_es_category = false;
 		foreach ( $categories as $category ) {
 			if ( strpos( $category, 'elonix-' ) === 0 ) {
-				$is_tv_category = true;
+				$is_es_category = true;
 				break;
 			}
 		}
 
-		if ( $is_tv_category ) {
-			return $this->get_tv_widget_icon() . ' elonix-widget-icon';
+		if ( $is_es_category ) {
+			return $this->get_es_widget_icon() . ' elonix-widget-icon';
 		}
-		return $this->get_tv_widget_icon();
+		return $this->get_es_widget_icon();
 	}
 
 	/**

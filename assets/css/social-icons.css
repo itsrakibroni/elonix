@@ -3,26 +3,26 @@
  */
 
 :root {
-	--tv-brand-facebook: #1877f2;
-	--tv-brand-twitter: #000000;
-	--tv-brand-instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
-	--tv-brand-linkedin: #0a66c2;
-	--tv-brand-youtube: #ff0000;
-	--tv-brand-tiktok: #010101;
-	--tv-brand-telegram: #26a5e4;
-	--tv-brand-whatsapp: #25d366;
-	--tv-brand-pinterest: #e60023;
-	--tv-brand-reddit: #ff4500;
-	--tv-brand-discord: #5865f2;
-	--tv-brand-github: #24292f;
-	--tv-brand-behance: #0057ff;
-	--tv-brand-dribbble: #ea4c89;
-	--tv-brand-medium: #000000;
-	--tv-brand-skype: #00aff0;
-	--tv-brand-vimeo: #1ab7ea;
-	--tv-brand-snapchat: #fffc00;
-	--tv-brand-threads: #000000;
-	--tv-brand-custom: #6366f1;
+	--es-brand-facebook: #1877f2;
+	--es-brand-twitter: #000000;
+	--es-brand-instagram: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+	--es-brand-linkedin: #0a66c2;
+	--es-brand-youtube: #ff0000;
+	--es-brand-tiktok: #010101;
+	--es-brand-telegram: #26a5e4;
+	--es-brand-whatsapp: #25d366;
+	--es-brand-pinterest: #e60023;
+	--es-brand-reddit: #ff4500;
+	--es-brand-discord: #5865f2;
+	--es-brand-github: #24292f;
+	--es-brand-behance: #0057ff;
+	--es-brand-dribbble: #ea4c89;
+	--es-brand-medium: #000000;
+	--es-brand-skype: #00aff0;
+	--es-brand-vimeo: #1ab7ea;
+	--es-brand-snapchat: #fffc00;
+	--es-brand-threads: #000000;
+	--es-brand-custom: #6366f1;
 }
 
 /* ==========================================
@@ -35,7 +35,7 @@
 	width: 100%;
 }
 
-.tv-social-item {
+.es-social-item {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -46,7 +46,7 @@
 	cursor: pointer;
 }
 
-.tv-social-item-inner {
+.es-social-item-inner {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -55,7 +55,7 @@
 	box-sizing: border-box;
 }
 
-.tv-social-icon-box {
+.es-social-icon-box {
 	display: inline-flex;
 	align-items: center;
 	justify-content: center;
@@ -64,13 +64,13 @@
 	transition: inherit;
 }
 
-.tv-social-icon-box i,
-.tv-social-icon-box svg {
+.es-social-icon-box i,
+.es-social-icon-box svg {
 	line-height: 1;
 	display: block;
 }
 
-.tv-social-label {
+.es-social-label {
 	line-height: 1.2;
 	font-weight: 500;
 	transition: inherit;
@@ -80,109 +80,109 @@
 	2. LAYOUT MODES & RESPONSIVE ALIGNMENT
 	========================================== */
 /* Horizontal */
-.tv-social-layout-horizontal .elonix-social-icons-wrapper {
+.es-social-layout-horizontal .elonix-social-icons-wrapper {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 /* Vertical */
-.tv-social-layout-vertical .elonix-social-icons-wrapper {
+.es-social-layout-vertical .elonix-social-icons-wrapper {
 	display: flex;
 	flex-direction: column;
 }
 /* Inline Flex */
-.tv-social-layout-inline .elonix-social-icons-wrapper {
+.es-social-layout-inline .elonix-social-icons-wrapper {
 	display: inline-flex;
 	flex-direction: row;
 	flex-wrap: wrap;
 }
 /* Grid */
-.tv-social-layout-grid .elonix-social-icons-wrapper {
+.es-social-layout-grid .elonix-social-icons-wrapper {
 	display: grid;
 }
 
 /* Alignment Configurations */
-.tv-social-align-left .elonix-social-icons-wrapper {
+.es-social-align-left .elonix-social-icons-wrapper {
 	justify-content: flex-start;
 }
-.tv-social-align-center .elonix-social-icons-wrapper {
+.es-social-align-center .elonix-social-icons-wrapper {
 	justify-content: center;
 }
-.tv-social-align-right .elonix-social-icons-wrapper {
+.es-social-align-right .elonix-social-icons-wrapper {
 	justify-content: flex-end;
 }
-.tv-social-align-justify .elonix-social-icons-wrapper {
+.es-social-align-justify .elonix-social-icons-wrapper {
 	justify-content: space-between;
 }
 
 /* Vertical align variants */
-.tv-social-layout-vertical.tv-social-align-left .elonix-social-icons-wrapper {
+.es-social-layout-vertical.es-social-align-left .elonix-social-icons-wrapper {
 	align-items: flex-start;
 }
-.tv-social-layout-vertical.tv-social-align-center .elonix-social-icons-wrapper {
+.es-social-layout-vertical.es-social-align-center .elonix-social-icons-wrapper {
 	align-items: center;
 }
-.tv-social-layout-vertical.tv-social-align-right .elonix-social-icons-wrapper {
+.es-social-layout-vertical.es-social-align-right .elonix-social-icons-wrapper {
 	align-items: flex-end;
 }
-.tv-social-layout-vertical.tv-social-align-justify .elonix-social-icons-wrapper {
+.es-social-layout-vertical.es-social-align-justify .elonix-social-icons-wrapper {
 	align-items: stretch;
 }
 
 /* Tablet Responsive Alignment */
 @media (max-width: 1024px) {
-	.tv-social-align-tablet-left .elonix-social-icons-wrapper {
+	.es-social-align-tablet-left .elonix-social-icons-wrapper {
 		justify-content: flex-start;
 	}
-	.tv-social-align-tablet-center .elonix-social-icons-wrapper {
+	.es-social-align-tablet-center .elonix-social-icons-wrapper {
 		justify-content: center;
 	}
-	.tv-social-align-tablet-right .elonix-social-icons-wrapper {
+	.es-social-align-tablet-right .elonix-social-icons-wrapper {
 		justify-content: flex-end;
 	}
-	.tv-social-align-tablet-justify .elonix-social-icons-wrapper {
+	.es-social-align-tablet-justify .elonix-social-icons-wrapper {
 		justify-content: space-between;
 	}
 
-	.tv-social-layout-vertical.tv-social-align-tablet-left .elonix-social-icons-wrapper {
+	.es-social-layout-vertical.es-social-align-tablet-left .elonix-social-icons-wrapper {
 		align-items: flex-start;
 	}
-	.tv-social-layout-vertical.tv-social-align-tablet-center .elonix-social-icons-wrapper {
+	.es-social-layout-vertical.es-social-align-tablet-center .elonix-social-icons-wrapper {
 		align-items: center;
 	}
-	.tv-social-layout-vertical.tv-social-align-tablet-right .elonix-social-icons-wrapper {
+	.es-social-layout-vertical.es-social-align-tablet-right .elonix-social-icons-wrapper {
 		align-items: flex-end;
 	}
-	.tv-social-layout-vertical.tv-social-align-tablet-justify .elonix-social-icons-wrapper {
+	.es-social-layout-vertical.es-social-align-tablet-justify .elonix-social-icons-wrapper {
 		align-items: stretch;
 	}
 }
 
 /* Mobile Responsive Alignment */
 @media (max-width: 767px) {
-	.tv-social-align-mobile-left .elonix-social-icons-wrapper {
+	.es-social-align-mobile-left .elonix-social-icons-wrapper {
 		justify-content: flex-start;
 	}
-	.tv-social-align-mobile-center .elonix-social-icons-wrapper {
+	.es-social-align-mobile-center .elonix-social-icons-wrapper {
 		justify-content: center;
 	}
-	.tv-social-align-mobile-right .elonix-social-icons-wrapper {
+	.es-social-align-mobile-right .elonix-social-icons-wrapper {
 		justify-content: flex-end;
 	}
-	.tv-social-align-mobile-justify .elonix-social-icons-wrapper {
+	.es-social-align-mobile-justify .elonix-social-icons-wrapper {
 		justify-content: space-between;
 	}
 
-	.tv-social-layout-vertical.tv-social-align-mobile-left .elonix-social-icons-wrapper {
+	.es-social-layout-vertical.es-social-align-mobile-left .elonix-social-icons-wrapper {
 		align-items: flex-start;
 	}
-	.tv-social-layout-vertical.tv-social-align-mobile-center .elonix-social-icons-wrapper {
+	.es-social-layout-vertical.es-social-align-mobile-center .elonix-social-icons-wrapper {
 		align-items: center;
 	}
-	.tv-social-layout-vertical.tv-social-align-mobile-right .elonix-social-icons-wrapper {
+	.es-social-layout-vertical.es-social-align-mobile-right .elonix-social-icons-wrapper {
 		align-items: flex-end;
 	}
-	.tv-social-layout-vertical.tv-social-align-mobile-justify .elonix-social-icons-wrapper {
+	.es-social-layout-vertical.es-social-align-mobile-justify .elonix-social-icons-wrapper {
 		align-items: stretch;
 	}
 }
@@ -190,48 +190,48 @@
 /* ==========================================
 	3. ICON & LABEL RELATIVE POSITIONING
 	========================================== */
-.tv-social-pos-left .tv-social-item-inner {
+.es-social-pos-left .es-social-item-inner {
 	flex-direction: row;
 }
-.tv-social-pos-left .tv-social-icon-box {
+.es-social-pos-left .es-social-icon-box {
 	margin-right: 10px;
 }
 
-.tv-social-pos-right .tv-social-item-inner {
+.es-social-pos-right .es-social-item-inner {
 	flex-direction: row-reverse;
 }
-.tv-social-pos-right .tv-social-icon-box {
+.es-social-pos-right .es-social-icon-box {
 	margin-left: 10px;
 }
 
-.tv-social-pos-top .tv-social-item-inner {
+.es-social-pos-top .es-social-item-inner {
 	flex-direction: column;
 }
-.tv-social-pos-top .tv-social-icon-box {
+.es-social-pos-top .es-social-icon-box {
 	margin-bottom: 8px;
 }
 
-.tv-social-pos-icon_only .tv-social-label {
+.es-social-pos-icon_only .es-social-label {
 	display: none !important;
 }
 
-.tv-social-pos-label_only .tv-social-icon-box {
+.es-social-pos-label_only .es-social-icon-box {
 	display: none !important;
 }
 
 /* ==========================================
 	4. ICON SHAPES
 	========================================== */
-.tv-social-shape-circle .tv-social-icon-box {
+.es-social-shape-circle .es-social-icon-box {
 	border-radius: 50%;
 }
-.tv-social-shape-square .tv-social-icon-box {
+.es-social-shape-square .es-social-icon-box {
 	border-radius: 0;
 }
-.tv-social-shape-rounded .tv-social-icon-box {
+.es-social-shape-rounded .es-social-icon-box {
 	border-radius: 8px;
 }
-.tv-social-shape-hexagon .tv-social-icon-box {
+.es-social-shape-hexagon .es-social-icon-box {
 	clip-path: polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%);
 	border-radius: 0 !important;
 }
@@ -240,119 +240,119 @@
 	5. OFFICIAL BRAND COLORS ENGINE
 	========================================== */
 /* Facebook */
-.tv-social-brand-colors-yes .tv-social-platform-facebook {
-	--tv-brand-color: var(--tv-brand-facebook);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-facebook {
+	--es-brand-color: var(--es-brand-facebook);
+	--es-brand-text: #ffffff;
 }
 /* Twitter */
-.tv-social-brand-colors-yes .tv-social-platform-twitter {
-	--tv-brand-color: var(--tv-brand-twitter);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-twitter {
+	--es-brand-color: var(--es-brand-twitter);
+	--es-brand-text: #ffffff;
 }
 /* Instagram */
-.tv-social-brand-colors-yes .tv-social-platform-instagram {
-	--tv-brand-color: var(--tv-brand-instagram);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-instagram {
+	--es-brand-color: var(--es-brand-instagram);
+	--es-brand-text: #ffffff;
 }
 /* LinkedIn */
-.tv-social-brand-colors-yes .tv-social-platform-linkedin {
-	--tv-brand-color: var(--tv-brand-color, #0a66c2);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-linkedin {
+	--es-brand-color: var(--es-brand-color, #0a66c2);
+	--es-brand-text: #ffffff;
 }
 /* YouTube */
-.tv-social-brand-colors-yes .tv-social-platform-youtube {
-	--tv-brand-color: var(--tv-brand-youtube);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-youtube {
+	--es-brand-color: var(--es-brand-youtube);
+	--es-brand-text: #ffffff;
 }
 /* TikTok */
-.tv-social-brand-colors-yes .tv-social-platform-tiktok {
-	--tv-brand-color: var(--tv-brand-tiktok);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-tiktok {
+	--es-brand-color: var(--es-brand-tiktok);
+	--es-brand-text: #ffffff;
 }
 /* Telegram */
-.tv-social-brand-colors-yes .tv-social-platform-telegram {
-	--tv-brand-color: var(--tv-brand-telegram);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-telegram {
+	--es-brand-color: var(--es-brand-telegram);
+	--es-brand-text: #ffffff;
 }
 /* WhatsApp */
-.tv-social-brand-colors-yes .tv-social-platform-whatsapp {
-	--tv-brand-color: var(--tv-brand-whatsapp);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-whatsapp {
+	--es-brand-color: var(--es-brand-whatsapp);
+	--es-brand-text: #ffffff;
 }
 /* Pinterest */
-.tv-social-brand-colors-yes .tv-social-platform-pinterest {
-	--tv-brand-color: var(--tv-brand-pinterest);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-pinterest {
+	--es-brand-color: var(--es-brand-pinterest);
+	--es-brand-text: #ffffff;
 }
 /* Reddit */
-.tv-social-brand-colors-yes .tv-social-platform-reddit {
-	--tv-brand-color: var(--tv-brand-reddit);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-reddit {
+	--es-brand-color: var(--es-brand-reddit);
+	--es-brand-text: #ffffff;
 }
 /* Discord */
-.tv-social-brand-colors-yes .tv-social-platform-discord {
-	--tv-brand-color: var(--tv-brand-discord);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-discord {
+	--es-brand-color: var(--es-brand-discord);
+	--es-brand-text: #ffffff;
 }
 /* GitHub */
-.tv-social-brand-colors-yes .tv-social-platform-github {
-	--tv-brand-color: var(--tv-brand-github);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-github {
+	--es-brand-color: var(--es-brand-github);
+	--es-brand-text: #ffffff;
 }
 /* Behance */
-.tv-social-brand-colors-yes .tv-social-platform-behance {
-	--tv-brand-color: var(--tv-brand-behance);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-behance {
+	--es-brand-color: var(--es-brand-behance);
+	--es-brand-text: #ffffff;
 }
 /* Dribbble */
-.tv-social-brand-colors-yes .tv-social-platform-dribbble {
-	--tv-brand-color: var(--tv-brand-dribbble);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-dribbble {
+	--es-brand-color: var(--es-brand-dribbble);
+	--es-brand-text: #ffffff;
 }
 /* Medium */
-.tv-social-brand-colors-yes .tv-social-platform-medium {
-	--tv-brand-color: var(--tv-brand-medium);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-medium {
+	--es-brand-color: var(--es-brand-medium);
+	--es-brand-text: #ffffff;
 }
 /* Skype */
-.tv-social-brand-colors-yes .tv-social-platform-skype {
-	--tv-brand-color: var(--tv-brand-skype);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-skype {
+	--es-brand-color: var(--es-brand-skype);
+	--es-brand-text: #ffffff;
 }
 /* Vimeo */
-.tv-social-brand-colors-yes .tv-social-platform-vimeo {
-	--tv-brand-color: var(--tv-brand-vimeo);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-vimeo {
+	--es-brand-color: var(--es-brand-vimeo);
+	--es-brand-text: #ffffff;
 }
 /* Snapchat */
-.tv-social-brand-colors-yes .tv-social-platform-snapchat {
-	--tv-brand-color: var(--tv-brand-snapchat);
-	--tv-brand-text: #1e293b;
+.es-social-brand-colors-yes .es-social-platform-snapchat {
+	--es-brand-color: var(--es-brand-snapchat);
+	--es-brand-text: #1e293b;
 }
 /* Threads */
-.tv-social-brand-colors-yes .tv-social-platform-threads {
-	--tv-brand-color: var(--tv-brand-threads);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-threads {
+	--es-brand-color: var(--es-brand-threads);
+	--es-brand-text: #ffffff;
 }
 /* Tumblr */
-.tv-social-brand-colors-yes .tv-social-platform-tumblr {
-	--tv-brand-color: #35465c;
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-tumblr {
+	--es-brand-color: #35465c;
+	--es-brand-text: #ffffff;
 }
 /* Email */
-.tv-social-brand-colors-yes .tv-social-platform-email {
-	--tv-brand-color: #64748b;
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-email {
+	--es-brand-color: #64748b;
+	--es-brand-text: #ffffff;
 }
 /* Copy Link */
-.tv-social-brand-colors-yes .tv-social-platform-copy_link {
-	--tv-brand-color: #10b981;
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-copy_link {
+	--es-brand-color: #10b981;
+	--es-brand-text: #ffffff;
 }
 /* Custom */
-.tv-social-brand-colors-yes .tv-social-platform-custom {
-	--tv-brand-color: var(--tv-brand-custom);
-	--tv-brand-text: #ffffff;
+.es-social-brand-colors-yes .es-social-platform-custom {
+	--es-brand-color: var(--es-brand-custom);
+	--es-brand-text: #ffffff;
 }
 
 /* ==========================================
@@ -360,132 +360,132 @@
 	========================================== */
 
 /* Preset Style 1: Minimalist */
-.tv-social-preset-minimal .tv-social-icon-box {
+.es-social-preset-minimal .es-social-icon-box {
 	background-color: transparent !important;
 	border-color: transparent !important;
 	box-shadow: none !important;
 }
-.tv-social-brand-colors-yes.tv-social-preset-minimal .tv-social-item {
-	color: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-minimal .es-social-item {
+	color: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-minimal .tv-social-icon-box {
-	color: var(--tv-brand-color);
-	fill: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-minimal .es-social-icon-box {
+	color: var(--es-brand-color);
+	fill: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-minimal .tv-social-item:hover {
+.es-social-brand-colors-yes.es-social-preset-minimal .es-social-item:hover {
 	opacity: 0.85;
 }
 
 /* Preset Style 2: Modern Flat */
-.tv-social-brand-colors-yes.tv-social-preset-modern .tv-social-icon-box {
-	background: var(--tv-brand-color);
-	color: var(--tv-brand-text);
-	fill: var(--tv-brand-text);
+.es-social-brand-colors-yes.es-social-preset-modern .es-social-icon-box {
+	background: var(--es-brand-color);
+	color: var(--es-brand-text);
+	fill: var(--es-brand-text);
 }
-.tv-social-brand-colors-yes.tv-social-preset-modern .tv-social-item:hover .tv-social-icon-box {
+.es-social-brand-colors-yes.es-social-preset-modern .es-social-item:hover .es-social-icon-box {
 	filter: brightness(1.1);
 }
 
 /* Preset Style 3: Outline Edge */
-.tv-social-preset-outline .tv-social-icon-box {
+.es-social-preset-outline .es-social-icon-box {
 	background-color: transparent;
 	border: 2px solid currentColor;
 }
-.tv-social-brand-colors-yes.tv-social-preset-outline .tv-social-item {
-	color: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-outline .es-social-item {
+	color: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-outline .tv-social-icon-box {
-	color: var(--tv-brand-color);
-	fill: var(--tv-brand-color);
-	border-color: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-outline .es-social-icon-box {
+	color: var(--es-brand-color);
+	fill: var(--es-brand-color);
+	border-color: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-outline .tv-social-item:hover .tv-social-icon-box {
-	background: var(--tv-brand-color);
-	color: var(--tv-brand-text);
-	fill: var(--tv-brand-text);
+.es-social-brand-colors-yes.es-social-preset-outline .es-social-item:hover .es-social-icon-box {
+	background: var(--es-brand-color);
+	color: var(--es-brand-text);
+	fill: var(--es-brand-text);
 	border-color: transparent;
 }
 
 /* Preset Style 4: Glassmorphism */
-.tv-social-preset-glassmorphism .tv-social-icon-box {
+.es-social-preset-glassmorphism .es-social-icon-box {
 	background: rgba(255, 255, 255, 0.08);
 	backdrop-filter: blur(10px);
 	-webkit-backdrop-filter: blur(10px);
 	border: 1px solid rgba(255, 255, 255, 0.18);
 	box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.06);
 }
-.tv-social-brand-colors-yes.tv-social-preset-glassmorphism .tv-social-item {
-	color: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-glassmorphism .es-social-item {
+	color: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-glassmorphism .tv-social-icon-box {
-	color: var(--tv-brand-color);
-	fill: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-glassmorphism .es-social-icon-box {
+	color: var(--es-brand-color);
+	fill: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-glassmorphism .tv-social-item:hover .tv-social-icon-box {
+.es-social-brand-colors-yes.es-social-preset-glassmorphism .es-social-item:hover .es-social-icon-box {
 	background: rgba(255, 255, 255, 0.2);
 	border-color: rgba(255, 255, 255, 0.35);
 	box-shadow: 0 8px 32px 0 rgba(15, 23, 42, 0.12);
 }
 
 /* Preset Style 5: Gradient Spark */
-.tv-social-brand-colors-yes.tv-social-preset-gradient .tv-social-icon-box {
-	background: linear-gradient(135deg, var(--tv-brand-color) 0%, rgba(15, 23, 42, 0.2) 100%), var(--tv-brand-color);
-	color: var(--tv-brand-text);
-	fill: var(--tv-brand-text);
+.es-social-brand-colors-yes.es-social-preset-gradient .es-social-icon-box {
+	background: linear-gradient(135deg, var(--es-brand-color) 0%, rgba(15, 23, 42, 0.2) 100%), var(--es-brand-color);
+	color: var(--es-brand-text);
+	fill: var(--es-brand-text);
 }
-.tv-social-brand-colors-yes.tv-social-preset-gradient .tv-social-item:hover .tv-social-icon-box {
-	background: linear-gradient(135deg, rgba(15, 23, 42, 0.2) 0%, var(--tv-brand-color) 100%), var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-gradient .es-social-item:hover .es-social-icon-box {
+	background: linear-gradient(135deg, rgba(15, 23, 42, 0.2) 0%, var(--es-brand-color) 100%), var(--es-brand-color);
 }
 
 /* Preset Style 6: Floating Accent */
-.tv-social-preset-floating .tv-social-icon-box {
+.es-social-preset-floating .es-social-icon-box {
 	box-shadow: 0 6px 15px rgba(15, 23, 42, 0.1);
 	transform: translateY(0);
 }
-.tv-social-brand-colors-yes.tv-social-preset-floating .tv-social-icon-box {
-	background: var(--tv-brand-color);
-	color: var(--tv-brand-text);
-	fill: var(--tv-brand-text);
+.es-social-brand-colors-yes.es-social-preset-floating .es-social-icon-box {
+	background: var(--es-brand-color);
+	color: var(--es-brand-text);
+	fill: var(--es-brand-text);
 }
-.tv-social-preset-floating .tv-social-item:hover .tv-social-icon-box {
+.es-social-preset-floating .es-social-item:hover .es-social-icon-box {
 	transform: translateY(-5px);
 	box-shadow: 0 12px 24px rgba(15, 23, 42, 0.16);
 }
 
 /* Preset Style 7: Border Glow Effect */
-.tv-social-preset-border_glow .tv-social-icon-box {
+.es-social-preset-border_glow .es-social-icon-box {
 	border: 1px solid rgba(15, 23, 42, 0.08);
 	box-shadow: 0 0 0 transparent;
 }
-.tv-social-brand-colors-yes.tv-social-preset-border_glow .tv-social-item {
-	color: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-border_glow .es-social-item {
+	color: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-border_glow .tv-social-icon-box {
-	color: var(--tv-brand-color);
-	fill: var(--tv-brand-color);
-	border-color: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-border_glow .es-social-icon-box {
+	color: var(--es-brand-color);
+	fill: var(--es-brand-color);
+	border-color: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-border_glow .tv-social-item:hover .tv-social-icon-box {
-	box-shadow: 0 0 15px var(--tv-brand-color);
-	border-color: var(--tv-brand-color);
-	background: var(--tv-brand-color);
-	color: var(--tv-brand-text);
-	fill: var(--tv-brand-text);
+.es-social-brand-colors-yes.es-social-preset-border_glow .es-social-item:hover .es-social-icon-box {
+	box-shadow: 0 0 15px var(--es-brand-color);
+	border-color: var(--es-brand-color);
+	background: var(--es-brand-color);
+	color: var(--es-brand-text);
+	fill: var(--es-brand-text);
 }
 
 /* Preset Style 8: Neumorphic Depth */
-.tv-social-preset-neumorphism .tv-social-icon-box {
+.es-social-preset-neumorphism .es-social-icon-box {
 	background: #f1f5f9;
 	box-shadow: 4px 4px 10px #cbd5e1, -4px -4px 10px #ffffff;
 }
-.tv-social-brand-colors-yes.tv-social-preset-neumorphism .tv-social-item {
-	color: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-neumorphism .es-social-item {
+	color: var(--es-brand-color);
 }
-.tv-social-brand-colors-yes.tv-social-preset-neumorphism .tv-social-icon-box {
-	color: var(--tv-brand-color);
-	fill: var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-preset-neumorphism .es-social-icon-box {
+	color: var(--es-brand-color);
+	fill: var(--es-brand-color);
 }
-.tv-social-preset-neumorphism .tv-social-item:hover .tv-social-icon-box {
+.es-social-preset-neumorphism .es-social-item:hover .es-social-icon-box {
 	box-shadow: inset 3px 3px 6px #cbd5e1, inset -3px -3px 6px #ffffff;
 }
 
@@ -494,78 +494,78 @@
 	========================================== */
 
 /* Grow Larger */
-.tv-social-hover-grow .tv-social-item:hover .tv-social-icon-box {
+.es-social-hover-grow .es-social-item:hover .es-social-icon-box {
 	transform: scale(1.15);
 }
 
 /* Shrink Smaller */
-.tv-social-hover-shrink .tv-social-item:hover .tv-social-icon-box {
+.es-social-hover-shrink .es-social-item:hover .es-social-icon-box {
 	transform: scale(0.85);
 }
 
 /* Rotate Clockwise */
-.tv-social-hover-rotate .tv-social-item:hover .tv-social-icon-box {
+.es-social-hover-rotate .es-social-item:hover .es-social-icon-box {
 	transform: rotate(360deg);
 }
 
 /* Bounce Up & Down */
-@keyframes tv-social-bounce {
+@keyframes es-social-bounce {
 	0%, 100% { transform: translateY(0); }
 	50% { transform: translateY(-8px); }
 }
-.tv-social-hover-bounce .tv-social-item:hover .tv-social-icon-box {
-	animation: tv-social-bounce 0.5s ease infinite alternate;
+.es-social-hover-bounce .es-social-item:hover .es-social-icon-box {
+	animation: es-social-bounce 0.5s ease infinite alternate;
 }
 
 /* Float Hovering */
-@keyframes tv-social-float {
+@keyframes es-social-float {
 	0% { transform: translateY(0); }
 	100% { transform: translateY(-6px); }
 }
-.tv-social-hover-float .tv-social-item:hover .tv-social-icon-box {
-	animation: tv-social-float 1s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
+.es-social-hover-float .es-social-item:hover .es-social-icon-box {
+	animation: es-social-float 1s cubic-bezier(0.4, 0, 0.2, 1) infinite alternate;
 }
 
 /* Pulse Glow */
-@keyframes tv-social-pulse {
+@keyframes es-social-pulse {
 	0% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.4); }
 	70% { transform: scale(1.05); box-shadow: 0 0 0 10px rgba(99, 102, 241, 0); }
 	100% { transform: scale(1); box-shadow: 0 0 0 0 rgba(99, 102, 241, 0); }
 }
-.tv-social-hover-pulse .tv-social-item:hover .tv-social-icon-box {
-	animation: tv-social-pulse 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+.es-social-hover-pulse .es-social-item:hover .es-social-icon-box {
+	animation: es-social-pulse 1.2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
 }
 
 /* Slide Upward */
-.tv-social-hover-slide-up .tv-social-item:hover .tv-social-icon-box {
+.es-social-hover-slide-up .es-social-item:hover .es-social-icon-box {
 	transform: translateY(-8px);
 }
 
 /* Slide Downward */
-.tv-social-hover-slide-down .tv-social-item:hover .tv-social-icon-box {
+.es-social-hover-slide-down .es-social-item:hover .es-social-icon-box {
 	transform: translateY(8px);
 }
 
 /* Shadow Glow */
-.tv-social-hover-glow .tv-social-item:hover .tv-social-icon-box {
+.es-social-hover-glow .es-social-item:hover .es-social-icon-box {
 	box-shadow: 0 8px 24px rgba(15, 23, 42, 0.15);
 }
-.tv-social-brand-colors-yes.tv-social-hover-glow .tv-social-item:hover .tv-social-icon-box {
-	box-shadow: 0 8px 24px var(--tv-brand-color);
+.es-social-brand-colors-yes.es-social-hover-glow .es-social-item:hover .es-social-icon-box {
+	box-shadow: 0 8px 24px var(--es-brand-color);
 }
 
 /* 3D Flip Over */
-.tv-social-hover-flip .tv-social-item {
+.es-social-hover-flip .es-social-item {
 	perspective: 800px;
 }
-.tv-social-hover-flip .tv-social-item:hover .tv-social-icon-box {
+.es-social-hover-flip .es-social-item:hover .es-social-icon-box {
 	transform: rotateY(180deg);
 }
 
 /* ==========================================
 	8. PREMIUM CSS TOOLTIPS SYSTEM
 	========================================== */
-.tv-social-tooltip {
+.es-social-tooltip {
 	position: absolute;
 	z-index: 99999;
 	white-space: nowrap;
@@ -583,21 +583,21 @@
 }
 
 /* Visibility triggers on hover/focus */
-.tv-social-tooltip-yes .tv-social-item:hover .tv-social-tooltip,
-.tv-social-tooltip-yes .tv-social-item.tv-focused .tv-social-tooltip {
+.es-social-tooltip-yes .es-social-item:hover .es-social-tooltip,
+.es-social-tooltip-yes .es-social-item.es-focused .es-social-tooltip {
 	opacity: 1;
 	visibility: visible;
 }
 
 /* Tooltip Positions */
 /* Top */
-.tv-tooltip-dir-top .tv-social-tooltip {
+.es-tooltip-dir-top .es-social-tooltip {
 	bottom: 100%;
 	left: 50%;
 	transform: translateX(-50%) translateY(-10px);
 	margin-bottom: 8px;
 }
-.tv-tooltip-dir-top .tv-social-tooltip::after {
+.es-tooltip-dir-top .es-social-tooltip::after {
 	content: '';
 	position: absolute;
 	top: 100%;
@@ -610,13 +610,13 @@
 }
 
 /* Bottom */
-.tv-tooltip-dir-bottom .tv-social-tooltip {
+.es-tooltip-dir-bottom .es-social-tooltip {
 	top: 100%;
 	left: 50%;
 	transform: translateX(-50%) translateY(10px);
 	margin-top: 8px;
 }
-.tv-tooltip-dir-bottom .tv-social-tooltip::after {
+.es-tooltip-dir-bottom .es-social-tooltip::after {
 	content: '';
 	position: absolute;
 	bottom: 100%;
@@ -629,13 +629,13 @@
 }
 
 /* Left */
-.tv-tooltip-dir-left .tv-social-tooltip {
+.es-tooltip-dir-left .es-social-tooltip {
 	right: 100%;
 	top: 50%;
 	transform: translateY(-50%) translateX(-10px);
 	margin-right: 8px;
 }
-.tv-tooltip-dir-left .tv-social-tooltip::after {
+.es-tooltip-dir-left .es-social-tooltip::after {
 	content: '';
 	position: absolute;
 	left: 100%;
@@ -648,13 +648,13 @@
 }
 
 /* Right */
-.tv-tooltip-dir-right .tv-social-tooltip {
+.es-tooltip-dir-right .es-social-tooltip {
 	left: 100%;
 	top: 50%;
 	transform: translateY(-50%) translateX(10px);
 	margin-left: 8px;
 }
-.tv-tooltip-dir-right .tv-social-tooltip::after {
+.es-tooltip-dir-right .es-social-tooltip::after {
 	content: '';
 	position: absolute;
 	right: 100%;
@@ -670,90 +670,90 @@
 /* Fade: Default behavior */
 
 /* Slide Animation */
-.tv-tooltip-anim-slide.tv-tooltip-dir-top .tv-social-tooltip {
+.es-tooltip-anim-slide.es-tooltip-dir-top .es-social-tooltip {
 	transform: translateX(-50%) translateY(-20px);
 }
-.tv-tooltip-anim-slide.tv-tooltip-dir-top .tv-social-item:hover .tv-social-tooltip,
-.tv-tooltip-anim-slide.tv-tooltip-dir-top .tv-social-item.tv-focused .tv-social-tooltip {
+.es-tooltip-anim-slide.es-tooltip-dir-top .es-social-item:hover .es-social-tooltip,
+.es-tooltip-anim-slide.es-tooltip-dir-top .es-social-item.es-focused .es-social-tooltip {
 	transform: translateX(-50%) translateY(-10px);
 }
 
-.tv-tooltip-anim-slide.tv-tooltip-dir-bottom .tv-social-tooltip {
+.es-tooltip-anim-slide.es-tooltip-dir-bottom .es-social-tooltip {
 	transform: translateX(-50%) translateY(20px);
 }
-.tv-tooltip-anim-slide.tv-tooltip-dir-bottom .tv-social-item:hover .tv-social-tooltip,
-.tv-tooltip-anim-slide.tv-tooltip-dir-bottom .tv-social-item.tv-focused .tv-social-tooltip {
+.es-tooltip-anim-slide.es-tooltip-dir-bottom .es-social-item:hover .es-social-tooltip,
+.es-tooltip-anim-slide.es-tooltip-dir-bottom .es-social-item.es-focused .es-social-tooltip {
 	transform: translateX(-50%) translateY(10px);
 }
 
-.tv-tooltip-anim-slide.tv-tooltip-dir-left .tv-social-tooltip {
+.es-tooltip-anim-slide.es-tooltip-dir-left .es-social-tooltip {
 	transform: translateY(-50%) translateX(-20px);
 }
-.tv-tooltip-anim-slide.tv-tooltip-dir-left .tv-social-item:hover .tv-social-tooltip,
-.tv-tooltip-anim-slide.tv-tooltip-dir-left .tv-social-item.tv-focused .tv-social-tooltip {
+.es-tooltip-anim-slide.es-tooltip-dir-left .es-social-item:hover .es-social-tooltip,
+.es-tooltip-anim-slide.es-tooltip-dir-left .es-social-item.es-focused .es-social-tooltip {
 	transform: translateY(-50%) translateX(-10px);
 }
 
-.tv-tooltip-anim-slide.tv-tooltip-dir-right .tv-social-tooltip {
+.es-tooltip-anim-slide.es-tooltip-dir-right .es-social-tooltip {
 	transform: translateY(-50%) translateX(20px);
 }
-.tv-tooltip-anim-slide.tv-tooltip-dir-right .tv-social-item:hover .tv-social-tooltip,
-.tv-tooltip-anim-slide.tv-tooltip-dir-right .tv-social-item.tv-focused .tv-social-tooltip {
+.es-tooltip-anim-slide.es-tooltip-dir-right .es-social-item:hover .es-social-tooltip,
+.es-tooltip-anim-slide.es-tooltip-dir-right .es-social-item.es-focused .es-social-tooltip {
 	transform: translateY(-50%) translateX(10px);
 }
 
 /* Zoom Scale Animation */
-.tv-tooltip-anim-zoom.tv-tooltip-dir-top .tv-social-tooltip {
+.es-tooltip-anim-zoom.es-tooltip-dir-top .es-social-tooltip {
 	transform: translateX(-50%) translateY(-10px) scale(0.6);
 	transform-origin: bottom center;
 }
-.tv-tooltip-anim-zoom.tv-tooltip-dir-top .tv-social-item:hover .tv-social-tooltip,
-.tv-tooltip-anim-zoom.tv-tooltip-dir-top .tv-social-item.tv-focused .tv-social-tooltip {
+.es-tooltip-anim-zoom.es-tooltip-dir-top .es-social-item:hover .es-social-tooltip,
+.es-tooltip-anim-zoom.es-tooltip-dir-top .es-social-item.es-focused .es-social-tooltip {
 	transform: translateX(-50%) translateY(-10px) scale(1);
 }
 
-.tv-tooltip-anim-zoom.tv-tooltip-dir-bottom .tv-social-tooltip {
+.es-tooltip-anim-zoom.es-tooltip-dir-bottom .es-social-tooltip {
 	transform: translateX(-50%) translateY(10px) scale(0.6);
 	transform-origin: top center;
 }
-.tv-tooltip-anim-zoom.tv-tooltip-dir-bottom .tv-social-item:hover .tv-social-tooltip,
-.tv-tooltip-anim-zoom.tv-tooltip-dir-bottom .tv-social-item.tv-focused .tv-social-tooltip {
+.es-tooltip-anim-zoom.es-tooltip-dir-bottom .es-social-item:hover .es-social-tooltip,
+.es-tooltip-anim-zoom.es-tooltip-dir-bottom .es-social-item.es-focused .es-social-tooltip {
 	transform: translateX(-50%) translateY(10px) scale(1);
 }
 
-.tv-tooltip-anim-zoom.tv-tooltip-dir-left .tv-social-tooltip {
+.es-tooltip-anim-zoom.es-tooltip-dir-left .es-social-tooltip {
 	transform: translateY(-50%) translateX(-10px) scale(0.6);
 	transform-origin: right center;
 }
-.tv-tooltip-anim-zoom.tv-tooltip-dir-left .tv-social-item:hover .tv-social-tooltip,
-.tv-tooltip-anim-zoom.tv-tooltip-dir-left .tv-social-item.tv-focused .tv-social-tooltip {
+.es-tooltip-anim-zoom.es-tooltip-dir-left .es-social-item:hover .es-social-tooltip,
+.es-tooltip-anim-zoom.es-tooltip-dir-left .es-social-item.es-focused .es-social-tooltip {
 	transform: translateY(-50%) translateX(-10px) scale(1);
 }
 
-.tv-tooltip-anim-zoom.tv-tooltip-dir-right .tv-social-tooltip {
+.es-tooltip-anim-zoom.es-tooltip-dir-right .es-social-tooltip {
 	transform: translateY(-50%) translateX(10px) scale(0.6);
 	transform-origin: left center;
 }
-.tv-tooltip-anim-zoom.tv-tooltip-dir-right .tv-social-item:hover .tv-social-tooltip,
-.tv-tooltip-anim-zoom.tv-tooltip-dir-right .tv-social-item.tv-focused .tv-social-tooltip {
+.es-tooltip-anim-zoom.es-tooltip-dir-right .es-social-item:hover .es-social-tooltip,
+.es-tooltip-anim-zoom.es-tooltip-dir-right .es-social-item.es-focused .es-social-tooltip {
 	transform: translateY(-50%) translateX(10px) scale(1);
 }
 
 /* ==========================================
 	9. ACCESSIBLE FOCUS STATES
 	========================================== */
-.tv-social-item:focus {
+.es-social-item:focus {
 	outline: 2px solid #6366f1;
 	outline-offset: 4px;
 	box-shadow: 0 0 8px rgba(99, 102, 241, 0.6);
 }
 /* Prevent focus styles for mouse users where focus-visible is supported */
-.tv-social-item:focus:not(:focus-visible) {
+.es-social-item:focus:not(:focus-visible) {
 	outline: none;
 	box-shadow: none;
 }
 
 /* Height equals width override rules */
-.tv-use-height-width-yes .tv-social-icon-box {
-	height: var(--tv-icon-width, auto) !important;
+.es-use-height-width-yes .es-social-icon-box {
+	height: var(--es-icon-width, auto) !important;
 }

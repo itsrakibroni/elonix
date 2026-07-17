@@ -7,7 +7,7 @@
 
 /* Replicate ElementsKit style on .elonix-widget-icon and library data attributes */
 .elonix-widget-icon::after,
-[data-library-element-type^="tv-"] .icon::after,
+[data-library-element-type^="es-"] .icon::after,
 [data-library-element-type="elonix-newsletter"] .icon::after,
 [data-library-element-type="advanced-heading"] .icon::after,
 [data-library-element-type="advanced-button"] .icon::after,
@@ -33,7 +33,7 @@
 
 /* Hover styles */
 .elementor-element-wrapper:hover .elonix-widget-icon::after,
-.elementor-element:hover [data-library-element-type^="tv-"] .icon::after,
+.elementor-element:hover [data-library-element-type^="es-"] .icon::after,
 .elementor-element:hover [data-library-element-type="elonix-newsletter"] .icon::after,
 .elementor-element:hover [data-library-element-type="advanced-heading"] .icon::after,
 .elementor-element:hover [data-library-element-type="advanced-button"] .icon::after,
@@ -45,7 +45,7 @@
 
 /* Dark mode support */
 .elementor-editor-dark-mode .elonix-widget-icon::after,
-.elementor-editor-dark-mode [data-library-element-type^="tv-"] .icon::after,
+.elementor-editor-dark-mode [data-library-element-type^="es-"] .icon::after,
 .elementor-editor-dark-mode [data-library-element-type="elonix-newsletter"] .icon::after,
 .elementor-editor-dark-mode [data-library-element-type="advanced-heading"] .icon::after,
 .elementor-editor-dark-mode [data-library-element-type="advanced-button"] .icon::after,
@@ -56,7 +56,7 @@
 
 /* Dark mode hover styles */
 .elementor-editor-dark-mode .elementor-element-wrapper:hover .elonix-widget-icon::after,
-.elementor-editor-dark-mode .elementor-element:hover [data-library-element-type^="tv-"] .icon::after,
+.elementor-editor-dark-mode .elementor-element:hover [data-library-element-type^="es-"] .icon::after,
 .elementor-editor-dark-mode .elementor-element:hover [data-library-element-type="elonix-newsletter"] .icon::after,
 .elementor-editor-dark-mode .elementor-element:hover [data-library-element-type="advanced-heading"] .icon::after,
 .elementor-editor-dark-mode .elementor-element:hover [data-library-element-type="advanced-button"] .icon::after,
@@ -66,7 +66,7 @@
 	border-color: #b070f0;
 }
 
-[data-library-element-type^="tv-"] .icon,
+[data-library-element-type^="es-"] .icon,
 [data-library-element-type="elonix-newsletter"] .icon,
 [data-library-element-type="advanced-heading"] .icon,
 [data-library-element-type="advanced-button"] .icon,
@@ -81,24 +81,24 @@
  * REPEATER BUILDER (Element Order)
  * ================================================== */
 /* Custom Status Dot & Labels */
-.tv-builder-item {
+.es-builder-item {
 	display: inline-flex;
 	align-items: center;
 	gap: 6px;
 }
-.tv-builder-dot {
+.es-builder-dot {
 	width: 6px;
 	height: 6px;
 	border-radius: 50%;
 	display: inline-block;
 }
-.tv-status-yes .tv-builder-dot {
+.es-status-yes .es-builder-dot {
 	background-color: #22c55e !important; /* Green */
 }
-.tv-status-no .tv-builder-dot {
+.es-status-no .es-builder-dot {
 	background-color: #94a3b8 !important; /* Slate */
 }
-.tv-status-no .tv-builder-label {
+.es-status-no .es-builder-label {
 	color: #94a3b8 !important;
 	text-decoration: line-through;
 	opacity: 0.75;

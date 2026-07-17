@@ -20,9 +20,9 @@ class Elonix_Toolkit_Archive_Preview {
 	}
 
 	/**
-	 * Check if the current request is editing or previewing a tv_archive template.
+	 * Check if the current request is editing or previewing a es_archive template.
 	 *
-	 * @return bool True if editing/previewing tv_archive template, false otherwise.
+	 * @return bool True if editing/previewing es_archive template, false otherwise.
 	 */
 	public function is_editing_archive_template() {
 		if ( is_admin() ) {
@@ -43,13 +43,13 @@ class Elonix_Toolkit_Archive_Preview {
 		} elseif ( isset( $_GET['p'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$post_id = intval( $_GET['p'] );
-		} elseif ( is_singular( 'tv_archive' ) ) {
+		} elseif ( is_singular( 'es_archive' ) ) {
 			$post_id = get_the_ID();
 		}
 
 		if ( $post_id ) {
 			$post = get_post( $post_id );
-			return ( $post && 'tv_archive' === $post->post_type );
+			return ( $post && 'es_archive' === $post->post_type );
 		}
 
 		return false;
@@ -88,7 +88,7 @@ class Elonix_Toolkit_Archive_Preview {
 		if ( isset( $_GET['elementor-preview'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$post_id = intval( $_GET['elementor-preview'] );
-		} elseif ( is_singular( 'tv_archive' ) ) {
+		} elseif ( is_singular( 'es_archive' ) ) {
 			$post_id = get_the_ID();
 		}
 
@@ -97,8 +97,8 @@ class Elonix_Toolkit_Archive_Preview {
 		}
 
 		// Load configured sample preview variables
-		$preview_type = get_post_meta( $post_id, '_tv_archive_preview_type', true );
-		$preview_val  = get_post_meta( $post_id, '_tv_archive_preview_id', true );
+		$preview_type = get_post_meta( $post_id, '_es_archive_preview_type', true );
+		$preview_val  = get_post_meta( $post_id, '_es_archive_preview_id', true );
 
 		// Enforce pagination matches
 		$query->set( 'posts_per_page', 6 );

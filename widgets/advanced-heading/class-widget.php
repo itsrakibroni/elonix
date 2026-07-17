@@ -21,23 +21,23 @@ use Elementor\Utils;
 class Elonix_Toolkit_Heading_Widget extends Elonix_Widget_Base {
 
 	public function get_name() {
-		return 'tv-heading';
+		return 'es-heading';
 	}
 
 	public function get_title() {
 		return esc_html__( 'Heading', 'elonix' );
 	}
 
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-heading';
 	}
 
-	public function get_tv_widget_keywords() {
+	public function get_es_widget_keywords() {
 		return array( 'heading', 'title', 'dual', 'gradient', 'watermark', 'highlight', 'typography' );
 	}
 
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-heading' );
+		return array( 'elonix-widget-es-heading' );
 	}
 
 	protected function register_controls() {

@@ -340,10 +340,10 @@ class Elonix_Toolkit_Settings_Framework {
 		$output = $old_settings;
 
 		// Determine which tab was submitted (if submitted via the main settings page options.php)
-		$active_tab = isset( $input['tv_active_tab'] ) ? sanitize_text_field( $input['tv_active_tab'] ) : '';
+		$active_tab = isset( $input['es_active_tab'] ) ? sanitize_text_field( $input['es_active_tab'] ) : '';
 
 		// Remove the helper key so it doesn't get saved forever
-		unset( $output['tv_active_tab'] );
+		unset( $output['es_active_tab'] );
 
 		foreach ( self::$fields as $section_id => $fields ) {
 			if ( ! isset( $output[ $section_id ] ) ) {
@@ -389,9 +389,9 @@ class Elonix_Toolkit_Settings_Framework {
 			}
 		}
 
-		// Merge any flat keys passed in $input that are not in self::$fields (like tv_404_*)
+		// Merge any flat keys passed in $input that are not in self::$fields (like es_404_*)
 		foreach ( $input as $k => $v ) {
-			if ( ! isset( self::$fields[ $k ] ) && $k !== 'tv_active_tab' ) {
+			if ( ! isset( self::$fields[ $k ] ) && $k !== 'es_active_tab' ) {
 				$output[ $k ] = $v;
 			}
 		}

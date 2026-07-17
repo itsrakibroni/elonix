@@ -51,7 +51,7 @@ class Elonix_Toolkit_Widget_Registry {
 	 */
 	private function register_sample_widgets() {
 		$samples = array(
-			'tv-heading'               => array(
+			'es-heading'               => array(
 				'title'       => 'Heading',
 				'description' => 'A highly customizable heading widget with title, subtitle, and description controls.',
 				'icon'        => 'eicon-heading',
@@ -61,7 +61,7 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'heading', 'title', 'subtitle', 'description' ),
 			),
-			'tv-button'                => array(
+			'es-button'                => array(
 				'title'       => 'Button',
 				'description' => 'A highly customizable standalone action button widget with icons, styling and hover configurations.',
 				'icon'        => 'eicon-button',
@@ -71,7 +71,7 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'button', 'link', 'cta' ),
 			),
-			'tv-accordion'             => array(
+			'es-accordion'             => array(
 				'title'       => 'Accordion',
 				'description' => 'A highly customizable, responsive, and accessible WAI-ARIA accordion widget with FAQ schema support.',
 				'icon'        => 'eicon-accordion',
@@ -81,7 +81,7 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'accordion', 'toggle', 'faq', 'schema' ),
 			),
-			'tv-image'                 => array(
+			'es-image'                 => array(
 				'title'       => 'Image',
 				'description' => 'A highly customizable image widget with object fit options, hover transition effects, CSS filters, and responsive sizes.',
 				'icon'        => 'eicon-image',
@@ -91,7 +91,7 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'image', 'photo', 'media' ),
 			),
-			'tv-icon-box'              => array(
+			'es-icon-box'              => array(
 				'title'       => 'Icon Box',
 				'description' => 'A highly customizable icon box layout widget combining icons, titles, descriptions, and buttons inside a modular style card.',
 				'icon'        => 'eicon-icon-box',
@@ -101,7 +101,7 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'icon', 'box', 'card', 'feature' ),
 			),
-			'tv-feature-cards'         => array(
+			'es-feature-cards'         => array(
 				'title'       => 'Feature Cards',
 				'description' => 'A highly customizable premium feature cards widget.',
 				'icon'        => 'eicon-gallery-grid',
@@ -111,7 +111,7 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'card', 'feature', 'grid', 'carousel' ),
 			),
-			'tv-breadcrumb'            => array(
+			'es-breadcrumb'            => array(
 				'title'       => 'Breadcrumb',
 				'description' => 'A highly customizable breadcrumb widget with schema support, WooCommerce compatibility, and SEO plugins integration.',
 				'icon'        => 'eicon-navigation-horizontal',
@@ -121,7 +121,7 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'breadcrumb', 'navigation', 'seo', 'yoast', 'rankmath', 'woocommerce' ),
 			),
-			'tv-post-title'            => array(
+			'es-post-title'            => array(
 				'title'       => 'Post Title',
 				'description' => 'A highly customizable post title widget with dynamic tags, SEO heading hierarchy warnings, and title decoration/effects.',
 				'icon'        => 'eicon-post-title',
@@ -131,7 +131,7 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'post', 'title', 'heading', 'seo', 'dynamic' ),
 			),
-			'tv-nav-menu'              => array(
+			'es-nav-menu'              => array(
 				'title'       => 'Nav Menu',
 				'description' => 'A premium, highly customizable navigation menu widget with responsive layout systems and WAI-ARIA compliance.',
 				'icon'        => 'eicon-nav-menu',
@@ -139,9 +139,9 @@ class Elonix_Toolkit_Widget_Registry {
 				'path'        => 'widgets/nav-menu/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Nav_Menu_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'navigation', 'menu', 'navbar', 'header', 'tvkit' ),
+				'keywords'    => array( 'navigation', 'menu', 'navbar', 'header', 'eskit' ),
 			),
-			'tv-social-icons'          => array(
+			'es-social-icons'          => array(
 				'title'       => 'Social Icons',
 				'description' => 'A highly customizable, responsive, and accessible social icons and links widget for Elementor.',
 				'icon'        => 'eicon-social-icons',
@@ -149,9 +149,9 @@ class Elonix_Toolkit_Widget_Registry {
 				'path'        => 'widgets/social-icons/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Social_Icons_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'social', 'icons', 'links', 'tvkit' ),
+				'keywords'    => array( 'social', 'icons', 'links', 'eskit' ),
 			),
-			'tv-error-code'            => array(
+			'es-error-code'            => array(
 				'title'       => 'Error Code',
 				'description' => 'Dynamic error code widget displaying current status code (404, 410, etc.) with styling and effects.',
 				'icon'        => 'eicon-number-field',
@@ -161,177 +161,177 @@ class Elonix_Toolkit_Widget_Registry {
 				'version'     => '1.0.0',
 				'keywords'    => array( 'error', 'code', 'number', '404', '410' ),
 			),
-			'tv-search'                => array(
+			'es-search'                => array(
 				'title'       => 'Search',
 				'description' => 'A highly customizable, responsive, and accessible live AJAX search widget for Elementor.',
 				'icon'        => 'eicon-search',
 				'category'    => 'elonix-widgets',
-				'path'        => 'widgets/tv-search/class-widget.php',
+				'path'        => 'widgets/es-search/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Search_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'search', 'find', 'ajax', 'live', 'filter', 'tvkit' ),
+				'keywords'    => array( 'search', 'find', 'ajax', 'live', 'filter', 'eskit' ),
 			),
-			'tv-search-results'        => array(
+			'es-search-results'        => array(
 				'title'       => 'Search Results',
 				'description' => 'A premium contextual WordPress search results widget for Search Builder templates and Elementor pages.',
 				'icon'        => 'eicon-archive-posts',
 				'category'    => 'elonix-archive',
-				'path'        => 'widgets/tv-search-results/class-widget.php',
+				'path'        => 'widgets/es-search-results/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Search_Results_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'search', 'results', 'query', 'posts', 'archive', 'ajax', 'tvkit' ),
+				'keywords'    => array( 'search', 'results', 'query', 'posts', 'archive', 'ajax', 'eskit' ),
 			),
-			'tv-categories'            => array(
+			'es-categories'            => array(
 				'title'       => 'Categories',
 				'description' => 'A premium categories and taxonomy grid list widget for Elementor.',
 				'icon'        => 'eicon-folder-o',
 				'category'    => 'elonix-archive',
-				'path'        => 'widgets/tv-categories/class-widget.php',
+				'path'        => 'widgets/es-categories/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Categories_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'categories', 'terms', 'taxonomies', 'grid', 'carousel', 'tvkit' ),
+				'keywords'    => array( 'categories', 'terms', 'taxonomies', 'grid', 'carousel', 'eskit' ),
 			),
-			'tv-post-list'             => array(
+			'es-post-list'             => array(
 				'title'       => 'Post List',
 				'description' => 'A premium highly customizable posts CPT and WooCommerce products list/grid widget for Elementor.',
 				'icon'        => 'eicon-bullet-list',
 				'category'    => 'elonix-archive',
-				'path'        => 'widgets/tv-post-list/class-widget.php',
+				'path'        => 'widgets/es-post-list/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Post_List_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'posts', 'list', 'grid', 'woo', 'cpt', 'blog', 'tvkit' ),
+				'keywords'    => array( 'posts', 'list', 'grid', 'woo', 'cpt', 'blog', 'eskit' ),
 			),
-			'tv-tag-cloud'             => array(
+			'es-tag-cloud'             => array(
 				'title'       => 'Smart Taxonomy Filter',
 				'description' => 'A premium highly customizable terms and taxonomy list filter widget for Elementor.',
 				'icon'        => 'eicon-tags',
 				'category'    => 'elonix-archive',
-				'path'        => 'widgets/tv-tag-cloud/class-widget.php',
+				'path'        => 'widgets/es-tag-cloud/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Tag_Cloud_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'tag', 'cloud', 'category', 'taxonomy', 'filter', 'ajax', 'tvkit' ),
+				'keywords'    => array( 'tag', 'cloud', 'category', 'taxonomy', 'filter', 'ajax', 'eskit' ),
 			),
-			'tv-post-block'            => array(
+			'es-post-block'            => array(
 				'title'       => 'Post Block Grid',
 				'description' => 'A premium ThemeForest-grade magazine, blog, and news block grid widget for Elementor.',
 				'icon'        => 'eicon-post-list',
 				'category'    => 'elonix-archive',
-				'path'        => 'widgets/tv-post-block/class-widget.php',
+				'path'        => 'widgets/es-post-block/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Post_Block_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'posts', 'block', 'magazine', 'news', 'grid', 'ajax', 'tvkit' ),
+				'keywords'    => array( 'posts', 'block', 'magazine', 'news', 'grid', 'ajax', 'eskit' ),
 			),
-			'tv-back-to-top'           => array(
+			'es-back-to-top'           => array(
 				'title'       => 'Back To Top',
 				'description' => 'A highly advanced and accessible back to top widget with progress indicators and reading trackers.',
 				'icon'        => 'eicon-arrow-up',
 				'category'    => 'elonix-widgets',
-				'path'        => 'widgets/tv-back-to-top/class-widget.php',
+				'path'        => 'widgets/es-back-to-top/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Back_To_Top_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'back', 'top', 'scroll', 'progress', 'reading', 'time', 'tvkit' ),
+				'keywords'    => array( 'back', 'top', 'scroll', 'progress', 'reading', 'time', 'eskit' ),
 			),
-			'tv-smart-contact-actions' => array(
+			'es-smart-contact-actions' => array(
 				'title'       => 'Smart Contact Actions',
 				'description' => 'A highly advanced and accessible floating contact & actions widget with business hours and analytics.',
 				'icon'        => 'eicon-comments',
 				'category'    => 'elonix-widgets',
-				'path'        => 'widgets/tv-smart-contact-actions/class-widget.php',
+				'path'        => 'widgets/es-smart-contact-actions/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Smart_Contact_Actions_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'contact', 'actions', 'whatsapp', 'messenger', 'email', 'call', 'telegram', 'tvkit' ),
+				'keywords'    => array( 'contact', 'actions', 'whatsapp', 'messenger', 'email', 'call', 'telegram', 'eskit' ),
 			),
-			'tv-featured-image'        => array(
+			'es-featured-image'        => array(
 				'title'       => 'Featured Image',
 				'description' => 'A premium dynamic featured image widget with aspect ratios, fallback images, hover animations, and full accessibility support.',
 				'icon'        => 'eicon-featured-image',
 				'category'    => 'elonix-theme-builder',
-				'path'        => 'widgets/tv-featured-image/class-widget.php',
+				'path'        => 'widgets/es-featured-image/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Featured_Image_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'featured', 'image', 'thumbnail', 'post', 'page', 'archive', 'dynamic', 'tvkit' ),
+				'keywords'    => array( 'featured', 'image', 'thumbnail', 'post', 'page', 'archive', 'dynamic', 'eskit' ),
 			),
-			'tv-post-content'          => array(
+			'es-post-content'          => array(
 				'title'       => 'Post Content',
 				'description' => 'A dynamic read-only widget that renders the current post\'s native WordPress content exactly as intended.',
 				'icon'        => 'eicon-post-content',
 				'category'    => 'elonix-theme-builder',
-				'path'        => 'widgets/tv-post-content/class-widget.php',
+				'path'        => 'widgets/es-post-content/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Post_Content_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'post', 'content', 'the_content', 'dynamic', 'tvkit', 'single' ),
+				'keywords'    => array( 'post', 'content', 'the_content', 'dynamic', 'eskit', 'single' ),
 			),
-			'tv-post-info'             => array(
+			'es-post-info'             => array(
 				'title'       => 'Post Info',
 				'description' => 'A premium dynamic post meta info widget with drag-and-drop element order builder, icons, reading time calculator, and advanced styling.',
 				'icon'        => 'eicon-post-info',
 				'category'    => 'elonix-theme-builder',
-				'path'        => 'widgets/tv-post-info/class-widget.php',
+				'path'        => 'widgets/es-post-info/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Post_Info_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'post', 'info', 'meta', 'author', 'date', 'category', 'tag', 'comments', 'reading', 'views', 'custom', 'tvkit' ),
+				'keywords'    => array( 'post', 'info', 'meta', 'author', 'date', 'category', 'tag', 'comments', 'reading', 'views', 'custom', 'eskit' ),
 			),
-			'tv-post-terms'            => array(
+			'es-post-terms'            => array(
 				'title'       => 'Post Terms',
 				'description' => 'A premium dynamic post terms taxonomy widget with auto-detection, badge/pill styles, custom separators, and remaining count indicators.',
 				'icon'        => 'eicon-tags',
 				'category'    => 'elonix-theme-builder',
-				'path'        => 'widgets/tv-post-terms/class-widget.php',
+				'path'        => 'widgets/es-post-terms/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Post_Terms_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'post', 'terms', 'taxonomy', 'category', 'tag', 'custom', 'badge', 'pill', 'tvkit' ),
+				'keywords'    => array( 'post', 'terms', 'taxonomy', 'category', 'tag', 'custom', 'badge', 'pill', 'eskit' ),
 			),
-			'tv-post-share'            => array(
+			'es-post-share'            => array(
 				'title'       => 'Post Share',
 				'description' => 'A premium dynamic post sharing widget supporting 12+ networks, centered popup window management, copy link to clipboard with toast notification, and advanced styling.',
 				'icon'        => 'eicon-share',
 				'category'    => 'elonix-theme-builder',
-				'path'        => 'widgets/tv-post-share/class-widget.php',
+				'path'        => 'widgets/es-post-share/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Post_Share_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'post', 'share', 'social', 'network', 'dynamic', 'tvkit' ),
+				'keywords'    => array( 'post', 'share', 'social', 'network', 'dynamic', 'eskit' ),
 			),
-			'tv-post-comments'         => array(
+			'es-post-comments'         => array(
 				'title'       => 'Post Comments',
 				'description' => 'A premium dynamic post comments widget with advanced styling, custom css, and form controls.',
 				'icon'        => 'eicon-comments',
 				'category'    => 'elonix-theme-builder',
-				'path'        => 'widgets/tv-post-comments/class-widget.php',
+				'path'        => 'widgets/es-post-comments/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Post_Comments_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'post', 'comments', 'form', 'reply', 'review', 'tvkit' ),
+				'keywords'    => array( 'post', 'comments', 'form', 'reply', 'review', 'eskit' ),
 			),
-			'tv-post-excerpt'          => array(
+			'es-post-excerpt'          => array(
 				'title'       => 'Post Excerpt',
 				'description' => 'A premium dynamic post excerpt widget with fallback support, trimming options, and read more links.',
 				'icon'        => 'eicon-post-excerpt',
 				'category'    => 'elonix-theme-builder',
-				'path'        => 'widgets/tv-post-excerpt/class-widget.php',
+				'path'        => 'widgets/es-post-excerpt/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Post_Excerpt_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'post', 'excerpt', 'summary', 'read more', 'dynamic', 'tvkit' ),
+				'keywords'    => array( 'post', 'excerpt', 'summary', 'read more', 'dynamic', 'eskit' ),
 			),
-			'tv-testimonial'           => array(
+			'es-testimonial'           => array(
 				'title'       => 'Testimonial',
 				'description' => 'A premium highly customizable testimonial card widget with grid and carousel layouts.',
 				'icon'        => 'eicon-testimonial',
 				'category'    => 'elonix-widgets',
-				'path'        => 'widgets/tv-testimonial/class-widget.php',
+				'path'        => 'widgets/es-testimonial/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Testimonial_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'testimonial', 'review', 'quote', 'carousel', 'grid', 'tvkit' ),
+				'keywords'    => array( 'testimonial', 'review', 'quote', 'carousel', 'grid', 'eskit' ),
 			),
-			'tv-brand'                 => array(
+			'es-brand'                 => array(
 				'title'       => 'Brand',
 				'description' => 'A premium highly customizable brand and logo carousel/grid widget.',
 				'icon'        => 'eicon-slider-push',
 				'category'    => 'elonix-widgets',
-				'path'        => 'widgets/tv-brand/class-widget.php',
+				'path'        => 'widgets/es-brand/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Brand_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'brand', 'logo', 'carousel', 'grid', 'client', 'partner', 'tvkit' ),
+				'keywords'    => array( 'brand', 'logo', 'carousel', 'grid', 'client', 'partner', 'eskit' ),
 			),
-			'tv-marquee'               => array(
+			'es-marquee'               => array(
 				'title'       => 'Marquee',
 				'description' => 'A premium highly customizable marquee and ticker widget.',
 				'icon'        => 'eicon-exchange',
@@ -339,37 +339,37 @@ class Elonix_Toolkit_Widget_Registry {
 				'path'        => 'widgets/marquee/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Marquee_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'marquee', 'ticker', 'scroll', 'news', 'tvkit' ),
+				'keywords'    => array( 'marquee', 'ticker', 'scroll', 'news', 'eskit' ),
 			),
-			'tv-gallery'               => array(
+			'es-gallery'               => array(
 				'title'       => 'Gallery',
 				'description' => 'A flagship premium gallery widget with grid, masonry, justified, metro, and carousel layouts.',
 				'icon'        => 'eicon-gallery-grid',
 				'category'    => 'elonix-widgets',
-				'path'        => 'widgets/tv-gallery/class-widget.php',
+				'path'        => 'widgets/es-gallery/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Gallery_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'gallery', 'image', 'photo', 'portfolio', 'grid', 'masonry', 'carousel', 'tvkit' ),
+				'keywords'    => array( 'gallery', 'image', 'photo', 'portfolio', 'grid', 'masonry', 'carousel', 'eskit' ),
 			),
-			'tv-progress'              => array(
+			'es-progress'              => array(
 				'title'       => 'Progress Bar',
 				'description' => 'A highly advanced progress bar widget with circle, linear, multi-segment, and step progress styles.',
 				'icon'        => 'eicon-skill-bar',
 				'category'    => 'elonix-widgets',
-				'path'        => 'widgets/tv-progress/class-widget.php',
+				'path'        => 'widgets/es-progress/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Progress_Bar_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'progress', 'bar', 'skill', 'circle', 'step', 'tvkit' ),
+				'keywords'    => array( 'progress', 'bar', 'skill', 'circle', 'step', 'eskit' ),
 			),
-			'tv-toggle'               => array(
+			'es-toggle'               => array(
 				'title'       => 'Toggle',
 				'description' => 'A generic Elementor target toggle widget.',
 				'icon'        => 'eicon-exchange',
 				'category'    => 'elonix-widgets',
-				'path'        => 'widgets/tv-toggle/class-widget.php',
+				'path'        => 'widgets/es-toggle/class-widget.php',
 				'class'       => 'Elonix_Toolkit_Toggle_Widget',
 				'version'     => '1.0.0',
-				'keywords'    => array( 'toggle', 'switcher', 'visibility', 'tabs', 'tvkit' ),
+				'keywords'    => array( 'toggle', 'switcher', 'visibility', 'tabs', 'eskit' ),
 			),
 		);
 

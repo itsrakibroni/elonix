@@ -59,7 +59,7 @@ class Elonix_Toolkit_404_Renderer {
 			\Elementor\Plugin::$instance->frontend->enqueue_styles();
 		}
 
-		$template_id = Elonix_Settings::get( 'tv_404_selected_page_id' );
+		$template_id = Elonix_Settings::get( 'es_404_selected_page_id' );
 		if ( $template_id ) {
 			$css_file = new \Elementor\Core\Files\CSS\Post( $template_id );
 			$css_file->enqueue();
@@ -74,8 +74,8 @@ class Elonix_Toolkit_404_Renderer {
 			return;
 		}
 
-		$noindex  = ( 'yes' === ( Elonix_Settings::get( 'tv_404_seo_noindex' ) ?? 'yes' )  );
-		$nofollow = ( 'yes' === ( Elonix_Settings::get( 'tv_404_seo_nofollow' ) ?? 'yes' )  );
+		$noindex  = ( 'yes' === ( Elonix_Settings::get( 'es_404_seo_noindex' ) ?? 'yes' )  );
+		$nofollow = ( 'yes' === ( Elonix_Settings::get( 'es_404_seo_nofollow' ) ?? 'yes' )  );
 
 		if ( $noindex || $nofollow ) {
 			$robots = array();
@@ -91,13 +91,13 @@ class Elonix_Toolkit_404_Renderer {
 		}
 
 		// Inject Robots Meta Control String
-		$robots_custom = Elonix_Settings::get( 'tv_404_seo_robots_control' );
+		$robots_custom = Elonix_Settings::get( 'es_404_seo_robots_control' );
 		if ( ! empty( $robots_custom ) ) {
 			echo '<meta name="robots" content="' . esc_attr( $robots_custom ) . '" />' . "\n";
 		}
 
 		// Inject Canonical Control
-		$canonical = Elonix_Settings::get( 'tv_404_seo_canonical_control' );
+		$canonical = Elonix_Settings::get( 'es_404_seo_canonical_control' );
 		if ( ! empty( $canonical ) ) {
 			echo '<link rel="canonical" href="' . esc_url( $canonical ) . '" />' . "\n";
 		}
@@ -111,7 +111,7 @@ class Elonix_Toolkit_404_Renderer {
 			return;
 		}
 
-		$header_code = Elonix_Settings::get( 'tv_404_custom_header_code' );
+		$header_code = Elonix_Settings::get( 'es_404_custom_header_code' );
 		if ( ! empty( $header_code ) ) {
 			// ThemeForest safety: bypass sanitization of scripts if allowed by admin via raw print, escape variables where necessary
 			echo wp_kses_post( $header_code ) . "\n";
@@ -126,7 +126,7 @@ class Elonix_Toolkit_404_Renderer {
 			return;
 		}
 
-		$footer_code = Elonix_Settings::get( 'tv_404_custom_footer_code' );
+		$footer_code = Elonix_Settings::get( 'es_404_custom_footer_code' );
 		if ( ! empty( $footer_code ) ) {
 			echo wp_kses_post( $footer_code ) . "\n";
 		}
@@ -136,9 +136,9 @@ class Elonix_Toolkit_404_Renderer {
 	 * Mark the selected page/template with a custom status indicator state in the admin Pages screen.
 	 */
 	public function add_post_state( $post_states, $post ) {
-		$template_id = Elonix_Settings::get( 'tv_404_selected_page_id' );
+		$template_id = Elonix_Settings::get( 'es_404_selected_page_id' );
 		if ( $template_id && intval( $post->ID ) === intval( $template_id ) ) {
-			$post_states['tv_404_page'] = esc_html__( 'Elonix 404 Page', 'elonix' );
+			$post_states['es_404_page'] = esc_html__( 'Elonix 404 Page', 'elonix' );
 		}
 		return $post_states;
 	}
@@ -153,8 +153,8 @@ class Elonix_Toolkit_404_Renderer {
 
 		$screen = get_current_screen();
 		if ( $screen && 'edit-page' === $screen->id ) {
-			$hide        = ( 'yes' === ( Elonix_Settings::get( 'tv_404_hide_page_list' ) ?? 'no' )  );
-			$template_id = Elonix_Settings::get( 'tv_404_selected_page_id' );
+			$hide        = ( 'yes' === ( Elonix_Settings::get( 'es_404_hide_page_list' ) ?? 'no' )  );
+			$template_id = Elonix_Settings::get( 'es_404_selected_page_id' );
 
 			if ( $hide && $template_id ) {
 				// phpcs:ignore WordPressVIPMinimum.Performance.WPQueryParams.PostNotIn_post__not_in -- Required to exclude the active 404 template from normal template listings.

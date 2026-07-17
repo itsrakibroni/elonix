@@ -1,0 +1,230 @@
+/**
+ * Elonix Brand Widget CSS
+ */
+
+.es-brand {
+  position: relative;
+  width: 100%;
+}
+
+/* -------------------------------------
+ * Grid Layout
+ * ------------------------------------- */
+.es-brand__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--es-brand-columns, 5), 1fr);
+  column-gap: var(--es-brand-gap-x, 30px);
+  row-gap: var(--es-brand-gap-y, 30px);
+  align-items: stretch;
+}
+
+/* -------------------------------------
+ * Carousel Layout
+ * ------------------------------------- */
+.es-brand__carousel {
+  position: relative;
+  width: 100%;
+}
+
+.es-brand__carousel .es-swiper-container {
+  overflow: hidden;
+  list-style: none;
+  padding: 0;
+  z-index: 1;
+}
+
+.es-brand__carousel .swiper-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  display: flex;
+  transition-property: transform;
+  box-sizing: content-box;
+}
+
+.es-brand__carousel .swiper-slide {
+  height: auto;
+  display: flex;
+  flex-shrink: 0;
+  width: 100%;
+  position: relative;
+}
+
+/* Continuous Marquee Mode */
+.es-brand--continuous-marquee .swiper-wrapper {
+  transition-timing-function: linear !important;
+}
+
+/* -------------------------------------
+ * Card Item Styles (Shared)
+ * ------------------------------------- */
+.es-brand__item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #ffffff;
+  border: 1px solid #E8EDF3;
+  padding: 40px;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  align-items: center;
+  justify-content: center;
+}
+
+a.es-brand__item {
+  cursor: pointer;
+}
+
+.es-brand__figure {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: 100%;
+}
+
+/* -------------------------------------
+ * Logo Image
+ * ------------------------------------- */
+.es-brand__logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.es-brand__logo img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+  object-fit: contain;
+  transition: all 0.3s ease;
+}
+
+/* -------------------------------------
+ * Brand Name Title
+ * ------------------------------------- */
+.es-brand__title {
+  margin-top: 15px;
+  font-size: 16px;
+  font-weight: 500;
+  color: #333333;
+  text-align: center;
+  width: 100%;
+}
+
+/* -------------------------------------
+ * Navigation (Arrows)
+ * ------------------------------------- */
+.es-swiper-button-prev,
+.es-swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background-color: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+  color: #333333;
+  transition: all 0.3s ease;
+}
+
+.es-swiper-button-prev {
+  left: -20px;
+}
+
+.es-swiper-button-next {
+  right: -20px;
+}
+
+.es-swiper-button-prev:hover,
+.es-swiper-button-next:hover {
+  background-color: #f8f9fa;
+  color: #000000;
+}
+
+.es-swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+/* -------------------------------------
+ * Pagination (Dots)
+ * ------------------------------------- */
+.swiper-pagination {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background: #d4d4d4;
+  opacity: 1;
+  margin: 0 5px;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background: #333333;
+  width: 24px;
+  border-radius: 4px;
+}
+/* -------------------------------------
+ * Tooltip Styles
+ * ------------------------------------- */
+.es-brand__tooltip {
+  position: absolute;
+  bottom: 100%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background-color: #333333;
+  color: #ffffff;
+  padding: 5px 12px;
+  border-radius: 4px;
+  font-size: 13px;
+  font-weight: 500;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  z-index: 10;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* Tooltip arrow */
+.es-brand__tooltip::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border-width: 5px;
+  border-style: solid;
+  border-color: #333333 transparent transparent transparent;
+}
+
+.es-brand__item:hover .es-brand__tooltip {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
+}

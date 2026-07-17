@@ -8,7 +8,7 @@
  */
 
 /* General Wrapper Setup */
-.tv-popup-wrapper {
+.es-popup-wrapper {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -23,13 +23,13 @@
 	transition: opacity 0.4s cubic-bezier(0.25, 1, 0.5, 1), visibility 0.4s cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-.tv-popup-wrapper.tv-popup-active {
+.es-popup-wrapper.es-popup-active {
 	opacity: 1;
 	visibility: visible;
 }
 
 /* Backdrop Overlay */
-.tv-popup-overlay {
+.es-popup-overlay {
 	position: absolute;
 	top: 0;
 	left: 0;
@@ -41,7 +41,7 @@
 }
 
 /* Base Container */
-.tv-popup-container {
+.es-popup-container {
 	position: relative;
 	background: #ffffff;
 	border-radius: 12px;
@@ -54,13 +54,13 @@
 }
 
 /* Content Area */
-.tv-popup-content {
+.es-popup-content {
 	padding: 24px;
 	box-sizing: border-box;
 }
 
 /* Accessible & Sleek Close Button */
-.tv-popup-close-btn {
+.es-popup-close-btn {
 	position: absolute;
 	top: 16px;
 	right: 16px;
@@ -80,13 +80,13 @@
 	z-index: 10;
 }
 
-.tv-popup-close-btn:hover {
+.es-popup-close-btn:hover {
 	background-color: #ef4444;
 	color: #ffffff;
 	transform: scale(1.05);
 }
 
-.tv-popup-close-btn:focus-visible {
+.es-popup-close-btn:focus-visible {
 	outline: 2px solid #3b82f6;
 	outline-offset: 2px;
 }
@@ -94,27 +94,27 @@
 /* ==========================================================================
 	Popup Type: Modal Popup
 	========================================================================== */
-.tv-popup-type-modal .tv-popup-container {
+.es-popup-type-modal .es-popup-container {
 	transform: scale(0.9);
 	width: 600px;
 }
 
-.tv-popup-wrapper.tv-popup-type-modal.tv-popup-active .tv-popup-container {
+.es-popup-wrapper.es-popup-type-modal.es-popup-active .es-popup-container {
 	transform: scale(1);
 }
 
 /* ==========================================================================
 	Popup Type: Slide In Popup (Bottom Right default)
 	========================================================================== */
-.tv-popup-type-slide_in {
+.es-popup-type-slide_in {
 	pointer-events: none; /* Let clicks pass through background */
 }
 
-.tv-popup-type-slide_in .tv-popup-overlay {
+.es-popup-type-slide_in .es-popup-overlay {
 	display: none; /* No backdrop for slide ins */
 }
 
-.tv-popup-type-slide_in .tv-popup-container {
+.es-popup-type-slide_in .es-popup-container {
 	pointer-events: auto; /* Re-enable clicks for popup container */
 	position: absolute;
 	bottom: 30px;
@@ -125,7 +125,7 @@
 	transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tv-popup-wrapper.tv-popup-type-slide_in.tv-popup-active .tv-popup-container {
+.es-popup-wrapper.es-popup-type-slide_in.es-popup-active .es-popup-container {
 	transform: translateY(0) scale(1);
 	opacity: 1;
 }
@@ -133,16 +133,16 @@
 /* ==========================================================================
 	Popup Type: Notification Bar (Top Fixed)
 	========================================================================== */
-.tv-popup-type-notification_bar {
+.es-popup-type-notification_bar {
 	align-items: flex-start;
 	pointer-events: none;
 }
 
-.tv-popup-type-notification_bar .tv-popup-overlay {
+.es-popup-type-notification_bar .es-popup-overlay {
 	display: none; /* No backdrop */
 }
 
-.tv-popup-type-notification_bar .tv-popup-container {
+.es-popup-type-notification_bar .es-popup-container {
 	pointer-events: auto;
 	width: 100%;
 	max-width: 100%;
@@ -153,55 +153,55 @@
 	transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-.tv-popup-wrapper.tv-popup-type-notification_bar.tv-popup-active .tv-popup-container {
+.es-popup-wrapper.es-popup-type-notification_bar.es-popup-active .es-popup-container {
 	transform: translateY(0);
 }
 
-.tv-popup-type-notification_bar .tv-popup-content {
+.es-popup-type-notification_bar .es-popup-content {
 	padding: 12px 60px 12px 24px; /* More horizontal padding, less vertical */
 }
 
-.tv-popup-type-notification_bar .tv-popup-close-btn {
+.es-popup-type-notification_bar .es-popup-close-btn {
 	top: 50%;
 	transform: translateY(-50%);
 }
 
-.tv-popup-type-notification_bar .tv-popup-close-btn:hover {
+.es-popup-type-notification_bar .es-popup-close-btn:hover {
 	transform: translateY(-50%) scale(1.05);
 }
 
 /* Device Targeting Helper (JS applies classes if device mismatch detected) */
-body.tv-popup-device-mismatch .tv-popup-wrapper {
+body.es-popup-device-mismatch .es-popup-wrapper {
 	display: none !important;
 }
 
 /* Custom Scrollbar Inside Popup Content if Content overflows */
-.tv-popup-container::-webkit-scrollbar {
+.es-popup-container::-webkit-scrollbar {
 	width: 6px;
 }
-.tv-popup-container::-webkit-scrollbar-track {
+.es-popup-container::-webkit-scrollbar-track {
 	background: transparent;
 }
-.tv-popup-container::-webkit-scrollbar-thumb {
+.es-popup-container::-webkit-scrollbar-thumb {
 	background: rgba(15, 23, 42, 0.2);
 	border-radius: 3px;
 }
-.tv-popup-container::-webkit-scrollbar-thumb:hover {
+.es-popup-container::-webkit-scrollbar-thumb:hover {
 	background: rgba(15, 23, 42, 0.3);
 }
 
 /* Support responsive sizing constraint for mobiles */
 @media (max-width: 767px) {
-	.tv-popup-container {
+	.es-popup-container {
 		width: 90% !important;
 		margin: 0 auto;
 	}
-	.tv-popup-type-slide_in .tv-popup-container {
+	.es-popup-type-slide_in .es-popup-container {
 		right: 5%;
 		left: 5%;
 		bottom: 20px;
 	}
-	.tv-popup-type-notification_bar .tv-popup-container {
+	.es-popup-type-notification_bar .es-popup-container {
 		right: 0;
 		left: 0;
 		bottom: auto;

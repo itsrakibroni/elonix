@@ -1,0 +1,21 @@
+/* Suppress known third-party plugin ads and promotional banners */
+.ekit-admin-notice,
+.elementskit-notice,
+.elementskit-promo,
+.elementskit-upsell,
+.jeg-notice,
+.jegkit-notice,
+.jeg-theme-notice,
+.eael-notice,
+.essential-addons-elementor-notice,
+.uael-notice,
+.ultimate-addons-elementor-notice,
+.ad-banner,
+.plugin-promo-banner,
+.third-party-ad,
+#wpbody-content > .notice.elementskit-lite,
+#wpbody-content > .notice.jeg-elementor-kit,
+#wpbody-content > .notice.essential-addons,
+#wpbody-content > .notice.ultimate-addons {
+	display: none !important;
+}

@@ -44,13 +44,13 @@ class Elonix_Search_Preview {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
 		} elseif ( isset( $_GET['p'] ) ) {
 			$post_id = intval( $_GET['p'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
-		} elseif ( is_singular( 'tv_search_template' ) ) {
+		} elseif ( is_singular( 'es_search_template' ) ) {
 			$post_id = get_the_ID();
 		}
 
 		if ( $post_id ) {
 			$post = get_post( $post_id );
-			return ( $post && 'tv_search_template' === $post->post_type );
+			return ( $post && 'es_search_template' === $post->post_type );
 		}
 
 		return false;
@@ -88,7 +88,7 @@ class Elonix_Search_Preview {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
 		if ( isset( $_GET['elementor-preview'] ) ) {
 			$post_id = intval( $_GET['elementor-preview'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
-		} elseif ( is_singular( 'tv_search_template' ) ) {
+		} elseif ( is_singular( 'es_search_template' ) ) {
 			$post_id = get_the_ID();
 		}
 
@@ -96,7 +96,7 @@ class Elonix_Search_Preview {
 			return;
 		}
 
-		$preview_term = get_post_meta( $post_id, '_tv_search_preview_term', true );
+		$preview_term = get_post_meta( $post_id, '_es_search_preview_term', true );
 		if ( '' === $preview_term ) {
 			$preview_term = 'sample';
 		}

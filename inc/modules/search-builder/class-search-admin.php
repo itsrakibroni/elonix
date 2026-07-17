@@ -19,13 +19,14 @@ class Elonix_Search_Admin {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_filter( 'manage_tv_search_template_posts_columns', array( $this, 'register_custom_columns' ) );
-		add_action( 'manage_tv_search_template_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
+		add_filter( 'manage_es_search_template_posts_columns', array( $this, 'register_custom_columns' ) );
+		add_action( 'manage_es_search_template_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
 
 		add_action( 'add_meta_boxes', array( $this, 'add_search_settings_metabox' ) );
-		add_action( 'save_post_tv_search_template', array( $this, 'save_search_settings' ) );
+		add_action( 'save_post_es_search_template', array( $this, 'save_search_settings' ) );
 
-		add_action( 'wp_ajax_tv_duplicate_search_template', array( $this, 'duplicate_search_template' ) );
+		add_action( 'wp_ajax_es_duplicate_search_template', array( $this, 'duplicate_search_template' ) );
 	}
 
 	/**
@@ -34,11 +35,29 @@ class Elonix_Search_Admin {
 	 * @param array $columns Existing columns.
 	 * @return array
 	 */
+	
+	/**
+	 * Enqueue admin assets.
+	 */
+	public function enqueue_admin_assets( $hook ) {
+		global $post;
+		if ( ! $post || 'es_search_template' !== $post->post_type ) {
+			return;
+		}
+
+		wp_enqueue_style(
+			'elonix-module-meta',
+			ELONIX_ACC_URL . 'assets/admin/css/module-meta.css',
+			array(),
+			ELONIX_VERSION
+		);
+	}
+
 	public function register_custom_columns( $columns ) {
 		return array(
 			'cb'                      => $columns['cb'],
 			'title'                   => $columns['title'],
-			'tv_search_header_footer' => esc_html__( 'Header/Footer Theme Integration', 'elonix' ),
+			'es_search_header_footer' => esc_html__( 'Header/Footer Theme Integration', 'elonix' ),
 			'date'                    => $columns['date'],
 		);
 	}
@@ -51,9 +70,9 @@ class Elonix_Search_Admin {
 	 */
 	public function render_custom_columns( $column, $post_id ) {
 		switch ( $column ) {
-			case 'tv_search_header_footer':
-				$header = get_post_meta( $post_id, '_tv_search_show_header', true );
-				$footer = get_post_meta( $post_id, '_tv_search_show_footer', true );
+			case 'es_search_header_footer':
+				$header = get_post_meta( $post_id, '_es_search_show_header', true );
+				$footer = get_post_meta( $post_id, '_es_search_show_footer', true );
 
 				$h_status = ( 'no' === $header ) ? esc_html__( 'Disabled', 'elonix' ) : esc_html__( 'Enabled', 'elonix' );
 				$f_status = ( 'no' === $footer ) ? esc_html__( 'Disabled', 'elonix' ) : esc_html__( 'Enabled', 'elonix' );
@@ -69,10 +88,10 @@ class Elonix_Search_Admin {
 	 */
 	public function add_search_settings_metabox() {
 		add_meta_box(
-			'tv_search_settings_metabox',
+			'es_search_settings_metabox',
 			esc_html__( 'Search Builder Settings', 'elonix' ),
 			array( $this, 'render_settings_metabox' ),
-			'tv_search_template',
+			'es_search_template',
 			'normal',
 			'high'
 		);
@@ -84,11 +103,11 @@ class Elonix_Search_Admin {
 	 * @param WP_Post $post Current post.
 	 */
 	public function render_settings_metabox( $post ) {
-		wp_nonce_field( 'tv_search_settings_save', 'tv_search_settings_nonce' );
+		wp_nonce_field( 'es_search_settings_save', 'es_search_settings_nonce' );
 
-		$show_header  = get_post_meta( $post->ID, '_tv_search_show_header', true );
-		$show_footer  = get_post_meta( $post->ID, '_tv_search_show_footer', true );
-		$preview_term = get_post_meta( $post->ID, '_tv_search_preview_term', true );
+		$show_header  = get_post_meta( $post->ID, '_es_search_show_header', true );
+		$show_footer  = get_post_meta( $post->ID, '_es_search_show_footer', true );
+		$preview_term = get_post_meta( $post->ID, '_es_search_preview_term', true );
 
 		if ( empty( $show_header ) ) {
 			$show_header = 'yes';
@@ -100,42 +119,36 @@ class Elonix_Search_Admin {
 			$preview_term = 'sample';
 		}
 		?>
-		<style>
-			.tv-search-meta-row { display: flex; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #eee; }
-			.tv-search-meta-label { width: 220px; font-weight: bold; padding-top: 4px; }
-			.tv-search-meta-field { flex: 1; }
-			.tv-search-meta-field select, .tv-search-meta-field input[type="text"] { width: 100%; max-width: 400px; }
-			.tv-search-meta-section-title { font-size: 14px; font-weight: bold; background: #f8fafc; padding: 8px 12px; margin: 15px 0 5px 0; border-left: 4px solid #3b82f6; }
-		</style>
-		<div class="tv-search-meta-wrapper">
-			<div class="tv-search-meta-section-title"><?php esc_html_e( 'Theme & Header/Footer Layout Options', 'elonix' ); ?></div>
+		<!-- MODULE META CSS MOVED EXTERNALLY -->
+		<div class="es-search-meta-wrapper">
+			<div class="es-search-meta-section-title"><?php esc_html_e( 'Theme & Header/Footer Layout Options', 'elonix' ); ?></div>
 
-			<div class="tv-search-meta-row">
-				<div class="tv-search-meta-label"><?php esc_html_e( 'Render Theme Header', 'elonix' ); ?></div>
-				<div class="tv-search-meta-field">
-					<select name="tv_search_show_header">
+			<div class="es-search-meta-row">
+				<div class="es-search-meta-label"><?php esc_html_e( 'Render Theme Header', 'elonix' ); ?></div>
+				<div class="es-search-meta-field">
+					<select name="es_search_show_header">
 						<option value="yes" <?php selected( $show_header, 'yes' ); ?>><?php esc_html_e( 'Yes (Call native theme header / Elonix Header Builder)', 'elonix' ); ?></option>
 						<option value="no" <?php selected( $show_header, 'no' ); ?>><?php esc_html_e( 'No (Clean Canvas Layout)', 'elonix' ); ?></option>
 					</select>
 				</div>
 			</div>
 
-			<div class="tv-search-meta-row">
-				<div class="tv-search-meta-label"><?php esc_html_e( 'Render Theme Footer', 'elonix' ); ?></div>
-				<div class="tv-search-meta-field">
-					<select name="tv_search_show_footer">
+			<div class="es-search-meta-row">
+				<div class="es-search-meta-label"><?php esc_html_e( 'Render Theme Footer', 'elonix' ); ?></div>
+				<div class="es-search-meta-field">
+					<select name="es_search_show_footer">
 						<option value="yes" <?php selected( $show_footer, 'yes' ); ?>><?php esc_html_e( 'Yes (Call native theme footer / Elonix Footer Builder)', 'elonix' ); ?></option>
 						<option value="no" <?php selected( $show_footer, 'no' ); ?>><?php esc_html_e( 'No (Clean Canvas Layout)', 'elonix' ); ?></option>
 					</select>
 				</div>
 			</div>
 
-			<div class="tv-search-meta-section-title"><?php esc_html_e( 'Preview Context Configuration', 'elonix' ); ?></div>
+			<div class="es-search-meta-section-title"><?php esc_html_e( 'Preview Context Configuration', 'elonix' ); ?></div>
 
-			<div class="tv-search-meta-row">
-				<div class="tv-search-meta-label"><?php esc_html_e( 'Sample Search Query', 'elonix' ); ?></div>
-				<div class="tv-search-meta-field">
-					<input type="text" name="tv_search_preview_term" value="<?php echo esc_attr( $preview_term ); ?>" placeholder="<?php esc_attr_e( 'e.g. business', 'elonix' ); ?>" />
+			<div class="es-search-meta-row">
+				<div class="es-search-meta-label"><?php esc_html_e( 'Sample Search Query', 'elonix' ); ?></div>
+				<div class="es-search-meta-field">
+					<input type="text" name="es_search_preview_term" value="<?php echo esc_attr( $preview_term ); ?>" placeholder="<?php esc_attr_e( 'e.g. business', 'elonix' ); ?>" />
 					<p class="description" style="margin-top: 4px; font-size: 11px;">
 						<?php esc_html_e( 'Used only while previewing this Search Builder template in Elementor.', 'elonix' ); ?>
 					</p>
@@ -151,7 +164,7 @@ class Elonix_Search_Admin {
 	 * @param int $post_id Post ID.
 	 */
 	public function save_search_settings( $post_id ) {
-		if ( ! isset( $_POST['tv_search_settings_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['tv_search_settings_nonce'] ), 'tv_search_settings_save' ) ) {
+		if ( ! isset( $_POST['es_search_settings_nonce'] ) || ! wp_verify_nonce( sanitize_key( $_POST['es_search_settings_nonce'] ), 'es_search_settings_save' ) ) {
 			return;
 		}
 
@@ -164,9 +177,9 @@ class Elonix_Search_Admin {
 		}
 
 		$fields = array(
-			'tv_search_show_header'  => '_tv_search_show_header',
-			'tv_search_show_footer'  => '_tv_search_show_footer',
-			'tv_search_preview_term' => '_tv_search_preview_term',
+			'es_search_show_header'  => '_es_search_show_header',
+			'es_search_show_footer'  => '_es_search_show_footer',
+			'es_search_preview_term' => '_es_search_preview_term',
 		);
 
 		foreach ( $fields as $field => $meta_key ) {
@@ -184,10 +197,10 @@ class Elonix_Search_Admin {
 	 * @return array
 	 */
 	public function inject_duplicate_link( $actions, $post ) {
-		if ( 'tv_search_template' === $post->post_type ) {
-			$nonce                          = wp_create_nonce( 'tv_duplicate_search_template_' . $post->ID );
-			$url                            = admin_url( 'admin-ajax.php?action=tv_duplicate_search_template&post_id=' . $post->ID . '&nonce=' . $nonce );
-			$actions['tv_duplicate_search'] = sprintf(
+		if ( 'es_search_template' === $post->post_type ) {
+			$nonce                          = wp_create_nonce( 'es_duplicate_search_template_' . $post->ID );
+			$url                            = admin_url( 'admin-ajax.php?action=es_duplicate_search_template&post_id=' . $post->ID . '&nonce=' . $nonce );
+			$actions['es_duplicate_search'] = sprintf(
 				'<a href="%s" aria-label="%s">%s</a>',
 				esc_url( $url ),
 				esc_attr__( 'Duplicate this search template', 'elonix' ),
@@ -205,7 +218,7 @@ class Elonix_Search_Admin {
 		$post_id = isset( $_GET['post_id'] ) ? intval( $_GET['post_id'] ) : 0;
 		$nonce   = isset( $_GET['nonce'] ) ? sanitize_key( $_GET['nonce'] ) : '';
 
-		if ( ! $post_id || ! wp_verify_nonce( $nonce, 'tv_duplicate_search_template_' . $post_id ) ) {
+		if ( ! $post_id || ! wp_verify_nonce( $nonce, 'es_duplicate_search_template_' . $post_id ) ) {
 			wp_die( esc_html__( 'Security validation failed.', 'elonix' ) );
 		}
 
@@ -214,7 +227,7 @@ class Elonix_Search_Admin {
 		}
 
 		$post = get_post( $post_id );
-		if ( ! $post || 'tv_search_template' !== $post->post_type ) {
+		if ( ! $post || 'es_search_template' !== $post->post_type ) {
 			wp_die( esc_html__( 'Original template not found.', 'elonix' ) );
 		}
 
@@ -222,7 +235,7 @@ class Elonix_Search_Admin {
 			array(
 				'post_title'  => $post->post_title . esc_html__( ' (Copy)', 'elonix' ),
 				'post_status' => 'draft',
-				'post_type'   => 'tv_search_template',
+				'post_type'   => 'es_search_template',
 				'post_author' => get_current_user_id(),
 			)
 		);
@@ -232,10 +245,10 @@ class Elonix_Search_Admin {
 		}
 
 		$meta_keys = array(
-			'_tv_search_type',
-			'_tv_search_show_header',
-			'_tv_search_show_footer',
-			'_tv_search_preview_term',
+			'_es_search_type',
+			'_es_search_show_header',
+			'_es_search_show_footer',
+			'_es_search_preview_term',
 			'_elementor_data',
 			'_elementor_template_type',
 			'_elementor_edit_mode',
@@ -248,7 +261,7 @@ class Elonix_Search_Admin {
 			}
 		}
 
-		wp_safe_redirect( admin_url( 'edit.php?post_type=tv_search_template' ) );
+		wp_safe_redirect( admin_url( 'edit.php?post_type=es_search_template' ) );
 		exit;
 	}
 }

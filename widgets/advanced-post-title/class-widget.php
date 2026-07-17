@@ -24,7 +24,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-post-title';
+		return 'es-post-title';
 	}
 
 	/**
@@ -41,7 +41,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-post-title';
 	}
 
@@ -50,7 +50,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return array Keywords list.
 	 */
-	public function get_tv_widget_keywords() {
+	public function get_es_widget_keywords() {
 		return array( 'post', 'title', 'heading', 'seo', 'dynamic' );
 	}
 
@@ -60,7 +60,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-post-title' );
+		return array( 'elonix-widget-es-post-title' );
 	}
 
 	/**
@@ -593,7 +593,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#fff59d',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-highlight-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-highlight-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_highlighted_text' => 'yes',
@@ -652,7 +652,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'First Half Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-split-first-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-split-first-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_split_text' => 'yes',
@@ -674,7 +674,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 					'900'     => 'Black (900)',
 				),
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-split-first-weight: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-split-first-weight: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_split_text' => 'yes',
@@ -688,7 +688,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Second Half Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-split-second-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-split-second-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_split_text' => 'yes',
@@ -710,7 +710,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 					'900'     => 'Black (900)',
 				),
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-split-second-weight: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-split-second-weight: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_split_text' => 'yes',
@@ -756,7 +756,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#e91e63',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-underline-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-underline-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_animated_underline' => 'yes',
@@ -779,7 +779,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-underline-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-title-underline-height: {{SIZE}}{{UNIT}};',
 				),
 				'condition' => array(
 					'enable_animated_underline' => 'yes',
@@ -808,7 +808,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => 'rgba(0,0,0,0.03)',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-box-bg-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-box-bg-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_bg_highlight' => 'yes',
@@ -823,7 +823,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}}' => '--tv-title-box-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-title-box-padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'enable_bg_highlight' => 'yes',
@@ -838,7 +838,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}}' => '--tv-title-box-border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-title-box-border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'enable_bg_highlight' => 'yes',
@@ -914,7 +914,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#e91e63',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-badge-bg-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-badge-bg-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_badge' => 'yes',
@@ -929,7 +929,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#ffffff',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-badge-text-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-badge-text-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_badge' => 'yes',
@@ -969,7 +969,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#e0e0e0',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-sep-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-title-sep-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'enable_separator' => 'yes',
@@ -992,7 +992,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-sep-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-title-sep-width: {{SIZE}}{{UNIT}};',
 				),
 				'condition' => array(
 					'enable_separator' => 'yes',
@@ -1015,7 +1015,7 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-title-sep-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-title-sep-height: {{SIZE}}{{UNIT}};',
 				),
 				'condition' => array(
 					'enable_separator' => 'yes',

@@ -30,7 +30,7 @@ class Elonix_Admin_Row_Actions {
 	public function enqueue_styles( $hook ) {
 		$screen               = get_current_screen();
 		$post_type            = $screen ? $screen->post_type : '';
-		$supported_post_types = array( 'tv_header', 'tv_footer', 'tv_single', 'tv_archive', 'tv_search_template', 'tv_popup', 'tv_404_template', 'tv_loop' );
+		$supported_post_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template', 'es_popup', 'es_404_template', 'es_loop' );
 
 		// Only enqueue on our specific list tables, header/footer page, or the edit page
 		$is_valid = false;
@@ -48,28 +48,28 @@ class Elonix_Admin_Row_Actions {
 
 		// Inject the dropdown CSS to ensure it looks correct on native WP tables as well.
 		$css = '
-		.tv-actions-cell { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
-		.tv-btn-primary.tv-btn-small { height: 28px; line-height: 26px; padding: 0 10px; font-size: 12px; font-weight: 600; border-radius: 6px; display: inline-flex; align-items: center; gap: 4px; border: none; color: #ffffff; text-decoration: none; cursor: pointer; background: #4f46e5; }
-		.tv-btn-primary.tv-btn-small:hover { background: #4338ca; color:#ffffff; }
-		.tv-btn-primary.tv-btn-small .dashicons { font-size: 14px; width: 14px; height: 14px; margin: 0; line-height: 1; }
-		.tv-actions-dropdown-wrapper { position: relative; display: inline-block; }
-		.tv-actions-dropdown-trigger { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; border-radius: 6px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
-		.tv-actions-dropdown-trigger:hover, .tv-actions-dropdown-wrapper.active .tv-actions-dropdown-trigger { background: #f1f5f9; border-color: #cbd5e1; color: #0f172a; }
-		.tv-actions-dropdown-trigger .dashicons { font-size: 18px; width: 18px; height: 18px; margin: 0; line-height: 1; }
-		.tv-actions-dropdown-menu { display: none; position: absolute; top: 100%; right: 0; z-index: 1000; margin-top: 0; min-width: 160px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); overflow: hidden; padding: 4px 0; }
-		.tv-actions-dropdown-wrapper:hover .tv-actions-dropdown-menu, .tv-actions-dropdown-wrapper.active .tv-actions-dropdown-menu { display: block; }
-		.tv-dropdown-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 12.5px; font-weight: 500; color: #334155; text-decoration: none; cursor: pointer; border: none; background: none; width: 100%; text-align: left; box-sizing: border-box; }
-		.tv-dropdown-item:hover { background: #f8fafc; color: #0f172a; }
-		.tv-dropdown-item .dashicons { font-size: 16px; width: 16px; height: 16px; color: #94a3b8; margin: 0; }
-		.tv-dropdown-item.tv-action-trash:hover { background: #fef2f2; color: #dc2626; }
-		.tv-dropdown-item.tv-action-trash:hover .dashicons { color: #dc2626; }
+		.es-actions-cell { display: flex; align-items: center; gap: 8px; justify-content: flex-end; }
+		.es-btn-primary.es-btn-small { height: 28px; line-height: 26px; padding: 0 10px; font-size: 12px; font-weight: 600; border-radius: 6px; display: inline-flex; align-items: center; gap: 4px; border: none; color: #ffffff; text-decoration: none; cursor: pointer; background: #4f46e5; }
+		.es-btn-primary.es-btn-small:hover { background: #4338ca; color:#ffffff; }
+		.es-btn-primary.es-btn-small .dashicons { font-size: 14px; width: 14px; height: 14px; margin: 0; line-height: 1; }
+		.es-actions-dropdown-wrapper { position: relative; display: inline-block; }
+		.es-actions-dropdown-trigger { background: #ffffff; border: 1px solid #e2e8f0; color: #475569; border-radius: 6px; width: 28px; height: 28px; display: flex; align-items: center; justify-content: center; cursor: pointer; padding: 0; }
+		.es-actions-dropdown-trigger:hover, .es-actions-dropdown-wrapper.active .es-actions-dropdown-trigger { background: #f1f5f9; border-color: #cbd5e1; color: #0f172a; }
+		.es-actions-dropdown-trigger .dashicons { font-size: 18px; width: 18px; height: 18px; margin: 0; line-height: 1; }
+		.es-actions-dropdown-menu { display: none; position: absolute; top: 100%; right: 0; z-index: 1000; margin-top: 0; min-width: 160px; background: #ffffff; border: 1px solid #e2e8f0; border-radius: 8px; box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -4px rgba(0, 0, 0, 0.1); overflow: hidden; padding: 4px 0; }
+		.es-actions-dropdown-wrapper:hover .es-actions-dropdown-menu, .es-actions-dropdown-wrapper.active .es-actions-dropdown-menu { display: block; }
+		.es-dropdown-item { display: flex; align-items: center; gap: 8px; padding: 8px 12px; font-size: 12.5px; font-weight: 500; color: #334155; text-decoration: none; cursor: pointer; border: none; background: none; width: 100%; text-align: left; box-sizing: border-box; }
+		.es-dropdown-item:hover { background: #f8fafc; color: #0f172a; }
+		.es-dropdown-item .dashicons { font-size: 16px; width: 16px; height: 16px; color: #94a3b8; margin: 0; }
+		.es-dropdown-item.es-action-trash:hover { background: #fef2f2; color: #dc2626; }
+		.es-dropdown-item.es-action-trash:hover .dashicons { color: #dc2626; }
 		';
 		wp_add_inline_style( 'common', $css );
 
 		$js = "
 		jQuery(document).ready(function($) {
-			if ( window.location.hash === '#tv_layout_assignments_box' ) {
-				var \$box = $('#tv_layout_assignments_box');
+			if ( window.location.hash === '#es_layout_assignments_box' ) {
+				var \$box = $('#es_layout_assignments_box');
 				if ( \$box.length ) {
 					\$box.removeClass('closed');
 					\$box.find('.handlediv').attr('aria-expanded', 'true');
@@ -92,7 +92,7 @@ class Elonix_Admin_Row_Actions {
 	/**
 	 * Safe KSES wrapper that allows data-* attributes for row actions.
 	 */
-	public function tv_kses_post( $html ) {
+	public function es_kses_post( $html ) {
 		$allowed = wp_kses_allowed_html( 'post' );
 
 		// Add data attributes to anchor tag
@@ -125,18 +125,18 @@ class Elonix_Admin_Row_Actions {
 		$dev_mode = class_exists( 'Elonix_Settings' ) && Elonix_Settings::is_developer_mode() ? 'yes' : 'no';
 
 		if ( 'trash' === $status ) {
-			$restore_url = wp_nonce_url( admin_url( 'admin.php?action=tv_restore_layout&post_id=' . $post->ID ), 'tv_restore_layout_' . $post->ID );
-			$delete_url  = wp_nonce_url( admin_url( 'admin.php?action=tv_delete_layout_permanently&post_id=' . $post->ID ), 'tv_delete_layout_permanently_' . $post->ID );
+			$restore_url = wp_nonce_url( admin_url( 'admin.php?action=es_restore_layout&post_id=' . $post->ID ), 'es_restore_layout_' . $post->ID );
+			$delete_url  = wp_nonce_url( admin_url( 'admin.php?action=es_delete_layout_permanently&post_id=' . $post->ID ), 'es_delete_layout_permanently_' . $post->ID );
 
 			$actions['restore'] = sprintf(
-				'<a href="%s" class="tv-btn tv-btn-primary tv-btn-small" title="%s"><span class="dashicons dashicons-undo"></span> %s</a>',
+				'<a href="%s" class="es-btn es-btn-primary es-btn-small" title="%s"><span class="dashicons dashicons-undo"></span> %s</a>',
 				esc_url( $restore_url ),
 				esc_attr__( 'Restore layout template', 'elonix' ),
 				esc_html__( 'Restore', 'elonix' )
 			);
 
 			$actions['delete'] = sprintf(
-				'<a href="%s" class="tv-dropdown-item tv-action-trash" title="%s" data-confirm="%s"><span class="dashicons dashicons-trash"></span> %s</a>',
+				'<a href="%s" class="es-dropdown-item es-action-trash" title="%s" data-confirm="%s"><span class="dashicons dashicons-trash"></span> %s</a>',
 				esc_url( $delete_url ),
 				esc_attr__( 'Delete template permanently', 'elonix' ),
 				esc_attr__( 'Are you sure you want to permanently delete this template?', 'elonix' ),
@@ -150,7 +150,7 @@ class Elonix_Admin_Row_Actions {
 
 		if ( class_exists( '\Elementor\Plugin' ) ) {
 			$all_actions['edit_elementor'] = sprintf(
-				'<a href="%s" class="tv-btn tv-btn-primary tv-btn-small" title="%s"><span class="dashicons dashicons-edit"></span> %s</a>',
+				'<a href="%s" class="es-btn es-btn-primary es-btn-small" title="%s"><span class="dashicons dashicons-edit"></span> %s</a>',
 				esc_url( \Elementor\Plugin::$instance->documents->get( $post->ID )->get_edit_url() ),
 				esc_attr__( 'Edit layout template with Elementor editor', 'elonix' ),
 				esc_html__( 'Edit with Elementor', 'elonix' )
@@ -162,43 +162,43 @@ class Elonix_Admin_Row_Actions {
 
 		// Map post type to its expected frontend preview slug
 		$slug = $post_type;
-		if ( 'tv_404_template' === $post_type ) {
-			$slug = 'tv_404';
+		if ( 'es_404_template' === $post_type ) {
+			$slug = 'es_404';
 		}
 
 		$preview_url = home_url( trailingslashit( $slug ) . trailingslashit( $post_name ) );
 
 		$all_actions['preview'] = sprintf(
-			'<a href="%s" class="tv-dropdown-item" title="%s" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-visibility"></span> %s</a>',
+			'<a href="%s" class="es-dropdown-item" title="%s" target="_blank" rel="noopener noreferrer"><span class="dashicons dashicons-visibility"></span> %s</a>',
 			esc_url( $preview_url ),
 			esc_attr__( 'View layout template frontend preview', 'elonix' ),
 			esc_html__( 'Preview', 'elonix' )
 		);
 
 		$all_actions['assign'] = sprintf(
-			'<a href="%s" class="tv-dropdown-item tv-assign-action" title="%s"><span class="dashicons dashicons-admin-links"></span> %s</a>',
-			esc_url( admin_url( 'post.php?post=' . $post->ID . '&action=edit#tv_layout_assignments_box' ) ),
+			'<a href="%s" class="es-dropdown-item es-assign-action" title="%s"><span class="dashicons dashicons-admin-links"></span> %s</a>',
+			esc_url( admin_url( 'post.php?post=' . $post->ID . '&action=edit#es_layout_assignments_box' ) ),
 			esc_attr__( 'Assign Template Display Conditions', 'elonix' ),
 			esc_html__( 'Assign', 'elonix' )
 		);
 
 		$all_actions['settings'] = sprintf(
-			'<a href="%s" class="tv-dropdown-item" title="%s"><span class="dashicons dashicons-admin-generic"></span> %s</a>',
+			'<a href="%s" class="es-dropdown-item" title="%s"><span class="dashicons dashicons-admin-generic"></span> %s</a>',
 			esc_url( admin_url( 'post.php?post=' . $post->ID . '&action=edit' ) ),
 			esc_attr__( 'Edit configuration settings', 'elonix' ),
 			esc_html__( 'Settings', 'elonix' )
 		);
 
-		$shortcode = ( 'tv_header' === $post->post_type ) ? '[tv_header id="' . $post->ID . '"]' : '[tv_footer id="' . $post->ID . '"]';
-		$php_code  = ( 'tv_header' === $post->post_type ) ? '<?php elonix_render_header(' . $post->ID . '); ?>' : '<?php elonix_render_footer(' . $post->ID . '); ?>';
+		$shortcode = ( 'es_header' === $post->post_type ) ? '[es_header id="' . $post->ID . '"]' : '[es_footer id="' . $post->ID . '"]';
+		$php_code  = ( 'es_header' === $post->post_type ) ? '<?php elonix_render_header(' . $post->ID . '); ?>' : '<?php elonix_render_footer(' . $post->ID . '); ?>';
 
-		if ( ! in_array( $post->post_type, array( 'tv_header', 'tv_footer' ), true ) ) {
-			$shortcode = '[tv_template id="' . $post->ID . '"]';
-			$php_code  = '<?php echo do_shortcode(\'[tv_template id="' . $post->ID . '"]\'); ?>';
+		if ( ! in_array( $post->post_type, array( 'es_header', 'es_footer' ), true ) ) {
+			$shortcode = '[es_template id="' . $post->ID . '"]';
+			$php_code  = '<?php echo do_shortcode(\'[es_template id="' . $post->ID . '"]\'); ?>';
 		}
 
 		$all_actions['shortcode'] = sprintf(
-			'<a href="#" class="tv-dropdown-item tv-shortcode-modal-trigger" data-id="%d" data-shortcode="%s" data-php="%s"><span class="dashicons dashicons-shortcode"></span> %s</a>',
+			'<a href="#" class="es-dropdown-item es-shortcode-modal-trigger" data-id="%d" data-shortcode="%s" data-php="%s"><span class="dashicons dashicons-shortcode"></span> %s</a>',
 			$post->ID,
 			esc_attr( $shortcode ),
 			esc_attr( $php_code ),
@@ -206,22 +206,22 @@ class Elonix_Admin_Row_Actions {
 		);
 
 		$all_actions['duplicate'] = sprintf(
-			'<a href="%s" class="tv-dropdown-item" title="%s"><span class="dashicons dashicons-page"></span> %s</a>',
-			esc_url( wp_nonce_url( admin_url( 'admin.php?action=tv_duplicate_template&post_id=' . $post->ID ), 'tv_duplicate_template_' . $post->ID ) ),
+			'<a href="%s" class="es-dropdown-item" title="%s"><span class="dashicons dashicons-page"></span> %s</a>',
+			esc_url( wp_nonce_url( admin_url( 'admin.php?action=es_duplicate_template&post_id=' . $post->ID ), 'es_duplicate_template_' . $post->ID ) ),
 			esc_attr__( 'Clone layout template', 'elonix' ),
 			esc_html__( 'Duplicate', 'elonix' )
 		);
 
 		$all_actions['export'] = sprintf(
-			'<a href="%s" class="tv-dropdown-item" title="%s"><span class="dashicons dashicons-download"></span> %s</a>',
-			esc_url( wp_nonce_url( admin_url( 'admin.php?action=tv_export_template&post_id=' . $post->ID ), 'tv_export_template_' . $post->ID ) ),
+			'<a href="%s" class="es-dropdown-item" title="%s"><span class="dashicons dashicons-download"></span> %s</a>',
+			esc_url( wp_nonce_url( admin_url( 'admin.php?action=es_export_template&post_id=' . $post->ID ), 'es_export_template_' . $post->ID ) ),
 			esc_attr__( 'Export layout template data to JSON file', 'elonix' ),
 			esc_html__( 'Export', 'elonix' )
 		);
 
 		if ( 'yes' === $dev_mode && current_user_can( 'manage_options' ) ) {
 			$all_actions['export_package'] = sprintf(
-				'<a href="#" class="tv-dropdown-item tv-dev-export-package" data-id="%d" data-nonce="%s" title="%s"><span class="dashicons dashicons-archive"></span> %s</a>',
+				'<a href="#" class="es-dropdown-item es-dev-export-package" data-id="%d" data-nonce="%s" title="%s"><span class="dashicons dashicons-archive"></span> %s</a>',
 				$post->ID,
 				wp_create_nonce( 'wp_rest' ),
 				esc_attr__( 'Export as ThemeForest-compliant Package', 'elonix' ),
@@ -229,7 +229,7 @@ class Elonix_Admin_Row_Actions {
 			);
 
 			$all_actions['add_to_library'] = sprintf(
-				'<a href="#" class="tv-dropdown-item tv-dev-add-library" data-id="%d" data-title="%s" data-type="%s" data-nonce="%s" title="%s"><span class="dashicons dashicons-plus-alt"></span> %s</a>',
+				'<a href="#" class="es-dropdown-item es-dev-add-library" data-id="%d" data-title="%s" data-type="%s" data-nonce="%s" title="%s"><span class="dashicons dashicons-plus-alt"></span> %s</a>',
 				$post->ID,
 				esc_attr( $post->post_title ),
 				esc_attr( $post->post_type ),
@@ -240,8 +240,8 @@ class Elonix_Admin_Row_Actions {
 		}
 
 		$all_actions['trash'] = sprintf(
-			'<a href="%s" class="tv-dropdown-item tv-action-trash" title="%s" data-confirm="%s"><span class="dashicons dashicons-trash"></span> %s</a>',
-			esc_url( wp_nonce_url( admin_url( 'admin.php?action=tv_trash_layout&post_id=' . $post->ID ), 'tv_trash_layout_' . $post->ID ) ),
+			'<a href="%s" class="es-dropdown-item es-action-trash" title="%s" data-confirm="%s"><span class="dashicons dashicons-trash"></span> %s</a>',
+			esc_url( wp_nonce_url( admin_url( 'admin.php?action=es_trash_layout&post_id=' . $post->ID ), 'es_trash_layout_' . $post->ID ) ),
 			esc_attr__( 'Move layout template to trash archive', 'elonix' ),
 			esc_attr__( 'Move this layout template to trash?', 'elonix' ),
 			esc_html__( 'Delete', 'elonix' )
@@ -249,14 +249,14 @@ class Elonix_Admin_Row_Actions {
 
 		// Builder Matrix (In Order)
 		$matrix = array(
-			'tv_header'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'shortcode', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'tv_footer'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'shortcode', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'tv_single'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'tv_archive'         => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'tv_search_template' => array( 'edit_elementor', 'preview', 'assign', 'settings', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'tv_404_template'    => array( 'edit_elementor', 'preview', 'assign', 'settings', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'tv_popup'           => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'tv_loop'            => array( 'edit_elementor', 'preview', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'es_header'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'shortcode', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'es_footer'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'shortcode', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'es_single'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'es_archive'         => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'es_search_template' => array( 'edit_elementor', 'preview', 'assign', 'settings', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'es_404_template'    => array( 'edit_elementor', 'preview', 'assign', 'settings', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'es_popup'           => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'es_loop'            => array( 'edit_elementor', 'preview', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
 		);
 
 		$post_type = $post->post_type;
@@ -267,7 +267,7 @@ class Elonix_Admin_Row_Actions {
 				// Remove preview for header/footer as they are usually not standalone. But the user's updated expected examples say:
 				// Header: Edit, Assign, Duplicate, Export, Export Package, Add to Library, Delete. (No Preview)
 				// Footer: Same as Header.
-				if ( in_array( $post_type, array( 'tv_header', 'tv_footer' ), true ) && 'preview' === $key ) {
+				if ( in_array( $post_type, array( 'es_header', 'es_footer' ), true ) && 'preview' === $key ) {
 					continue;
 				}
 				$actions[ $key ] = $all_actions[ $key ];
@@ -296,19 +296,19 @@ class Elonix_Admin_Row_Actions {
 			unset( $actions['restore'] );
 		}
 
-		echo '<div class="tv-actions-cell" style="justify-content: flex-end;">';
+		echo '<div class="es-actions-cell" style="justify-content: flex-end;">';
 		do_action( 'elonix/admin/action_before_render', $post );
 
 		if ( $primary_action ) {
-			echo $this->tv_kses_post( $primary_action ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $this->es_kses_post( $primary_action ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 		}
 
 		if ( ! empty( $actions ) ) {
-			echo '<div class="tv-actions-dropdown-wrapper">';
-			echo '<button type="button" class="tv-actions-dropdown-trigger" aria-label="' . esc_attr__( 'More actions', 'elonix' ) . '"><span class="dashicons dashicons-ellipsis"></span></button>';
-			echo '<div class="tv-actions-dropdown-menu">';
+			echo '<div class="es-actions-dropdown-wrapper">';
+			echo '<button type="button" class="es-actions-dropdown-trigger" aria-label="' . esc_attr__( 'More actions', 'elonix' ) . '"><span class="dashicons dashicons-ellipsis"></span></button>';
+			echo '<div class="es-actions-dropdown-menu">';
 			foreach ( $actions as $action ) {
-				echo $this->tv_kses_post( $action ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $this->es_kses_post( $action ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 			}
 			echo '</div>';
 			echo '</div>';
@@ -322,7 +322,7 @@ class Elonix_Admin_Row_Actions {
 	 * Filter for native WP list tables.
 	 */
 	public function filter_native_row_actions( $actions, $post ) {
-		$supported_types = array( 'tv_header', 'tv_footer', 'tv_single', 'tv_archive', 'tv_search_template', 'tv_popup', 'tv_404_template', 'tv_loop' );
+		$supported_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template', 'es_popup', 'es_404_template', 'es_loop' );
 		if ( ! in_array( $post->post_type, $supported_types, true ) ) {
 			return $actions; // Preserve other post types
 		}
@@ -331,7 +331,7 @@ class Elonix_Admin_Row_Actions {
 		$this->render_custom_table_actions( $post );
 		$html = ob_get_clean();
 
-		$actions['tv_actions'] = $html;
+		$actions['es_actions'] = $html;
 
 		return $actions;
 	}

@@ -9,6 +9,6 @@ if ( empty( $item['icon']['value'] ) ) {
 	return;
 }
 ?>
-<div class="tv-fc-icon">
+<div class="es-fc-icon">
 	<?php \Elementor\Icons_Manager::render_icon( $item['icon'], [ 'aria-hidden' => 'true' ] ); ?>
 </div>

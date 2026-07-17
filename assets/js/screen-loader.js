@@ -1,9 +1,9 @@
 (function() {
 	'use strict';
 
-	var tvScreenLoader = {
-		config: window.tvScreenLoaderConfig || {},
-		wrapper: document.getElementById('tv-screen-loader'),
+	var esScreenLoader = {
+		config: window.esScreenLoaderConfig || {},
+		wrapper: document.getElementById('es-screen-loader'),
 		timeoutId: null,
 		
 		// Stored bound functions to avoid memory leaks
@@ -40,7 +40,7 @@
 			document.addEventListener('keyup', this.boundOnKeyUp);
 			
 			// Close button bypass
-			var closeBtn = document.querySelector('.tv-screen-loader__close');
+			var closeBtn = document.querySelector('.es-screen-loader__close');
 			if ( closeBtn ) {
 				closeBtn.addEventListener('click', this.hideLoader.bind(this));
 			}
@@ -71,16 +71,16 @@
 			// Update session storage if "once" is enabled
 			if ( this.config.once ) {
 				try {
-					sessionStorage.setItem('tv_loader_shown', 'true');
+					sessionStorage.setItem('es_loader_shown', 'true');
 				} catch(e) {}
 			}
 
 			// Apply out state class
-			this.wrapper.className += ' tv-loader-out';
+			this.wrapper.className += ' es-loader-out';
 
 			// Remove scroll lock from body
-			document.documentElement.className = document.documentElement.className.replace(/\btv-loading-active\b/g, '');
-			document.body.className = document.body.className.replace(/\btv-loading-active\b/g, '');
+			document.documentElement.className = document.documentElement.className.replace(/\bes-loading-active\b/g, '');
+			document.body.className = document.body.className.replace(/\bes-loading-active\b/g, '');
 
 			// Remove element from DOM after transition
 			var self = this;
@@ -138,6 +138,6 @@
 		}
 	};
 
-	tvScreenLoader.init();
+	esScreenLoader.init();
 
 })();

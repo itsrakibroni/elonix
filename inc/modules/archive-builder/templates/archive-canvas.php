@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template-local variables are not globals
 
-$template_id = get_query_var( 'tv_matched_archive_id' );
+$template_id = get_query_var( 'es_matched_archive_id' );
 
 // Safety fallback
 if ( ! $template_id ) {
@@ -22,8 +22,8 @@ if ( ! $template_id ) {
 	return;
 }
 
-$show_header = get_post_meta( $template_id, '_tv_archive_show_header', true ) !== 'no';
-$show_footer = get_post_meta( $template_id, '_tv_archive_show_footer', true ) !== 'no';
+$show_header = get_post_meta( $template_id, '_es_archive_show_header', true ) !== 'no';
+$show_footer = get_post_meta( $template_id, '_es_archive_show_footer', true ) !== 'no';
 
 if ( $show_header ) {
 	get_header();
@@ -43,14 +43,14 @@ if ( $show_header ) {
 }
 ?>
 <style type="text/css">
-	.tv-archive-canvas-content {
+	.es-archive-canvas-content {
 		width: 100% !important;
 		max-width: 100% !important;
 		margin: 0 !important;
 		padding: 0 !important;
 	}
 	/* Break out of any width-constrained parent containers dynamically */
-	.tv-archive-parent-fluid {
+	.es-archive-parent-fluid {
 		width: 100% !important;
 		max-width: 100% !important;
 		margin-left: 0 !important;
@@ -61,13 +61,13 @@ if ( $show_header ) {
 		flex: none !important;
 	}
 	/* Browser fallback using CSS :has selector */
-	div:has(> .tv-archive-canvas-content),
-	section:has(> .tv-archive-canvas-content),
-	article:has(> .tv-archive-canvas-content),
-	.site-content:has(.tv-archive-canvas-content),
-	.content-area:has(.tv-archive-canvas-content),
-	.container:has(.tv-archive-canvas-content),
-	#content:has(.tv-archive-canvas-content) {
+	div:has(> .es-archive-canvas-content),
+	section:has(> .es-archive-canvas-content),
+	article:has(> .es-archive-canvas-content),
+	.site-content:has(.es-archive-canvas-content),
+	.content-area:has(.es-archive-canvas-content),
+	.container:has(.es-archive-canvas-content),
+	#content:has(.es-archive-canvas-content) {
 		width: 100% !important;
 		max-width: 100% !important;
 		margin-left: 0 !important;
@@ -78,7 +78,7 @@ if ( $show_header ) {
 	}
 </style>
 
-<main id="tv-archive-primary" class="tv-archive-canvas-content tv-builder-container elementor-template-full-width" role="main" aria-label="<?php esc_attr_e( 'Archive Content', 'elonix' ); ?>">
+<main id="es-archive-primary" class="es-archive-canvas-content es-builder-container elementor-template-full-width" role="main" aria-label="<?php esc_attr_e( 'Archive Content', 'elonix' ); ?>">
 	<?php
 	// Print the Elementor custom layout template content
 	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -89,14 +89,14 @@ if ( $show_header ) {
 <script type="text/javascript">
 	(function() {
 		function makeParentsFluid() {
-			var canvas = document.getElementById('tv-archive-primary');
+			var canvas = document.getElementById('es-archive-primary');
 			if (canvas) {
 				var parent = canvas.parentElement;
 				while (parent && parent.tagName !== 'BODY' && parent.tagName !== 'HTML') {
 					if (parent.id === 'page' || parent.classList.contains('site') || parent.classList.contains('page-wrapper')) {
 						break;
 					}
-					parent.classList.add('tv-archive-parent-fluid');
+					parent.classList.add('es-archive-parent-fluid');
 					parent = parent.parentElement;
 				}
 			}

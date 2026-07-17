@@ -31,7 +31,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-nav-menu';
+		return 'es-nav-menu';
 	}
 
 	/**
@@ -48,7 +48,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-nav-menu';
 	}
 
@@ -57,8 +57,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return array Keywords list.
 	 */
-	public function get_tv_widget_keywords() {
-		return array( 'navigation', 'menu', 'navbar', 'header', 'tvkit' );
+	public function get_es_widget_keywords() {
+		return array( 'navigation', 'menu', 'navbar', 'header', 'eskit' );
 	}
 
 	/**
@@ -67,7 +67,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-nav-menu' );
+		return array( 'elonix-widget-es-nav-menu' );
 	}
 
 	/**
@@ -76,7 +76,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_script_depends() {
-		return array( 'elonix-widget-tv-nav-menu' );
+		return array( 'elonix-widget-es-nav-menu' );
 	}
 
 	/**
@@ -120,7 +120,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'modern'  => esc_html__( 'Modern Centered Style', 'elonix' ),
 					'saas'    => esc_html__( 'Premium SaaS Style', 'elonix' ),
 				),
-				'prefix_class' => 'tv-nav-menu-preset-',
+				'prefix_class' => 'es-nav-menu-preset-',
 			)
 		);
 
@@ -182,7 +182,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'split'      => esc_html__( 'Split Menu', 'elonix' ),
 					'offcanvas'  => esc_html__( 'Offcanvas Desktop', 'elonix' ),
 				),
-				'prefix_class' => 'tv-nav-menu-layout-',
+				'prefix_class' => 'es-nav-menu-layout-',
 			)
 		);
 
@@ -210,7 +210,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'default'      => 'left',
-				'prefix_class' => 'tv-nav-menu-align-',
+				'prefix_class' => 'es-nav-menu-align-',
 				'condition'    => array(
 					'layout_mode' => array( 'horizontal', 'centered' ),
 				),
@@ -431,7 +431,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#4f46e5',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-navbar-nav a:focus, {{WRAPPER}} button:focus' => 'outline-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-navbar-nav a:focus, {{WRAPPER}} button:focus' => 'outline-color: {{VALUE}} !important;',
 				),
 				'condition' => array(
 					'enable_focus_ring' => 'yes',
@@ -456,7 +456,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 2,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-navbar-nav a:focus, {{WRAPPER}} button:focus' => 'outline-width: {{SIZE}}{{UNIT}} !important; outline-style: solid !important;',
+					'{{WRAPPER}} .es-navbar-nav a:focus, {{WRAPPER}} button:focus' => 'outline-width: {{SIZE}}{{UNIT}} !important; outline-style: solid !important;',
 				),
 				'condition'  => array(
 					'enable_focus_ring' => 'yes',
@@ -507,7 +507,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'vw' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -519,7 +519,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'vw' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container' => 'max-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -528,7 +528,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'container_background',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container',
 			)
 		);
 
@@ -536,7 +536,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'container_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container',
 			)
 		);
 
@@ -547,7 +547,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -556,7 +556,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'container_shadow',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container',
 			)
 		);
 
@@ -567,7 +567,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -579,7 +579,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -591,7 +591,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'vh', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container' => 'height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -603,7 +603,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'vh', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container' => 'min-height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -615,7 +615,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'vh', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container' => 'max-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container' => 'max-height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -634,7 +634,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'items_typography',
 				'label'    => esc_html__( 'Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a',
 			)
 		);
 
@@ -644,8 +644,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a .tv-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a .es-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -654,7 +654,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'items_background',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a',
 			)
 		);
 
@@ -662,7 +662,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'items_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a',
 			)
 		);
 
@@ -673,7 +673,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -685,7 +685,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -697,7 +697,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -706,7 +706,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'items_shadow',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a',
 			)
 		);
 
@@ -726,8 +726,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a:hover' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li:hover > a .tv-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li:hover > a .es-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -736,7 +736,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'items_background_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a:hover',
 			)
 		);
 
@@ -746,7 +746,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Border Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a:hover' => 'border-color: {{VALUE}};',
 				),
 			)
 		);
@@ -755,7 +755,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'items_shadow_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a:hover',
 			)
 		);
 
@@ -775,8 +775,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-item > a .tv-submenu-indicator, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-ancestor > a .tv-submenu-indicator' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-item > a .es-submenu-indicator, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-ancestor > a .es-submenu-indicator' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -785,7 +785,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'items_background_active',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-ancestor > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-ancestor > a',
 			)
 		);
 
@@ -795,7 +795,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Border Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-ancestor > a' => 'border-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-ancestor > a' => 'border-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -804,7 +804,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'items_shadow_active',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li.current-menu-ancestor > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li.current-menu-ancestor > a',
 			)
 		);
 
@@ -829,7 +829,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-submenu-indicator' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-submenu-indicator' => 'font-size: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -840,7 +840,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Indicator Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -852,7 +852,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-submenu-indicator' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-submenu-indicator' => 'margin-left: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -864,7 +864,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a' => 'height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a' => 'height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center;',
 				),
 			)
 		);
@@ -876,7 +876,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a' => 'min-height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a' => 'min-height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center;',
 				),
 			)
 		);
@@ -904,8 +904,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}; margin-bottom: 0;',
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-nav-menu-layout-vertical .tv-navbar-nav > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}; margin-right: 0;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}}; margin-bottom: 0;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-nav-menu-layout-vertical .es-navbar-nav > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}}; margin-right: 0;',
 				),
 			)
 		);
@@ -923,8 +923,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-nav-menu-layout-vertical .tv-navbar-nav > li' => 'margin-right: 0;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li:not(:last-child)' => 'margin-right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-nav-menu-layout-vertical .es-navbar-nav > li' => 'margin-right: 0;',
 				),
 			)
 		);
@@ -942,7 +942,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-nav-menu-layout-vertical .tv-navbar-nav > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-nav-menu-layout-vertical .es-navbar-nav > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -991,7 +991,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1009,7 +1009,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'min-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'min-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1027,7 +1027,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'max-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1036,7 +1036,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'dropdown_background',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown',
 			)
 		);
 
@@ -1044,7 +1044,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'dropdown_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown',
 			)
 		);
 
@@ -1055,7 +1055,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1067,7 +1067,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1079,7 +1079,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1088,7 +1088,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'dropdown_shadow',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown',
 			)
 		);
 
@@ -1099,7 +1099,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::NUMBER,
 				'default'   => 999,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'z-index: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'z-index: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1118,7 +1118,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'dropdown_background_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown:hover',
 			)
 		);
 
@@ -1126,7 +1126,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'dropdown_border_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown:hover',
 			)
 		);
 
@@ -1144,7 +1144,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'dropdown_background_active',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container li.current-menu-item > .tv-dropdown, {{WRAPPER}} .tv-nav-menu-desktop-container li.current-menu-ancestor > .tv-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container li.current-menu-item > .es-dropdown, {{WRAPPER}} .es-nav-menu-desktop-container li.current-menu-ancestor > .es-dropdown',
 			)
 		);
 
@@ -1152,7 +1152,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'dropdown_border_active',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container li.current-menu-item > .tv-dropdown, {{WRAPPER}} .tv-nav-menu-desktop-container li.current-menu-ancestor > .tv-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container li.current-menu-item > .es-dropdown, {{WRAPPER}} .es-nav-menu-desktop-container li.current-menu-ancestor > .es-dropdown',
 			)
 		);
 
@@ -1186,7 +1186,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'dropdown_item_typography',
 				'label'    => esc_html__( 'Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a',
 			)
 		);
 
@@ -1196,8 +1196,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a .tv-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a .es-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -1206,7 +1206,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'dropdown_item_background',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a',
 			)
 		);
 
@@ -1226,8 +1226,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a:hover, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li:hover > a' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a:hover .tv-submenu-indicator, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li:hover > a .tv-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a:hover, {{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li:hover > a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a:hover .es-submenu-indicator, {{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li:hover > a .es-submenu-indicator' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -1238,7 +1238,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a:hover, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li:hover > a' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a:hover, {{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li:hover > a' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -1259,8 +1259,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color (Active)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li.current-menu-item > a .tv-submenu-indicator, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li.current-menu-ancestor > a .tv-submenu-indicator' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li.current-menu-item > a .es-submenu-indicator, {{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li.current-menu-ancestor > a .es-submenu-indicator' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1271,7 +1271,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color (Active)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li.current-menu-ancestor > a' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li.current-menu-ancestor > a' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1297,7 +1297,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1309,7 +1309,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1321,7 +1321,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1333,7 +1333,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a' => 'height: {{SIZE}}{{UNIT}}; display: flex; align-items: center;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a' => 'height: {{SIZE}}{{UNIT}}; display: flex; align-items: center;',
 				),
 			)
 		);
@@ -1345,7 +1345,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li a' => 'min-height: {{SIZE}}{{UNIT}}; display: flex; align-items: center;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li a' => 'min-height: {{SIZE}}{{UNIT}}; display: flex; align-items: center;',
 				),
 			)
 		);
@@ -1363,7 +1363,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown li .tv-dropdown' => 'padding-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown li .es-dropdown' => 'padding-left: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1389,7 +1389,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'center' => esc_html__( 'Center', 'elonix' ),
 					'right'  => esc_html__( 'Right', 'elonix' ),
 				),
-				'prefix_class' => 'tv-dropdown-align%s-',
+				'prefix_class' => 'es-dropdown-align%s-',
 			)
 		);
 
@@ -1406,7 +1406,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => '--tv-dropdown-offset-x: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => '--es-dropdown-offset-x: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1424,7 +1424,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => '--tv-dropdown-offset-y: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => '--es-dropdown-offset-y: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1469,7 +1469,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'transition-duration: {{SIZE}}ms !important; --tv-dropdown-anim-duration: {{SIZE}}ms;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'transition-duration: {{SIZE}}ms !important; --es-dropdown-anim-duration: {{SIZE}}ms;',
 				),
 			)
 		);
@@ -1488,7 +1488,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'transition-delay: {{SIZE}}ms !important; --tv-dropdown-anim-delay: {{SIZE}}ms;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'transition-delay: {{SIZE}}ms !important; --es-dropdown-anim-delay: {{SIZE}}ms;',
 				),
 			)
 		);
@@ -1507,7 +1507,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'ease-in-out' => esc_html__( 'Ease In Out', 'elonix' ),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-desktop-container .tv-dropdown' => 'transition-timing-function: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-desktop-container .es-dropdown' => 'transition-timing-function: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1547,7 +1547,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1565,7 +1565,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown' => 'max-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown' => 'max-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1574,7 +1574,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_panel_background',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown',
 			)
 		);
 
@@ -1582,7 +1582,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'mobile_panel_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown',
 			)
 		);
 
@@ -1593,7 +1593,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1604,7 +1604,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Overlay Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-overlay' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-overlay' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -1623,7 +1623,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}}.tv-mobile-menu-active .tv-nav-menu-mobile-overlay, {{WRAPPER}} .tv-mobile-menu-active .tv-nav-menu-mobile-overlay' => 'opacity: {{SIZE}};',
+					'{{WRAPPER}}.es-mobile-menu-active .es-nav-menu-mobile-overlay, {{WRAPPER}} .es-mobile-menu-active .es-nav-menu-mobile-overlay' => 'opacity: {{SIZE}};',
 				),
 			)
 		);
@@ -1646,7 +1646,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'unit' => 'px',
 				),
 				'selectors'  => array(
-					'{{WRAPPER}}.tv-mobile-menu-active .tv-nav-menu-mobile-overlay, {{WRAPPER}} .tv-mobile-menu-active .tv-nav-menu-mobile-overlay' => 'backdrop-filter: blur({{SIZE}}{{UNIT}}); -webkit-backdrop-filter: blur({{SIZE}}{{UNIT}});',
+					'{{WRAPPER}}.es-mobile-menu-active .es-nav-menu-mobile-overlay, {{WRAPPER}} .es-mobile-menu-active .es-nav-menu-mobile-overlay' => 'backdrop-filter: blur({{SIZE}}{{UNIT}}); -webkit-backdrop-filter: blur({{SIZE}}{{UNIT}});',
 				),
 			)
 		);
@@ -1658,7 +1658,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1667,7 +1667,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'mobile_panel_shadow',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown',
 			)
 		);
 
@@ -1685,7 +1685,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_panel_background_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer:hover, {{WRAPPER}} .tv-nav-menu-mobile-dropdown:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer:hover, {{WRAPPER}} .es-nav-menu-mobile-dropdown:hover',
 			)
 		);
 
@@ -1693,7 +1693,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'mobile_panel_border_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer:hover, {{WRAPPER}} .tv-nav-menu-mobile-dropdown:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer:hover, {{WRAPPER}} .es-nav-menu-mobile-dropdown:hover',
 			)
 		);
 
@@ -1711,7 +1711,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_panel_background_active',
-				'selector' => '{{WRAPPER}}.tv-mobile-menu-active .tv-nav-menu-mobile-drawer, {{WRAPPER}}.tv-mobile-menu-active .tv-nav-menu-mobile-dropdown',
+				'selector' => '{{WRAPPER}}.es-mobile-menu-active .es-nav-menu-mobile-drawer, {{WRAPPER}}.es-mobile-menu-active .es-nav-menu-mobile-dropdown',
 			)
 		);
 
@@ -1719,7 +1719,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'mobile_panel_border_active',
-				'selector' => '{{WRAPPER}}.tv-mobile-menu-active .tv-nav-menu-mobile-drawer, {{WRAPPER}}.tv-mobile-menu-active .tv-nav-menu-mobile-dropdown',
+				'selector' => '{{WRAPPER}}.es-mobile-menu-active .es-nav-menu-mobile-drawer, {{WRAPPER}}.es-mobile-menu-active .es-nav-menu-mobile-dropdown',
 			)
 		);
 
@@ -1754,7 +1754,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'fade-slide'  => esc_html__( 'Fade + Slide', 'elonix' ),
 					'fade-scale'  => esc_html__( 'Fade + Scale', 'elonix' ),
 				),
-				'prefix_class' => 'tv-mobile-entrance-',
+				'prefix_class' => 'es-mobile-entrance-',
 			)
 		);
 
@@ -1776,7 +1776,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 0.3,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-overlay' => 'transition-duration: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown, {{WRAPPER}} .es-nav-menu-mobile-overlay' => 'transition-duration: {{SIZE}}{{UNIT}} !important;',
 				),
 			)
 		);
@@ -1799,7 +1799,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 0,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-overlay' => 'transition-delay: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown, {{WRAPPER}} .es-nav-menu-mobile-overlay' => 'transition-delay: {{SIZE}}{{UNIT}} !important;',
 				),
 			)
 		);
@@ -1821,7 +1821,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'cubic-bezier(0.55, 0.085, 0.68, 0.53)' => esc_html__( 'Accelerate', 'elonix' ),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer, {{WRAPPER}} .tv-nav-menu-mobile-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-overlay' => 'transition-timing-function: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer, {{WRAPPER}} .es-nav-menu-mobile-dropdown, {{WRAPPER}} .es-nav-menu-mobile-overlay' => 'transition-timing-function: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1833,8 +1833,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'vh' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer' => 'height: {{SIZE}}{{UNIT}}; --tv-mobile-drawer-height: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-dropdown' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer' => 'height: {{SIZE}}{{UNIT}}; --es-mobile-drawer-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-dropdown' => 'height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1846,8 +1846,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'vh' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer' => 'min-height: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-dropdown' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer' => 'min-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-dropdown' => 'min-height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1859,8 +1859,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'vh' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer' => 'max-height: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-dropdown' => 'max-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer' => 'max-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-dropdown' => 'max-height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1872,7 +1872,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1895,7 +1895,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em', 'vh' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-header' => 'height: {{SIZE}}{{UNIT}}; min-height: {{SIZE}}{{UNIT}}; display: flex; align-items: center; justify-content: space-between;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-header' => 'height: {{SIZE}}{{UNIT}}; min-height: {{SIZE}}{{UNIT}}; display: flex; align-items: center; justify-content: space-between;',
 				),
 			)
 		);
@@ -1904,7 +1904,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_header_background',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-header',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-header',
 			)
 		);
 
@@ -1915,7 +1915,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-logo img' => 'width: {{SIZE}}{{UNIT}}; max-width: 100%;',
+					'{{WRAPPER}} .es-nav-menu-mobile-logo img' => 'width: {{SIZE}}{{UNIT}}; max-width: 100%;',
 				),
 			)
 		);
@@ -1927,7 +1927,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-logo img' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-logo img' => 'height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -1936,7 +1936,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'mobile_header_border_bottom',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-header',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-header',
 			)
 		);
 
@@ -1947,7 +1947,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-header' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -1974,7 +1974,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'absolute' => esc_html__( 'Absolute Position', 'elonix' ),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'position: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'position: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -1986,7 +1986,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'vh' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'top: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'top: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'close_btn_position_type' => 'absolute',
@@ -2001,7 +2001,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'vw' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'right: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'right: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'close_btn_position_type' => 'absolute',
@@ -2016,7 +2016,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'vw' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'left: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'close_btn_position_type' => 'absolute',
@@ -2031,7 +2031,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%', 'em', 'vh' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'bottom: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'close_btn_position_type' => 'absolute',
@@ -2060,7 +2060,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				),
 				'default'   => 'center',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'align-self: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'align-self: {{VALUE}};',
 				),
 				'condition' => array(
 					'close_btn_position_type' => 'static',
@@ -2085,9 +2085,9 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-close i' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-close svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close i' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -2098,7 +2098,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -2107,7 +2107,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'close_btn_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-close',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-close',
 			)
 		);
 
@@ -2118,7 +2118,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2130,7 +2130,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'width: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'width: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
 				),
 			)
 		);
@@ -2142,7 +2142,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
 				),
 			)
 		);
@@ -2154,7 +2154,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2166,7 +2166,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2175,7 +2175,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'close_btn_shadow',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-close',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-close',
 			)
 		);
 
@@ -2195,9 +2195,9 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:hover' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:hover i' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:hover svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:hover' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:hover i' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:hover svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -2208,7 +2208,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:hover' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -2219,7 +2219,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Border Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:hover' => 'border-color: {{VALUE}};',
 				),
 			)
 		);
@@ -2241,7 +2241,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 1.0,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:hover' => 'transform: scale({{SIZE}});',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:hover' => 'transform: scale({{SIZE}});',
 				),
 			)
 		);
@@ -2250,7 +2250,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'close_btn_shadow_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-close:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-close:hover',
 			)
 		);
 
@@ -2270,9 +2270,9 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Active Icon Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:active' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:active i' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:active svg' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:active' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:active i' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:active svg' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2283,7 +2283,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Active Background Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:active' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:active' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2294,7 +2294,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Active Border Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-close:active' => 'border-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-close:active' => 'border-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2330,7 +2330,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'mobile_item_typography',
 				'label'    => esc_html__( 'Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a',
 			)
 		);
 
@@ -2340,8 +2340,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a .tv-submenu-indicator-mobile-toggle, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a .tv-submenu-indicator-mobile-toggle' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a .es-submenu-indicator-mobile-toggle, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a .es-submenu-indicator-mobile-toggle' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -2350,7 +2350,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_item_background',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a',
 			)
 		);
 
@@ -2361,7 +2361,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color (Legacy)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -2373,7 +2373,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2385,7 +2385,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2397,7 +2397,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2406,7 +2406,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'mobile_item_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a',
 			)
 		);
 
@@ -2426,8 +2426,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a:hover, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a:hover' => 'color: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li:hover > a .tv-submenu-indicator-mobile-toggle, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a:hover .tv-submenu-indicator-mobile-toggle, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li:hover > a .tv-submenu-indicator-mobile-toggle, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a:hover .tv-submenu-indicator-mobile-toggle' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a:hover, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a:hover' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li:hover > a .es-submenu-indicator-mobile-toggle, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a:hover .es-submenu-indicator-mobile-toggle, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li:hover > a .es-submenu-indicator-mobile-toggle, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a:hover .es-submenu-indicator-mobile-toggle' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -2436,7 +2436,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_item_background_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a:hover, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a:hover, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a:hover',
 			)
 		);
 
@@ -2446,7 +2446,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color (Legacy Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a:hover, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li:hover > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a:hover, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li:hover > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a:hover' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -2467,8 +2467,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color (Active)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li.current-menu-ancestor > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li.current-menu-item > a .tv-submenu-indicator-mobile-toggle, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li.current-menu-ancestor > a .tv-submenu-indicator-mobile-toggle, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li.current-menu-item > a .tv-submenu-indicator-mobile-toggle, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li.current-menu-ancestor > a .tv-submenu-indicator-mobile-toggle' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li.current-menu-ancestor > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li.current-menu-item > a .es-submenu-indicator-mobile-toggle, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li.current-menu-ancestor > a .es-submenu-indicator-mobile-toggle, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li.current-menu-item > a .es-submenu-indicator-mobile-toggle, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li.current-menu-ancestor > a .es-submenu-indicator-mobile-toggle' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2477,7 +2477,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_item_background_active',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li.current-menu-ancestor > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li.current-menu-ancestor > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li.current-menu-ancestor > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li.current-menu-ancestor > a',
 			)
 		);
 
@@ -2487,7 +2487,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color (Legacy Active)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li.current-menu-ancestor > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li.current-menu-ancestor > a' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li.current-menu-ancestor > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li.current-menu-ancestor > a' => 'background-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2520,7 +2520,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'dashed' => esc_html__( 'Dashed', 'elonix' ),
 				),
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a' => 'border-bottom-style: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a' => 'border-bottom-style: {{VALUE}};',
 				),
 			)
 		);
@@ -2538,7 +2538,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a' => 'border-bottom-width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a' => 'border-bottom-width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -2549,7 +2549,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Border Bottom Color (Divider Color)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li > a' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li > a' => 'border-bottom-color: {{VALUE}};',
 				),
 			)
 		);
@@ -2576,8 +2576,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-navbar-nav > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-navbar-nav > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-navbar-nav > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-dropdown .es-navbar-nav > li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -2611,8 +2611,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer .tv-dropdown' => 'padding-left: {{SIZE}}{{UNIT}} !important;',
-					'{{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown' => 'padding-left: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer .es-dropdown' => 'padding-left: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown' => 'padding-left: {{SIZE}}{{UNIT}} !important;',
 				),
 			)
 		);
@@ -2624,8 +2624,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer .tv-dropdown li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
-					'{{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer .es-dropdown li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li:not(:last-child)' => 'margin-bottom: {{SIZE}}{{UNIT}} !important;',
 				),
 			)
 		);
@@ -2635,7 +2635,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'mobile_submenu_typography',
 				'label'    => esc_html__( 'Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li a',
 			)
 		);
 
@@ -2645,7 +2645,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li a' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -2654,7 +2654,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_submenu_background',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown',
 			)
 		);
 
@@ -2662,7 +2662,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'mobile_submenu_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown',
 			)
 		);
 
@@ -2673,7 +2673,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2685,7 +2685,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2697,7 +2697,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2709,7 +2709,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li a' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2721,7 +2721,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em', 'rem' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li a' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2732,7 +2732,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Divider Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li:not(:last-child) a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li:not(:last-child) a' => 'border-bottom-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li:not(:last-child) a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li:not(:last-child) a' => 'border-bottom-color: {{VALUE}};',
 				),
 			)
 		);
@@ -2750,7 +2750,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li:not(:last-child) a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li:not(:last-child) a' => 'border-bottom-width: {{SIZE}}{{UNIT}}; border-bottom-style: solid;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li:not(:last-child) a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li:not(:last-child) a' => 'border-bottom-width: {{SIZE}}{{UNIT}}; border-bottom-style: solid;',
 				),
 			)
 		);
@@ -2771,7 +2771,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li a:hover, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li:hover > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li a:hover, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li:hover > a' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li a:hover, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li:hover > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li a:hover, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li:hover > a' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -2780,7 +2780,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_submenu_background_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li a:hover, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li:hover > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li a:hover, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li:hover > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li a:hover, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li:hover > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li a:hover, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li:hover > a',
 			)
 		);
 
@@ -2790,7 +2790,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Border Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown' => 'border-color: {{VALUE}};',
 				),
 			)
 		);
@@ -2811,7 +2811,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Text Color (Active)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li.current-menu-ancestor > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li.current-menu-item > a, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li.current-menu-ancestor > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li.current-menu-item > a, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2820,7 +2820,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'mobile_submenu_background_active',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li.current-menu-item, {{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown li.current-menu-ancestor, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li.current-menu-item, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown li.current-menu-ancestor',
+				'selector' => '{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li.current-menu-item, {{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown li.current-menu-ancestor, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li.current-menu-item, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown li.current-menu-ancestor',
 			)
 		);
 
@@ -2830,7 +2830,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Border Color (Active)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-mobile-drawer-content .tv-dropdown, {{WRAPPER}} .tv-nav-menu-mobile-dropdown .tv-dropdown' => 'border-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-nav-menu-mobile-drawer-content .es-dropdown, {{WRAPPER}} .es-nav-menu-mobile-dropdown .es-dropdown' => 'border-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -2857,7 +2857,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle' => 'width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle' => 'width: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
 				),
 			)
 		);
@@ -2869,7 +2869,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle' => 'height: {{SIZE}}{{UNIT}}; line-height: {{SIZE}}{{UNIT}}; display: inline-flex; align-items: center; justify-content: center;',
 				),
 			)
 		);
@@ -2881,8 +2881,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle i'   => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle i'   => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -2904,9 +2904,9 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle i' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle i' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -2915,7 +2915,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'submenu_toggle_icon_bg',
-				'selector' => '{{WRAPPER}} .tv-submenu-indicator-mobile-toggle',
+				'selector' => '{{WRAPPER}} .es-submenu-indicator-mobile-toggle',
 			)
 		);
 
@@ -2923,7 +2923,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'submenu_toggle_icon_border',
-				'selector' => '{{WRAPPER}} .tv-submenu-indicator-mobile-toggle',
+				'selector' => '{{WRAPPER}} .es-submenu-indicator-mobile-toggle',
 			)
 		);
 
@@ -2934,7 +2934,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -2955,8 +2955,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 0,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle i'   => 'transform: rotate({{SIZE}}deg); transition: transform 0.2s ease;',
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle svg' => 'transform: rotate({{SIZE}}deg); transition: transform 0.2s ease;',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle i'   => 'transform: rotate({{SIZE}}deg); transition: transform 0.2s ease;',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle svg' => 'transform: rotate({{SIZE}}deg); transition: transform 0.2s ease;',
 				),
 			)
 		);
@@ -2977,9 +2977,9 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle:hover' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle:hover i' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle:hover svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle:hover' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle:hover i' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle:hover svg' => 'color: {{VALUE}}; fill: {{VALUE}};',
 				),
 			)
 		);
@@ -2988,7 +2988,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'submenu_toggle_icon_bg_hover',
-				'selector' => '{{WRAPPER}} .tv-submenu-indicator-mobile-toggle:hover',
+				'selector' => '{{WRAPPER}} .es-submenu-indicator-mobile-toggle:hover',
 			)
 		);
 
@@ -2998,7 +2998,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Border Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-submenu-indicator-mobile-toggle:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .es-submenu-indicator-mobile-toggle:hover' => 'border-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3019,9 +3019,9 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon Color (Expanded)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-dropdown-open > a > .tv-submenu-indicator-mobile-toggle' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
-					'{{WRAPPER}} .tv-dropdown-open > a > .tv-submenu-indicator-mobile-toggle i' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
-					'{{WRAPPER}} .tv-dropdown-open > a > .tv-submenu-indicator-mobile-toggle svg' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-dropdown-open > a > .es-submenu-indicator-mobile-toggle' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-dropdown-open > a > .es-submenu-indicator-mobile-toggle i' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-dropdown-open > a > .es-submenu-indicator-mobile-toggle svg' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -3030,7 +3030,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'submenu_toggle_icon_bg_expanded',
-				'selector' => '{{WRAPPER}} .tv-dropdown-open > a > .tv-submenu-indicator-mobile-toggle',
+				'selector' => '{{WRAPPER}} .es-dropdown-open > a > .es-submenu-indicator-mobile-toggle',
 			)
 		);
 
@@ -3050,8 +3050,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 180,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-dropdown-open > a > .tv-submenu-indicator-mobile-toggle i'   => 'transform: rotate({{SIZE}}deg) !important;',
-					'{{WRAPPER}} .tv-dropdown-open > a > .tv-submenu-indicator-mobile-toggle svg' => 'transform: rotate({{SIZE}}deg) !important;',
+					'{{WRAPPER}} .es-dropdown-open > a > .es-submenu-indicator-mobile-toggle i'   => 'transform: rotate({{SIZE}}deg) !important;',
+					'{{WRAPPER}} .es-dropdown-open > a > .es-submenu-indicator-mobile-toggle svg' => 'transform: rotate({{SIZE}}deg) !important;',
 				),
 			)
 		);
@@ -3078,7 +3078,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -3090,7 +3090,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger' => 'height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger' => 'height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -3102,9 +3102,9 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger i' => 'font-size: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-nav-menu-hamburger svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
-					'{{WRAPPER}} .tv-nav-menu-hamburger .tv-hamburger-icon-default' => 'width: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger i' => 'font-size: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger svg' => 'width: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger .es-hamburger-icon-default' => 'width: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -3126,8 +3126,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-hamburger .tv-hamburger-icon-default' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger .es-hamburger-icon-default' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3138,7 +3138,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3147,7 +3147,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'toggler_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-hamburger',
+				'selector' => '{{WRAPPER}} .es-nav-menu-hamburger',
 			)
 		);
 
@@ -3158,7 +3158,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -3170,7 +3170,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -3182,7 +3182,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%', 'em' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger' => 'margin: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -3191,7 +3191,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'toggler_shadow',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-hamburger',
+				'selector' => '{{WRAPPER}} .es-nav-menu-hamburger',
 			)
 		);
 
@@ -3201,7 +3201,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Toggler Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger .tv-toggler-label' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger .es-toggler-label' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3211,7 +3211,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'toggler_label_typography',
 				'label'    => esc_html__( 'Text Label Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-nav-menu-hamburger .tv-toggler-label',
+				'selector' => '{{WRAPPER}} .es-nav-menu-hamburger .es-toggler-label',
 			)
 		);
 
@@ -3231,8 +3231,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Icon Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger:hover' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-hamburger:hover .tv-hamburger-icon-default' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger:hover' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger:hover .es-hamburger-icon-default' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3243,7 +3243,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Background Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger:hover' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger:hover' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3254,7 +3254,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Border Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger:hover' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger:hover' => 'border-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3263,7 +3263,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'toggler_shadow_hover',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-hamburger:hover',
+				'selector' => '{{WRAPPER}} .es-nav-menu-hamburger:hover',
 			)
 		);
 
@@ -3273,7 +3273,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Toggler Text Color (Hover)', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger:hover .tv-toggler-label' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger:hover .es-toggler-label' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3294,8 +3294,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Open Icon Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger[aria-expanded="true"]' => 'color: {{VALUE}}; fill: {{VALUE}};',
-					'{{WRAPPER}} .tv-nav-menu-hamburger[aria-expanded="true"] .tv-hamburger-icon-default' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger[aria-expanded="true"]' => 'color: {{VALUE}}; fill: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger[aria-expanded="true"] .es-hamburger-icon-default' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3306,7 +3306,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Open Background Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger[aria-expanded="true"]' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger[aria-expanded="true"]' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3317,7 +3317,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Open Border Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-nav-menu-hamburger[aria-expanded="true"]' => 'border-color: {{VALUE}};',
+					'{{WRAPPER}} .es-nav-menu-hamburger[aria-expanded="true"]' => 'border-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3352,7 +3352,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'sticky_normal_bg',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-wrapper',
+				'selector' => '{{WRAPPER}} .es-nav-menu-wrapper',
 			)
 		);
 
@@ -3361,7 +3361,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'sticky_normal_typography',
 				'label'    => esc_html__( 'Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-nav-menu-desktop-container .tv-navbar-nav > li > a',
+				'selector' => '{{WRAPPER}} .es-nav-menu-desktop-container .es-navbar-nav > li > a',
 			)
 		);
 
@@ -3369,7 +3369,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'sticky_normal_border',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-wrapper',
+				'selector' => '{{WRAPPER}} .es-nav-menu-wrapper',
 			)
 		);
 
@@ -3377,7 +3377,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'sticky_normal_shadow',
-				'selector' => '{{WRAPPER}} .tv-nav-menu-wrapper',
+				'selector' => '{{WRAPPER}} .es-nav-menu-wrapper',
 			)
 		);
 
@@ -3395,7 +3395,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Background::get_type(),
 			array(
 				'name'     => 'sticky_container_bg',
-				'selector' => '.elementor-sticky--active {{WRAPPER}} .tv-nav-menu-wrapper',
+				'selector' => '.elementor-sticky--active {{WRAPPER}} .es-nav-menu-wrapper',
 			)
 		);
 
@@ -3405,7 +3405,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Menu Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'.elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li > a' => 'color: {{VALUE}} !important;',
+					'.elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li > a' => 'color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -3416,8 +3416,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hover Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'.elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li:hover > a, .elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li > a:hover' => 'color: {{VALUE}} !important;',
-					'.elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li:hover > a .tv-submenu-indicator, .elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li > a:hover .tv-submenu-indicator' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
+					'.elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li:hover > a, .elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li > a:hover' => 'color: {{VALUE}} !important;',
+					'.elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li:hover > a .es-submenu-indicator, .elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li > a:hover .es-submenu-indicator' => 'color: {{VALUE}} !important; fill: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -3428,8 +3428,8 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Active Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'.elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li.current-menu-item > a, .elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
-					'.elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li.current-menu-item > a::before, .elementor-sticky--active {{WRAPPER}} .tv-navbar-nav > li.current-menu-ancestor > a::before' => 'background-color: {{VALUE}} !important; border-color: {{VALUE}} !important;',
+					'.elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li.current-menu-item > a, .elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li.current-menu-ancestor > a' => 'color: {{VALUE}} !important;',
+					'.elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li.current-menu-item > a::before, .elementor-sticky--active {{WRAPPER}} .es-navbar-nav > li.current-menu-ancestor > a::before' => 'background-color: {{VALUE}} !important; border-color: {{VALUE}} !important;',
 				),
 			)
 		);
@@ -3441,7 +3441,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'.elementor-sticky--active {{WRAPPER}} .tv-nav-menu-mobile-logo img' => 'width: {{SIZE}}{{UNIT}} !important; max-width: 100%;',
+					'.elementor-sticky--active {{WRAPPER}} .es-nav-menu-mobile-logo img' => 'width: {{SIZE}}{{UNIT}} !important; max-width: 100%;',
 				),
 			)
 		);
@@ -3453,7 +3453,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::SLIDER,
 				'size_units' => array( 'px', 'em' ),
 				'selectors'  => array(
-					'.elementor-sticky--active {{WRAPPER}} .tv-nav-menu-wrapper' => 'min-height: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
+					'.elementor-sticky--active {{WRAPPER}} .es-nav-menu-wrapper' => 'min-height: {{SIZE}}{{UNIT}}; height: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -3462,7 +3462,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Box_Shadow::get_type(),
 			array(
 				'name'     => 'sticky_container_shadow',
-				'selector' => '.elementor-sticky--active {{WRAPPER}} .tv-nav-menu-wrapper',
+				'selector' => '.elementor-sticky--active {{WRAPPER}} .es-nav-menu-wrapper',
 			)
 		);
 
@@ -3470,7 +3470,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			Group_Control_Border::get_type(),
 			array(
 				'name'     => 'sticky_container_border',
-				'selector' => '.elementor-sticky--active {{WRAPPER}} .tv-nav-menu-wrapper',
+				'selector' => '.elementor-sticky--active {{WRAPPER}} .es-nav-menu-wrapper',
 			)
 		);
 
@@ -3574,7 +3574,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'.elementor-sticky--active {{WRAPPER}} .tv-nav-menu-wrapper' => '--tv-sticky-padding-top: {{SIZE}}{{UNIT}};',
+					'.elementor-sticky--active {{WRAPPER}} .es-nav-menu-wrapper' => '--es-sticky-padding-top: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'sticky_animation' => 'shrink',
@@ -3600,7 +3600,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'.elementor-sticky--active {{WRAPPER}} .tv-nav-menu-wrapper' => '--tv-sticky-padding-bottom: {{SIZE}}{{UNIT}};',
+					'.elementor-sticky--active {{WRAPPER}} .es-nav-menu-wrapper' => '--es-sticky-padding-bottom: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'sticky_animation' => 'shrink',
@@ -3626,7 +3626,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'.elementor-sticky--active {{WRAPPER}} .tv-nav-menu-wrapper' => '--tv-sticky-min-height: {{SIZE}}{{UNIT}};',
+					'.elementor-sticky--active {{WRAPPER}} .es-nav-menu-wrapper' => '--es-sticky-min-height: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'sticky_animation' => 'shrink',
@@ -3636,7 +3636,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 
 		$this->end_controls_section();
 
-		// STYLE TAB — Menu Item Badge Styling (tv-badge-*)
+		// STYLE TAB — Menu Item Badge Styling (es-badge-*)
 		$this->start_controls_section(
 			'section_style_badge',
 			array(
@@ -3670,7 +3670,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			array(
 				'name'     => 'badge_typography',
 				'label'    => esc_html__( 'Typography', 'elonix' ),
-				'selector' => '{{WRAPPER}} .tv-menu-badge',
+				'selector' => '{{WRAPPER}} .es-menu-badge',
 			)
 		);
 
@@ -3681,7 +3681,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-menu-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-menu-badge' => 'border-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -3693,7 +3693,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'       => Controls_Manager::DIMENSIONS,
 				'size_units' => array( 'px', '%' ),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-menu-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
+					'{{WRAPPER}} .es-menu-badge' => 'padding: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};',
 				),
 			)
 		);
@@ -3714,7 +3714,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Global Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3725,7 +3725,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Global Background', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3746,7 +3746,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'New Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge.tv-badge-new' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge.es-badge-new' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3757,7 +3757,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'New Background', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge.tv-badge-new' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge.es-badge-new' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3778,7 +3778,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hot Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge.tv-badge-hot' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge.es-badge-hot' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3789,7 +3789,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hot Background', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge.tv-badge-hot' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge.es-badge-hot' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3801,7 +3801,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Sale Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge.tv-badge-sale' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge.es-badge-sale' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3812,7 +3812,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Sale Background', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge.tv-badge-sale' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge.es-badge-sale' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3824,7 +3824,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Custom Text Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge.tv-badge-custom' => 'color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge.es-badge-custom' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3835,7 +3835,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Custom Background', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} .tv-menu-badge.tv-badge-custom' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} .es-menu-badge.es-badge-custom' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3856,7 +3856,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Global Text Hover Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge, {{WRAPPER}} a:hover .tv-menu-badge' => 'color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge, {{WRAPPER}} a:hover .es-menu-badge' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3867,7 +3867,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Global Background Hover', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge, {{WRAPPER}} a:hover .tv-menu-badge' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge, {{WRAPPER}} a:hover .es-menu-badge' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3878,7 +3878,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'New Text Hover Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge.tv-badge-new, {{WRAPPER}} a:hover .tv-menu-badge.tv-badge-new' => 'color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge.es-badge-new, {{WRAPPER}} a:hover .es-menu-badge.es-badge-new' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3889,7 +3889,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'New Background Hover', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge.tv-badge-new, {{WRAPPER}} a:hover .tv-menu-badge.tv-badge-new' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge.es-badge-new, {{WRAPPER}} a:hover .es-menu-badge.es-badge-new' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3900,7 +3900,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hot Text Hover Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge.tv-badge-hot, {{WRAPPER}} a:hover .tv-menu-badge.tv-badge-hot' => 'color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge.es-badge-hot, {{WRAPPER}} a:hover .es-menu-badge.es-badge-hot' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3911,7 +3911,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Hot Background Hover', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge.tv-badge-hot, {{WRAPPER}} a:hover .tv-menu-badge.tv-badge-hot' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge.es-badge-hot, {{WRAPPER}} a:hover .es-menu-badge.es-badge-hot' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3922,7 +3922,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Sale Text Hover Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge.tv-badge-sale, {{WRAPPER}} a:hover .tv-menu-badge.tv-badge-sale' => 'color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge.es-badge-sale, {{WRAPPER}} a:hover .es-menu-badge.es-badge-sale' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3933,7 +3933,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Sale Background Hover', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge.tv-badge-sale, {{WRAPPER}} a:hover .tv-menu-badge.tv-badge-sale' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge.es-badge-sale, {{WRAPPER}} a:hover .es-menu-badge.es-badge-sale' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3944,7 +3944,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Custom Text Hover Color', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge.tv-badge-custom, {{WRAPPER}} a:hover .tv-menu-badge.tv-badge-custom' => 'color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge.es-badge-custom, {{WRAPPER}} a:hover .es-menu-badge.es-badge-custom' => 'color: {{VALUE}};',
 				),
 			)
 		);
@@ -3955,7 +3955,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'label'     => esc_html__( 'Custom Background Hover', 'elonix' ),
 				'type'      => Controls_Manager::COLOR,
 				'selectors' => array(
-					'{{WRAPPER}} li:hover > a .tv-menu-badge.tv-badge-custom, {{WRAPPER}} a:hover .tv-menu-badge.tv-badge-custom' => 'background-color: {{VALUE}};',
+					'{{WRAPPER}} li:hover > a .es-menu-badge.es-badge-custom, {{WRAPPER}} a:hover .es-menu-badge.es-badge-custom' => 'background-color: {{VALUE}};',
 				),
 			)
 		);
@@ -3988,7 +3988,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-menu-badge' => 'margin-left: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}} .es-menu-badge' => 'margin-left: {{SIZE}}{{UNIT}};',
 				),
 			)
 		);
@@ -4007,7 +4007,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-menu-badge' => 'transform: translateY({{SIZE}}{{UNIT}});',
+					'{{WRAPPER}} .es-menu-badge' => 'transform: translateY({{SIZE}}{{UNIT}});',
 				),
 			)
 		);
@@ -4059,7 +4059,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#4f46e5',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-hover-effect-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-hover-effect-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'hover_effect!' => 'none',
@@ -4083,7 +4083,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 2,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}}' => '--tv-hover-effect-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-hover-effect-height: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'hover_effect' => array( 'underline', 'overline', 'border_grow' ),
@@ -4104,7 +4104,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}}' => '--tv-hover-effect-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-hover-effect-radius: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'hover_effect' => array( 'bg_fill', 'border_grow' ),
@@ -4144,7 +4144,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => '#4f46e5',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-active-effect-color: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-active-effect-color: {{VALUE}};',
 				),
 				'condition' => array(
 					'active_indicator_type!' => 'none',
@@ -4159,7 +4159,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => 'rgba(79, 70, 229, 0.1)',
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-active-effect-bg: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-active-effect-bg: {{VALUE}};',
 				),
 				'condition' => array(
 					'active_indicator_type' => 'background',
@@ -4183,7 +4183,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 2,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}}' => '--tv-active-effect-height: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-active-effect-height: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'active_indicator_type' => array( 'underline', 'border' ),
@@ -4204,7 +4204,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					),
 				),
 				'selectors'  => array(
-					'{{WRAPPER}}' => '--tv-active-effect-radius: {{SIZE}}{{UNIT}};',
+					'{{WRAPPER}}' => '--es-active-effect-radius: {{SIZE}}{{UNIT}};',
 				),
 				'condition'  => array(
 					'active_indicator_type' => array( 'background', 'border' ),
@@ -4232,7 +4232,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'max'       => 3000,
 				'step'      => 50,
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-menu-transition-duration: {{VALUE}}ms;',
+					'{{WRAPPER}}' => '--es-menu-transition-duration: {{VALUE}}ms;',
 				),
 			)
 		);
@@ -4247,7 +4247,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'max'       => 3000,
 				'step'      => 50,
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-menu-transition-delay: {{VALUE}}ms;',
+					'{{WRAPPER}}' => '--es-menu-transition-delay: {{VALUE}}ms;',
 				),
 			)
 		);
@@ -4269,7 +4269,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'cubic-bezier(0.87, 0, 0.13, 1)'       => esc_html__( 'InOut Expo', 'elonix' ),
 				),
 				'selectors' => array(
-					'{{WRAPPER}}' => '--tv-menu-transition-easing: {{VALUE}};',
+					'{{WRAPPER}}' => '--es-menu-transition-easing: {{VALUE}};',
 				),
 			)
 		);
@@ -4317,7 +4317,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 					'size' => 10,
 				),
 				'selectors'  => array(
-					'{{WRAPPER}} .tv-dropdown-glassmorphism .tv-dropdown' => 'backdrop-filter: blur({{SIZE}}px) !important; -webkit-backdrop-filter: blur({{SIZE}}px) !important;',
+					'{{WRAPPER}} .es-dropdown-glassmorphism .es-dropdown' => 'backdrop-filter: blur({{SIZE}}px) !important; -webkit-backdrop-filter: blur({{SIZE}}px) !important;',
 				),
 				'condition'  => array(
 					'enable_glassmorphism' => 'yes',
@@ -4332,7 +4332,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'type'      => Controls_Manager::COLOR,
 				'default'   => 'rgba(255, 255, 255, 0.7)',
 				'selectors' => array(
-					'{{WRAPPER}} .tv-dropdown-glassmorphism .tv-dropdown' => 'background-color: {{VALUE}} !important;',
+					'{{WRAPPER}} .es-dropdown-glassmorphism .es-dropdown' => 'background-color: {{VALUE}} !important;',
 				),
 				'condition' => array(
 					'enable_glassmorphism' => 'yes',
@@ -4350,7 +4350,7 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 				'return_value' => 'yes',
 				'default'      => 'no',
 				'selectors'    => array(
-					'{{WRAPPER}} .tv-dropdown-soft-shadows .tv-dropdown' => 'box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04), 0 5px 15px rgba(0, 0, 0, 0.03) !important;',
+					'{{WRAPPER}} .es-dropdown-soft-shadows .es-dropdown' => 'box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04), 0 5px 15px rgba(0, 0, 0, 0.03) !important;',
 				),
 			)
 		);
@@ -4386,11 +4386,11 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 
 		$indicator_icon_html = '';
 		if ( 'chevron' === $settings['submenu_indicator'] ) {
-			$indicator_icon_html = '<i class="fas fa-chevron-down tv-submenu-indicator" aria-hidden="true"></i>';
+			$indicator_icon_html = '<i class="fas fa-chevron-down es-submenu-indicator" aria-hidden="true"></i>';
 		} elseif ( 'plus' === $settings['submenu_indicator'] ) {
-			$indicator_icon_html = '<i class="fas fa-plus tv-submenu-indicator" aria-hidden="true"></i>';
+			$indicator_icon_html = '<i class="fas fa-plus es-submenu-indicator" aria-hidden="true"></i>';
 		} elseif ( 'caret' === $settings['submenu_indicator'] ) {
-			$indicator_icon_html = '<i class="fas fa-caret-down tv-submenu-indicator" aria-hidden="true"></i>';
+			$indicator_icon_html = '<i class="fas fa-caret-down es-submenu-indicator" aria-hidden="true"></i>';
 		}
 
 		$badge_config = apply_filters(
@@ -4409,35 +4409,35 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 		$desktop_args = array(
 			'menu'            => $settings['menu'],
 			'container'       => 'div',
-			'container_class' => 'tv-nav-menu-container tv-nav-menu-dropdown-anim-' . $settings['dropdown_transition'] . ( 'yes' === $settings['enable_glassmorphism'] ? ' tv-dropdown-glassmorphism' : '' ) . ( 'yes' === $settings['enable_soft_shadows'] ? ' tv-dropdown-soft-shadows' : '' ),
-			'menu_class'      => 'tv-navbar-nav tv-nav-menu-hover-' . $settings['hover_effect'] . ' tv-nav-menu-active-ind-' . $settings['active_indicator_type'] . ' tv-nav-menu-trigger-' . $settings['dropdown_trigger'],
+			'container_class' => 'es-nav-menu-container es-nav-menu-dropdown-anim-' . $settings['dropdown_transition'] . ( 'yes' === $settings['enable_glassmorphism'] ? ' es-dropdown-glassmorphism' : '' ) . ( 'yes' === $settings['enable_soft_shadows'] ? ' es-dropdown-soft-shadows' : '' ),
+			'menu_class'      => 'es-navbar-nav es-nav-menu-hover-' . $settings['hover_effect'] . ' es-nav-menu-active-ind-' . $settings['active_indicator_type'] . ' es-nav-menu-trigger-' . $settings['dropdown_trigger'],
 			'depth'           => 0,
 			'fallback_cb'     => '__return_empty_string',
 			'walker'          => new \Elonix_Nav_Menu_Walker( $indicator_icon_html, $badge_config ),
-			'menu_id'         => 'tv-desktop-menu-' . $this->get_id(),
+			'menu_id'         => 'es-desktop-menu-' . $this->get_id(),
 		);
 
 		// Configure primary nav walker args for Mobile (no hover or active indicators on mobile ul)
 		$mobile_args = array(
 			'menu'            => $settings['menu'],
 			'container'       => 'div',
-			'container_class' => 'tv-nav-menu-container',
-			'menu_class'      => 'tv-navbar-nav tv-navbar-nav-mobile',
+			'container_class' => 'es-nav-menu-container',
+			'menu_class'      => 'es-navbar-nav es-navbar-nav-mobile',
 			'depth'           => 0,
 			'fallback_cb'     => '__return_empty_string',
 			'walker'          => new \Elonix_Nav_Menu_Walker( $indicator_icon_html, $badge_config ),
-			'menu_id'         => 'tv-mobile-menu-' . $this->get_id(),
+			'menu_id'         => 'es-mobile-menu-' . $this->get_id(),
 		);
 
 		// Wrapper wrapper classnames
 		$wrapper_classes = array(
-			'tv-nav-menu-wrapper',
-			'tv-breakpoint-' . $responsive_breakpoint,
+			'es-nav-menu-wrapper',
+			'es-breakpoint-' . $responsive_breakpoint,
 		);
 
-		$wrapper_classes[] = 'tv-layout-' . $settings['layout_mode'];
+		$wrapper_classes[] = 'es-layout-' . $settings['layout_mode'];
 
-		$hamburger_label    = ! empty( $settings['toggler_label'] ) ? '<span class="tv-toggler-label">' . esc_html( $settings['toggler_label'] ) . '</span>' : '';
+		$hamburger_label    = ! empty( $settings['toggler_label'] ) ? '<span class="es-toggler-label">' . esc_html( $settings['toggler_label'] ) . '</span>' : '';
 		$accordion_duration = isset( $settings['mobile_accordion_duration'] ) ? $settings['mobile_accordion_duration'] : 300;
 		$accordion_easing   = ! empty( $settings['mobile_accordion_easing'] ) ? $settings['mobile_accordion_easing'] : 'ease-in-out';
 		?>
@@ -4449,18 +4449,18 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			
 			<!-- Mobile Hamburger Toggle Toggler -->
 			<?php if ( 'none' !== $responsive_breakpoint ) : ?>
-				<button class="tv-nav-menu-hamburger" type="button" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'elonix' ); ?>">
+				<button class="es-nav-menu-hamburger" type="button" aria-expanded="false" aria-label="<?php esc_attr_e( 'Toggle navigation', 'elonix' ); ?>">
 					<?php if ( ! empty( $settings['toggler_open_icon']['value'] ) ) : ?>
-						<span class="tv-hamburger-icon-open">
+						<span class="es-hamburger-icon-open">
 							<?php Icons_Manager::render_icon( $settings['toggler_open_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 						</span>
 					<?php else : ?>
-						<span class="tv-hamburger-icon-default"></span>
-						<span class="tv-hamburger-icon-default"></span>
-						<span class="tv-hamburger-icon-default"></span>
+						<span class="es-hamburger-icon-default"></span>
+						<span class="es-hamburger-icon-default"></span>
+						<span class="es-hamburger-icon-default"></span>
 					<?php endif; ?>
 					<?php if ( ! empty( $settings['toggler_close_icon']['value'] ) ) : ?>
-						<span class="tv-hamburger-icon-close" style="display: none;">
+						<span class="es-hamburger-icon-close" style="display: none;">
 							<?php Icons_Manager::render_icon( $settings['toggler_close_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 						</span>
 					<?php endif; ?>
@@ -4469,24 +4469,24 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 			<?php endif; ?>
 
 			<!-- Desktop Traditional Navigation Container -->
-			<div class="tv-nav-menu-desktop-container">
+			<div class="es-nav-menu-desktop-container">
 				<?php wp_nav_menu( $desktop_args ); ?>
 			</div>
 
 			<!-- Mobile Navigation Drawer Overlay Drawer System -->
 			<?php if ( 'none' !== $responsive_breakpoint ) : ?>
-				<div class="tv-nav-menu-mobile-drawer tv-nav-menu-mobile-<?php echo esc_attr( $settings['mobile_layout'] ); ?> tv-submenu-click-on-<?php echo esc_attr( $settings['mobile_submenu_click'] ); ?>">
-					<div class="tv-nav-menu-mobile-drawer-header">
+				<div class="es-nav-menu-mobile-drawer es-nav-menu-mobile-<?php echo esc_attr( $settings['mobile_layout'] ); ?> es-submenu-click-on-<?php echo esc_attr( $settings['mobile_submenu_click'] ); ?>">
+					<div class="es-nav-menu-mobile-drawer-header">
 						<?php if ( ! empty( $settings['mobile_logo']['url'] ) ) : ?>
 							<?php
 							$logo_url    = ( 'custom' === $settings['mobile_logo_link'] && ! empty( $settings['mobile_logo_custom_url']['url'] ) ) ? $settings['mobile_logo_custom_url']['url'] : home_url( '/' );
 							$logo_target = ( 'custom' === $settings['mobile_logo_link'] && ! empty( $settings['mobile_logo_custom_url']['is_external'] ) ) ? ' target="_blank"' : '';
 							?>
-							<a href="<?php echo esc_url( $logo_url ); ?>"<?php echo $logo_target; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="tv-nav-menu-mobile-logo">
+							<a href="<?php echo esc_url( $logo_url ); ?>"<?php echo $logo_target; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="es-nav-menu-mobile-logo">
 								<?php echo wp_get_attachment_image( $settings['mobile_logo']['id'], 'medium' ); ?>
 							</a>
 						<?php endif; ?>
-						<button class="tv-nav-menu-mobile-close" type="button" aria-label="<?php esc_attr_e( 'Close menu', 'elonix' ); ?>">
+						<button class="es-nav-menu-mobile-close" type="button" aria-label="<?php esc_attr_e( 'Close menu', 'elonix' ); ?>">
 							<?php
 							if ( ! empty( $settings['mobile_close_icon']['value'] ) ) {
 								Icons_Manager::render_icon( $settings['mobile_close_icon'], array( 'aria-hidden' => 'true' ) );
@@ -4496,11 +4496,11 @@ class Elonix_Toolkit_Nav_Menu_Widget extends Elonix_Widget_Base {
 							?>
 						</button>
 					</div>
-					<div class="tv-nav-menu-mobile-drawer-content">
+					<div class="es-nav-menu-mobile-drawer-content">
 						<?php wp_nav_menu( $mobile_args ); ?>
 					</div>
 				</div>
-				<div class="tv-nav-menu-mobile-overlay"></div>
+				<div class="es-nav-menu-mobile-overlay"></div>
 			<?php endif; ?>
 			
 		</div>

@@ -162,41 +162,41 @@ class Elonix_Toolkit_Widgets_Page {
 		<div class="wrap elonix-admin-page elonix-widgets-wrap">
 			
 			<!-- Compact Professional Header -->
-			<div class="tv-admin-header">
-				<div class="tv-header-branding">
-					<div class="tv-header-logo">
+			<div class="es-admin-header">
+				<div class="es-header-branding">
+					<div class="es-header-logo">
 						<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 50 50" fill="none">
-							<rect width="50" height="50" rx="12" fill="url(#tv-head-grad)"/>
+							<rect width="50" height="50" rx="12" fill="url(#es-head-grad)"/>
 							<path d="M25 14L14 22L25 30L36 22L25 14Z" fill="white"/>
 							<path d="M14 29L25 36L36 29" stroke="white" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
 							<defs>
-								<linearGradient id="tv-head-grad" x1="0" y1="0" x2="50" y2="50" gradientUnits="userSpaceOnUse">
+								<linearGradient id="es-head-grad" x1="0" y1="0" x2="50" y2="50" gradientUnits="userSpaceOnUse">
 									<stop stop-color="#6366f1"/>
 									<stop offset="1" stop-color="#4f46e5"/>
 								</linearGradient>
 							</defs>
 						</svg>
 					</div>
-					<div class="tv-header-info">
-						<div class="tv-header-title-row">
+					<div class="es-header-info">
+						<div class="es-header-title-row">
 							<h2><?php esc_html_e( 'Widgets Manager', 'elonix' ); ?></h2>
-							<span class="tv-header-badge">ESKIT v<?php echo esc_html( ELONIX_VERSION ); ?></span>
+							<span class="es-header-badge">ESKIT v<?php echo esc_html( ELONIX_VERSION ); ?></span>
 						</div>
-						<p class="tv-header-subtitle"><?php esc_html_e( 'Enable or disable specific Elementor widgets to optimize loading performance.', 'elonix' ); ?></p>
+						<p class="es-header-subtitle"><?php esc_html_e( 'Enable or disable specific Elementor widgets to optimize loading performance.', 'elonix' ); ?></p>
 					</div>
 				</div>
 				
 				<!-- Header Stats Pill Box -->
-				<div class="tv-header-stats">
-					<div class="tv-stat-pill all-stat">
+				<div class="es-header-stats">
+					<div class="es-stat-pill all-stat">
 						<span class="stat-num"><?php echo count( $widgets ); ?></span>
 						<span class="stat-lbl"><?php esc_html_e( 'Total', 'elonix' ); ?></span>
 					</div>
-					<div class="tv-stat-pill enabled-stat">
+					<div class="es-stat-pill enabled-stat">
 						<span class="stat-num count-enabled"><?php echo esc_html( $enabled_count ); ?></span>
 						<span class="stat-lbl"><?php esc_html_e( 'Active', 'elonix' ); ?></span>
 					</div>
-					<div class="tv-stat-pill disabled-stat">
+					<div class="es-stat-pill disabled-stat">
 						<span class="stat-num count-disabled"><?php echo esc_html( $disabled_count ); ?></span>
 						<span class="stat-lbl"><?php esc_html_e( 'Inactive', 'elonix' ); ?></span>
 					</div>
@@ -204,37 +204,37 @@ class Elonix_Toolkit_Widgets_Page {
 			</div>
 
 			<!-- Toolbar Row -->
-			<div class="tv-admin-toolbar">
-				<div class="tv-toolbar-left">
-					<div class="tv-toolbar-tabs">
-						<button type="button" class="tv-filter-tab active" data-filter="all">
+			<div class="es-admin-toolbar">
+				<div class="es-toolbar-left">
+					<div class="es-toolbar-tabs">
+						<button type="button" class="es-filter-tab active" data-filter="all">
 							<?php esc_html_e( 'All', 'elonix' ); ?>
 						</button>
-						<button type="button" class="tv-filter-tab" data-filter="enabled">
+						<button type="button" class="es-filter-tab" data-filter="enabled">
 							<?php esc_html_e( 'Active', 'elonix' ); ?>
 						</button>
-						<button type="button" class="tv-filter-tab" data-filter="disabled">
+						<button type="button" class="es-filter-tab" data-filter="disabled">
 							<?php esc_html_e( 'Inactive', 'elonix' ); ?>
 						</button>
 					</div>
 				</div>
 				
-				<div class="tv-toolbar-right">
-					<div class="tv-toolbar-search">
+				<div class="es-toolbar-right">
+					<div class="es-toolbar-search">
 						<span class="dashicons dashicons-search search-icon"></span>
-						<input type="text" id="tv-search-input" placeholder="<?php esc_attr_e( 'Search widgets...', 'elonix' ); ?>">
+						<input type="text" id="es-search-input" placeholder="<?php esc_attr_e( 'Search widgets...', 'elonix' ); ?>">
 					</div>
 					
-					<div class="tv-toolbar-actions">
-						<button type="button" class="tv-bulk-btn button tv-btn-enable" data-type="widget" data-action="enable_all">
+					<div class="es-toolbar-actions">
+						<button type="button" class="es-bulk-btn button es-btn-enable" data-type="widget" data-action="enable_all">
 							<span class="dashicons dashicons-yes"></span>
 							<span class="btn-text"><?php esc_html_e( 'Enable All', 'elonix' ); ?></span>
-							<span class="tv-spinner"></span>
+							<span class="es-spinner"></span>
 						</button>
-						<button type="button" class="tv-bulk-btn button tv-btn-disable" data-type="widget" data-action="disable_all">
+						<button type="button" class="es-bulk-btn button es-btn-disable" data-type="widget" data-action="disable_all">
 							<span class="dashicons dashicons-no"></span>
 							<span class="btn-text"><?php esc_html_e( 'Disable All', 'elonix' ); ?></span>
-							<span class="tv-spinner"></span>
+							<span class="es-spinner"></span>
 						</button>
 					</div>
 				</div>
@@ -244,8 +244,8 @@ class Elonix_Toolkit_Widgets_Page {
 			<?php settings_errors( 'elonix_widgets' ); ?>
 
 			<!-- Grid System -->
-			<div class="tv-cards-container">
-				<div class="tv-cards-grid">
+			<div class="es-cards-container">
+				<div class="es-cards-grid">
 					<?php if ( ! empty( $widgets ) ) : ?>
 						<?php
 						foreach ( $widgets as $slug => $data ) :
@@ -254,44 +254,44 @@ class Elonix_Toolkit_Widgets_Page {
 							$icon_class = isset( $data['icon'] ) ? $data['icon'] : 'eicon-code';
 							$version    = isset( $data['version'] ) ? $data['version'] : '1.0.0';
 							?>
-							<div class="tv-card-item <?php echo $enabled ? '' : 'is-disabled'; ?>" data-slug="<?php echo esc_attr( $slug ); ?>" data-keywords="<?php echo esc_attr( $keywords ); ?>">
-								<div class="tv-card-header">
-									<div class="tv-card-icon-box">
-										<span class="<?php echo esc_attr( $icon_class ); ?> tv-widget-icon"></span>
+							<div class="es-card-item <?php echo $enabled ? '' : 'is-disabled'; ?>" data-slug="<?php echo esc_attr( $slug ); ?>" data-keywords="<?php echo esc_attr( $keywords ); ?>">
+								<div class="es-card-header">
+									<div class="es-card-icon-box">
+										<span class="<?php echo esc_attr( $icon_class ); ?> es-widget-icon"></span>
 									</div>
-									<div class="tv-card-badges">
-										<span class="tv-badge-kit"><?php echo esc_html( ELONIX_WIDGET_BADGE ); ?></span>
-										<span class="tv-badge-ver">v<?php echo esc_html( $version ); ?></span>
+									<div class="es-card-badges">
+										<span class="es-badge-kit"><?php echo esc_html( ELONIX_WIDGET_BADGE ); ?></span>
+										<span class="es-badge-ver">v<?php echo esc_html( $version ); ?></span>
 									</div>
 								</div>
 								
-								<div class="tv-card-body">
-									<h3 class="tv-card-title"><?php echo esc_html( $data['title'] ); ?></h3>
-									<p class="tv-card-desc"><?php echo esc_html( $data['description'] ); ?></p>
+								<div class="es-card-body">
+									<h3 class="es-card-title"><?php echo esc_html( $data['title'] ); ?></h3>
+									<p class="es-card-desc"><?php echo esc_html( $data['description'] ); ?></p>
 								</div>
 								
-								<div class="tv-card-footer">
-									<div class="tv-status-badge-container">
+								<div class="es-card-footer">
+									<div class="es-status-badge-container">
 										<?php if ( $enabled ) : ?>
-											<span class="tv-status-badge badge-active"><?php esc_html_e( 'Active', 'elonix' ); ?></span>
+											<span class="es-status-badge badge-active"><?php esc_html_e( 'Active', 'elonix' ); ?></span>
 										<?php else : ?>
-											<span class="tv-status-badge badge-inactive"><?php esc_html_e( 'Inactive', 'elonix' ); ?></span>
+											<span class="es-status-badge badge-inactive"><?php esc_html_e( 'Inactive', 'elonix' ); ?></span>
 										<?php endif; ?>
 									</div>
-									<div class="tv-action-toggle">
+									<div class="es-action-toggle">
 										<label class="elonix-switch" aria-label="<?php esc_attr_e( 'Toggle Widget Activation State', 'elonix' ); ?>">
-											<input type="checkbox" class="tv-toggle-input" data-type="widget" data-slug="<?php echo esc_attr( $slug ); ?>" value="1" <?php checked( $enabled ); ?>>
+											<input type="checkbox" class="es-toggle-input" data-type="widget" data-slug="<?php echo esc_attr( $slug ); ?>" value="1" <?php checked( $enabled ); ?>>
 											<span class="slider round"></span>
 										</label>
 									</div>
 								</div>
-								<div class="tv-card-loading-overlay">
-									<span class="tv-card-spinner"></span>
+								<div class="es-card-loading-overlay">
+									<span class="es-card-spinner"></span>
 								</div>
 							</div>
 						<?php endforeach; ?>
 					<?php else : ?>
-						<div class="tv-empty-state">
+						<div class="es-empty-state">
 							<span class="dashicons dashicons-admin-plugins"></span>
 							<h3><?php esc_html_e( 'No widgets found.', 'elonix' ); ?></h3>
 						</div>

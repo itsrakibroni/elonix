@@ -59,7 +59,7 @@ class Importer {
 		$parsed_json['type'] = 'page';
 		$parsed_json['title'] = isset( $template_meta['title'] ) ? sanitize_text_field( $template_meta['title'] ) : 'Imported Template';
 		
-		$temp_file = wp_normalize_path( get_temp_dir() . 'tv_import_' . time() . '.json' );
+		$temp_file = wp_normalize_path( get_temp_dir() . 'es_import_' . time() . '.json' );
 		$wp_filesystem->put_contents( $temp_file, wp_json_encode( $parsed_json ) );
 
 		$source = \Elementor\Plugin::$instance->templates_manager->get_source( 'local' );

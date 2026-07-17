@@ -142,7 +142,7 @@ class Elonix_Header_Footer_Builder {
 			);
 
 			register_post_type(
-				'tv_header',
+				'es_header',
 				array(
 					'labels'              => $header_labels,
 					'public'              => true,
@@ -191,7 +191,7 @@ class Elonix_Header_Footer_Builder {
 			);
 
 			register_post_type(
-				'tv_footer',
+				'es_footer',
 				array(
 					'labels'              => $footer_labels,
 					'public'              => true,
@@ -231,10 +231,10 @@ class Elonix_Header_Footer_Builder {
 		// Do not redirect if we are viewing the template preview endpoint
 		// Do not redirect if we are viewing the template preview endpoint
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['tv_preview'] ) ) {
+		if ( isset( $_GET['es_preview'] ) ) {
 			return;
 		}
-		$layout_types = array( 'tv_header', 'tv_footer' );
+		$layout_types = array( 'es_header', 'es_footer' );
 		if ( is_singular( $layout_types ) ) {
 			// Allow administrators or users with post editing capabilities to view (for Elementor editing & previewing)
 			if ( ! current_user_can( 'edit_posts' ) ) {
@@ -246,13 +246,13 @@ class Elonix_Header_Footer_Builder {
 
 	public function hijack_preview_query( $query ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( ! is_admin() && $query->is_main_query() && isset( $_GET['tv_preview'] ) ) {
+		if ( ! is_admin() && $query->is_main_query() && isset( $_GET['es_preview'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$template_id = intval( wp_unslash( $_GET['tv_preview'] ) );
+			$template_id = intval( wp_unslash( $_GET['es_preview'] ) );
 			if ( $template_id ) {
 				$post = get_post( $template_id );
-				if ( $post && in_array( $post->post_type, array( 'tv_header', 'tv_footer' ), true ) ) {
-					$module = ( 'tv_header' === $post->post_type ) ? 'header_builder' : 'footer_builder';
+				if ( $post && in_array( $post->post_type, array( 'es_header', 'es_footer' ), true ) ) {
+					$module = ( 'es_header' === $post->post_type ) ? 'header_builder' : 'footer_builder';
 					if ( ! Elonix_Toolkit_Module_Manager::is_module_enabled( $module ) ) {
 						return;
 					}
@@ -284,13 +284,13 @@ class Elonix_Header_Footer_Builder {
 	 */
 	public function load_preview_template( $template ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['tv_preview'] ) ) {
+		if ( isset( $_GET['es_preview'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$template_id = intval( wp_unslash( $_GET['tv_preview'] ) );
+			$template_id = intval( wp_unslash( $_GET['es_preview'] ) );
 			if ( $template_id ) {
 				$post = get_post( $template_id );
-				if ( $post && in_array( $post->post_type, array( 'tv_header', 'tv_footer' ), true ) ) {
-					$module = ( 'tv_header' === $post->post_type ) ? 'header_builder' : 'footer_builder';
+				if ( $post && in_array( $post->post_type, array( 'es_header', 'es_footer' ), true ) ) {
+					$module = ( 'es_header' === $post->post_type ) ? 'header_builder' : 'footer_builder';
 					if ( ! Elonix_Toolkit_Module_Manager::is_module_enabled( $module ) ) {
 						return $template;
 					}
@@ -312,7 +312,7 @@ class Elonix_Header_Footer_Builder {
 	 */
 	public function disable_preview_admin_bar( $show ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['tv_preview'] ) ) {
+		if ( isset( $_GET['es_preview'] ) ) {
 			return false;
 		}
 		return $show;
@@ -323,7 +323,7 @@ class Elonix_Header_Footer_Builder {
 	 */
 	public function remove_preview_admin_bar_actions() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['tv_preview'] ) ) {
+		if ( isset( $_GET['es_preview'] ) ) {
 			remove_action( 'wp_footer', 'wp_admin_bar_render', 1000 );
 			remove_action( 'wp_head', 'wp_admin_bar_header' );
 			remove_action( 'wp_body_open', 'wp_admin_bar_render', 0 );
@@ -335,7 +335,7 @@ class Elonix_Header_Footer_Builder {
 	 */
 	public function dequeue_preview_admin_bar_assets() {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['tv_preview'] ) ) {
+		if ( isset( $_GET['es_preview'] ) ) {
 			wp_dequeue_style( 'admin-bar' );
 			wp_dequeue_script( 'admin-bar' );
 
@@ -369,7 +369,7 @@ class Elonix_Header_Footer_Builder {
 	 */
 	public function remove_preview_admin_bar_body_classes( $classes ) {
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['tv_preview'] ) ) {
+		if ( isset( $_GET['es_preview'] ) ) {
 			$classes = array_diff( $classes, array( 'admin-bar', 'wp-toolbar' ) );
 		}
 		return $classes;

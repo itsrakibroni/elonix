@@ -17,7 +17,7 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-social-icons';
+		return 'es-social-icons';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-social-icons';
 	}
 
@@ -43,8 +43,8 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 	 *
 	 * @return array Keywords list.
 	 */
-	public function get_tv_widget_keywords() {
-		return array( 'social', 'icons', 'links', 'facebook', 'twitter', 'youtube', 'instagram', 'tvkit' );
+	public function get_es_widget_keywords() {
+		return array( 'social', 'icons', 'links', 'facebook', 'twitter', 'youtube', 'instagram', 'eskit' );
 	}
 
 	/**
@@ -53,7 +53,7 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 	 * @return array Dependencies handles.
 	 */
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-social-icons' );
+		return array( 'elonix-widget-es-social-icons' );
 	}
 
 	/**
@@ -62,7 +62,7 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 	 * @return array Dependencies handles.
 	 */
 	public function get_script_depends() {
-		return array( 'elonix-widget-tv-social-icons' );
+		return array( 'elonix-widget-es-social-icons' );
 	}
 
 	/**
@@ -221,7 +221,7 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 				// Configure dynamic links tags
 				$this->add_link_attributes( $item_key, $item['link'] );
 
-				$item_classes = 'tv-social-item tv-social-platform-' . esc_attr( $platform );
+				$item_classes = 'es-social-item es-social-platform-' . esc_attr( $platform );
 				if ( ! empty( $item['_id'] ) ) {
 					$item_classes .= ' elementor-repeater-item-' . esc_attr( $item['_id'] );
 				}
@@ -243,10 +243,10 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 				}
 				?>
 				<a <?php $this->print_render_attribute_string( $item_key ); ?>>
-					<div class="tv-social-item-inner">
+					<div class="es-social-item-inner">
 						
 						<?php if ( 'label_only' !== $settings['icon_position'] ) : ?>
-							<span class="tv-social-icon-box">
+							<span class="es-social-icon-box">
 								<?php
 								// Render custom icon if uploaded, otherwise fallback to platform brand icon
 								if ( ! empty( $item['custom_icon']['value'] ) ) {
@@ -260,7 +260,7 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 						<?php endif; ?>
 
 						<?php if ( 'icon_only' !== $settings['icon_position'] && ! empty( $label_text ) ) : ?>
-							<span class="tv-social-label">
+							<span class="es-social-label">
 								<?php echo esc_html( $label_text ); ?>
 							</span>
 						<?php endif; ?>
@@ -268,7 +268,7 @@ class Elonix_Toolkit_Social_Icons_Widget extends Elonix_Social_Base_Widget {
 					</div>
 					
 					<?php if ( 'yes' === $settings['enable_tooltip'] && ! empty( $label_text ) ) : ?>
-						<span class="tv-social-tooltip" role="tooltip">
+						<span class="es-social-tooltip" role="tooltip">
 							<?php echo esc_html( $label_text ); ?>
 						</span>
 					<?php endif; ?>

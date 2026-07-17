@@ -1,0 +1,241 @@
+/**
+ * Elonix Testimonial CSS
+ */
+
+:root {
+  --es-testimonial-columns: 3;
+  --es-testimonial-gap-x: 30px;
+  --es-testimonial-gap-y: 30px;
+}
+
+/* Base Wrapper */
+.es-testimonial {
+  position: relative;
+  width: 100%;
+}
+
+/* Grid Layout */
+.es-testimonial__grid {
+  display: grid;
+  grid-template-columns: repeat(var(--es-testimonial-columns), 1fr);
+  column-gap: var(--es-testimonial-gap-x);
+  row-gap: var(--es-testimonial-gap-y);
+  align-items: stretch; /* Equal height support */
+}
+
+/* Carousel Layout */
+.es-testimonial__carousel {
+  position: relative;
+}
+
+.es-testimonial__carousel .swiper-container {
+  width: 100%;
+  height: 100%;
+}
+
+.es-testimonial__carousel .swiper-slide {
+  height: auto; /* Allow equal height flex stretch */
+  display: flex;
+}
+
+/* Card Item */
+.es-testimonial__item {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 20px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  text-decoration: none;
+  color: inherit;
+  position: relative;
+  overflow: hidden;
+}
+
+a.es-testimonial__item:hover,
+.es-testimonial__item:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08);
+}
+
+.es-testimonial__figure {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+/* Header (Quote Icon + Logo) */
+.es-testimonial__header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.es-testimonial__quote-icon {
+  color: #e5e7eb;
+  font-size: 48px;
+  line-height: 1;
+}
+
+.es-testimonial__quote-icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.es-testimonial__company-logo img {
+  max-width: 120px;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+/* Content */
+.es-testimonial__content {
+  margin: 0 0 30px 0;
+  padding: 0;
+  font-size: 18px;
+  line-height: 1.6;
+  color: #374151;
+  flex-grow: 1;
+}
+
+/* Footer (Author + Rating) */
+.es-testimonial__footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: auto;
+}
+
+.es-testimonial__author {
+  display: flex;
+  align-items: center;
+}
+
+.es-testimonial__avatar {
+  flex-shrink: 0;
+}
+
+.es-testimonial__avatar img {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.es-testimonial__meta {
+  display: flex;
+  flex-direction: column;
+}
+
+.es-testimonial__client-name {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 700;
+  color: #111827;
+  line-height: 1.2;
+  font-style: normal;
+}
+
+.es-testimonial__designation-wrapper {
+  font-size: 14px;
+  color: #6b7280;
+  line-height: 1.4;
+  font-style: normal;
+}
+
+/* Rating Badge */
+.es-testimonial__rating {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background-color: #f3f4f6;
+  padding: 6px 12px;
+  border-radius: 20px;
+}
+
+.es-testimonial__rating-icon {
+  color: #fbbf24;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+}
+
+.es-testimonial__rating-icon svg {
+  width: 1em;
+  height: 1em;
+  fill: currentColor;
+}
+
+.es-testimonial__rating-text {
+  font-size: 14px;
+  font-weight: 600;
+  color: #374151;
+  font-style: normal;
+}
+
+/* Carousel Navigation */
+.es-swiper-button-prev,
+.es-swiper-button-next {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  background-color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  color: #111827;
+  transition: all 0.3s ease;
+}
+
+.es-swiper-button-prev:hover,
+.es-swiper-button-next:hover {
+  background-color: #111827;
+  color: #fff;
+}
+
+.es-swiper-button-prev {
+  left: -20px;
+}
+
+.es-swiper-button-next {
+  right: -20px;
+}
+
+.es-swiper-button-prev.swiper-button-disabled,
+.es-swiper-button-next.swiper-button-disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Carousel Pagination */
+.swiper-pagination {
+  position: relative;
+  margin-top: 30px;
+  text-align: center;
+}
+
+.swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #d1d5db;
+  opacity: 1;
+  border-radius: 50%;
+  margin: 0 4px;
+  transition: all 0.3s ease;
+}
+
+.swiper-pagination-bullet-active {
+  background-color: #111827;
+  transform: scale(1.2);
+}

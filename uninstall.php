@@ -24,7 +24,7 @@ function elonix_uninstall_logic() {
 	}
 
 	// 1. Delete all posts of custom post types registered by this plugin
-	$post_types = array( 'tv_header', 'tv_footer', 'tv_popup', 'tv_archive' );
+	$post_types = array( 'es_header', 'es_footer', 'es_popup', 'es_archive' );
 	foreach ( $post_types as $post_type ) {
 		$posts = get_posts(
 			array(
@@ -62,7 +62,7 @@ function elonix_uninstall_logic() {
 
 	// 3. Delete post meta for all deleted posts (cleanup any orphaned meta)
 	delete_metadata( 'post', null, '_elonix_settings', '', true );
-	delete_metadata( 'post', null, '_tv_display_conditions', '', true );
+	delete_metadata( 'post', null, '_es_display_conditions', '', true );
 	delete_metadata( 'post', null, '_elementor_controls_usage', '', true );
 	delete_metadata( 'post', null, '_elementor_controls_classes', '', true );
 	delete_metadata( 'post', null, '_elementor_template_type', '', true );

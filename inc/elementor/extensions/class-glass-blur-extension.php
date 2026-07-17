@@ -34,7 +34,7 @@ class Elonix_Glass_Blur_Extension extends Elonix_Base_Extension {
 		);
 
 		$element->add_control(
-			'tv_glass_blur_enable',
+			'es_glass_blur_enable',
 			[
 				'label'        => esc_html__( 'Enable Glass Blur', 'elonix' ),
 				'type'         => \Elementor\Controls_Manager::SWITCHER,
@@ -43,7 +43,7 @@ class Elonix_Glass_Blur_Extension extends Elonix_Base_Extension {
 		);
 
 		$element->add_responsive_control(
-			'tv_glass_blur_amount',
+			'es_glass_blur_amount',
 			[
 				'label'      => esc_html__( 'Blur', 'elonix' ),
 				'type'       => \Elementor\Controls_Manager::SLIDER,
@@ -60,10 +60,10 @@ class Elonix_Glass_Blur_Extension extends Elonix_Base_Extension {
 					'unit' => 'px',
 				],
 				'condition'  => [
-					'tv_glass_blur_enable' => 'yes',
+					'es_glass_blur_enable' => 'yes',
 				],
 				'selectors'  => [
-					'{{WRAPPER}}.tv-glass-blur-element' => '-webkit-backdrop-filter: blur({{SIZE}}{{UNIT}}); backdrop-filter: blur({{SIZE}}{{UNIT}});',
+					'{{WRAPPER}}.es-glass-blur-element' => '-webkit-backdrop-filter: blur({{SIZE}}{{UNIT}}); backdrop-filter: blur({{SIZE}}{{UNIT}});',
 				],
 			]
 		);
@@ -88,11 +88,11 @@ class Elonix_Glass_Blur_Extension extends Elonix_Base_Extension {
 	public function before_render( $element ) {
 		$settings = $element->get_settings_for_display();
 
-		if ( empty( $settings['tv_glass_blur_enable'] ) || 'yes' !== $settings['tv_glass_blur_enable'] ) {
+		if ( empty( $settings['es_glass_blur_enable'] ) || 'yes' !== $settings['es_glass_blur_enable'] ) {
 			return;
 		}
 
 		// Inject class for CSS targeting
-		$element->add_render_attribute( '_wrapper', 'class', 'tv-glass-blur-element' );
+		$element->add_render_attribute( '_wrapper', 'class', 'es-glass-blur-element' );
 	}
 }

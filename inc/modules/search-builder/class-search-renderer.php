@@ -71,7 +71,7 @@ class Elonix_Search_Renderer {
 	public function get_active_matched_search() {
 		$templates = get_posts(
 			array(
-				'post_type'      => 'tv_search_template',
+				'post_type'      => 'es_search_template',
 				'post_status'    => 'publish',
 				'posts_per_page' => -1,
 			)
@@ -85,7 +85,7 @@ class Elonix_Search_Renderer {
 		$has_results = ( $wp_query instanceof WP_Query && ! empty( $wp_query->posts ) );
 
 		foreach ( $templates as $tpl ) {
-			$type = get_post_meta( $tpl->ID, '_tv_search_type', true );
+			$type = get_post_meta( $tpl->ID, '_es_search_type', true );
 
 			if ( empty( $type ) ) {
 				$type = 'search_results';
@@ -132,7 +132,7 @@ class Elonix_Search_Renderer {
 
 		$custom_canvas = ELONIX_ACC_PATH . 'inc/modules/search-builder/templates/search-canvas.php';
 		if ( file_exists( $custom_canvas ) ) {
-			set_query_var( 'tv_matched_search_id', $matched_id );
+			set_query_var( 'es_matched_search_id', $matched_id );
 			return $custom_canvas;
 		}
 

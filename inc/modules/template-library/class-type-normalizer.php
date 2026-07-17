@@ -15,8 +15,8 @@ class Type_Normalizer {
 	public static function normalize_template_type( $raw_type ) {
 		$type = strtolower( trim( sanitize_text_field( $raw_type ) ) );
 
-		// Strip 'tv_' prefix if present
-		$type = preg_replace( '/^tv_/', '', $type );
+		// Strip 'es_' prefix if present
+		$type = preg_replace( '/^es_/', '', $type );
 
 		// Map common aliases to canonical values
 		$map = array(

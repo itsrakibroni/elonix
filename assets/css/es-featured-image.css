@@ -1,0 +1,111 @@
+/**
+ * Elonix – Toolkit for Elementor Featured Image Widget Styles
+ */
+.es-featured-image-container {
+	position: relative;
+	display: block;
+	overflow: hidden;
+	width: 100%;
+}
+
+.es-featured-image-container img {
+	display: block;
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+	transition: all 300ms ease;
+}
+
+/* Object Fit & Aspect Ratio */
+.es-featured-image-container img[style*="aspect-ratio"] {
+	object-fit: cover; /* Default fallback when aspect ratio is present */
+}
+
+/* Link Wrapper */
+.es-featured-image-container a.es-featured-image-link {
+	position: relative;
+	display: block;
+	width: 100%;
+	height: 100%;
+	text-decoration: none;
+}
+
+/* Overlay */
+.es-featured-image-overlay {
+	position: absolute;
+	inset: 0;
+	pointer-events: none;
+	transition: all 300ms ease;
+	z-index: 1;
+}
+
+.es-featured-image-container:hover .es-featured-image-overlay {
+	/* Managed via Elementor selector overrides */
+}
+
+/* Hover Animation Effects */
+.es-effect-zoom-in img {
+	transform: scale(1);
+}
+.es-featured-image-container.es-effect-zoom-in:hover img {
+	transform: scale(1.1);
+}
+
+.es-effect-zoom-out img {
+	transform: scale(1.1);
+}
+.es-featured-image-container.es-effect-zoom-out:hover img {
+	transform: scale(1);
+}
+
+.es-effect-scale img {
+	transform: scale(1);
+}
+.es-featured-image-container.es-effect-scale:hover img {
+	transform: scale(1.05);
+}
+
+.es-effect-rotate img {
+	transform: rotate(0deg) scale(1);
+}
+.es-featured-image-container.es-effect-rotate:hover img {
+	transform: rotate(3deg) scale(1.08);
+}
+
+.es-effect-grayscale img {
+	filter: grayscale(100%);
+}
+.es-featured-image-container.es-effect-grayscale:hover img {
+	filter: grayscale(0%);
+}
+
+.es-effect-blur img {
+	filter: blur(0px);
+}
+.es-featured-image-container.es-effect-blur:hover img {
+	filter: blur(3px);
+}
+
+/* Captions */
+.es-featured-image-caption {
+	display: block;
+	margin-top: 10px;
+	font-size: 14px;
+	color: #666;
+	text-align: center;
+	position: relative;
+	z-index: 2;
+}
+
+.es-featured-image-container.es-caption-overlay .es-featured-image-caption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	right: 0;
+	margin: 0;
+	padding: 15px;
+	background: rgba(0, 0, 0, 0.7);
+	color: #fff;
+	text-align: center;
+	z-index: 2;
+}

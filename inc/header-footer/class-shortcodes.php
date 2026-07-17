@@ -28,10 +28,10 @@ class Elonix_Shortcodes {
 	 */
 	public function register_shortcodes() {
 		if ( Elonix_Toolkit_Module_Manager::is_module_enabled( 'header_builder' ) ) {
-			add_shortcode( 'tv_header', array( $this, 'tv_header_shortcode_handler' ) );
+			add_shortcode( 'es_header', array( $this, 'es_header_shortcode_handler' ) );
 		}
 		if ( Elonix_Toolkit_Module_Manager::is_module_enabled( 'footer_builder' ) ) {
-			add_shortcode( 'tv_footer', array( $this, 'tv_footer_shortcode_handler' ) );
+			add_shortcode( 'es_footer', array( $this, 'es_footer_shortcode_handler' ) );
 		}
 	}
 
@@ -41,16 +41,16 @@ class Elonix_Shortcodes {
 	 * @param array $atts Shortcode attributes.
 	 * @return string Rendered Elementor content.
 	 */
-	public function tv_header_shortcode_handler( $atts ) {
+	public function es_header_shortcode_handler( $atts ) {
 		$atts = shortcode_atts(
 			array(
 				'id' => 0,
 			),
 			$atts,
-			'tv_header'
+			'es_header'
 		);
 
-		return self::render_template( $atts['id'], 'tv_header' );
+		return self::render_template( $atts['id'], 'es_header' );
 	}
 
 	/**
@@ -59,23 +59,23 @@ class Elonix_Shortcodes {
 	 * @param array $atts Shortcode attributes.
 	 * @return string Rendered Elementor content.
 	 */
-	public function tv_footer_shortcode_handler( $atts ) {
+	public function es_footer_shortcode_handler( $atts ) {
 		$atts = shortcode_atts(
 			array(
 				'id' => 0,
 			),
 			$atts,
-			'tv_footer'
+			'es_footer'
 		);
 
-		return self::render_template( $atts['id'], 'tv_footer' );
+		return self::render_template( $atts['id'], 'es_footer' );
 	}
 
 	/**
 	 * Safe Elementor layout template rendering engine.
 	 *
 	 * @param int    $template_id   Template Post ID.
-	 * @param string $expected_type Expected template type ('tv_header' or 'tv_footer').
+	 * @param string $expected_type Expected template type ('es_header' or 'es_footer').
 	 * @return string Rendered content.
 	 */
 	public static function render_template( $template_id, $expected_type = '' ) {
@@ -91,7 +91,7 @@ class Elonix_Shortcodes {
 		}
 
 		// Security: Validate correct post types
-		$allowed_post_types = array( 'tv_header', 'tv_footer' );
+		$allowed_post_types = array( 'es_header', 'es_footer' );
 		if ( ! in_array( $post->post_type, $allowed_post_types, true ) ) {
 			return '';
 		}
@@ -128,7 +128,7 @@ class Elonix_Shortcodes {
 		}
 
 		// Enqueue module specific assets for header builder compatibility
-		if ( 'tv_header' === $post->post_type ) {
+		if ( 'es_header' === $post->post_type ) {
 			if ( class_exists( 'Elonix_Toolkit_Assets_Manager' ) ) {
 				Elonix_Toolkit_Assets_Manager::enqueue_module_assets( 'header_builder' );
 			}
@@ -137,8 +137,8 @@ class Elonix_Shortcodes {
 		// Fetch the builder content
 		$content = \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id );
 
-		if ( 'tv_header' === $post->post_type ) {
-			$content = '<header class="tv-site-header">' . $content . '</header>';
+		if ( 'es_header' === $post->post_type ) {
+			$content = '<header class="es-site-header">' . $content . '</header>';
 		}
 
 		// Remove from stack after render
@@ -166,11 +166,11 @@ class Elonix_Shortcodes {
 			if ( is_array( $value ) ) {
 				$array[ $key ] = self::array_replace_shortcode_ids( $value, $old_id, $new_id );
 			} elseif ( is_string( $value ) ) {
-				$value = str_replace( '[tv_header id="' . $old_id . '"]', '[tv_header id="' . $new_id . '"]', $value );
-				$value = str_replace( '[tv_footer id="' . $old_id . '"]', '[tv_footer id="' . $new_id . '"]', $value );
+				$value = str_replace( '[es_header id="' . $old_id . '"]', '[es_header id="' . $new_id . '"]', $value );
+				$value = str_replace( '[es_footer id="' . $old_id . '"]', '[es_footer id="' . $new_id . '"]', $value );
 				// Also support escaped quotes if in JSON
-				$value         = str_replace( '[tv_header id=\\"' . $old_id . '\\"]', '[tv_header id=\\"' . $new_id . '\\"]', $value );
-				$value         = str_replace( '[tv_footer id=\\"' . $old_id . '\\"]', '[tv_footer id=\\"' . $new_id . '\\"]', $value );
+				$value         = str_replace( '[es_header id=\\"' . $old_id . '\\"]', '[es_header id=\\"' . $new_id . '\\"]', $value );
+				$value         = str_replace( '[es_footer id=\\"' . $old_id . '\\"]', '[es_footer id=\\"' . $new_id . '\\"]', $value );
 				$array[ $key ] = $value;
 			}
 		}
@@ -191,8 +191,8 @@ class Elonix_Shortcodes {
 
 		// Update post content
 		$content = $post->post_content;
-		$content = str_replace( '[tv_header id="' . $post_id . '"]', '[tv_header id="' . $new_post_id . '"]', $content );
-		$content = str_replace( '[tv_footer id="' . $post_id . '"]', '[tv_footer id="' . $new_post_id . '"]', $content );
+		$content = str_replace( '[es_header id="' . $post_id . '"]', '[es_header id="' . $new_post_id . '"]', $content );
+		$content = str_replace( '[es_footer id="' . $post_id . '"]', '[es_footer id="' . $new_post_id . '"]', $content );
 		wp_update_post(
 			array(
 				'ID'           => $new_post_id,
@@ -208,10 +208,10 @@ class Elonix_Shortcodes {
 				// Skip modifying Elementor keys to preserve their content exactly without str_replace
 				if ( strpos( $key, '_elementor_' ) !== 0 ) {
 					if ( is_string( $val ) ) {
-						$val = str_replace( '[tv_header id="' . $post_id . '"]', '[tv_header id="' . $new_post_id . '"]', $val );
-						$val = str_replace( '[tv_footer id="' . $post_id . '"]', '[tv_footer id="' . $new_post_id . '"]', $val );
-						$val = str_replace( '[tv_header id=\\"' . $post_id . '\\"]', '[tv_header id=\\"' . $new_post_id . '\\"]', $val );
-						$val = str_replace( '[tv_footer id=\\"' . $post_id . '\\"]', '[tv_footer id=\\"' . $new_post_id . '\\"]', $val );
+						$val = str_replace( '[es_header id="' . $post_id . '"]', '[es_header id="' . $new_post_id . '"]', $val );
+						$val = str_replace( '[es_footer id="' . $post_id . '"]', '[es_footer id="' . $new_post_id . '"]', $val );
+						$val = str_replace( '[es_header id=\\"' . $post_id . '\\"]', '[es_header id=\\"' . $new_post_id . '\\"]', $val );
+						$val = str_replace( '[es_footer id=\\"' . $post_id . '\\"]', '[es_footer id=\\"' . $new_post_id . '\\"]', $val );
 					} elseif ( is_array( $val ) ) {
 						$val = self::array_replace_shortcode_ids( $val, $post_id, $new_post_id );
 					}
@@ -244,7 +244,7 @@ class Elonix_Shortcodes {
 if ( ! function_exists( 'elonix_render_header' ) ) {
 	function elonix_render_header( $template_id ) {
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo Elonix_Shortcodes::render_template( $template_id, 'tv_header' );
+		echo Elonix_Shortcodes::render_template( $template_id, 'es_header' );
 	}
 }
 
@@ -256,6 +256,6 @@ if ( ! function_exists( 'elonix_render_header' ) ) {
 if ( ! function_exists( 'elonix_render_footer' ) ) {
 	function elonix_render_footer( $template_id ) {
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-		echo Elonix_Shortcodes::render_template( $template_id, 'tv_footer' );
+		echo Elonix_Shortcodes::render_template( $template_id, 'es_footer' );
 	}
 }

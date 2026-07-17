@@ -34,10 +34,10 @@ class Elonix_Style_Manager {
 		$widget->start_controls_tab( $section_id . '_normal', [ 'label' => esc_html__( 'Normal', 'elonix' ) ] );
 		$widget->add_group_control( \Elementor\Group_Control_Background::get_type(), [ 'name' => $prefix . '_bg', 'selector' => $selector, 'fields_options' => [ 'background' => [ 'label' => 'Background' ] ] ] );
 		$widget->add_group_control( \Elementor\Group_Control_Border::get_type(), [ 'name' => $prefix . '_border', 'selector' => $selector ] );
-		$widget->add_responsive_control( $prefix . '_border_radius', [ 'label' => esc_html__( 'Border Radius', 'elonix' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', '%', 'em' ], 'selectors' => [ $wrapper => '--tv-fc-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ] ] );
+		$widget->add_responsive_control( $prefix . '_border_radius', [ 'label' => esc_html__( 'Border Radius', 'elonix' ), 'type' => \Elementor\Controls_Manager::DIMENSIONS, 'size_units' => [ 'px', '%', 'em' ], 'selectors' => [ $wrapper => '--es-fc-radius: {{TOP}}{{UNIT}} {{RIGHT}}{{UNIT}} {{BOTTOM}}{{UNIT}} {{LEFT}}{{UNIT}};' ] ] );
 		$widget->add_group_control( \Elementor\Group_Control_Box_Shadow::get_type(), [ 'name' => $prefix . '_box_shadow', 'selector' => $selector ] );
 		$widget->add_control( $prefix . '_opacity', [ 'label' => esc_html__( 'Opacity', 'elonix' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'range' => [ 'px' => [ 'max' => 1, 'min' => 0.10, 'step' => 0.01 ] ], 'selectors' => [ $selector => 'opacity: {{SIZE}};' ] ] );
-		$widget->add_control( $prefix . '_transition', [ 'label' => esc_html__( 'Transition Duration (s)', 'elonix' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'range' => [ 'px' => [ 'max' => 3, 'step' => 0.1 ] ], 'selectors' => [ $wrapper => '--tv-fc-transition: all {{SIZE}}s ease-in-out;' ] ] );
+		$widget->add_control( $prefix . '_transition', [ 'label' => esc_html__( 'Transition Duration (s)', 'elonix' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'range' => [ 'px' => [ 'max' => 3, 'step' => 0.1 ] ], 'selectors' => [ $wrapper => '--es-fc-transition: all {{SIZE}}s ease-in-out;' ] ] );
 		$widget->end_controls_tab();
 
 		$widget->start_controls_tab( $section_id . '_hover', [ 'label' => esc_html__( 'Hover', 'elonix' ) ] );
@@ -95,7 +95,7 @@ class Elonix_Style_Manager {
 		$widget->start_controls_tabs( $section_id . '_tabs' );
 
 		$widget->start_controls_tab( $section_id . '_normal', [ 'label' => esc_html__( 'Normal', 'elonix' ) ] );
-		$widget->add_responsive_control( $prefix . '_size', [ 'label' => esc_html__( 'Size', 'elonix' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'range' => [ 'px' => [ 'min' => 10, 'max' => 200 ] ], 'selectors' => [ $wrapper => '--tv-fc-icon-size: {{SIZE}}{{UNIT}};' ] ] );
+		$widget->add_responsive_control( $prefix . '_size', [ 'label' => esc_html__( 'Size', 'elonix' ), 'type' => \Elementor\Controls_Manager::SLIDER, 'range' => [ 'px' => [ 'min' => 10, 'max' => 200 ] ], 'selectors' => [ $wrapper => '--es-fc-icon-size: {{SIZE}}{{UNIT}};' ] ] );
 		$widget->add_control( $prefix . '_color', [ 'label' => esc_html__( 'Color / Fill', 'elonix' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ $selector => 'color: {{VALUE}}; fill: {{VALUE}};' ] ] );
 		$widget->add_control( $prefix . '_stroke', [ 'label' => esc_html__( 'SVG Stroke', 'elonix' ), 'type' => \Elementor\Controls_Manager::COLOR, 'selectors' => [ $selector . ' svg' => 'stroke: {{VALUE}};' ] ] );
 		$widget->add_group_control( \Elementor\Group_Control_Background::get_type(), [ 'name' => $prefix . '_bg', 'selector' => $selector ] );

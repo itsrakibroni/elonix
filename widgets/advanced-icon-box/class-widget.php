@@ -17,7 +17,7 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-icon-box';
+		return 'es-icon-box';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-icon-box';
 	}
 
@@ -43,7 +43,7 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return array Keywords list.
 	 */
-	public function get_tv_widget_keywords() {
+	public function get_es_widget_keywords() {
 		return array( 'icon', 'box', 'card', 'feature', 'service', 'info' );
 	}
 
@@ -53,7 +53,7 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-icon-box' );
+		return array( 'elonix-widget-es-icon-box' );
 	}
 
 	/**
@@ -160,8 +160,8 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 		$this->end_controls_section();
 
 		// Button Section Integration - Reuse existing Button Component logic
-		if ( function_exists( 'Elementor\tv_button_controls' ) ) {
-			\Elementor\tv_button_controls( $this, 'btn', esc_html__( 'Button Settings', 'elonix' ) );
+		if ( function_exists( 'Elementor\es_button_controls' ) ) {
+			\Elementor\es_button_controls( $this, 'btn', esc_html__( 'Button Settings', 'elonix' ) );
 		}
 
 		// Style Section - Icon Style
@@ -561,9 +561,9 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 						</p>
 					<?php endif; ?>
 
-					<?php if ( function_exists( 'Elementor\tv_render_button' ) ) : ?>
+					<?php if ( function_exists( 'Elementor\es_render_button' ) ) : ?>
 						<div class="elonix-icon-box-button">
-							<?php \Elementor\tv_render_button( $settings, 'btn' ); ?>
+							<?php \Elementor\es_render_button( $settings, 'btn' ); ?>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -589,9 +589,9 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 						</p>
 					<?php endif; ?>
 
-					<?php if ( function_exists( 'Elementor\tv_render_button' ) ) : ?>
+					<?php if ( function_exists( 'Elementor\es_render_button' ) ) : ?>
 						<div class="elonix-icon-box-button">
-							<?php \Elementor\tv_render_button( $settings, 'btn' ); ?>
+							<?php \Elementor\es_render_button( $settings, 'btn' ); ?>
 						</div>
 					<?php endif; ?>
 				</div>

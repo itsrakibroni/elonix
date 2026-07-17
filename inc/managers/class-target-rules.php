@@ -45,7 +45,7 @@ class Elonix_Target_Rules {
 	 * AJAX handler to search posts, pages, categories, and tags.
 	 */
 	public function ajax_get_posts_by_query() {
-		check_ajax_referer( 'tv-get-posts-by-query', 'nonce' );
+		check_ajax_referer( 'es-get-posts-by-query', 'nonce' );
 
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			wp_send_json_error( esc_html__( 'Unauthorized.', 'elonix' ) );
@@ -75,7 +75,7 @@ class Elonix_Target_Rules {
 				}
 			} else {
 				$post_types    = get_post_types( array( 'public' => true ), 'objects' );
-				$exclude_types = array( 'tv_header', 'tv_footer', 'attachment' );
+				$exclude_types = array( 'es_header', 'es_footer', 'attachment' );
 				foreach ( $exclude_types as $ex ) {
 					unset( $post_types[ $ex ] );
 				}
@@ -241,7 +241,7 @@ class Elonix_Target_Rules {
 		// Auto Detect public Custom Post Types
 		$post_types = get_post_types( array( 'public' => true ), 'objects' );
 		foreach ( $post_types as $slug => $pt ) {
-			if ( in_array( $slug, array( 'post', 'page', 'attachment', 'tv_header', 'tv_footer' ), true ) ) {
+			if ( in_array( $slug, array( 'post', 'page', 'attachment', 'es_header', 'es_footer' ), true ) ) {
 				continue;
 			}
 			$opt_values = array(
@@ -438,15 +438,15 @@ class Elonix_Target_Rules {
 		$add_label = ( 'exclude' === $rule_type ) ? esc_html__( 'Add Exclusion Rule', 'elonix' ) : esc_html__( 'Add Display Rule', 'elonix' );
 
 		?>
-		<div class="tv-target-rules-wrapper" data-type="<?php echo esc_attr( $rule_type ); ?>" data-name="<?php echo esc_attr( $name ); ?>">
-			<div class="tv-rules-rows-container">
+		<div class="es-target-rules-wrapper" data-type="<?php echo esc_attr( $rule_type ); ?>" data-name="<?php echo esc_attr( $name ); ?>">
+			<div class="es-rules-rows-container">
 				<?php
 				foreach ( $normalized as $index => $row_val ) :
 					$rule_val = isset( $row_val['rule'] ) ? $row_val['rule'] : '';
 					?>
-					<div class="tv-rule-row-item" data-index="<?php echo (int) $index; ?>" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px;">
-						<div class="tv-select-rule-wrapper">
-							<select name="<?php echo esc_attr( $name ); ?>[<?php echo (int) $index; ?>][rule]" class="tv-rule-condition-select" style="min-width: 220px; height:36px; border-radius:6px;">
+					<div class="es-rule-row-item" data-index="<?php echo (int) $index; ?>" style="display:flex; flex-wrap:wrap; gap:10px; align-items:center; margin-bottom:10px;">
+						<div class="es-select-rule-wrapper">
+							<select name="<?php echo esc_attr( $name ); ?>[<?php echo (int) $index; ?>][rule]" class="es-rule-condition-select" style="min-width: 220px; height:36px; border-radius:6px;">
 								<option value=""><?php esc_html_e( '-- Select Location --', 'elonix' ); ?></option>
 								<?php foreach ( $selections as $grp_slug => $grp ) : ?>
 									<optgroup label="<?php echo esc_attr( $grp['label'] ); ?>">
@@ -458,8 +458,8 @@ class Elonix_Target_Rules {
 							</select>
 						</div>
 
-						<div class="tv-specific-search-wrapper" style="<?php echo ( strpos( $rule_val, 'specific' ) !== false ) ? 'display:block;' : 'display:none;'; ?> min-width: 260px;">
-							<select name="<?php echo esc_attr( $name ); ?>[<?php echo (int) $index; ?>][specific][]" class="tv-select2-ajax-search" multiple="multiple" style="width: 100%;">
+						<div class="es-specific-search-wrapper" style="<?php echo ( strpos( $rule_val, 'specific' ) !== false ) ? 'display:block;' : 'display:none;'; ?> min-width: 260px;">
+							<select name="<?php echo esc_attr( $name ); ?>[<?php echo (int) $index; ?>][specific][]" class="es-select2-ajax-search" multiple="multiple" style="width: 100%;">
 								<?php
 								if ( strpos( $rule_val, 'specific' ) !== false && isset( $row_val['specific'] ) && is_array( $row_val['specific'] ) ) {
 									foreach ( $row_val['specific'] as $spec_val ) {
@@ -470,13 +470,13 @@ class Elonix_Target_Rules {
 							</select>
 						</div>
 
-						<span class="tv-delete-rule-row dashicons dashicons-dismiss" style="cursor:pointer; color:#ef4444; font-size:20px; margin-top:2px;"></span>
+						<span class="es-delete-rule-row dashicons dashicons-dismiss" style="cursor:pointer; color:#ef4444; font-size:20px; margin-top:2px;"></span>
 					</div>
 				<?php endforeach; ?>
 			</div>
 			
 			<div style="margin-top:12px; display:flex; gap:10px;">
-				<button type="button" class="button tv-add-rule-row-btn" style="background:#ffffff; color:#334155; border-color:#cbd5e1;"><?php echo esc_html( $add_label ); ?></button>
+				<button type="button" class="button es-add-rule-row-btn" style="background:#ffffff; color:#334155; border-color:#cbd5e1;"><?php echo esc_html( $add_label ); ?></button>
 			</div>
 		</div>
 		<?php
@@ -492,10 +492,10 @@ class Elonix_Target_Rules {
 			$value = array( '' );
 		}
 		?>
-		<div class="tv-user-rules-wrapper" data-name="<?php echo esc_attr( $name ); ?>">
-			<div class="tv-user-rows-container">
+		<div class="es-user-rules-wrapper" data-name="<?php echo esc_attr( $name ); ?>">
+			<div class="es-user-rows-container">
 				<?php foreach ( $value as $index => $role_val ) : ?>
-					<div class="tv-user-row-item" data-index="<?php echo (int) $index; ?>" style="display:flex; gap:10px; align-items:center; margin-bottom:10px;">
+					<div class="es-user-row-item" data-index="<?php echo (int) $index; ?>" style="display:flex; gap:10px; align-items:center; margin-bottom:10px;">
 						<select name="<?php echo esc_attr( $name ); ?>[<?php echo (int) $index; ?>]" style="min-width: 220px; height:36px; border-radius:6px;">
 							<option value=""><?php esc_html_e( '-- Select User Audience --', 'elonix' ); ?></option>
 							<?php foreach ( $selections as $grp_slug => $grp ) : ?>
@@ -506,13 +506,13 @@ class Elonix_Target_Rules {
 								</optgroup>
 							<?php endforeach; ?>
 						</select>
-						<span class="tv-delete-user-row dashicons dashicons-dismiss" style="cursor:pointer; color:#ef4444; font-size:20px;"></span>
+						<span class="es-delete-user-row dashicons dashicons-dismiss" style="cursor:pointer; color:#ef4444; font-size:20px;"></span>
 					</div>
 				<?php endforeach; ?>
 			</div>
 
 			<div style="margin-top:12px;">
-				<button type="button" class="button tv-add-user-row-btn" style="background:#ffffff; color:#334155; border-color:#cbd5e1;"><?php esc_html_e( 'Add User Audience Rule', 'elonix' ); ?></button>
+				<button type="button" class="button es-add-user-row-btn" style="background:#ffffff; color:#334155; border-color:#cbd5e1;"><?php esc_html_e( 'Add User Audience Rule', 'elonix' ); ?></button>
 			</div>
 		</div>
 		<?php

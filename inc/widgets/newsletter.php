@@ -130,18 +130,22 @@ function elonix_register_newsletter_widget() {
 
 	// Add inline script for backend widget form
 	add_action(
-		'admin_footer-widgets.php',
-		function () {
-			?>
-		<script type="text/javascript">
+		'admin_enqueue_scripts',
+		function ( $hook ) {
+			if ( 'widgets.php' !== $hook ) {
+				return;
+			}
+			$script = "
 			function toggleNewsletterFields(select) {
 				var widget = select.closest('.widget-content');
 				var type = select.value;
-				widget.querySelector('.newsletter-field-custom').style.display = (type === 'custom') ? 'block' : 'none';
-				widget.querySelector('.newsletter-field-mailchimp').style.display = (type === 'mailchimp') ? 'block' : 'none';
+				if (widget && widget.querySelector('.newsletter-field-custom') && widget.querySelector('.newsletter-field-mailchimp')) {
+					widget.querySelector('.newsletter-field-custom').style.display = (type === 'custom') ? 'block' : 'none';
+					widget.querySelector('.newsletter-field-mailchimp').style.display = (type === 'mailchimp') ? 'block' : 'none';
+				}
 			}
-		</script>
-			<?php
+			";
+			wp_add_inline_script( 'admin-widgets', $script );
 		}
 	);
 }

@@ -9,6 +9,6 @@ if ( empty( $item['footer_label'] ) ) {
 	return;
 }
 ?>
-<div class="tv-fc-footer">
-	<span class="tv-fc-footer-label"><?php echo esc_html( $item['footer_label'] ); ?></span>
+<div class="es-fc-footer">
+	<span class="es-fc-footer-label"><?php echo esc_html( $item['footer_label'] ); ?></span>
 </div>

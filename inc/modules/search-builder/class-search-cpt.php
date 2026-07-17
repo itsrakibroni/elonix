@@ -50,14 +50,14 @@ class Elonix_Search_CPT {
 			'show_ui'            => true,
 			'show_in_menu'       => 'elonix',
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'tv_search_template' ),
+			'rewrite'            => array( 'slug' => 'es_search_template' ),
 			'capability_type'    => 'post',
 			'has_archive'        => false,
 			'hierarchical'       => false,
 			'supports'           => array( 'title', 'editor' ),
 		);
 
-		register_post_type( 'tv_search_template', $args );
+		register_post_type( 'es_search_template', $args );
 	}
 
 	/**
@@ -68,8 +68,8 @@ class Elonix_Search_CPT {
 		if ( ! is_array( $cpts ) ) {
 			$cpts = array( 'post', 'page' );
 		}
-		if ( ! in_array( 'tv_search_template', $cpts, true ) ) {
-			$cpts[] = 'tv_search_template';
+		if ( ! in_array( 'es_search_template', $cpts, true ) ) {
+			$cpts[] = 'es_search_template';
 			update_option( 'elementor_cpt_support', $cpts );
 		}
 	}

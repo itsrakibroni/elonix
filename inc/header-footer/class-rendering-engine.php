@@ -68,19 +68,19 @@ class Elonix_Rendering_Engine {
 		$is_404_template = $builder && $builder->router && method_exists( $builder->router, 'should_render_404_template' ) && $builder->router->should_render_404_template();
 
 		if ( 'header' === $location ) {
-			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'tv_404_show_header' ) ?? 'yes' ) ) {
+			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_header' ) ?? 'yes' ) ) {
 				return true;
 			}
-			$header_id = \Elonix_Assignment_Engine::instance()->get_matching_template( 'tv_header' );
+			$header_id = \Elonix_Assignment_Engine::instance()->get_matching_template( 'es_header' );
 			if ( $header_id ) {
 				$this->render_elementor_content( $header_id );
 				return true;
 			}
 		} elseif ( 'footer' === $location ) {
-			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'tv_404_show_footer' ) ?? 'yes' ) ) {
+			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_footer' ) ?? 'yes' ) ) {
 				return true;
 			}
-			$footer_id = \Elonix_Assignment_Engine::instance()->get_matching_template( 'tv_footer' );
+			$footer_id = \Elonix_Assignment_Engine::instance()->get_matching_template( 'es_footer' );
 			if ( $footer_id ) {
 				$this->render_elementor_content( $footer_id );
 				return true;
@@ -103,9 +103,9 @@ class Elonix_Rendering_Engine {
 
 		// Support for Layout Template Preview Changes mode
 		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['tv_preview'] ) ) {
+		if ( isset( $_GET['es_preview'] ) ) {
 			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$preview_id = intval( wp_unslash( $_GET['tv_preview'] ) );
+			$preview_id = intval( wp_unslash( $_GET['es_preview'] ) );
 			if ( $preview_id ) {
 				$css_file = new \Elementor\Core\Files\CSS\Post( $preview_id );
 				$css_file->enqueue();
@@ -114,7 +114,7 @@ class Elonix_Rendering_Engine {
 				$this->enqueue_template_widget_styles( $preview_id );
 
 				$post_type = get_post_type( $preview_id );
-				if ( 'tv_header' === $post_type && class_exists( 'Elonix_Toolkit_Assets_Manager' ) ) {
+				if ( 'es_header' === $post_type && class_exists( 'Elonix_Toolkit_Assets_Manager' ) ) {
 					Elonix_Toolkit_Assets_Manager::enqueue_module_assets( 'header_builder' );
 				}
 				return;
@@ -122,7 +122,7 @@ class Elonix_Rendering_Engine {
 		}
 
 		// Enqueue Header CSS
-		$header_id = $this->display_conditions->get_active_template_id( 'tv_header' );
+		$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
 		if ( $header_id ) {
 			$css_file = new \Elementor\Core\Files\CSS\Post( $header_id );
 			$css_file->enqueue();
@@ -137,7 +137,7 @@ class Elonix_Rendering_Engine {
 		}
 
 		// Enqueue Footer CSS
-		$footer_id = $this->display_conditions->get_active_template_id( 'tv_footer' );
+		$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
 		if ( $footer_id ) {
 			$css_file = new \Elementor\Core\Files\CSS\Post( $footer_id );
 			$css_file->enqueue();
@@ -187,7 +187,7 @@ class Elonix_Rendering_Engine {
 			if ( isset( $element['elType'] ) ) {
 				if ( 'widget' === $element['elType'] && isset( $element['widgetType'] ) ) {
 					$widget_type = $element['widgetType'];
-					if ( 0 === strpos( $widget_type, 'tv-' ) ) {
+					if ( 0 === strpos( $widget_type, 'es-' ) ) {
 						$handle = "elonix-widget-{$widget_type}";
 						if ( wp_style_is( $handle, 'registered' ) ) {
 							wp_enqueue_style( $handle );
@@ -219,10 +219,10 @@ class Elonix_Rendering_Engine {
 		self::$rendered_templates[] = $template_id;
 
 		$post_type = get_post_type( $template_id );
-		$is_header = ( 'tv_header' === $post_type );
+		$is_header = ( 'es_header' === $post_type );
 
 		if ( $is_header ) {
-			echo '<header class="tv-site-header">';
+			echo '<header class="es-site-header">';
 		}
 
 		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
@@ -237,7 +237,7 @@ class Elonix_Rendering_Engine {
 	 * Render custom header contents.
 	 */
 	public function render_custom_header() {
-		$header_id = $this->display_conditions->get_active_template_id( 'tv_header' );
+		$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
 		if ( $header_id ) {
 			$this->render_elementor_content( $header_id );
 		}
@@ -247,7 +247,7 @@ class Elonix_Rendering_Engine {
 	 * Render custom footer contents.
 	 */
 	public function render_custom_footer() {
-		$footer_id = $this->display_conditions->get_active_template_id( 'tv_footer' );
+		$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
 		if ( $footer_id ) {
 			$this->render_elementor_content( $footer_id );
 		}
@@ -260,11 +260,11 @@ class Elonix_Rendering_Engine {
 		$builder         = class_exists( 'Elonix_Toolkit_404_Builder' ) ? Elonix_Toolkit_404_Builder::instance() : null;
 		$is_404_template = $builder && $builder->router && method_exists( $builder->router, 'should_render_404_template' ) && $builder->router->should_render_404_template();
 
-		$show_header = ! ( $is_404_template && 'no' === ( Elonix_Settings::get( 'tv_404_show_header' ) ?? 'yes' ) );
-		$show_footer = ! ( $is_404_template && 'no' === ( Elonix_Settings::get( 'tv_404_show_footer' ) ?? 'yes' ) );
+		$show_header = ! ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_header' ) ?? 'yes' ) );
+		$show_footer = ! ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_footer' ) ?? 'yes' ) );
 
-		$header_id = $this->display_conditions->get_active_template_id( 'tv_header' );
-		$footer_id = $this->display_conditions->get_active_template_id( 'tv_footer' );
+		$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
+		$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
 
 		// If no custom templates, fall back to theme defaults
 		if ( ! $header_id && ! $footer_id ) {
@@ -365,10 +365,10 @@ class Elonix_Rendering_Engine {
 			$slug = $block['attrs']['slug'];
 
 			if ( 'header' === $slug ) {
-				if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'tv_404_show_header' ) ?? 'yes' ) ) {
+				if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_header' ) ?? 'yes' ) ) {
 					return '';
 				}
-				$header_id = $this->display_conditions->get_active_template_id( 'tv_header' );
+				$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
 				if ( $header_id ) {
 					ob_start();
 					$this->render_elementor_content( $header_id );
@@ -377,10 +377,10 @@ class Elonix_Rendering_Engine {
 			}
 
 			if ( 'footer' === $slug ) {
-				if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'tv_404_show_footer' ) ?? 'yes' ) ) {
+				if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_footer' ) ?? 'yes' ) ) {
 					return '';
 				}
-				$footer_id = $this->display_conditions->get_active_template_id( 'tv_footer' );
+				$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
 				if ( $footer_id ) {
 					ob_start();
 					$this->render_elementor_content( $footer_id );
@@ -397,7 +397,7 @@ class Elonix_Rendering_Engine {
 	 * This prevents any "Sorry, content area was not found" errors by bypassing the theme's singular layout.
 	 */
 	public function override_editor_canvas( $template ) {
-		$layout_types = array( 'tv_header', 'tv_footer' );
+		$layout_types = array( 'es_header', 'es_footer' );
 		if ( is_singular( $layout_types ) ) {
 			if ( defined( 'ELEMENTOR_PATH' ) ) {
 				$canvas = ELEMENTOR_PATH . 'modules/page-templates/templates/canvas.php';
@@ -422,19 +422,19 @@ class Elonix_Rendering_Engine {
 		$is_404_template = $builder && $builder->router && method_exists( $builder->router, 'should_render_404_template' ) && $builder->router->should_render_404_template();
 
 		if ( 'header' === $location ) {
-			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'tv_404_show_header' ) ?? 'yes' ) ) {
+			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_header' ) ?? 'yes' ) ) {
 				return true;
 			}
-			$header_id = $this->display_conditions->get_active_template_id( 'tv_header' );
+			$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
 			if ( $header_id ) {
 				$this->render_elementor_content( $header_id );
 				return true;
 			}
 		} elseif ( 'footer' === $location ) {
-			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'tv_404_show_footer' ) ?? 'yes' ) ) {
+			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_footer' ) ?? 'yes' ) ) {
 				return true;
 			}
-			$footer_id = $this->display_conditions->get_active_template_id( 'tv_footer' );
+			$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
 			if ( $footer_id ) {
 				$this->render_elementor_content( $footer_id );
 				return true;

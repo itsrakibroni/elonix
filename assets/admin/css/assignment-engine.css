@@ -1,4 +1,4 @@
-.tv-assignment-drawer {
+.es-assignment-drawer {
 	position: fixed;
 	top: 0;
 	right: -450px;
@@ -12,11 +12,11 @@
 	flex-direction: column;
 }
 
-.tv-assignment-drawer.tv-drawer-open {
+.es-assignment-drawer.es-drawer-open {
 	right: 0;
 }
 
-.tv-drawer-overlay {
+.es-drawer-overlay {
 	position: fixed;
 	top: 0;
 	left: 0;
@@ -27,7 +27,7 @@
 	display: none;
 }
 
-.tv-drawer-content {
+.es-drawer-content {
 	position: relative;
 	z-index: 1;
 	display: flex;
@@ -35,11 +35,11 @@
 	height: 100%;
 }
 
-.tv-assignment-drawer.tv-drawer-open .tv-drawer-overlay {
+.es-assignment-drawer.es-drawer-open .es-drawer-overlay {
 	display: block;
 }
 
-.tv-drawer-header {
+.es-drawer-header {
 	padding: 15px 20px;
 	border-bottom: 1px solid #ddd;
 	display: flex;
@@ -48,12 +48,12 @@
 	background: #f8f9f9;
 }
 
-.tv-drawer-header h2 {
+.es-drawer-header h2 {
 	margin: 0;
 	font-size: 16px;
 }
 
-.tv-drawer-close {
+.es-drawer-close {
 	background: none;
 	border: none;
 	font-size: 24px;
@@ -61,25 +61,25 @@
 	color: #666;
 }
 
-.tv-drawer-body {
+.es-drawer-body {
 	flex: 1;
 	padding: 20px;
 	overflow-y: auto;
     background: #fff;
 }
 
-.tv-drawer-footer {
+.es-drawer-footer {
 	padding: 15px 20px;
 	border-top: 1px solid #ddd;
 	background: #f8f9f9;
 	text-align: right;
 }
 
-.tv-assignment-rules ul {
+.es-assignment-rules ul {
 	margin: 10px 0 15px 0;
 }
 
-.tv-assignment-rules li {
+.es-assignment-rules li {
 	background: #f0f0f1;
 	padding: 8px 12px;
 	border-radius: 4px;
@@ -89,7 +89,7 @@
 	margin-bottom: 5px;
 }
 
-.tv-remove-rule {
+.es-remove-rule {
 	background: none;
 	border: none;
 	color: #d63638;
@@ -97,17 +97,17 @@
 	font-weight: bold;
 }
 
-.tv-status-badge {
+.es-status-badge {
 	display: inline-block;
 	padding: 3px 8px;
 	border-radius: 12px;
 	font-size: 11px;
 	font-weight: 600;
 }
-.tv-status-active { background: #e5f5fa; color: #007cba; }
-.tv-status-inactive { background: #f0f0f1; color: #50575e; }
+.es-status-active { background: #e5f5fa; color: #007cba; }
+.es-status-inactive { background: #f0f0f1; color: #50575e; }
 
-.tv-assignment-tag {
+.es-assignment-tag {
 	display: inline-block;
 	background: #f0f0f1;
 	padding: 2px 6px;

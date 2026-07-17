@@ -48,32 +48,3 @@ require_once ELONIX_ACC_PATH . 'inc/widgets/contact-help.php';
  */
 require_once ELONIX_ACC_PATH . 'inc/widgets/service-download.php';
 
-/**
- * Include: Search Component
- * Manages custom search bar widget for headers or sidebars.
- */
-require_once ELONIX_ACC_PATH . 'inc/components/search.php';
-
-/**
- * Include: Sidebar Controls Component
- * Adds advanced sidebar options and widget styling controls.
- */
-require_once ELONIX_ACC_PATH . 'inc/components/sidebar-controls.php';
-
-/**
- * Include: Header Sticky Controls Component
- * Adds advanced Header Sticky options and widget styling controls.
- */
-require_once ELONIX_ACC_PATH . 'inc/components/header-sticky.php';
-
-/**
- * Include: MobileMenu Controls Component
- * Adds advanced MobileMenu options and widget styling controls.
- */
-require_once ELONIX_ACC_PATH . 'inc/components/mobile-menu.php';
-
-/**
- * Include: SocailLinks Controls Component
- * Adds advanced SocailLinks options and widget styling controls.
- */
-require_once ELONIX_ACC_PATH . 'inc/components/social-links.php';

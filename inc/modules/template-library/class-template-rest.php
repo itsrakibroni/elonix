@@ -144,7 +144,7 @@ class REST {
 		$catalog = Cache::instance()->get_catalog();
 		
 		$user_id = get_current_user_id();
-		$history = get_user_meta( $user_id, 'tv_imported_templates', true );
+		$history = get_user_meta( $user_id, 'es_imported_templates', true );
 		if ( ! is_array( $history ) ) {
 			$history = array();
 		}
@@ -242,14 +242,14 @@ class REST {
 		$conflicts = array();
 		
 		if ( 'header' === $type || 'footer' === $type ) {
-			$post_type = 'tv_' . $type;
+			$post_type = 'es_' . $type;
 			$query = new \WP_Query( array(
 				'post_type'      => $post_type,
 				'post_status'    => 'publish',
 				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required to find conflicting active headers or footers.
 				'meta_query'     => array(
 					array(
-						'key'     => '_tv_target_include_locations',
+						'key'     => '_es_target_include_locations',
 						'compare' => 'EXISTS',
 					)
 				),

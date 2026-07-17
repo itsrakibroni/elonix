@@ -28,16 +28,16 @@ class Elonix_Toolkit_404_Analytics {
 		$ip_hash    = md5( isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '127.0.0.1' );
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$duplicate = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM {$wpdb->prefix}tv_404_logs WHERE url = %s AND ip_hash = %s AND referrer = %s AND updated_at > DATE_SUB(NOW(), INTERVAL 1 DAY)", $url, $ip_hash, $referrer ) );
+		$duplicate = $wpdb->get_row( $wpdb->prepare( "SELECT id FROM {$wpdb->prefix}es_404_logs WHERE url = %s AND ip_hash = %s AND referrer = %s AND updated_at > DATE_SUB(NOW(), INTERVAL 1 DAY)", $url, $ip_hash, $referrer ) );
 
 		if ( $duplicate ) {
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-			$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}tv_404_logs SET hits = hits + 1, updated_at = CURRENT_TIMESTAMP WHERE id = %d", absint( $duplicate->id ) ) );
+			$wpdb->query( $wpdb->prepare( "UPDATE {$wpdb->prefix}es_404_logs SET hits = hits + 1, updated_at = CURRENT_TIMESTAMP WHERE id = %d", absint( $duplicate->id ) ) );
 		} else {
 			// Insert new transaction row
 			// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery
 			$wpdb->insert(
-				$wpdb->prefix . 'tv_404_logs',
+				$wpdb->prefix . 'es_404_logs',
 				array(
 					'url'        => $url,
 					'referrer'   => $referrer,
@@ -61,7 +61,7 @@ class Elonix_Toolkit_404_Analytics {
 	public function get_top_urls( $limit = 10 ) {
 		global $wpdb;
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		return $wpdb->get_results( $wpdb->prepare( "SELECT url, SUM(hits) as total_hits, MAX(updated_at) as last_seen FROM {$wpdb->prefix}tv_404_logs GROUP BY url ORDER BY total_hits DESC LIMIT %d", absint( $limit ) ) );
+		return $wpdb->get_results( $wpdb->prepare( "SELECT url, SUM(hits) as total_hits, MAX(updated_at) as last_seen FROM {$wpdb->prefix}es_404_logs GROUP BY url ORDER BY total_hits DESC LIMIT %d", absint( $limit ) ) );
 	}
 
 	/**
@@ -73,7 +73,7 @@ class Elonix_Toolkit_404_Analytics {
 	public function get_recent_logs( $limit = 10 ) {
 		global $wpdb;
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		return $wpdb->get_results( $wpdb->prepare( "SELECT url, referrer, user_agent, hits, updated_at FROM {$wpdb->prefix}tv_404_logs ORDER BY updated_at DESC LIMIT %d", absint( $limit ) ) );
+		return $wpdb->get_results( $wpdb->prepare( "SELECT url, referrer, user_agent, hits, updated_at FROM {$wpdb->prefix}es_404_logs ORDER BY updated_at DESC LIMIT %d", absint( $limit ) ) );
 	}
 
 	/**
@@ -85,7 +85,7 @@ class Elonix_Toolkit_404_Analytics {
 	public function get_referrer_sources( $limit = 10 ) {
 		global $wpdb;
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		return $wpdb->get_results( $wpdb->prepare( "SELECT referrer, SUM(hits) as total_hits FROM {$wpdb->prefix}tv_404_logs WHERE referrer != '' AND referrer IS NOT NULL GROUP BY referrer ORDER BY total_hits DESC LIMIT %d", absint( $limit ) ) );
+		return $wpdb->get_results( $wpdb->prepare( "SELECT referrer, SUM(hits) as total_hits FROM {$wpdb->prefix}es_404_logs WHERE referrer != '' AND referrer IS NOT NULL GROUP BY referrer ORDER BY total_hits DESC LIMIT %d", absint( $limit ) ) );
 	}
 
 	/**
@@ -98,7 +98,7 @@ class Elonix_Toolkit_404_Analytics {
 	public function get_search_terms( $limit = 10 ) {
 		global $wpdb;
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$raw_logs = $wpdb->get_results( $wpdb->prepare( "SELECT url, referrer FROM {$wpdb->prefix}tv_404_logs WHERE url LIKE %s OR referrer LIKE %s OR url LIKE %s OR referrer LIKE %s", '%' . $wpdb->esc_like('s=') . '%', '%' . $wpdb->esc_like('s=') . '%', '%' . $wpdb->esc_like('q=') . '%', '%' . $wpdb->esc_like('q=') . '%' ) );
+		$raw_logs = $wpdb->get_results( $wpdb->prepare( "SELECT url, referrer FROM {$wpdb->prefix}es_404_logs WHERE url LIKE %s OR referrer LIKE %s OR url LIKE %s OR referrer LIKE %s", '%' . $wpdb->esc_like('s=') . '%', '%' . $wpdb->esc_like('s=') . '%', '%' . $wpdb->esc_like('q=') . '%', '%' . $wpdb->esc_like('q=') . '%' ) );
 
 		$keywords = array();
 		foreach ( $raw_logs as $log ) {
@@ -153,7 +153,7 @@ class Elonix_Toolkit_404_Analytics {
 		$site_domain = rtrim( $site_domain, '/' );
 
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		return $wpdb->get_results( $wpdb->prepare( "SELECT url, referrer, SUM(hits) as total_hits, MAX(updated_at) as last_seen FROM {$wpdb->prefix}tv_404_logs WHERE referrer LIKE %s GROUP BY url, referrer ORDER BY total_hits DESC LIMIT %d", '%' . $wpdb->esc_like( $site_domain ) . '%', absint( $limit ) ) );
+		return $wpdb->get_results( $wpdb->prepare( "SELECT url, referrer, SUM(hits) as total_hits, MAX(updated_at) as last_seen FROM {$wpdb->prefix}es_404_logs WHERE referrer LIKE %s GROUP BY url, referrer ORDER BY total_hits DESC LIMIT %d", '%' . $wpdb->esc_like( $site_domain ) . '%', absint( $limit ) ) );
 	}
 
 	/**
@@ -162,6 +162,6 @@ class Elonix_Toolkit_404_Analytics {
 	public function clear_logs() {
 		global $wpdb;
 		// phpcs:ignore WordPress.DB.DirectDatabaseQuery.DirectQuery, WordPress.DB.DirectDatabaseQuery.NoCaching
-		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}tv_404_logs" );
+		$wpdb->query( "TRUNCATE TABLE {$wpdb->prefix}es_404_logs" );
 	}
 }

@@ -28,7 +28,7 @@
         initTemplateLibrary();
         updateCountBadges();
         
-        $(document).on('click', '.tv-action-trash, .tv-action-confirm', function(e) {
+        $(document).on('click', '.es-action-trash, .es-action-confirm', function(e) {
             e.preventDefault();
             var href = $(this).attr('href');
             var msg = $(this).data('confirm') || 'Are you sure you want to perform this action?';
@@ -42,16 +42,16 @@
      * Show premium toast notification
      */
     function showToast(message, type = 'success') {
-        let $container = $('.tv-toast-container');
+        let $container = $('.es-toast-container');
         if (!$container.length) {
-            $container = $('<div class="tv-toast-container"></div>').appendTo('body');
+            $container = $('<div class="es-toast-container"></div>').appendTo('body');
         }
 
         const iconClass = type === 'success' ? 'dashicons-yes' : 'dashicons-warning';
         const $toast = $(`
-            <div class="tv-toast tv-toast-${type}">
+            <div class="es-toast es-toast-${type}">
                 <span class="dashicons ${iconClass}"></span>
-                <span class="tv-toast-message">${message}</span>
+                <span class="es-toast-message">${message}</span>
             </div>
         `);
 
@@ -75,7 +75,7 @@
      * Live Search Implementation for Cards
      */
     function initLiveSearch() {
-        const $searchInput = $('#tv-search-input');
+        const $searchInput = $('#es-search-input');
         if (!$searchInput.length) return;
 
         $searchInput.on('input', function() {
@@ -87,12 +87,12 @@
      * Status Filter Tabs Implementation
      */
     function initStatusFilters() {
-        const $filterTabs = $('.tv-filter-tab');
+        const $filterTabs = $('.es-filter-tab');
         if (!$filterTabs.length) return;
 
         $filterTabs.on('click', function(e) {
             // Ignore if on templates page
-            if ($('#tv-tpl-search').length) return;
+            if ($('#es-tpl-search').length) return;
 
             e.preventDefault();
             $filterTabs.removeClass('active');
@@ -105,10 +105,10 @@
      * Update filter count badges dynamically based on current DOM state
      */
     function updateCountBadges() {
-        const total = $('.tv-card-item').length;
+        const total = $('.es-card-item').length;
         if (total === 0) return;
 
-        const enabled = $('.tv-card-item .tv-toggle-input:checked').length;
+        const enabled = $('.es-card-item .es-toggle-input:checked').length;
         const disabled = total - enabled;
 
         $('.count-enabled').text(enabled);
@@ -119,19 +119,19 @@
      * Filter Cards based on search query and status tab
      */
     function filterCards() {
-        const query = $('#tv-search-input').val() ? $('#tv-search-input').val().toLowerCase().trim() : '';
-        const activeTab = $('.tv-filter-tab.active').data('filter') || 'all'; // all, enabled, disabled
-        const $cards = $('.tv-card-item');
+        const query = $('#es-search-input').val() ? $('#es-search-input').val().toLowerCase().trim() : '';
+        const activeTab = $('.es-filter-tab.active').data('filter') || 'all'; // all, enabled, disabled
+        const $cards = $('.es-card-item');
         let visibleCount = 0;
 
         $cards.each(function() {
             const $card = $(this);
-            const title = $card.find('.tv-card-title').text().toLowerCase();
-            const desc = $card.find('.tv-card-desc').text().toLowerCase();
+            const title = $card.find('.es-card-title').text().toLowerCase();
+            const desc = $card.find('.es-card-desc').text().toLowerCase();
             const keywordsAttr = $card.data('keywords') || '';
             const keywords = keywordsAttr.toString().toLowerCase();
             
-            const isEnabled = $card.find('.tv-toggle-input').is(':checked');
+            const isEnabled = $card.find('.es-toggle-input').is(':checked');
 
             // Search check
             const matchesSearch = title.includes(query) || desc.includes(query) || keywords.includes(query);
@@ -153,17 +153,17 @@
         });
 
         // Show/hide empty state
-        const $emptyState = $('.tv-empty-state');
+        const $emptyState = $('.es-empty-state');
         if (visibleCount === 0) {
             if (!$emptyState.length) {
                 const emptyHtml = `
-                    <div class="tv-empty-state">
+                    <div class="es-empty-state">
                         <span class="dashicons dashicons-search"></span>
                         <h3>No matches found</h3>
                         <p>Try refining your search terms or filters.</p>
                     </div>
                 `;
-                $('.tv-cards-grid').parent().append(emptyHtml);
+                $('.es-cards-grid').parent().append(emptyHtml);
             } else {
                 $emptyState.show();
             }
@@ -176,9 +176,9 @@
      * AJAX Toggle for single switch
      */
     function initAjaxToggles() {
-        $(document).on('change', '.tv-toggle-input', function() {
+        $(document).on('change', '.es-toggle-input', function() {
             const $input = $(this);
-            const $card = $input.closest('.tv-card-item');
+            const $card = $input.closest('.es-card-item');
             const type = $input.data('type'); // widget or module
             const slug = $input.data('slug');
             const isChecked = $input.is(':checked');
@@ -205,7 +205,7 @@
 
                     if (response.success) {
                         // Update status badge UI
-                        const $badge = $card.find('.tv-status-badge');
+                        const $badge = $card.find('.es-status-badge');
                         if (isChecked) {
                             $badge.removeClass('badge-inactive').addClass('badge-active').text('Active');
                             $card.removeClass('is-disabled');
@@ -240,7 +240,7 @@
      * AJAX Bulk Enable / Disable
      */
     function initBulkActions() {
-        const $bulkButtons = $('.tv-bulk-btn');
+        const $bulkButtons = $('.es-bulk-btn');
         if (!$bulkButtons.length) return;
 
         $bulkButtons.on('click', function(e) {
@@ -248,7 +248,7 @@
             const $btn = $(this);
             const type = $btn.data('type'); // widget or module
             const actionType = $btn.data('action'); // enable_all or disable_all
-            const $container = $('.tv-cards-grid');
+            const $container = $('.es-cards-grid');
 
             if ($btn.hasClass('is-loading')) return;
 
@@ -286,10 +286,10 @@
                         const statusToSet = actionType === 'enable_all';
                         
                         // Update UI toggles & classes
-                        $container.find('.tv-card-item').each(function() {
+                        $container.find('.es-card-item').each(function() {
                             const $card = $(this);
-                            const $input = $card.find('.tv-toggle-input');
-                            const $badge = $card.find('.tv-status-badge');
+                            const $input = $card.find('.es-toggle-input');
+                            const $badge = $card.find('.es-status-badge');
 
                             $input.prop('checked', statusToSet);
                             
@@ -361,19 +361,19 @@
      * Template Library Interaction
      */
     function initTemplateLibrary() {
-        const $tplSearch = $('#tv-tpl-search');
-        const $tplTabs = $('.tv-filter-tab');
-        const $tplCards = $('.tv-template-card');
+        const $tplSearch = $('#es-tpl-search');
+        const $tplTabs = $('.es-filter-tab');
+        const $tplCards = $('.es-template-card');
 
         if (!$tplSearch.length && !$tplCards.length) return;
 
         function filterTemplates() {
             const query = $tplSearch.val() ? $tplSearch.val().toLowerCase().trim() : '';
-            const activeTab = $('.tv-filter-tab.active').data('filter') || 'all';
+            const activeTab = $('.es-filter-tab.active').data('filter') || 'all';
 
             $tplCards.each(function() {
                 const $card = $(this);
-                const title = $card.find('.tv-template-title').text().toLowerCase();
+                const title = $card.find('.es-template-title').text().toLowerCase();
                 const type = $card.data('type') || ''; // page, section, header, footer
 
                 const matchesSearch = title.includes(query);

@@ -1,6 +1,6 @@
 /* Elonix Header Builder Front-end Styles */
 
-.tv-site-header {
+.es-site-header {
 	width: 100%;
 	display: block;
 	position: relative;
@@ -8,18 +8,18 @@
 }
 
 /* Admin Bar compatibility */
-body.admin-bar .tv-header-sticky,
-body.admin-bar .tv-site-header.tv-header-sticky,
-body.admin-bar .tv-site-header .elementor-sticky--active,
-body.admin-bar .tv-header-sticky .elementor-sticky--active {
+body.admin-bar .es-header-sticky,
+body.admin-bar .es-site-header.es-header-sticky,
+body.admin-bar .es-site-header .elementor-sticky--active,
+body.admin-bar .es-header-sticky .elementor-sticky--active {
 	top: 32px !important;
 }
 
 @media (max-width: 782px) {
-	body.admin-bar .tv-header-sticky,
-	body.admin-bar .tv-site-header.tv-header-sticky,
-	body.admin-bar .tv-site-header .elementor-sticky--active,
-	body.admin-bar .tv-header-sticky .elementor-sticky--active {
+	body.admin-bar .es-header-sticky,
+	body.admin-bar .es-site-header.es-header-sticky,
+	body.admin-bar .es-site-header .elementor-sticky--active,
+	body.admin-bar .es-header-sticky .elementor-sticky--active {
 		top: 46px !important;
 	}
 }

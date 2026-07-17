@@ -29,7 +29,7 @@ class SVG_Engine implements Loader_Engine_Interface {
 			// Ensure it's a URL and has SVG extension
 			$ext = pathinfo( wp_parse_url( $custom_image, PHP_URL_PATH ), PATHINFO_EXTENSION );
 			if ( 'svg' === $ext ) {
-				$transient_key = 'tv_sl_svg_' . md5( $custom_image . ( defined( 'ELONIX_VERSION' ) ? ELONIX_VERSION : '1.0' ) );
+				$transient_key = 'es_sl_svg_' . md5( $custom_image . ( defined( 'ELONIX_VERSION' ) ? ELONIX_VERSION : '1.0' ) );
 				$cached_svg    = get_transient( $transient_key );
 
 				if ( false !== $cached_svg ) {
@@ -114,7 +114,7 @@ class SVG_Engine implements Loader_Engine_Interface {
 
 					$clean_svg = wp_kses( $svg_content, $allowed_tags );
 					if ( trim( $clean_svg ) !== '' ) {
-						$markup = '<div class="tv-svg-loader" aria-hidden="true">' . $clean_svg . '</div>';
+						$markup = '<div class="es-svg-loader" aria-hidden="true">' . $clean_svg . '</div>';
 						set_transient( $transient_key, $markup, WEEK_IN_SECONDS );
 						return $markup;
 					}
@@ -123,6 +123,6 @@ class SVG_Engine implements Loader_Engine_Interface {
 		}
 
 		// Fallback to default inline SVG loader
-		return '<div class="tv-svg-loader" aria-hidden="true"><svg class="tv-circular-svg" viewBox="25 25 50 50"><circle class="tv-path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>';
+		return '<div class="es-svg-loader" aria-hidden="true"><svg class="es-circular-svg" viewBox="25 25 50 50"><circle class="es-path" cx="50" cy="50" r="20" fill="none" stroke-width="2" stroke-miterlimit="10"/></svg></div>';
 	}
 }

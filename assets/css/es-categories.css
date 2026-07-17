@@ -1,0 +1,588 @@
+/**
+ * Elonix Categories Widget Stylesheet (Refactored)
+ *
+ * Scoped neutralization, clean transitions, and layout compatibility
+ * for Simple List, Icon List, Grid, Card Grid, Masonry Grid, Overlay Card,
+ * Background Image Card, Horizontal Carousel, and Modern Glass Card.
+ */
+
+/* General Wrapper rules */
+.es-categories-wrapper {
+	width: 100%;
+	position: relative;
+	font-family: inherit;
+	box-sizing: border-box;
+	padding: 0;
+}
+
+.es-categories-wrapper * {
+	box-sizing: border-box;
+}
+
+/* 1. Standard CSS Grid system */
+.es-categories-grid-wrapper {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 20px;
+	width: 100%;
+}
+
+.es-categories-list-wrapper {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+/* 2. Common Card Structural elements */
+.es-cat-card {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	background-color: #fff;
+	border: 1px solid #f0f0f0;
+	border-radius: 8px;
+	padding: 20px;
+	overflow: hidden;
+	transition: border-color .2s ease, background-color .2s ease, box-shadow .2s ease;
+	min-height: 200px;
+}
+
+.es-cat-card-classic {
+	display: flex;
+	align-items: center;
+	padding: 10px 0;
+	border-bottom: 1px solid #f4f4f4;
+	transition: border-color .2s ease;
+}
+
+.es-cat-card-classic:last-child {
+	border-bottom: none;
+}
+
+.es-cat-card-body {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	justify-content: flex-start;
+	z-index: 2;
+	position: relative;
+	width: 100%;
+}
+
+.es-cat-card-header-row {
+	display: flex;
+	align-items: center;
+	gap: 10px;
+	margin-bottom: 8px;
+	width: 100%;
+}
+
+.es-cat-title {
+	margin: 0;
+	font-size: 16px;
+	font-weight: 600;
+	line-height: 1.4;
+	color: #333;
+}
+
+.es-cat-title-link {
+	color: inherit;
+	text-decoration: none !important;
+	transition: color .2s ease;
+}
+
+.es-cat-count {
+	font-size: 11px;
+	font-weight: 500;
+	padding: 3px 8px;
+	background-color: #f0f0f0;
+	color: #666;
+	border-radius: 12px;
+	margin-left: auto;
+}
+
+.es-cat-description {
+	margin: 0 0 12px 0;
+	font-size: 13px;
+	color: #666;
+	line-height: 1.5;
+}
+
+.es-cat-read-more {
+	display: inline-flex;
+	align-items: center;
+	font-size: 12px;
+	font-weight: 600;
+	color: #0073aa;
+	text-decoration: none !important;
+	transition: opacity .2s ease;
+	margin-top: auto;
+}
+
+.es-cat-read-more:hover {
+	opacity: 0.8;
+}
+
+/* Icons and Media styling */
+.es-cat-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #0073aa;
+	flex-shrink: 0;
+	transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, opacity 0.2s ease;
+}
+
+.es-cat-icon-above {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+}
+
+.es-cat-icon svg {
+	fill: currentColor;
+}
+
+.es-cat-image-wrapper {
+	position: relative;
+	width: 100%;
+	height: 120px;
+	overflow: hidden;
+	border-radius: 4px;
+	margin-bottom: 12px;
+	background-color: #f7f7f7;
+}
+
+.es-cat-image-wrapper img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	transition: opacity .2s ease;
+}
+
+.es-cat-card-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0);
+	transition: background-color .2s ease;
+	z-index: 1;
+}
+
+.es-cat-badge {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	font-size: 9px;
+	font-weight: 700;
+	color: #fff;
+	background-color: #d9534f;
+	padding: 2px 6px;
+	text-transform: uppercase;
+	border-radius: 2px;
+	z-index: 3;
+}
+
+/* ==========================================
+	LAYOUT STYLES
+	========================================== */
+
+/* 1. Simple List Layout */
+.es-categories-style-classic .es-cat-card-classic {
+	border-bottom: 1px solid #eee;
+}
+
+/* 2. Icon List Layout */
+.es-categories-style-icon_list .es-cat-card-classic {
+	display: flex;
+	gap: 12px;
+	border-bottom: 1px solid #eee;
+}
+
+.es-categories-style-icon_list .es-cat-icon {
+	font-size: 16px;
+	color: #444;
+}
+
+/* 3. Flat Grid Layout */
+.es-categories-style-grid .es-cat-card {
+	background: transparent;
+	border: none;
+	padding: 0;
+	min-height: auto;
+	box-shadow: none !important;
+}
+
+/* 4. Card Grid Layout */
+.es-categories-style-card_grid .es-cat-card {
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.04);
+}
+
+.es-categories-style-card_grid .es-cat-card:hover {
+	box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+}
+
+/* 5. Masonry Grid Layout */
+.es-categories-style-masonry .es-categories-grid-wrapper {
+	display: block;
+	column-count: 3;
+	column-gap: 20px;
+}
+
+.es-categories-style-masonry .es-cat-card {
+	display: inline-block;
+	width: 100%;
+	margin-bottom: 20px;
+	min-height: auto;
+}
+
+/* 6. Overlay Card Layout */
+.es-categories-style-overlay .es-cat-card {
+	padding: 0;
+	min-height: 250px;
+}
+
+.es-categories-style-overlay .es-cat-image-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	margin: 0;
+	border-radius: 0;
+}
+
+.es-categories-style-overlay .es-cat-card-body {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	width: 100%;
+	padding: 20px;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, rgba(0, 0, 0, 0.8) 100%);
+	color: #fff;
+	justify-content: flex-end;
+}
+
+.es-categories-style-overlay .es-cat-title {
+	color: #fff;
+}
+
+.es-categories-style-overlay .es-cat-description {
+	color: #ccc;
+}
+
+.es-categories-style-overlay .es-cat-card:hover .es-cat-card-overlay {
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+/* 7. Background Image Card Layout */
+.es-categories-style-background_card .es-cat-card {
+	background-size: cover;
+	background-position: center;
+	padding: 0;
+	min-height: 250px;
+}
+
+.es-categories-style-background_card .es-cat-card::before {
+	content: "";
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.2) 0%, rgba(0, 0, 0, 0.85) 100%);
+	z-index: 1;
+	transition: background-color .2s ease;
+}
+
+.es-categories-style-background_card .es-cat-card:hover::before {
+	background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.9) 100%);
+}
+
+.es-categories-style-background_card .es-cat-card-body {
+	padding: 25px;
+	color: #fff;
+	justify-content: flex-end;
+}
+
+.es-categories-style-background_card .es-cat-title {
+	color: #fff;
+}
+
+.es-categories-style-background_card .es-cat-description {
+	color: #ddd;
+}
+
+/* 9. Modern Glass Card Layout */
+.es-categories-style-glass_card .es-cat-card {
+	background: rgba(255, 255, 255, 0.08);
+	border: 1px solid rgba(255, 255, 255, 0.15);
+	backdrop-filter: blur(10px);
+	-webkit-backdrop-filter: blur(10px);
+	box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.07);
+}
+
+.es-categories-style-glass_card .es-cat-card:hover {
+	background: rgba(255, 255, 255, 0.12);
+	border-color: rgba(255, 255, 255, 0.3);
+}
+
+/* ==========================================
+	CAROUSEL WIDGETS (SWIPER)
+	========================================== */
+
+.es-categories-style-carousel .swiper-container {
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+
+.es-categories-style-carousel .swiper-wrapper {
+	display: flex;
+}
+
+.es-categories-style-carousel .swiper-slide {
+	flex-shrink: 0;
+	height: 100%;
+	position: relative;
+}
+
+/* Arrows controls styling */
+.es-carousel-arrow {
+	position: absolute;
+	top: 50%;
+	z-index: 10;
+	width: 40px;
+	height: 40px;
+	background-color: #fff;
+	border: 1px solid #eee;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	cursor: pointer;
+	color: #333;
+	transition: all 0.2s ease;
+}
+
+.es-carousel-arrow:after {
+	font-size: 15px;
+	font-family: swiper-icons;
+}
+
+.es-carousel-arrow.swiper-button-prev {
+	left: 10px;
+}
+.es-carousel-arrow.swiper-button-next {
+	right: 10px;
+}
+
+.es-carousel-arrow.swiper-button-prev:after {
+	content: "prev";
+}
+.es-carousel-arrow.swiper-button-next:after {
+	content: "next";
+}
+
+.es-carousel-arrow:hover {
+	background-color: #0073aa;
+	color: #fff;
+	border-color: #0073aa;
+}
+
+/* Circle / Square / Minimal arrow overrides */
+.es-arrow-circle {
+	border-radius: 50%;
+}
+
+.es-arrow-square {
+	border-radius: 4px;
+}
+
+.es-arrow-minimal {
+	background: transparent !important;
+	border: none !important;
+	box-shadow: none !important;
+}
+
+/* Pagination styles overrides */
+.es-carousel-pagination {
+	position: absolute;
+	bottom: 10px !important;
+	left: 0;
+	width: 100%;
+	text-align: center;
+	z-index: 10;
+}
+
+.es-carousel-pagination .swiper-pagination-bullet-active {
+	background-color: #0073aa;
+}
+
+/* ==========================================
+	NESTED TAXONOMY TREE & ACCORDIONS
+	========================================== */
+
+.es-cat-children-list {
+	list-style: none;
+	margin: 10px 0 0 0;
+	padding: 0 0 0 15px;
+	border-left: 1px dashed #ddd;
+}
+
+.es-cat-child-item {
+	margin-bottom: 6px;
+}
+
+.es-cat-child-item:last-child {
+	margin-bottom: 0;
+}
+
+.es-cat-child-link {
+	font-size: 12px;
+	color: #555;
+	text-decoration: none !important;
+	transition: color 0.2s ease;
+}
+
+.es-cat-child-link:hover {
+	color: #0073aa;
+}
+
+.es-cat-children-hidden {
+	display: none !important;
+}
+
+.es-cat-toggle-btn {
+	background: transparent;
+	border: none;
+	cursor: pointer;
+	padding: 4px;
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	color: #888;
+	outline: none;
+	transition: color 0.2s ease;
+}
+
+.es-cat-toggle-btn svg {
+	fill: currentColor;
+}
+
+/* ==========================================
+	RESPONSIVE OVERRIDES
+	========================================== */
+
+@media (max-width: 991px) {
+	.es-categories-grid-wrapper {
+	grid-template-columns: repeat(2, 1fr) !important;
+	}
+	.es-categories-style-masonry .es-categories-grid-wrapper {
+	column-count: 2 !important;
+	}
+}
+
+@media (max-width: 575px) {
+	.es-categories-grid-wrapper {
+	grid-template-columns: 1fr !important;
+	}
+	.es-categories-style-masonry .es-categories-grid-wrapper {
+	column-count: 1 !important;
+	}
+}
+
+/* Parent Category Meta Labels */
+.es-cat-parent-label {
+	font-size: 11px;
+	color: #999;
+	margin-left: 5px;
+}
+.es-cat-parent-link {
+	color: #0073aa;
+	text-decoration: none !important;
+}
+.es-cat-parent-link:hover {
+	text-decoration: underline !important;
+}
+
+/* ==========================================
+	PHASE 2.1 STYLING UPGRADES
+	========================================== */
+
+/* 1. Thumbnail Image Transitions */
+.es-cat-image-wrapper img {
+	transition: opacity 0.2s ease !important;
+}
+
+/* 2. Title Transitions */
+.es-cat-title a {
+	transition: color 0.2s ease;
+}
+
+/* 4. Category Title Gradient Text */
+.es-title-gradient-active {
+	background-clip: text !important;
+	-webkit-background-clip: text !important;
+	-webkit-text-fill-color: transparent !important;
+}
+
+/* ==========================================
+	THEME BLEED NEUTRALIZATION (SCOPED RESETS)
+	========================================== */
+
+/* 1. Neutralize list container margins, padding, indent, and list properties */
+.es-categories,
+.es-categories ul,
+.es-categories-list,
+.es-categories-list ul,
+.es-categories-tree,
+.es-categories-tree ul {
+	list-style: none !important;
+	list-style-type: none !important;
+	list-style-image: none !important;
+	margin: 0 !important;
+	padding: 0 !important;
+	text-indent: 0 !important;
+}
+
+/* 2. Neutralize list markers on item tags (allow padding/margin/background/border styling via Elementor) */
+.es-categories li,
+.es-categories-list li,
+.es-categories-tree li,
+.es-cat-item,
+.es-cat-child-item {
+	list-style: none !important;
+	list-style-type: none !important;
+	list-style-image: none !important;
+	text-indent: 0 !important;
+}
+
+/* 3. Remove all theme-injected pseudo-element indicators, arrows, and bullets */
+.es-categories li::before,
+.es-categories li::after,
+.es-categories-list li::before,
+.es-categories-list li::after,
+.es-categories-tree li::before,
+.es-categories-tree li::after,
+.es-categories a::before,
+.es-categories a::after,
+.es-categories-list a::before,
+.es-categories-list a::after,
+.es-categories-tree a::before,
+.es-categories-tree a::after,
+.es-cat-item::before,
+.es-cat-item::after,
+.es-cat-child-item::before,
+.es-cat-child-item::after {
+	content: none !important;
+	display: none !important;
+	background: none !important;
+	width: auto !important;
+	height: auto !important;
+	position: static !important;
+}

@@ -1,0 +1,126 @@
+/* Fix Elementor Flex Container (e-con) Swiper stretching bug */
+.elementor-widget-es-feature-cards {
+	min-width: 0;
+}
+
+.elonix-feature-cards {
+	--es-fc-gap-column: 30px;
+	--es-fc-gap-row: 30px;
+	--es-fc-radius: 12px;
+	--es-fc-padding: 30px;
+	--es-fc-border: none;
+	--es-fc-shadow: 0 4px 15px rgba(0,0,0,0.05);
+	--es-fc-shadow-hover: 0 10px 30px rgba(0,0,0,0.08);
+	--es-fc-bg: #ffffff;
+	--es-fc-bg-hover: #ffffff;
+	--es-fc-transition: all 0.3s ease-in-out;
+	--es-fc-icon-size: 50px;
+}
+
+.elonix-feature-cards .es-fc-carousel {
+	width: 100%;
+	min-width: 0;
+}
+
+.elonix-feature-cards .es-fc-grid {
+	display: grid;
+	grid-template-columns: repeat(var(--es-fc-columns, 3), 1fr);
+	column-gap: var(--es-fc-gap-column);
+	row-gap: var(--es-fc-gap-row);
+}
+
+.elonix-feature-cards .es-fc-carousel .swiper-slide {
+	height: auto;
+}
+
+.es-fc-card {
+	background: var(--es-fc-bg);
+	border-radius: var(--es-fc-radius);
+	border: var(--es-fc-border);
+	box-shadow: var(--es-fc-shadow);
+	transition: var(--es-fc-transition);
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	overflow: hidden;
+}
+
+.es-fc-card:hover {
+	background: var(--es-fc-bg-hover);
+	box-shadow: var(--es-fc-shadow-hover);
+}
+
+.es-fc-card-inner {
+	padding: var(--es-fc-padding);
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+}
+
+.es-fc-card-link-wrapper {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 10;
+}
+
+.es-fc-card-link-wrapper ~ .es-fc-card-inner .es-fc-button,
+.es-fc-card-link-wrapper ~ .es-fc-card-inner a {
+	position: relative;
+	z-index: 20;
+}
+
+/* Hover Effects */
+.es-hover-lift .es-fc-card:hover {
+	transform: translateY(-10px);
+	will-change: transform;
+}
+.es-hover-scale .es-fc-card:hover {
+	transform: scale(1.03);
+	will-change: transform;
+}
+.es-hover-glow .es-fc-card:hover {
+	box-shadow: 0 0 20px rgba(0, 123, 255, 0.5);
+}
+
+/* Base Styles */
+.es-fc-icon {
+	font-size: var(--es-fc-icon-size);
+	line-height: 1;
+	transition: var(--es-fc-transition);
+}
+.es-fc-icon svg {
+	width: var(--es-fc-icon-size);
+	height: var(--es-fc-icon-size);
+}
+
+.es-fc-title {
+	margin: 15px 0 10px;
+}
+
+.es-fc-badge {
+	position: absolute;
+	top: 15px;
+	right: 15px;
+	background: var(--e-global-color-accent);
+	color: #fff;
+	padding: 4px 12px;
+	border-radius: 20px;
+	font-size: 12px;
+	font-weight: 600;
+	z-index: 5;
+}
+
+.es-fc-rating-stars {
+	color: #ffb800;
+	margin-bottom: 10px;
+}
+
+/* Carousel Additions */
+.elonix-feature-cards .swiper-pagination {
+	position: static;
+	margin-top: var(--es-fc-gap-row);
+}

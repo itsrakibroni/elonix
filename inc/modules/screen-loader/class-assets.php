@@ -40,39 +40,39 @@ class Assets {
 		// For simplicity, we just use a CSS custom property.
 
 		?>
-		<style id="tv-screen-loader-critical-css">
+		<style id="es-screen-loader-critical-css">
 			:root {
-				--tv-loader-bg: <?php echo esc_html( $bg_color ); ?>;
-				--tv-loader-opacity: <?php echo esc_html( $opacity ); ?>;
-				--tv-loader-color: <?php echo esc_html( $primary ); ?>;
-				--tv-loader-secondary: <?php echo esc_html( $secondary ); ?>;
-				--tv-loader-size: <?php echo esc_html( $size ); ?>;
-				--tv-loader-speed: <?php echo esc_html( $speed ); ?>;
-				--tv-loader-zindex: <?php echo esc_html( $zindex ); ?>;
-				--tv-loader-ring-width: 4px;
-				--tv-loader-shadow: 0 0 10px rgba(0,0,0,0.2);
+				--es-loader-bg: <?php echo esc_html( $bg_color ); ?>;
+				--es-loader-opacity: <?php echo esc_html( $opacity ); ?>;
+				--es-loader-color: <?php echo esc_html( $primary ); ?>;
+				--es-loader-secondary: <?php echo esc_html( $secondary ); ?>;
+				--es-loader-size: <?php echo esc_html( $size ); ?>;
+				--es-loader-speed: <?php echo esc_html( $speed ); ?>;
+				--es-loader-zindex: <?php echo esc_html( $zindex ); ?>;
+				--es-loader-ring-width: 4px;
+				--es-loader-shadow: 0 0 10px rgba(0,0,0,0.2);
 			}
 
 			@media (max-width: 768px) {
 				:root {
-					--tv-loader-size: 120px;
+					--es-loader-size: 120px;
 				}
 			}
 
 			/* Core Screen Loader Critical CSS */
-			body.tv-loading-active {
+			body.es-loading-active {
 				overflow: hidden !important;
 				height: 100vh !important;
 			}
-			.tv-screen-loader-wrapper {
+			.es-screen-loader-wrapper {
 				position: fixed;
 				top: 0;
 				left: 0;
 				width: 100vw;
 				height: 100vh;
 				background-color: rgba(0,0,0,0); /* Fallback */
-				background-color: var(--tv-loader-bg);
-				z-index: var(--tv-loader-zindex);
+				background-color: var(--es-loader-bg);
+				z-index: var(--es-loader-zindex);
 				display: flex;
 				justify-content: center;
 				align-items: center;
@@ -80,49 +80,49 @@ class Assets {
 			}
 			
 			/* Exit Animations */
-			.tv-loader--fade.tv-loader-out {
+			.es-loader--fade.es-loader-out {
 				opacity: 0 !important;
 				visibility: hidden !important;
 			}
-			.tv-loader--slide-up.tv-loader-out {
+			.es-loader--slide-up.es-loader-out {
 				transform: translateY(-100%) !important;
 				opacity: 0 !important;
 				visibility: hidden !important;
 			}
-			.tv-loader--slide-down.tv-loader-out {
+			.es-loader--slide-down.es-loader-out {
 				transform: translateY(100%) !important;
 				opacity: 0 !important;
 				visibility: hidden !important;
 			}
 			
 			/* Apply opacity via pseudo if user selected < 1 */
-			.tv-screen-loader-wrapper::before {
+			.es-screen-loader-wrapper::before {
 				content: '';
 				position: absolute;
 				top: 0;
 				left: 0;
 				width: 100%;
 				height: 100%;
-				background-color: var(--tv-loader-bg);
-				opacity: var(--tv-loader-opacity);
+				background-color: var(--es-loader-bg);
+				opacity: var(--es-loader-opacity);
 				z-index: -1;
 			}
 			
 			/* Instant hiding for sessionStorage / Early Destruction */
-			html.tv-loader-hidden .tv-screen-loader-wrapper {
+			html.es-loader-hidden .es-screen-loader-wrapper {
 				display: none !important;
 				opacity: 0 !important;
 				visibility: hidden !important;
 			}
 
 			/* Classic Dual Ring (Default) */
-			.tv-screen-loader--default {
+			.es-screen-loader--default {
 				display: flex;
 				justify-content: center;
 				align-items: center;
 				position: relative;
 			}
-			.tv-screen-loader__close {
+			.es-screen-loader__close {
 				position: fixed;
 				top: 20px;
 				right: 20px;
@@ -131,30 +131,30 @@ class Assets {
 				background: transparent;
 				border: none;
 				cursor: pointer;
-				z-index: calc(var(--tv-loader-zindex) + 1);
+				z-index: calc(var(--es-loader-zindex) + 1);
 			}
-			.tv-screen-loader__close::before,
-			.tv-screen-loader__close::after {
+			.es-screen-loader__close::before,
+			.es-screen-loader__close::after {
 				content: '';
 				position: absolute;
 				top: 50%;
 				left: 50%;
 				width: 20px;
 				height: 2px;
-				background-color: var(--tv-loader-color);
+				background-color: var(--es-loader-color);
 			}
-			.tv-screen-loader__close::before {
+			.es-screen-loader__close::before {
 				transform: translate(-50%, -50%) rotate(45deg);
 			}
-			.tv-screen-loader__close::after {
+			.es-screen-loader__close::after {
 				transform: translate(-50%, -50%) rotate(-45deg);
 			}
-			.tv-screen-loader__spinner {
+			.es-screen-loader__spinner {
 				position: relative;
-				width: var(--tv-loader-size);
-				height: var(--tv-loader-size);
+				width: var(--es-loader-size);
+				height: var(--es-loader-size);
 			}
-			.tv-screen-loader__ring {
+			.es-screen-loader__ring {
 				display: block;
 				position: absolute;
 				top: 0;
@@ -162,119 +162,119 @@ class Assets {
 				width: 100%;
 				height: 100%;
 				border-radius: 50%;
-				border: var(--tv-loader-ring-width) solid transparent;
-				border-top-color: var(--tv-loader-color);
-				border-bottom-color: var(--tv-loader-secondary);
-				box-shadow: var(--tv-loader-shadow);
-				animation: tv-spin var(--tv-loader-speed) linear infinite;
+				border: var(--es-loader-ring-width) solid transparent;
+				border-top-color: var(--es-loader-color);
+				border-bottom-color: var(--es-loader-secondary);
+				box-shadow: var(--es-loader-shadow);
+				animation: es-spin var(--es-loader-speed) linear infinite;
 				box-sizing: border-box;
 			}
-			.tv-screen-loader__ring::before,
-			.tv-screen-loader__ring::after {
+			.es-screen-loader__ring::before,
+			.es-screen-loader__ring::after {
 				content: '';
 				position: absolute;
 				border-radius: 50%;
-				border: var(--tv-loader-ring-width) solid transparent;
-				box-shadow: var(--tv-loader-shadow);
+				border: var(--es-loader-ring-width) solid transparent;
+				box-shadow: var(--es-loader-shadow);
 				box-sizing: border-box;
 			}
-			.tv-screen-loader__ring::before {
+			.es-screen-loader__ring::before {
 				top: 10px;
 				left: 10px;
 				right: 10px;
 				bottom: 10px;
-				border-top-color: var(--tv-loader-color);
-				border-bottom-color: var(--tv-loader-secondary);
-				animation: tv-spin calc(var(--tv-loader-speed) * 1.5) linear infinite reverse;
+				border-top-color: var(--es-loader-color);
+				border-bottom-color: var(--es-loader-secondary);
+				animation: es-spin calc(var(--es-loader-speed) * 1.5) linear infinite reverse;
 			}
-			.tv-screen-loader__ring::after {
+			.es-screen-loader__ring::after {
 				top: 25px;
 				left: 25px;
 				right: 25px;
 				bottom: 25px;
-				border-top-color: var(--tv-loader-color);
-				border-bottom-color: var(--tv-loader-secondary);
-				animation: tv-spin calc(var(--tv-loader-speed) * 0.75) linear infinite;
+				border-top-color: var(--es-loader-color);
+				border-bottom-color: var(--es-loader-secondary);
+				animation: es-spin calc(var(--es-loader-speed) * 0.75) linear infinite;
 			}
 			
 			/* Base Loader Engines CSS */
-			.tv-css-loader.tv-loader-spinner {
-				width: var(--tv-loader-size);
-				height: var(--tv-loader-size);
-				border: 3px solid var(--tv-loader-secondary);
+			.es-css-loader.es-loader-spinner {
+				width: var(--es-loader-size);
+				height: var(--es-loader-size);
+				border: 3px solid var(--es-loader-secondary);
 				border-radius: 50%;
-				border-top-color: var(--tv-loader-color);
-				animation: tv-spin var(--tv-loader-speed) ease-in-out infinite;
+				border-top-color: var(--es-loader-color);
+				animation: es-spin var(--es-loader-speed) ease-in-out infinite;
 			}
-			.tv-css-loader.tv-loader-dual-ring {
-				width: var(--tv-loader-size);
-				height: var(--tv-loader-size);
+			.es-css-loader.es-loader-dual-ring {
+				width: var(--es-loader-size);
+				height: var(--es-loader-size);
 				border-radius: 50%;
 				border: 3px solid transparent;
-				border-top-color: var(--tv-loader-color);
-				border-bottom-color: var(--tv-loader-secondary);
-				animation: tv-spin var(--tv-loader-speed) linear infinite;
+				border-top-color: var(--es-loader-color);
+				border-bottom-color: var(--es-loader-secondary);
+				animation: es-spin var(--es-loader-speed) linear infinite;
 			}
-			.tv-css-loader.tv-loader-pulse {
-				width: var(--tv-loader-size);
-				height: var(--tv-loader-size);
-				background-color: var(--tv-loader-color);
+			.es-css-loader.es-loader-pulse {
+				width: var(--es-loader-size);
+				height: var(--es-loader-size);
+				background-color: var(--es-loader-color);
 				border-radius: 50%;
-				animation: tv-scale var(--tv-loader-speed) ease-in-out infinite alternate;
+				animation: es-scale var(--es-loader-speed) ease-in-out infinite alternate;
 			}
-			.tv-css-loader.tv-loader-dots {
-				width: var(--tv-loader-size);
-				height: calc(var(--tv-loader-size) / 3);
+			.es-css-loader.es-loader-dots {
+				width: var(--es-loader-size);
+				height: calc(var(--es-loader-size) / 3);
 				display: flex;
 				justify-content: space-between;
 			}
-			.tv-css-loader.tv-loader-dots::before,
-			.tv-css-loader.tv-loader-dots::after,
-			.tv-css-loader.tv-loader-dots span {
+			.es-css-loader.es-loader-dots::before,
+			.es-css-loader.es-loader-dots::after,
+			.es-css-loader.es-loader-dots span {
 				content: '';
 				width: 30%;
 				height: 100%;
-				background-color: var(--tv-loader-color);
+				background-color: var(--es-loader-color);
 				border-radius: 50%;
-				animation: tv-scale var(--tv-loader-speed) ease-in-out infinite alternate;
+				animation: es-scale var(--es-loader-speed) ease-in-out infinite alternate;
 			}
-			.tv-css-loader.tv-loader-dots span { animation-delay: 0.15s; }
-			.tv-css-loader.tv-loader-dots::after { animation-delay: 0.3s; }
+			.es-css-loader.es-loader-dots span { animation-delay: 0.15s; }
+			.es-css-loader.es-loader-dots::after { animation-delay: 0.3s; }
 			
 			/* Hybrid Logo CSS */
-			.tv-hybrid-loader img {
-				width: var(--tv-loader-size);
+			.es-hybrid-loader img {
+				width: var(--es-loader-size);
 				height: auto;
-				animation: tv-pulse var(--tv-loader-speed) ease-in-out infinite alternate;
+				animation: es-pulse var(--es-loader-speed) ease-in-out infinite alternate;
 			}
 
 			/* SVG Loader CSS */
-			.tv-svg-loader {
-				width: var(--tv-loader-size);
-				height: var(--tv-loader-size);
-				animation: tv-spin var(--tv-loader-speed) linear infinite;
+			.es-svg-loader {
+				width: var(--es-loader-size);
+				height: var(--es-loader-size);
+				animation: es-spin var(--es-loader-speed) linear infinite;
 			}
-			.tv-svg-loader .tv-path {
-				stroke: var(--tv-loader-color);
+			.es-svg-loader .es-path {
+				stroke: var(--es-loader-color);
 				stroke-dasharray: 1, 200;
 				stroke-dashoffset: 0;
-				animation: tv-dash calc(var(--tv-loader-speed) * 1.5) ease-in-out infinite;
+				animation: es-dash calc(var(--es-loader-speed) * 1.5) ease-in-out infinite;
 				stroke-linecap: round;
 			}
 
 			/* Animations */
-			@keyframes tv-spin {
+			@keyframes es-spin {
 				to { transform: rotate(360deg); }
 			}
-			@keyframes tv-scale {
+			@keyframes es-scale {
 				0% { transform: scale(0.5); opacity: 0.5; }
 				100% { transform: scale(1); opacity: 1; }
 			}
-			@keyframes tv-pulse {
+			@keyframes es-pulse {
 				0% { opacity: 0.6; transform: scale(0.95); }
 				100% { opacity: 1; transform: scale(1.05); }
 			}
-			@keyframes tv-dash {
+			@keyframes es-dash {
 				0% { stroke-dasharray: 1, 200; stroke-dashoffset: 0; }
 				50% { stroke-dasharray: 89, 200; stroke-dashoffset: -35px; }
 				100% { stroke-dasharray: 89, 200; stroke-dashoffset: -124px; }
@@ -282,7 +282,7 @@ class Assets {
 
 			/* Accessibility: Reduced Motion */
 			@media (prefers-reduced-motion: reduce) {
-				.tv-screen-loader-wrapper * {
+				.es-screen-loader-wrapper * {
 					animation-duration: 0.01ms !important;
 					animation-iteration-count: 1 !important;
 					transition-duration: 0.01ms !important;
@@ -293,16 +293,16 @@ class Assets {
 		<?php
 		// Render early script to add body class before rendering body
 		?>
-		<script type="text/javascript" id="tv-screen-loader-early-js">
+		<script type="text/javascript" id="es-screen-loader-early-js">
 			(function() {
 				<?php if ( $this->settings['once'] ) : ?>
-					if ( sessionStorage.getItem('tv_loader_shown') ) {
+					if ( sessionStorage.getItem('es_loader_shown') ) {
 						// Do not add loading class if already shown and hide the loader instantly
-						document.documentElement.className += ' tv-loader-hidden';
+						document.documentElement.className += ' es-loader-hidden';
 						return;
 					}
 				<?php endif; ?>
-				document.documentElement.className += ' tv-loading-active';
+				document.documentElement.className += ' es-loading-active';
 			})();
 		</script>
 		<?php
@@ -310,11 +310,11 @@ class Assets {
 
 	public function enqueue_scripts() {
 		// Enqueue the main vanilla JS controller deferred.
-		wp_register_script( 'tv-screen-loader-js', ELONIX_ACC_URL . 'assets/js/screen-loader.js', array(), ELONIX_VERSION, true );
+		wp_register_script( 'es-screen-loader-js', ELONIX_ACC_URL . 'assets/js/screen-loader.js', array(), ELONIX_VERSION, true );
 
 		wp_localize_script(
-			'tv-screen-loader-js',
-			'tvScreenLoaderConfig',
+			'es-screen-loader-js',
+			'esScreenLoaderConfig',
 			array(
 				'timeout'       => absint( $this->settings['timeout'] ),
 				'once'          => (bool) $this->settings['once'],
@@ -322,11 +322,11 @@ class Assets {
 			)
 		);
 
-		wp_enqueue_script( 'tv-screen-loader-js' );
+		wp_enqueue_script( 'es-screen-loader-js' );
 	}
 
 	public function add_defer_attribute( $tag, $handle ) {
-		if ( 'tv-screen-loader-js' === $handle ) {
+		if ( 'es-screen-loader-js' === $handle ) {
 			return str_replace( ' src', ' defer="defer" src', $tag );
 		}
 		return $tag;

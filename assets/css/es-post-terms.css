@@ -1,0 +1,128 @@
+/**
+ * Elonix – Toolkit for Elementor Post Terms Widget Styles
+ */
+.es-post-terms-container {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	gap: 8px;
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.es-post-terms-container.es-style-inline {
+	flex-direction: row;
+}
+
+.es-post-terms-container.es-style-block {
+	flex-direction: column;
+	align-items: flex-start;
+}
+
+/* Base Term Item (Display inline-flex ensures padding, margin, and gap behave exactly like inline-block) */
+.es-post-term-item {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	position: relative;
+	word-break: break-word;
+	box-sizing: border-box;
+	line-height: 1.5;
+	transition: all 0.3s ease;
+}
+
+/* Links inside Term Item */
+.es-post-term-item a {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-decoration: none;
+	color: inherit;
+	width: 100%;
+	height: 100%;
+	transition: all 0.3s ease;
+}
+
+/* Hover Transitions */
+.es-post-term-item:hover,
+.es-post-term-item a:hover {
+	transition: all 0.3s ease;
+}
+
+/* Badge Style Defaults */
+.es-post-terms-container.es-style-badge .es-post-term-item {
+	padding: 4px 12px;
+	border-radius: 4px;
+	background-color: #f1f2f6;
+	font-size: 0.85em;
+	font-weight: 500;
+}
+
+/* Pill Style Defaults */
+.es-post-terms-container.es-style-pill .es-post-term-item {
+	padding: 4px 16px;
+	border-radius: 50px;
+	background-color: #f1f2f6;
+	font-size: 0.85em;
+	font-weight: 500;
+}
+
+/* Icon */
+.es-post-terms-icon {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	line-height: 1;
+	transition: all 0.3s ease;
+}
+
+.es-post-terms-icon i {
+	line-height: 1;
+}
+
+.es-post-terms-icon svg {
+	width: 1em;
+	height: 1em;
+	fill: currentColor;
+	transition: all 0.3s ease;
+}
+
+.es-post-terms-icon.es-icon-before {
+	margin-right: 6px;
+}
+
+.es-post-terms-icon.es-icon-after {
+	margin-left: 6px;
+}
+
+/* Label */
+.es-post-terms-label {
+	display: inline-flex;
+	align-items: center;
+	font-weight: 600;
+	margin-right: 6px;
+}
+
+/* Separator */
+.es-post-terms-separator {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	margin: 0 4px;
+	color: inherit;
+}
+
+/* Remaining Count Badge (+X) */
+.es-post-terms-remaining {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	padding: 2px 8px;
+	border-radius: 4px;
+	background-color: #2ed573;
+	color: #ffffff;
+	font-size: 0.8em;
+	font-weight: 600;
+	margin-left: 4px;
+}

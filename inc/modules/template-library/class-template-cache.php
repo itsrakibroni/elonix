@@ -7,9 +7,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Cache {
 	private static $instance = null;
-	const TRANSIENT_KEY = '_tv_template_catalog';
-	const KIT_TRANSIENT_KEY = '_tv_kit_catalog';
-	const HASH_KEY = '_tv_template_dir_hash';
+	const TRANSIENT_KEY = '_es_template_catalog';
+	const KIT_TRANSIENT_KEY = '_es_kit_catalog';
+	const HASH_KEY = '_es_template_dir_hash';
 
 	public static function instance() {
 		if ( is_null( self::$instance ) ) {
@@ -21,10 +21,10 @@ class Cache {
 	private function __construct() {
 		add_action( 'upgrader_process_complete', array( $this, 'clear_cache' ) );
 		// Clear cache if version changed
-		$cached_version = get_option( 'tv_template_library_version' );
+		$cached_version = get_option( 'es_template_library_version' );
 		if ( $cached_version !== ELONIX_VERSION ) {
 			$this->clear_cache();
-			update_option( 'tv_template_library_version', ELONIX_VERSION );
+			update_option( 'es_template_library_version', ELONIX_VERSION );
 		}
 	}
 

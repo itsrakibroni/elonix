@@ -17,7 +17,7 @@ class Elonix_Toolkit_Image_Widget extends Elonix_Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-image';
+		return 'es-image';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Elonix_Toolkit_Image_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-image';
 	}
 
@@ -43,7 +43,7 @@ class Elonix_Toolkit_Image_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return array Keywords list.
 	 */
-	public function get_tv_widget_keywords() {
+	public function get_es_widget_keywords() {
 		return array( 'image', 'photo', 'media', 'gallery' );
 	}
 
@@ -53,7 +53,7 @@ class Elonix_Toolkit_Image_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-image' );
+		return array( 'elonix-widget-es-image' );
 	}
 
 	/**

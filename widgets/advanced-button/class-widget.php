@@ -17,7 +17,7 @@ class Elonix_Toolkit_Button_Widget extends Elonix_Widget_Base {
 	 * @return string Widget name.
 	 */
 	public function get_name() {
-		return 'tv-button';
+		return 'es-button';
 	}
 
 	/**
@@ -34,7 +34,7 @@ class Elonix_Toolkit_Button_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return string Widget icon.
 	 */
-	public function get_tv_widget_icon() {
+	public function get_es_widget_icon() {
 		return 'eicon-button';
 	}
 
@@ -43,7 +43,7 @@ class Elonix_Toolkit_Button_Widget extends Elonix_Widget_Base {
 	 *
 	 * @return array Keywords list.
 	 */
-	public function get_tv_widget_keywords() {
+	public function get_es_widget_keywords() {
 		return array( 'button', 'link', 'cta', 'action' );
 	}
 
@@ -53,7 +53,7 @@ class Elonix_Toolkit_Button_Widget extends Elonix_Widget_Base {
 	 * @return array Dependencies handles.
 	 */
 	public function get_style_depends() {
-		return array( 'elonix-widget-tv-button' );
+		return array( 'elonix-widget-es-button' );
 	}
 
 	/**

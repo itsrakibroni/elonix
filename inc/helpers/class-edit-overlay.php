@@ -40,7 +40,7 @@ class Elonix_Toolkit_Edit_Overlay {
 		self::enqueue_styles();
 
 		?>
-		<a href="<?php echo esc_url( $edit_link ); ?>" class="tv-edit-overlay__button" target="_blank" rel="noopener" aria-label="<?php esc_attr_e( 'Edit Post', 'elonix' ); ?>">
+		<a href="<?php echo esc_url( $edit_link ); ?>" class="es-edit-overlay__button" target="_blank" rel="noopener" aria-label="<?php esc_attr_e( 'Edit Post', 'elonix' ); ?>">
 			<span class="dashicons dashicons-edit" aria-hidden="true"></span>
 		</a>
 		<?php
@@ -57,7 +57,7 @@ class Elonix_Toolkit_Edit_Overlay {
 		wp_enqueue_style( 'dashicons' );
 
 		wp_enqueue_style(
-			'tv-edit-overlay-css',
+			'es-edit-overlay-css',
 			ELONIX_ACC_URL . 'assets/css/edit-overlay.css',
 			array(),
 			ELONIX_VERSION

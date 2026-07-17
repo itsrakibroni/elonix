@@ -38,19 +38,19 @@ class Elonix_Assignment_Engine {
 			wp_enqueue_style( 'elonix-select2', ELONIX_ACC_URL . 'assets/css/vendor/select2.min.css', array(), '4.0.13' );
 		}
 
-		wp_enqueue_style( 'tv-assignment-engine', ELONIX_ACC_URL . 'assets/admin/css/assignment-engine.css', array(), ELONIX_VERSION );
-		wp_enqueue_script( 'tv-assignment-engine', ELONIX_ACC_URL . 'assets/admin/js/assignment-engine.js', array( 'jquery', 'wp-util' ), ELONIX_VERSION, true );
+		wp_enqueue_style( 'es-assignment-engine', ELONIX_ACC_URL . 'assets/admin/css/assignment-engine.css', array(), ELONIX_VERSION );
+		wp_enqueue_script( 'es-assignment-engine', ELONIX_ACC_URL . 'assets/admin/js/assignment-engine.js', array( 'jquery', 'wp-util' ), ELONIX_VERSION, true );
 		
 		$rule_options = array();
 		if ( class_exists( 'Elonix_Target_Rules' ) ) {
 			$rule_options = Elonix_Target_Rules::get_location_selections();
 		}
 
-		wp_localize_script( 'tv-assignment-engine', 'tvAssignmentEngine', array(
+		wp_localize_script( 'es-assignment-engine', 'esAssignmentEngine', array(
 			'ajax_url'     => admin_url( 'admin-ajax.php' ),
 			'admin_url'    => admin_url(),
-			'nonce'        => wp_create_nonce( 'tv_assignment_nonce' ),
-			'search_nonce' => wp_create_nonce( 'tv-get-posts-by-query' ),
+			'nonce'        => wp_create_nonce( 'es_assignment_nonce' ),
+			'search_nonce' => wp_create_nonce( 'es-get-posts-by-query' ),
 			'rule_options' => $rule_options,
 			'strings'      => array(
 				'saving'       => esc_html__( 'Saving...', 'elonix' ),
@@ -81,10 +81,10 @@ class Elonix_Assignment_Engine {
 	 * @param bool $active
 	 */
 	public function assign_template( $post_id, $include = array(), $exclude = array(), $priority = 10, $active = true ) {
-		update_post_meta( $post_id, '_tv_target_include_locations', $include );
-		update_post_meta( $post_id, '_tv_target_exclude_locations', $exclude );
-		update_post_meta( $post_id, '_tv_priority', intval( $priority ) );
-		update_post_meta( $post_id, '_tv_assignment_active', $active ? 'yes' : 'no' );
+		update_post_meta( $post_id, '_es_target_include_locations', $include );
+		update_post_meta( $post_id, '_es_target_exclude_locations', $exclude );
+		update_post_meta( $post_id, '_es_priority', intval( $priority ) );
+		update_post_meta( $post_id, '_es_assignment_active', $active ? 'yes' : 'no' );
 
 		$this->clear_cache();
 	}
@@ -93,9 +93,9 @@ class Elonix_Assignment_Engine {
 	 * Remove all assignments from a template.
 	 */
 	public function remove_assignment( $post_id ) {
-		delete_post_meta( $post_id, '_tv_target_include_locations' );
-		delete_post_meta( $post_id, '_tv_target_exclude_locations' );
-		update_post_meta( $post_id, '_tv_assignment_active', 'no' );
+		delete_post_meta( $post_id, '_es_target_include_locations' );
+		delete_post_meta( $post_id, '_es_target_exclude_locations' );
+		update_post_meta( $post_id, '_es_assignment_active', 'no' );
 
 		$this->clear_cache();
 	}
@@ -104,15 +104,15 @@ class Elonix_Assignment_Engine {
 	 * Get assignment data for a template.
 	 */
 	public function get_assignment( $post_id ) {
-		$include = get_post_meta( $post_id, '_tv_target_include_locations', true );
-		$exclude = get_post_meta( $post_id, '_tv_target_exclude_locations', true );
-		$priority = get_post_meta( $post_id, '_tv_priority', true );
-		$active = get_post_meta( $post_id, '_tv_assignment_active', true );
+		$include = get_post_meta( $post_id, '_es_target_include_locations', true );
+		$exclude = get_post_meta( $post_id, '_es_target_exclude_locations', true );
+		$priority = get_post_meta( $post_id, '_es_priority', true );
+		$active = get_post_meta( $post_id, '_es_assignment_active', true );
 
 		// Legacy Migration Support
 		if ( empty( $active ) && ( ! empty( $include ) || ! empty( $exclude ) ) ) {
 			$active = 'yes';
-			update_post_meta( $post_id, '_tv_assignment_active', 'yes' );
+			update_post_meta( $post_id, '_es_assignment_active', 'yes' );
 		}
 
 		return array(
@@ -228,7 +228,7 @@ class Elonix_Assignment_Engine {
 			}
 		}
 		
-		if ( is_singular( array( 'tv_header', 'tv_footer', 'tv_single', 'tv_archive', 'tv_search_template', 'tv_404_template' ) ) ) {
+		if ( is_singular( array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template', 'es_404_template' ) ) ) {
 			return 0; // Disable recursive embedding when editing any template
 		}
 
@@ -393,7 +393,7 @@ class Elonix_Assignment_Engine {
 
 
 	public function ajax_save() {
-		check_ajax_referer( 'tv_assignment_nonce', 'nonce' );
+		check_ajax_referer( 'es_assignment_nonce', 'nonce' );
 
 		if ( ! current_user_can( 'edit_posts' ) ) {
 			wp_send_json_error( array( 'message' => esc_html__( 'Permission denied.', 'elonix' ) ) );

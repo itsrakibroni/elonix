@@ -15,26 +15,45 @@ class Elonix_Toolkit_Single_Admin {
 	 * Constructor.
 	 */
 	public function __construct() {
+		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		// Custom Columns Hooks
-		add_filter( 'manage_tv_single_posts_columns', array( $this, 'register_custom_columns' ) );
-		add_action( 'manage_tv_single_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
+		add_filter( 'manage_es_single_posts_columns', array( $this, 'register_custom_columns' ) );
+		add_action( 'manage_es_single_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
 
 		// Custom Meta Box Hooks
 		add_action( 'add_meta_boxes', array( $this, 'add_single_settings_metabox' ) );
-		add_action( 'save_post_tv_single', array( $this, 'save_single_settings' ) );
+		add_action( 'save_post_es_single', array( $this, 'save_single_settings' ) );
 
 		// Duplicate AJAX cloner hooks
-		add_action( 'wp_ajax_tv_duplicate_single', array( $this, 'duplicate_single_template' ) );
+		add_action( 'wp_ajax_es_duplicate_single', array( $this, 'duplicate_single_template' ) );
 	}
 
 	/**
 	 * Define custom columns for CPT list table.
 	 */
+	
+	/**
+	 * Enqueue admin assets.
+	 */
+	public function enqueue_admin_assets( $hook ) {
+		global $post;
+		if ( ! $post || 'es_single' !== $post->post_type ) {
+			return;
+		}
+
+		wp_enqueue_style(
+			'elonix-module-meta',
+			ELONIX_ACC_URL . 'assets/admin/css/module-meta.css',
+			array(),
+			ELONIX_VERSION
+		);
+	}
+
 	public function register_custom_columns( $columns ) {
 		$new_columns = array(
 			'cb'                      => $columns['cb'],
 			'title'                   => $columns['title'],
-			'tv_single_header_footer' => esc_html__( 'Header/Footer Theme Integration', 'elonix' ),
+			'es_single_header_footer' => esc_html__( 'Header/Footer Theme Integration', 'elonix' ),
 			'date'                    => $columns['date'],
 		);
 		return $new_columns;
@@ -45,9 +64,9 @@ class Elonix_Toolkit_Single_Admin {
 	 */
 	public function render_custom_columns( $column, $post_id ) {
 		switch ( $column ) {
-			case 'tv_single_header_footer':
-				$header = get_post_meta( $post_id, '_tv_single_show_header', true );
-				$footer = get_post_meta( $post_id, '_tv_single_show_footer', true );
+			case 'es_single_header_footer':
+				$header = get_post_meta( $post_id, '_es_single_show_header', true );
+				$footer = get_post_meta( $post_id, '_es_single_show_footer', true );
 
 				$h_status = ( 'no' === $header ) ? esc_html__( 'Disabled', 'elonix' ) : esc_html__( 'Enabled', 'elonix' );
 				$f_status = ( 'no' === $footer ) ? esc_html__( 'Disabled', 'elonix' ) : esc_html__( 'Enabled', 'elonix' );
@@ -63,10 +82,10 @@ class Elonix_Toolkit_Single_Admin {
 	 */
 	public function add_single_settings_metabox() {
 		add_meta_box(
-			'tv_single_settings_metabox',
+			'es_single_settings_metabox',
 			esc_html__( 'Single Builder Settings', 'elonix' ),
 			array( $this, 'render_settings_metabox' ),
-			'tv_single',
+			'es_single',
 			'normal',
 			'high'
 		);
@@ -77,17 +96,17 @@ class Elonix_Toolkit_Single_Admin {
 	 */
 	public function render_settings_metabox( $post ) {
 		// Nonce check tag
-		wp_nonce_field( 'tv_single_settings_save', 'tv_single_settings_nonce' );
+		wp_nonce_field( 'es_single_settings_save', 'es_single_settings_nonce' );
 
 		// Load values
-		$type         = get_post_meta( $post->ID, '_tv_single_type', true );
-		$target_ids   = get_post_meta( $post->ID, '_tv_single_target_ids', true );
-		$exclude_type = get_post_meta( $post->ID, '_tv_single_exclude_type', true );
-		$exclude_ids  = get_post_meta( $post->ID, '_tv_single_exclude_ids', true );
-		$show_header  = get_post_meta( $post->ID, '_tv_single_show_header', true );
-		$show_footer  = get_post_meta( $post->ID, '_tv_single_show_footer', true );
-		$preview_type = get_post_meta( $post->ID, '_tv_single_preview_type', true );
-		$preview_id   = get_post_meta( $post->ID, '_tv_single_preview_id', true );
+		$type         = get_post_meta( $post->ID, '_es_single_type', true );
+		$target_ids   = get_post_meta( $post->ID, '_es_single_target_ids', true );
+		$exclude_type = get_post_meta( $post->ID, '_es_single_exclude_type', true );
+		$exclude_ids  = get_post_meta( $post->ID, '_es_single_exclude_ids', true );
+		$show_header  = get_post_meta( $post->ID, '_es_single_show_header', true );
+		$show_footer  = get_post_meta( $post->ID, '_es_single_show_footer', true );
+		$preview_type = get_post_meta( $post->ID, '_es_single_preview_type', true );
+		$preview_id   = get_post_meta( $post->ID, '_es_single_preview_id', true );
 
 		if ( empty( $type ) ) {
 			$type = 'all_singular';
@@ -102,23 +121,16 @@ class Elonix_Toolkit_Single_Admin {
 			$preview_type = 'post';
 		}
 		?>
-		<style>
-			.tv-single-meta-row { display: flex; align-items: flex-start; padding: 14px 0; border-bottom: 1px solid #eee; }
-			.tv-single-meta-label { width: 220px; font-weight: bold; padding-top: 4px; }
-			.tv-single-meta-field { flex: 1; }
-			.tv-single-meta-field select, .tv-single-meta-field input[type="text"], .tv-single-meta-field input[type="number"] { width: 100%; max-width: 400px; }
-			.tv-single-meta-section-title { font-size: 14px; font-weight: bold; background: #f8fafc; padding: 8px 12px; margin: 15px 0 5px 0; border-left: 4px solid #3b82f6; }
-			.tv-desc { font-size: 12px; color: #666; margin-top: 4px; display: block; }
-		</style>
-		<div class="tv-single-meta-wrapper">
+		<!-- MODULE META CSS MOVED EXTERNALLY -->
+		<div class="es-single-meta-wrapper">
 			
-			<div class="tv-single-meta-section-title"><?php esc_html_e( 'Theme Canvas Engine', 'elonix' ); ?></div>
+			<div class="es-single-meta-section-title"><?php esc_html_e( 'Theme Canvas Engine', 'elonix' ); ?></div>
 
 			<!-- Header Support -->
-			<div class="tv-single-meta-row">
-				<div class="tv-single-meta-label"><?php esc_html_e( 'Display Theme Header', 'elonix' ); ?></div>
-				<div class="tv-single-meta-field">
-					<select name="tv_single_show_header">
+			<div class="es-single-meta-row">
+				<div class="es-single-meta-label"><?php esc_html_e( 'Display Theme Header', 'elonix' ); ?></div>
+				<div class="es-single-meta-field">
+					<select name="es_single_show_header">
 						<option value="yes" <?php selected( $show_header, 'yes' ); ?>><?php esc_html_e( 'Yes, show theme header', 'elonix' ); ?></option>
 						<option value="no" <?php selected( $show_header, 'no' ); ?>><?php esc_html_e( 'No, use blank canvas', 'elonix' ); ?></option>
 					</select>
@@ -126,23 +138,23 @@ class Elonix_Toolkit_Single_Admin {
 			</div>
 
 			<!-- Footer Support -->
-			<div class="tv-single-meta-row">
-				<div class="tv-single-meta-label"><?php esc_html_e( 'Display Theme Footer', 'elonix' ); ?></div>
-				<div class="tv-single-meta-field">
-					<select name="tv_single_show_footer">
+			<div class="es-single-meta-row">
+				<div class="es-single-meta-label"><?php esc_html_e( 'Display Theme Footer', 'elonix' ); ?></div>
+				<div class="es-single-meta-field">
+					<select name="es_single_show_footer">
 						<option value="yes" <?php selected( $show_footer, 'yes' ); ?>><?php esc_html_e( 'Yes, show theme footer', 'elonix' ); ?></option>
 						<option value="no" <?php selected( $show_footer, 'no' ); ?>><?php esc_html_e( 'No, use blank canvas', 'elonix' ); ?></option>
 					</select>
 				</div>
 			</div>
 
-			<div class="tv-single-meta-section-title"><?php esc_html_e( 'Editor Preview Settings', 'elonix' ); ?></div>
+			<div class="es-single-meta-section-title"><?php esc_html_e( 'Editor Preview Settings', 'elonix' ); ?></div>
 
 			<!-- Editor Mockup Target Type -->
-			<div class="tv-single-meta-row">
-				<div class="tv-single-meta-label"><?php esc_html_e( 'Preview Layout Using', 'elonix' ); ?></div>
-				<div class="tv-single-meta-field">
-					<select name="tv_single_preview_type">
+			<div class="es-single-meta-row">
+				<div class="es-single-meta-label"><?php esc_html_e( 'Preview Layout Using', 'elonix' ); ?></div>
+				<div class="es-single-meta-field">
+					<select name="es_single_preview_type">
 						<option value="post" <?php selected( $preview_type, 'post' ); ?>><?php esc_html_e( 'Standard Post', 'elonix' ); ?></option>
 						<option value="page" <?php selected( $preview_type, 'page' ); ?>><?php esc_html_e( 'Standard Page', 'elonix' ); ?></option>
 						<option value="cpt" <?php selected( $preview_type, 'cpt' ); ?>><?php esc_html_e( 'Custom Post Type', 'elonix' ); ?></option>
@@ -151,11 +163,11 @@ class Elonix_Toolkit_Single_Admin {
 			</div>
 
 			<!-- Editor Mockup Target Value -->
-			<div class="tv-single-meta-row" style="border-bottom: none;">
-				<div class="tv-single-meta-label"><?php esc_html_e( 'Preview Target ID / Name', 'elonix' ); ?></div>
-				<div class="tv-single-meta-field">
-					<input type="text" name="tv_single_preview_id" value="<?php echo esc_attr( $preview_id ); ?>" placeholder="e.g. 45 or product" />
-					<span class="tv-desc"><?php esc_html_e( 'Specify a Post ID, Page ID, or CPT Slug to populate standard Elementor widgets in Editor.', 'elonix' ); ?></span>
+			<div class="es-single-meta-row" style="border-bottom: none;">
+				<div class="es-single-meta-label"><?php esc_html_e( 'Preview Target ID / Name', 'elonix' ); ?></div>
+				<div class="es-single-meta-field">
+					<input type="text" name="es_single_preview_id" value="<?php echo esc_attr( $preview_id ); ?>" placeholder="e.g. 45 or product" />
+					<span class="es-desc"><?php esc_html_e( 'Specify a Post ID, Page ID, or CPT Slug to populate standard Elementor widgets in Editor.', 'elonix' ); ?></span>
 				</div>
 			</div>
 
@@ -168,7 +180,7 @@ class Elonix_Toolkit_Single_Admin {
 	 */
 	public function save_single_settings( $post_id ) {
 		// Nonce check
-		if ( ! isset( $_POST['tv_single_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['tv_single_settings_nonce'] ) ), 'tv_single_settings_save' ) ) {
+		if ( ! isset( $_POST['es_single_settings_nonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['es_single_settings_nonce'] ) ), 'es_single_settings_save' ) ) {
 			return $post_id;
 		}
 
@@ -183,10 +195,10 @@ class Elonix_Toolkit_Single_Admin {
 		}
 
 		$fields = array(
-			'_tv_single_show_header'  => isset( $_POST['tv_single_show_header'] ) ? sanitize_text_field( wp_unslash( $_POST['tv_single_show_header'] ) ) : 'yes',
-			'_tv_single_show_footer'  => isset( $_POST['tv_single_show_footer'] ) ? sanitize_text_field( wp_unslash( $_POST['tv_single_show_footer'] ) ) : 'yes',
-			'_tv_single_preview_type' => isset( $_POST['tv_single_preview_type'] ) ? sanitize_text_field( wp_unslash( $_POST['tv_single_preview_type'] ) ) : 'post',
-			'_tv_single_preview_id'   => isset( $_POST['tv_single_preview_id'] ) ? sanitize_text_field( wp_unslash( $_POST['tv_single_preview_id'] ) ) : '',
+			'_es_single_show_header'  => isset( $_POST['es_single_show_header'] ) ? sanitize_text_field( wp_unslash( $_POST['es_single_show_header'] ) ) : 'yes',
+			'_es_single_show_footer'  => isset( $_POST['es_single_show_footer'] ) ? sanitize_text_field( wp_unslash( $_POST['es_single_show_footer'] ) ) : 'yes',
+			'_es_single_preview_type' => isset( $_POST['es_single_preview_type'] ) ? sanitize_text_field( wp_unslash( $_POST['es_single_preview_type'] ) ) : 'post',
+			'_es_single_preview_id'   => isset( $_POST['es_single_preview_id'] ) ? sanitize_text_field( wp_unslash( $_POST['es_single_preview_id'] ) ) : '',
 		);
 
 		foreach ( $fields as $key => $value ) {
@@ -198,9 +210,9 @@ class Elonix_Toolkit_Single_Admin {
 	 * Inject duplicate template action link in list table.
 	 */
 	public function inject_duplicate_link( $actions, $post ) {
-		if ( current_user_can( 'edit_posts' ) && 'tv_single' === $post->post_type ) {
-			$nonce                = wp_create_nonce( 'tv_duplicate_single_nonce' );
-			$url                  = admin_url( 'admin-ajax.php?action=tv_duplicate_single&post_id=' . $post->ID . '&_wpnonce=' . $nonce );
+		if ( current_user_can( 'edit_posts' ) && 'es_single' === $post->post_type ) {
+			$nonce                = wp_create_nonce( 'es_duplicate_single_nonce' );
+			$url                  = admin_url( 'admin-ajax.php?action=es_duplicate_single&post_id=' . $post->ID . '&_wpnonce=' . $nonce );
 			$actions['duplicate'] = '<a href="' . esc_url( $url ) . '" title="' . esc_attr__( 'Duplicate this single template', 'elonix' ) . '" rel="permalink">' . esc_html__( 'Duplicate', 'elonix' ) . '</a>';
 		}
 		return $actions;
@@ -211,7 +223,7 @@ class Elonix_Toolkit_Single_Admin {
 	 */
 	public function duplicate_single_template() {
 		// Nonce & permission check
-		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'tv_duplicate_single_nonce' ) ) {
+		if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'es_duplicate_single_nonce' ) ) {
 			wp_die( esc_html__( 'Security validation failed.', 'elonix' ) );
 		}
 
@@ -225,7 +237,7 @@ class Elonix_Toolkit_Single_Admin {
 		}
 
 		$post = get_post( $post_id );
-		if ( ! $post || 'tv_single' !== $post->post_type ) {
+		if ( ! $post || 'es_single' !== $post->post_type ) {
 			wp_die( esc_html__( 'Invalid source post.', 'elonix' ) );
 		}
 
@@ -261,14 +273,14 @@ class Elonix_Toolkit_Single_Admin {
 
 			// Duplicate custom module meta
 			$meta_keys = array(
-				'_tv_single_type',
-				'_tv_single_target_ids',
-				'_tv_single_exclude_type',
-				'_tv_single_exclude_ids',
-				'_tv_single_show_header',
-				'_tv_single_show_footer',
-				'_tv_single_preview_type',
-				'_tv_single_preview_id',
+				'_es_single_type',
+				'_es_single_target_ids',
+				'_es_single_exclude_type',
+				'_es_single_exclude_ids',
+				'_es_single_show_header',
+				'_es_single_show_footer',
+				'_es_single_preview_type',
+				'_es_single_preview_id',
 			);
 
 			foreach ( $meta_keys as $key ) {

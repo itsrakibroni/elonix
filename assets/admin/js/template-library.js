@@ -1,21 +1,21 @@
 jQuery(document).ready(function($) {
-    var libraryGrid = $('#tv-library-grid');
+    var libraryGrid = $('#es-library-grid');
     var allTemplates = [];
     var filteredTemplates = [];
     var currentRenderIndex = 0;
     var batchSize = 20;
-    var wpTemplate = wp.template('tv-template-card');
+    var wpTemplate = wp.template('es-template-card');
     var currentImportTemplate = null;
     var currentElementorId = null;
     
-    libraryGrid.after('<div id="tv-library-sentinel" style="height: 1px;"></div>');
-    var sentinel = document.getElementById('tv-library-sentinel');
+    libraryGrid.after('<div id="es-library-sentinel" style="height: 1px;"></div>');
+    var sentinel = document.getElementById('es-library-sentinel');
 
     $.ajax({
-        url: tvTemplateLibrary.api_url + '/manifest',
+        url: esTemplateLibrary.api_url + '/manifest',
         method: 'GET',
         beforeSend: function(xhr) {
-            xhr.setRequestHeader('X-WP-Nonce', tvTemplateLibrary.nonce);
+            xhr.setRequestHeader('X-WP-Nonce', esTemplateLibrary.nonce);
         },
         success: function(response) {
             if (Array.isArray(response)) {
@@ -25,11 +25,11 @@ jQuery(document).ready(function($) {
                 renderNextBatch();
                 setupObserver();
             } else {
-                libraryGrid.html('<p>' + tvTemplateLibrary.strings.error + '</p>');
+                libraryGrid.html('<p>' + esTemplateLibrary.strings.error + '</p>');
             }
         },
         error: function() {
-            libraryGrid.html('<p>' + tvTemplateLibrary.strings.error + '</p>');
+            libraryGrid.html('<p>' + esTemplateLibrary.strings.error + '</p>');
         }
     });
 
@@ -66,8 +66,8 @@ jQuery(document).ready(function($) {
     }
 
     function applyFilters() {
-        var searchTerm = $('#tv-search-input').val().toLowerCase();
-        var filterType = $('#tv-filter-type').val();
+        var searchTerm = $('#es-search-input').val().toLowerCase();
+        var filterType = $('#es-filter-type').val();
 
         filteredTemplates = allTemplates.filter(function(tpl) {
             var matchesType = (filterType === 'all' || tpl.type === filterType);
@@ -88,21 +88,21 @@ jQuery(document).ready(function($) {
         renderNextBatch();
     }
 
-    $('#tv-search-input, #tv-filter-type').on('input change', applyFilters);
+    $('#es-search-input, #es-filter-type').on('input change', applyFilters);
 
-    $(document).on('click', '.tv-btn-delete-template', function(e) {
+    $(document).on('click', '.es-btn-delete-template', function(e) {
         e.preventDefault();
         var slug = $(this).data('slug');
         var type = $(this).data('type');
-        var $card = $(this).closest('.tv-template-card');
+        var $card = $(this).closest('.es-template-card');
         
-        ElonixNotifier.confirm(tvTemplateLibrary.strings.confirm_delete.replace(/\\n/g, '\n'), function() {
+        ElonixNotifier.confirm(esTemplateLibrary.strings.confirm_delete.replace(/\\n/g, '\n'), function() {
             $.ajax({
-                url: tvTemplateLibrary.dev_api_url + '/package/delete',
+                url: esTemplateLibrary.dev_api_url + '/package/delete',
                 method: 'DELETE',
                 data: { slug: slug, type: type },
                 beforeSend: function(xhr) {
-                    xhr.setRequestHeader('X-WP-Nonce', tvTemplateLibrary.nonce);
+                    xhr.setRequestHeader('X-WP-Nonce', esTemplateLibrary.nonce);
                     $card.css('opacity', '0.5');
                 },
                 success: function(response) {
@@ -124,24 +124,24 @@ jQuery(document).ready(function($) {
 
     // WIZARD LOGIC
     function showWizardStep(stepId) {
-        $('.tv-wizard-step').hide();
+        $('.es-wizard-step').hide();
         $('#' + stepId).show();
     }
 
-    $(document).on('click', '.tv-btn-import', function() {
+    $(document).on('click', '.es-btn-import', function() {
         var id = $(this).data('id');
         currentImportTemplate = allTemplates.find(t => t.id === id);
         
         if (!currentImportTemplate) return;
 
-        $('.tv-tpl-name').text(currentImportTemplate.title);
+        $('.es-tpl-name').text(currentImportTemplate.title);
         
-        $('#tv-wizard-modal').show();
-        showWizardStep('tv-step-info');
+        $('#es-wizard-modal').show();
+        showWizardStep('es-step-info');
     });
 
-    $(document).on('click', '.tv-wizard-next[data-next="deps"]', function() {
-        var $depsList = $('#tv-wizard-deps-list');
+    $(document).on('click', '.es-wizard-next[data-next="deps"]', function() {
+        var $depsList = $('#es-wizard-deps-list');
         $depsList.empty();
         
         var deps = currentImportTemplate.required_plugins || [];
@@ -153,27 +153,27 @@ jQuery(document).ready(function($) {
             });
         }
         
-        showWizardStep('tv-step-deps');
+        showWizardStep('es-step-deps');
     });
 
-    $(document).on('click', '.tv-wizard-do-import', function() {
-        showWizardStep('tv-step-importing');
+    $(document).on('click', '.es-wizard-do-import', function() {
+        showWizardStep('es-step-importing');
 
         $.ajax({
-            url: tvTemplateLibrary.api_url + '/import',
+            url: esTemplateLibrary.api_url + '/import',
             method: 'POST',
             data: { id: currentImportTemplate.id },
             beforeSend: function(xhr) {
-                xhr.setRequestHeader('X-WP-Nonce', tvTemplateLibrary.nonce);
+                xhr.setRequestHeader('X-WP-Nonce', esTemplateLibrary.nonce);
             },
             success: function(response) {
                 if (response.success) {
                     currentElementorId = response.template_id;
                     buildContextActions();
-                    showWizardStep('tv-step-assign');
+                    showWizardStep('es-step-assign');
                 } else {
                     ElonixNotifier.error(response.message || 'Import failed');
-                    $('#tv-wizard-modal').hide();
+                    $('#es-wizard-modal').hide();
                 }
             },
             error: function(xhr) {
@@ -183,7 +183,7 @@ jQuery(document).ready(function($) {
                 var errorButtons = [ { text: 'Close', type: 'secondary', onClick: (m) => m.close() } ];
                 
                 var details = '';
-                if (tvTemplateLibrary.is_dev) {
+                if (esTemplateLibrary.is_dev) {
                     details = 'Endpoint: /import\nMethod: POST\nStatus: ' + xhr.status + '\nMessage: ' + msg;
                 }
                 
@@ -194,13 +194,13 @@ jQuery(document).ready(function($) {
                     details: details,
                     buttons: errorButtons
                 });
-                $('#tv-wizard-modal').hide();
+                $('#es-wizard-modal').hide();
             }
         });
     });
 
     function buildContextActions() {
-        var $actions = $('#tv-wizard-actions-container');
+        var $actions = $('#es-wizard-actions-container');
         $actions.empty();
         var type = currentImportTemplate.type.toLowerCase();
 
@@ -211,24 +211,24 @@ jQuery(document).ready(function($) {
         var builderTypes = ['header', 'footer', 'archive', 'single', 'search', 'popup'];
         
         if (builderTypes.indexOf(type) !== -1) {
-            $actions.append('<button class="button button-primary button-hero tv-action-assign" data-type="'+type+'">' + assignLabel + '</button>');
+            $actions.append('<button class="button button-primary button-hero es-action-assign" data-type="'+type+'">' + assignLabel + '</button>');
         }
 
-        $actions.append('<button class="button button-secondary button-hero tv-action-close">Back to Library</button>');
+        $actions.append('<button class="button button-secondary button-hero es-action-close">Back to Library</button>');
     }
 
-    $(document).on('click', '.tv-action-assign', function() {
+    $(document).on('click', '.es-action-assign', function() {
         var $btn = $(this);
         var type = $btn.data('type');
         $btn.text('Checking conflicts...').prop('disabled', true);
 
         // First check for conflicts
         $.ajax({
-            url: tvTemplateLibrary.api_url + '/conflicts',
+            url: esTemplateLibrary.api_url + '/conflicts',
             method: 'POST',
             data: { type: type },
             beforeSend: function(xhr) {
-                xhr.setRequestHeader('X-WP-Nonce', tvTemplateLibrary.nonce);
+                xhr.setRequestHeader('X-WP-Nonce', esTemplateLibrary.nonce);
             },
             success: function(response) {
                 if (response.success && response.conflicts && response.conflicts.length > 0) {
@@ -248,11 +248,11 @@ jQuery(document).ready(function($) {
         function proceedWithAssignment($btn, type) {
             $btn.text('Assigning...');
                 $.ajax({
-                    url: tvTemplateLibrary.api_url + '/assign',
+                    url: esTemplateLibrary.api_url + '/assign',
                     method: 'POST',
                     data: { elementor_id: currentElementorId, type: type },
                     beforeSend: function(xhr) {
-                        xhr.setRequestHeader('X-WP-Nonce', tvTemplateLibrary.nonce);
+                        xhr.setRequestHeader('X-WP-Nonce', esTemplateLibrary.nonce);
                     },
                     success: function(assignRes) {
                         if (assignRes.success && assignRes.edit_url) {
@@ -271,46 +271,46 @@ jQuery(document).ready(function($) {
         }
     });
 
-    $(document).on('click', '.tv-action-close', function() {
-        $('#tv-wizard-modal').hide();
+    $(document).on('click', '.es-action-close', function() {
+        $('#es-wizard-modal').hide();
     });
 
     // Preview
-    $(document).on('click', '.tv-btn-preview', function() {
+    $(document).on('click', '.es-btn-preview', function() {
         var previewUrl = $(this).data('preview');
         if (previewUrl) {
-            $('#tv-preview-image').attr('src', previewUrl);
-            $('#tv-preview-modal').show().find('.tv-modal-close').focus();
+            $('#es-preview-image').attr('src', previewUrl);
+            $('#es-preview-modal').show().find('.es-modal-close').focus();
         }
     });
 
-    $('.tv-modal-close').on('click', function() {
-        $(this).closest('.tv-modal').hide();
+    $('.es-modal-close').on('click', function() {
+        $(this).closest('.es-modal').hide();
     });
 });
 
 // KITS LOGIC
 jQuery(document).ready(function($) {
-    var kitGrid = $("#tv-kits-grid");
+    var kitGrid = $("#es-kits-grid");
     var allKits = [];
     var currentKit = null;
-    var wpKitTemplate = wp.template("tv-kit-card");
+    var wpKitTemplate = wp.template("es-kit-card");
 
     // Tabs
-    $(".tv-library-tabs .nav-tab").on("click", function(e) {
+    $(".es-library-tabs .nav-tab").on("click", function(e) {
         e.preventDefault();
-        $(".tv-library-tabs .nav-tab").removeClass("nav-tab-active");
+        $(".es-library-tabs .nav-tab").removeClass("nav-tab-active");
         $(this).addClass("nav-tab-active");
-        $(".tv-tab-content").hide();
-        $("#tv-tab-" + $(this).data("target")).show();
+        $(".es-tab-content").hide();
+        $("#es-tab-" + $(this).data("target")).show();
     });
 
     // Fetch Kits
     $.ajax({
-        url: tvTemplateLibrary.api_url + "/kits",
+        url: esTemplateLibrary.api_url + "/kits",
         method: "GET",
         beforeSend: function(xhr) {
-            xhr.setRequestHeader("X-WP-Nonce", tvTemplateLibrary.nonce);
+            xhr.setRequestHeader("X-WP-Nonce", esTemplateLibrary.nonce);
         },
         success: function(response) {
             if (Array.isArray(response)) {
@@ -336,9 +336,9 @@ jQuery(document).ready(function($) {
         });
     }
 
-    $("#tv-search-kits-input").on("input", function() {
+    $("#es-search-kits-input").on("input", function() {
         var term = $(this).val().toLowerCase();
-        $("#tv-kits-grid .tv-template-card").each(function() {
+        $("#es-kits-grid .es-template-card").each(function() {
             var title = $(this).data("title");
             $(this).toggle(title.indexOf(term) > -1);
         });
@@ -346,22 +346,22 @@ jQuery(document).ready(function($) {
 
     // Wizard
     function showKitWizardStep(stepId) {
-        $("#tv-kit-wizard-modal .tv-wizard-step").hide();
+        $("#es-kit-wizard-modal .es-wizard-step").hide();
         $("#" + stepId).show();
     }
 
-    $(document).on("click", ".tv-btn-import-kit", function() {
+    $(document).on("click", ".es-btn-import-kit", function() {
         var slug = $(this).data("slug");
         currentKit = allKits.find(k => k.slug === slug);
         if (!currentKit) return;
         
-        $(".tv-kit-name").text(currentKit.title);
-        $("#tv-kit-wizard-modal").show();
-        showKitWizardStep("tv-kit-step-info");
+        $(".es-kit-name").text(currentKit.title);
+        $("#es-kit-wizard-modal").show();
+        showKitWizardStep("es-kit-step-info");
     });
 
-    $(document).on("click", ".tv-kit-wizard-next[data-next=\"deps\"]", function() {
-        var $deps = $("#tv-kit-wizard-deps-list");
+    $(document).on("click", ".es-kit-wizard-next[data-next=\"deps\"]", function() {
+        var $deps = $("#es-kit-wizard-deps-list");
         $deps.empty();
         var reqs = currentKit.required_plugins || [];
         if (reqs.length === 0) {
@@ -371,30 +371,30 @@ jQuery(document).ready(function($) {
                 $deps.append("<li><span class=\"dashicons dashicons-yes-alt\" style=\"color:green\"></span> " + dep.toUpperCase() + "</li>");
             });
         }
-        showKitWizardStep("tv-kit-step-deps");
+        showKitWizardStep("es-kit-step-deps");
     });
 
-    $(document).on("click", ".tv-kit-wizard-next[data-next=\"components\"]", function() {
-        var $list = $("#tv-kit-components-list");
+    $(document).on("click", ".es-kit-wizard-next[data-next=\"components\"]", function() {
+        var $list = $("#es-kit-components-list");
         $list.empty();
 
         if (currentKit.global_styles) {
-            $list.append("<label style=\"display:block;margin-bottom:8px;\"><input type=\"checkbox\" class=\"tv-kit-comp-chk\" value=\"global_styles\" checked> Global Styles (Colors, Typography)</label>");
+            $list.append("<label style=\"display:block;margin-bottom:8px;\"><input type=\"checkbox\" class=\"es-kit-comp-chk\" value=\"global_styles\" checked> Global Styles (Colors, Typography)</label>");
         }
 
         if (currentKit.templates) {
             Object.keys(currentKit.templates).forEach(function(key) {
                 var label = key.charAt(0).toUpperCase() + key.slice(1);
-                $list.append("<label style=\"display:block;margin-bottom:8px;\"><input type=\"checkbox\" class=\"tv-kit-comp-chk\" value=\""+key+"\" checked> " + label + " Template</label>");
+                $list.append("<label style=\"display:block;margin-bottom:8px;\"><input type=\"checkbox\" class=\"es-kit-comp-chk\" value=\""+key+"\" checked> " + label + " Template</label>");
             });
         }
 
-        showKitWizardStep("tv-kit-step-components");
+        showKitWizardStep("es-kit-step-components");
     });
 
-    $(document).on("click", ".tv-kit-do-import", function() {
+    $(document).on("click", ".es-kit-do-import", function() {
         var selected = [];
-        $(".tv-kit-comp-chk:checked").each(function() {
+        $(".es-kit-comp-chk:checked").each(function() {
             selected.push($(this).val());
         });
 
@@ -403,8 +403,8 @@ jQuery(document).ready(function($) {
             return;
         }
 
-        showKitWizardStep("tv-kit-step-progress");
-        var $log = $("#tv-kit-progress-log");
+        showKitWizardStep("es-kit-step-progress");
+        var $log = $("#es-kit-progress-log");
         $log.empty();
 
         importNextKitComponent(selected, 0, $log);
@@ -412,8 +412,8 @@ jQuery(document).ready(function($) {
 
     function importNextKitComponent(components, index, $log) {
         if (index >= components.length) {
-            $("#tv-kit-step-progress .spinner").removeClass("is-active").hide();
-            setTimeout(function() { showKitWizardStep("tv-kit-step-completed"); }, 1000);
+            $("#es-kit-step-progress .spinner").removeClass("is-active").hide();
+            setTimeout(function() { showKitWizardStep("es-kit-step-completed"); }, 1000);
             return;
         }
 
@@ -425,11 +425,11 @@ jQuery(document).ready(function($) {
         if (comp !== "global_styles") payload.component = comp;
 
         $.ajax({
-            url: tvTemplateLibrary.api_url + apiRoute,
+            url: esTemplateLibrary.api_url + apiRoute,
             method: "POST",
             data: payload,
             beforeSend: function(xhr) {
-                xhr.setRequestHeader("X-WP-Nonce", tvTemplateLibrary.nonce);
+                xhr.setRequestHeader("X-WP-Nonce", esTemplateLibrary.nonce);
             },
             success: function(res) {
                 $log.find("li:last-child .status").text("✔").css("color", "green");
@@ -440,10 +440,10 @@ jQuery(document).ready(function($) {
                 if (res.success && res.elementor_id && ["header", "footer", "archive", "single", "popup"].includes(comp)) {
                     $log.append("<li>Assigning " + comp + " to builder... <span class=\"status\" style=\"color:#888\">In progress</span></li>");
                     $.ajax({
-                        url: tvTemplateLibrary.api_url + "/assign",
+                        url: esTemplateLibrary.api_url + "/assign",
                         method: "POST",
                         data: { elementor_id: res.elementor_id, type: comp },
-                        beforeSend: function(xhr) { xhr.setRequestHeader("X-WP-Nonce", tvTemplateLibrary.nonce); },
+                        beforeSend: function(xhr) { xhr.setRequestHeader("X-WP-Nonce", esTemplateLibrary.nonce); },
                         success: function(assignRes) {
                             $log.find("li:last-child .status").text("✔").css("color", "green");
                             importNextKitComponent(components, index + 1, $log);
@@ -464,8 +464,8 @@ jQuery(document).ready(function($) {
         });
     }
 
-    $(document).on("click", ".tv-wizard-close, .tv-action-close-kit", function() {
-        $("#tv-kit-wizard-modal").hide();
+    $(document).on("click", ".es-wizard-close, .es-action-close-kit", function() {
+        $("#es-kit-wizard-modal").hide();
     });
 });
 

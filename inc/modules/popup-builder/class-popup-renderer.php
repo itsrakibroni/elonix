@@ -70,7 +70,7 @@ class Elonix_Toolkit_Popup_Renderer {
 
 		$popups = get_posts(
 			array(
-				'post_type'      => 'tv_popup',
+				'post_type'      => 'es_popup',
 				'post_status'    => 'publish',
 				'posts_per_page' => -1,
 			)
@@ -83,9 +83,9 @@ class Elonix_Toolkit_Popup_Renderer {
 		$matched = array();
 
 		foreach ( $popups as $popup ) {
-			$rule    = get_post_meta( $popup->ID, '_tv_popup_target_rule', true );
-			$ids_str = get_post_meta( $popup->ID, '_tv_popup_target_ids', true );
-			$ids     = array_filter( array_map( 'intval', explode( ',', $ids_str ) ) );
+			$rule    = get_post_meta( $popup->ID, '_es_popup_target_rule', true );
+			$ids_str = get_post_meta( $popup->ID, '_es_popup_target_ids', true );
+			$ids     = array_filter( array_map( 'inesal', explode( ',', $ids_str ) ) );
 
 			$is_matched = false;
 
@@ -106,7 +106,7 @@ class Elonix_Toolkit_Popup_Renderer {
 			}
 
 			// Advanced Display Conditions: User Authentication State
-			$user_state = get_post_meta( $popup->ID, '_tv_popup_user_state', true );
+			$user_state = get_post_meta( $popup->ID, '_es_popup_user_state', true );
 			if ( ! empty( $user_state ) && 'all' !== $user_state ) {
 				if ( 'logged_in' === $user_state && ! is_user_logged_in() ) {
 					continue;
@@ -117,7 +117,7 @@ class Elonix_Toolkit_Popup_Renderer {
 			}
 
 			// Advanced Display Conditions: User Roles
-			$user_roles = get_post_meta( $popup->ID, '_tv_popup_user_roles', true );
+			$user_roles = get_post_meta( $popup->ID, '_es_popup_user_roles', true );
 			if ( is_array( $user_roles ) && ! empty( $user_roles ) ) {
 				if ( ! is_user_logged_in() ) {
 					continue;
@@ -136,7 +136,7 @@ class Elonix_Toolkit_Popup_Renderer {
 			}
 
 			// Advanced Display Conditions: Specific Page Conditions
-			$page_conds = get_post_meta( $popup->ID, '_tv_popup_page_conditions', true );
+			$page_conds = get_post_meta( $popup->ID, '_es_popup_page_conditions', true );
 			if ( is_array( $page_conds ) && ! empty( $page_conds ) ) {
 				$page_match = false;
 				if ( in_array( 'front_page', $page_conds, true ) && is_front_page() ) {
@@ -183,7 +183,7 @@ class Elonix_Toolkit_Popup_Renderer {
 
 		// Enqueue module styles
 		wp_enqueue_style(
-			'tv-popup-builder-frontend',
+			'es-popup-builder-frontend',
 			ELONIX_ACC_URL . 'assets/css/popup-builder-frontend.css',
 			array(),
 			'1.0.0'
@@ -191,7 +191,7 @@ class Elonix_Toolkit_Popup_Renderer {
 
 		// Enqueue module scripts (No jQuery dependency)
 		wp_enqueue_script(
-			'tv-popup-builder-frontend',
+			'es-popup-builder-frontend',
 			ELONIX_ACC_URL . 'assets/js/popup-builder-frontend.js',
 			array(),
 			'1.0.0',
@@ -220,15 +220,15 @@ class Elonix_Toolkit_Popup_Renderer {
 		}
 
 		foreach ( $matched as $popup ) {
-			$type             = get_post_meta( $popup->ID, '_tv_popup_type', true );
-			$trigger          = get_post_meta( $popup->ID, '_tv_popup_trigger_type', true );
-			$trigger_val      = get_post_meta( $popup->ID, '_tv_popup_trigger_value', true );
-			$scroll_val       = get_post_meta( $popup->ID, '_tv_popup_scroll_value', true );
-			$exit_sensitivity = get_post_meta( $popup->ID, '_tv_popup_exit_intent_sensitivity', true );
-			$priority         = get_post_meta( $popup->ID, '_tv_popup_priority', true );
-			$frequency        = get_post_meta( $popup->ID, '_tv_popup_frequency', true );
-			$cookie_expiry    = get_post_meta( $popup->ID, '_tv_popup_cookie_expiry', true );
-			$devices          = get_post_meta( $popup->ID, '_tv_popup_devices', true );
+			$type             = get_post_meta( $popup->ID, '_es_popup_type', true );
+			$trigger          = get_post_meta( $popup->ID, '_es_popup_trigger_type', true );
+			$trigger_val      = get_post_meta( $popup->ID, '_es_popup_trigger_value', true );
+			$scroll_val       = get_post_meta( $popup->ID, '_es_popup_scroll_value', true );
+			$exit_sensitivity = get_post_meta( $popup->ID, '_es_popup_exit_intent_sensitivity', true );
+			$priority         = get_post_meta( $popup->ID, '_es_popup_priority', true );
+			$frequency        = get_post_meta( $popup->ID, '_es_popup_frequency', true );
+			$cookie_expiry    = get_post_meta( $popup->ID, '_es_popup_cookie_expiry', true );
+			$devices          = get_post_meta( $popup->ID, '_es_popup_devices', true );
 
 			if ( empty( $type ) ) {
 				$type = 'modal';
@@ -249,8 +249,8 @@ class Elonix_Toolkit_Popup_Renderer {
 				$devices = array( 'desktop', 'tablet', 'mobile' );
 			}
 			?>
-			<div id="tv-popup-<?php echo esc_attr( $popup->ID ); ?>" 
-				class="tv-popup-wrapper tv-popup-type-<?php echo esc_attr( $type ); ?>" 
+			<div id="es-popup-<?php echo esc_attr( $popup->ID ); ?>" 
+				class="es-popup-wrapper es-popup-type-<?php echo esc_attr( $type ); ?>" 
 				data-popup-id="<?php echo esc_attr( $popup->ID ); ?>"
 				data-trigger="<?php echo esc_attr( $trigger ); ?>"
 				data-trigger-val="<?php echo esc_attr( $trigger_val ); ?>"
@@ -265,10 +265,10 @@ class Elonix_Toolkit_Popup_Renderer {
 				aria-hidden="true" 
 				style="display: none;">
 				
-				<div class="tv-popup-overlay"></div>
-				<div class="tv-popup-container">
-					<button class="tv-popup-close-btn" aria-label="<?php esc_attr_e( 'Close Popup', 'elonix' ); ?>">&times;</button>
-					<div class="tv-popup-content">
+				<div class="es-popup-overlay"></div>
+				<div class="es-popup-container">
+					<button class="es-popup-close-btn" aria-label="<?php esc_attr_e( 'Close Popup', 'elonix' ); ?>">&times;</button>
+					<div class="es-popup-content">
 						<?php
 						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 						echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $popup->ID );

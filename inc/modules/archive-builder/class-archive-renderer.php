@@ -75,7 +75,7 @@ class Elonix_Toolkit_Archive_Renderer {
 	 */
 	public function get_active_matched_archive() {
 		if ( class_exists( 'Elonix_Assignment_Engine' ) ) {
-			return \Elonix_Assignment_Engine::instance()->get_matching_template( 'tv_archive' );
+			return \Elonix_Assignment_Engine::instance()->get_matching_template( 'es_archive' );
 		}
 		return 0;
 	}
@@ -103,7 +103,7 @@ class Elonix_Toolkit_Archive_Renderer {
 		$custom_canvas = ELONIX_ACC_PATH . 'inc/modules/archive-builder/templates/archive-canvas.php';
 		if ( file_exists( $custom_canvas ) ) {
 			// Save matched ID to query state for canvas fetch
-			set_query_var( 'tv_matched_archive_id', $matched_id );
+			set_query_var( 'es_matched_archive_id', $matched_id );
 			return $custom_canvas;
 		}
 
