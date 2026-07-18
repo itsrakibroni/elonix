@@ -11,6 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template-local variables are not globals
 
+add_action( 'wp_enqueue_scripts', function() {
+	wp_enqueue_style( 'elonix-canvas', ELONIX_ACC_URL . 'assets/css/canvas.css', array(), ELONIX_VERSION );
+	wp_enqueue_script( 'elonix-canvas', ELONIX_ACC_URL . 'assets/js/canvas.js', array(), ELONIX_VERSION, true );
+} );
+
 $template_id = get_query_var( 'es_matched_archive_id' );
 
 // Safety fallback
@@ -57,26 +62,6 @@ if ( $show_header ) {
 		margin-right: 0 !important;
 		padding-left: 0 !important;
 		padding-right: 0 !important;
-		float: none !important;
-		flex: none !important;
-	}
-	/* Browser fallback using CSS :has selector */
-	div:has(> .es-archive-canvas-content),
-	section:has(> .es-archive-canvas-content),
-	article:has(> .es-archive-canvas-content),
-	.site-content:has(.es-archive-canvas-content),
-	.content-area:has(.es-archive-canvas-content),
-	.container:has(.es-archive-canvas-content),
-	#content:has(.es-archive-canvas-content) {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-		float: none !important;
-	}
-</style>
 
 <main id="es-archive-primary" class="es-archive-canvas-content es-builder-container elementor-template-full-width" role="main" aria-label="<?php esc_attr_e( 'Archive Content', 'elonix' ); ?>">
 	<?php
@@ -85,28 +70,6 @@ if ( $show_header ) {
 	echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id );
 	?>
 </main>
-
-<script type="text/javascript">
-	(function() {
-		function makeParentsFluid() {
-			var canvas = document.getElementById('es-archive-primary');
-			if (canvas) {
-				var parent = canvas.parentElement;
-				while (parent && parent.tagName !== 'BODY' && parent.tagName !== 'HTML') {
-					if (parent.id === 'page' || parent.classList.contains('site') || parent.classList.contains('page-wrapper')) {
-						break;
-					}
-					parent.classList.add('es-archive-parent-fluid');
-					parent = parent.parentElement;
-				}
-			}
-		}
-		// Run immediately
-		makeParentsFluid();
-		// Also run on DOMContentLoaded for complete safety
-		document.addEventListener('DOMContentLoaded', makeParentsFluid);
-	})();
-</script>
 
 <?php
 if ( $show_footer ) {

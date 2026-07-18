@@ -1,6 +1,6 @@
 === Elonix – Toolkit for Elementor ===
 Contributors: itsrakibroni
-Tags: elementor addon, header footer builder, popup builder, page builder widgets, elementor widgets
+Tags: Toolkit for Elementor, header footer builder, popup builder, page builder widgets, elementor widgets
 Requires at least: 6.0
 Tested up to: 7.0
 Requires PHP: 8.2
@@ -8,15 +8,15 @@ Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-A lightweight and powerful Elementor addon toolkit with 30+ widgets, Header & Footer Builder, Popup Builder, and much more.
+A lightweight and powerful Toolkit for Elementor toolkit with 30+ widgets, Header & Footer Builder, Popup Builder, and much more.
 
 == Description ==
 
-**Elonix – Toolkit for Elementor** is a complete all-in-one Elementor addon plugin that empowers you to build professional websites with ease — without touching a single line of code.
+**Elonix – Toolkit for Elementor** is a complete all-in-one Toolkit for Elementor plugin that empowers you to build professional websites with ease — without touching a single line of code.
 
 Whether you need custom headers, footers, popups, archive layouts, or beautiful widgets, Elonix – Toolkit for Elementor has you covered.
 
-= 🔥 Key Features =
+= Key Features =
 
 * **Header & Footer Builder** — Design custom headers and footers with full Elementor control.
 * **Popup Builder** — Create stunning popups with advanced display conditions.
@@ -32,7 +32,7 @@ Whether you need custom headers, footers, popups, archive layouts, or beautiful 
 * **Import / Export** — Easily backup and restore your settings.
 * **Lightweight & Fast** — Modular architecture loads only what you enable.
 
-= 🧩 Included Widgets =
+= Included Widgets =
 
 * Advanced Heading
 * Advanced Button
@@ -66,7 +66,7 @@ Whether you need custom headers, footers, popups, archive layouts, or beautiful 
 * Advanced Post Title
 * Error Code (404)
 
-= ⚙️ Dynamic Tag Support =
+= Dynamic Tag Support =
 
 Elonix – Toolkit for Elementor includes 40+ dynamic tags including:
 * ACF Fields (Text, Image, Gallery, URL)
@@ -76,7 +76,7 @@ Elonix – Toolkit for Elementor includes 40+ dynamic tags including:
 * Site Info, Current Date & Time
 * User Info and much more
 
-= 📋 Requirements =
+= Requirements =
 
 * WordPress 5.6 or higher
 * Elementor (Free) 3.0 or higher

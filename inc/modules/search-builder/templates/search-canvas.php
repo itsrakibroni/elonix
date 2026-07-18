@@ -11,6 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 // phpcs:disable WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template-local variables are not globals
 
+add_action( 'wp_enqueue_scripts', function() {
+	wp_enqueue_style( 'elonix-canvas', ELONIX_ACC_URL . 'assets/css/canvas.css', array(), ELONIX_VERSION );
+	wp_enqueue_script( 'elonix-canvas', ELONIX_ACC_URL . 'assets/js/canvas.js', array(), ELONIX_VERSION, true );
+} );
+
 $template_id = get_query_var( 'es_matched_search_id' );
 
 if ( ! $template_id ) {
@@ -41,65 +46,12 @@ if ( $show_header ) {
 	<?php
 }
 ?>
-<style type="text/css">
-	.es-search-canvas-content {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin: 0 !important;
-		padding: 0 !important;
-	}
-	.es-search-parent-fluid {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-		float: none !important;
-		flex: none !important;
-	}
-	div:has(> .es-search-canvas-content),
-	section:has(> .es-search-canvas-content),
-	article:has(> .es-search-canvas-content),
-	.site-content:has(.es-search-canvas-content),
-	.content-area:has(.es-search-canvas-content),
-	.container:has(.es-search-canvas-content),
-	#content:has(.es-search-canvas-content) {
-		width: 100% !important;
-		max-width: 100% !important;
-		margin-left: 0 !important;
-		margin-right: 0 !important;
-		padding-left: 0 !important;
-		padding-right: 0 !important;
-		float: none !important;
-	}
-</style>
 
 <main id="es-search-primary" class="es-search-canvas-content es-builder-container elementor-template-full-width" role="main" aria-label="<?php esc_attr_e( 'Search Results Content', 'elonix' ); ?>">
 	<?php
 	echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
 	?>
 </main>
-
-<script type="text/javascript">
-	(function() {
-		function makeParentsFluid() {
-			var canvas = document.getElementById('es-search-primary');
-			if (canvas) {
-				var parent = canvas.parentElement;
-				while (parent && parent.tagName !== 'BODY' && parent.tagName !== 'HTML') {
-					if (parent.id === 'page' || parent.classList.contains('site') || parent.classList.contains('page-wrapper')) {
-						break;
-					}
-					parent.classList.add('es-search-parent-fluid');
-					parent = parent.parentElement;
-				}
-			}
-		}
-		makeParentsFluid();
-		document.addEventListener('DOMContentLoaded', makeParentsFluid);
-	})();
-</script>
 
 <?php
 if ( $show_footer ) {

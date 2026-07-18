@@ -330,7 +330,6 @@ Elonix_Toolkit_Elementor_Core::instance();
 
 // Widget Options
 require_once ELONIX_ACC_PATH . 'inc/widgets.php';
-require_once ELONIX_ACC_PATH . 'inc/acf.php';
 require_once ELONIX_ACC_PATH . 'inc/theme-social.php';
 if ( Elonix_Toolkit_Module_Manager::is_module_enabled( 'custom_icons' ) ) {
 	require_once ELONIX_ACC_PATH . 'inc/icons.php';

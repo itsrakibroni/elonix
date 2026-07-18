@@ -17,7 +17,7 @@ class Assets {
 
 	public function register_hooks() {
 		// Output critical CSS inline at priority 1 to guarantee it's the first style
-		add_action( 'wp_head', array( $this, 'output_critical_css' ), 1 );
+		// (Moved to enqueue_scripts using wp_add_inline_style)
 
 		// Enqueue the deferred JS
 		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_scripts' ) );
@@ -26,7 +26,7 @@ class Assets {
 		add_filter( 'script_loader_tag', array( $this, 'add_defer_attribute' ), 10, 2 );
 	}
 
-	public function output_critical_css() {
+	public function get_critical_css() {
 		$bg_color  = esc_attr( $this->settings['bg'] );
 		$primary   = esc_attr( $this->settings['color'] );
 		$secondary = esc_attr( $this->settings['color_alt'] );
@@ -35,12 +35,8 @@ class Assets {
 		$speed     = esc_attr( $this->settings['speed'] );
 		$zindex    = esc_attr( $this->settings['zindex'] );
 
-		// Convert hex/rgb to rgba for overlay opacity if needed,
-		// but using CSS variables we can just apply opacity to a pseudo element or background
-		// For simplicity, we just use a CSS custom property.
-
+		ob_start();
 		?>
-		<style id="es-screen-loader-critical-css">
 			:root {
 				--es-loader-bg: <?php echo esc_html( $bg_color ); ?>;
 				--es-loader-opacity: <?php echo esc_html( $opacity ); ?>;
@@ -289,26 +285,37 @@ class Assets {
 					scroll-behavior: auto !important;
 				}
 			}
-		</style>
 		<?php
-		// Render early script to add body class before rendering body
+		return ob_get_clean();
+	}
+
+	public function get_early_js() {
+		ob_start();
 		?>
-		<script type="text/javascript" id="es-screen-loader-early-js">
 			(function() {
 				<?php if ( $this->settings['once'] ) : ?>
 					if ( sessionStorage.getItem('es_loader_shown') ) {
-						// Do not add loading class if already shown and hide the loader instantly
 						document.documentElement.className += ' es-loader-hidden';
 						return;
 					}
 				<?php endif; ?>
 				document.documentElement.className += ' es-loading-active';
 			})();
-		</script>
 		<?php
+		return ob_get_clean();
 	}
 
 	public function enqueue_scripts() {
+		// Enqueue the critical CSS via a dummy handle
+		wp_register_style( 'es-screen-loader-critical', false );
+		wp_enqueue_style( 'es-screen-loader-critical' );
+		wp_add_inline_style( 'es-screen-loader-critical', $this->get_critical_css() );
+
+		// Enqueue the early JS via a dummy handle in the head
+		wp_register_script( 'es-screen-loader-early', false );
+		wp_enqueue_script( 'es-screen-loader-early' );
+		wp_add_inline_script( 'es-screen-loader-early', $this->get_early_js() );
+
 		// Enqueue the main vanilla JS controller deferred.
 		wp_register_script( 'es-screen-loader-js', ELONIX_ACC_URL . 'assets/js/screen-loader.js', array(), ELONIX_VERSION, true );
 

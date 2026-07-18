@@ -68,25 +68,3 @@ if ( $total_value === 0 ) {
 	</div>
 </div>
 
-<style>
-/* Temp legend inline styles until compiled */
-.es-progress__legend {
-	display: flex;
-	flex-wrap: wrap;
-	gap: 15px;
-	margin-top: 15px;
-}
-.es-progress__legend-item {
-	display: flex;
-	align-items: center;
-	gap: 5px;
-	font-size: 14px;
-}
-.es-progress__legend-color {
-	width: 12px;
-	height: 12px;
-	border-radius: 50%;
-	display: inline-block;
-	background: var(--es-progress-fill-color);
-}
-</style>

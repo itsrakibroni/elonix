@@ -409,7 +409,7 @@ class Elonix_Admin_UI {
 		// 1. BULK ACTIONS
 		if ( isset( $_POST['es_bulk_action_nonce_field'] ) && wp_verify_nonce( sanitize_text_field( wp_unslash( $_POST['es_bulk_action_nonce_field'] ) ), 'es_bulk_action' ) ) {
 			$bulk_action = isset( $_POST['es_bulk_action'] ) ? sanitize_text_field( wp_unslash( $_POST['es_bulk_action'] ) ) : '';
-			$layout_ids  = isset( $_POST['layouts'] ) ? array_map( 'inesal', $_POST['layouts'] ) : array();
+			$layout_ids  = isset( $_POST['layouts'] ) ? array_map( 'intval', map_deep( wp_unslash( $_POST['layouts'] ), 'sanitize_text_field' ) ) : array();
 
 			// Fallback bottom bulk action
 			if ( empty( $bulk_action ) && isset( $_POST['es_bulk_action_bottom'] ) ) {

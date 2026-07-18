@@ -17,10 +17,10 @@
 	position: absolute;
 	top: 3px;
 	left: 3px;
-	background-color: #9B51E0;
+	background-color: #015FFF;
 	color: #ffffff;
 	font-size: 9px;
-	border: 1px solid #9B51E0;
+	border: 1px solid #015FFF;
 	font-weight: 700;
 	padding: 1px 2px;
 	line-height: 10px;
@@ -39,8 +39,8 @@
 .elementor-element:hover [data-library-element-type="advanced-button"] .icon::after,
 .elementor-element:hover [data-library-element-type="advanced-image"] .icon::after,
 .elementor-element:hover [data-library-element-type="advanced-icon-box"] .icon::after {
-	background-color: #7d3ebd;
-	border-color: #7d3ebd;
+	background-color: #015FFF;
+	border-color: #015FFF;
 }
 
 /* Dark mode support */
@@ -51,7 +51,7 @@
 .elementor-editor-dark-mode [data-library-element-type="advanced-button"] .icon::after,
 .elementor-editor-dark-mode [data-library-element-type="advanced-image"] .icon::after,
 .elementor-editor-dark-mode [data-library-element-type="advanced-icon-box"] .icon::after {
-	border: 1px solid #9B51E0;
+	border: 1px solid #015FFF;
 }
 
 /* Dark mode hover styles */

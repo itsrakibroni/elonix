@@ -13,8 +13,8 @@ $animate_counter = $settings['enable_counter'] === 'yes';
 $format          = $settings['display_format'];
 
 // Priority 1: Percentage calculation
-$current = floaesal( $settings['current_value'] );
-$max     = floaesal( $settings['max_value'] );
+$current = floatval( $settings['current_value'] );
+$max     = floatval( $settings['max_value'] );
 $percent = $max > 0 ? ( $current / $max ) * 100 : 0;
 if ( $percent > 100 ) {
 	$percent = 100;
@@ -31,7 +31,7 @@ $display_value = $animate_counter ? '0' : round( $target_val, 1 );
 
 ?>
 <div class="es-progress__wrapper">
-	
+
 	<?php if ( ! empty( $settings['title'] ) || ! empty( $settings['subtitle'] ) ) : ?>
 	<div class="es-progress__header">
 		<?php if ( ! empty( $settings['title'] ) ) : ?>
@@ -55,24 +55,24 @@ $display_value = $animate_counter ? '0' : round( $target_val, 1 );
 	<div class="es-progress__track">
 		<?php
 		if ( $settings['show_target'] === 'yes' ) :
-			$target_line_pos = floaesal( $settings['target_value'] );
+			$target_line_pos = floatval( $settings['target_value'] );
 			if ( $target_line_pos > 100 ) {
 				$target_line_pos = 100;
 			}
 			?>
 			<div class="es-progress__target" style="left: <?php echo esc_attr( $target_line_pos ); ?>%;"></div>
 		<?php endif; ?>
-		
+
 		<div class="es-progress__fill"></div>
-		
+
 		<?php if ( $settings['show_marker'] === 'yes' ) : ?>
 			<div class="es-progress__marker">
 				<?php if ( ! empty( $settings['prefix'] ) ) : ?>
 					<span class="es-progress__marker-prefix"><?php echo esc_html( $settings['prefix'] ); ?></span>
 				<?php endif; ?>
-				
+
 				<span class="es-progress__marker-val" <?php echo $value_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>><?php echo $display_value; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?></span>
-				
+
 				<?php if ( ! empty( $suffix ) ) : ?>
 					<span class="es-progress__marker-suffix"><?php echo esc_html( $suffix ); ?></span>
 				<?php endif; ?>

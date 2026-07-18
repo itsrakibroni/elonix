@@ -85,7 +85,7 @@
 }
 
 :where(.es-sca-trigger-btn):focus-visible {
-	outline: 3px solid #9B51E0;
+	outline: 3px solid #015FFF;
 	outline-offset: 3px;
 }
 
@@ -112,14 +112,14 @@
 
 /* Presets Styling */
 :where(.es-sca-bg-solid) {
-	background-color: #9B51E0;
+	background-color: #015FFF;
 	color: #ffffff;
 }
 :where(.es-sca-bg-solid):hover {
 	background-color: #8238cc;
 }
 :where(.es-sca-bg-gradient) {
-	background: linear-gradient(135deg, #9B51E0 0%, #3081b9 100%);
+	background: linear-gradient(135deg, #015FFF 0%, #3081b9 100%);
 	color: #ffffff;
 }
 :where(.es-sca-bg-gradient):hover {
@@ -390,7 +390,7 @@
 
 /* Card Header */
 :where(.es-sca-card-header) {
-	background-color: #9B51E0;
+	background-color: #015FFF;
 	color: #ffffff;
 	padding: 20px;
 }
@@ -506,7 +506,7 @@
 	width: 32px;
 	height: 32px;
 	border-radius: 50%;
-	background-color: #9B51E0;
+	background-color: #015FFF;
 	color: #ffffff;
 	display: flex;
 	align-items: center;
@@ -556,7 +556,7 @@
 :where(.es-sca-inline-form-wrapper) button,
 :where(.es-sca-inline-form-wrapper) input[type="submit"] {
 	width: 100% !important;
-	background-color: #9B51E0 !important;
+	background-color: #015FFF !important;
 	color: #ffffff !important;
 	padding: 10px !important;
 	border: none !important;
@@ -711,7 +711,7 @@
 :where(.es-sca-item-btn):focus-visible,
 :where(.es-sca-agent-link-btn):focus-visible,
 :where(.es-sca-qr-close):focus-visible {
-	outline: 2px solid #9B51E0;
+	outline: 2px solid #015FFF;
 	outline-offset: 2px;
 }
 

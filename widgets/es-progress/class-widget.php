@@ -11,6 +11,11 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Elonix_Toolkit_Progress_Bar_Widget extends Elonix_Widget_Base {
 
+	public function __construct( $data = [], $args = null ) {
+		parent::__construct( $data, $args );
+		wp_register_style( 'elonix-progress', ELONIX_ACC_URL . 'assets/css/widget-progress.css', [], ELONIX_VERSION );
+	}
+
 	public function get_name() {
 		return 'es-progress';
 	}
@@ -28,7 +33,7 @@ class Elonix_Toolkit_Progress_Bar_Widget extends Elonix_Widget_Base {
 	}
 
 	public function get_style_depends() {
-		return [ 'elonix-widget-es-progress' ];
+		return [ 'elonix-widget-es-progress', 'elonix-progress' ];
 	}
 
 	public function get_script_depends() {
@@ -263,7 +268,7 @@ class Elonix_Toolkit_Progress_Bar_Widget extends Elonix_Widget_Base {
 		$this->add_control( 'restart_on_scroll', [ 'label' => esc_html__( 'Restart On Scroll', 'elonix' ), 'type' => \Elementor\Controls_Manager::SWITCHER, 'default' => 'no', 'condition' => [ 'animate_once!' => 'yes', 'enable_animation' => 'yes' ] ] );
 
 
-		$this->add_responsive_control( 'animation_durationv1', [
+		$this->add_responsive_control( 'animation_duration', [
 			'label' => esc_html__( 'Animation Duration (ms)', 'elonix' ),
 			'type' => \Elementor\Controls_Manager::SLIDER,
 			'size_units' => [ 'ms' ],
@@ -454,8 +459,8 @@ class Elonix_Toolkit_Progress_Bar_Widget extends Elonix_Widget_Base {
 		$this->add_render_attribute( 'wrapper', 'class', $wrapper_classes );
 		$this->add_render_attribute( 'wrapper', 'role', 'progressbar' );
 
-		$current = floaesal( $settings['current_value'] );
-		$max = floaesal( $settings['max_value'] );
+		$current = floatval( $settings['current_value'] );
+		$max = floatval( $settings['max_value'] );
 
 		// PRIORITY 1: Percentage must always be (Current Value / Maximum Value) * 100
 		$percent = $max > 0 ? ( $current / $max ) * 100 : 0;
@@ -473,9 +478,9 @@ class Elonix_Toolkit_Progress_Bar_Widget extends Elonix_Widget_Base {
 				'enable_animation'   => 'yes' === $settings['enable_animation'],
 				'animate_once'       => 'yes' === $settings['animate_once'],
 				'restart_on_scroll'  => 'yes' === $settings['restart_on_scroll'],
-				'animation_duration' => isset($settings['animation_duration']['size']) ? (float) $settings['animation_duration']['size'] : 1500,
+				'animation_duration' => isset($settings['animation_duration']['size']) && '' !== $settings['animation_duration']['size'] ? (float) $settings['animation_duration']['size'] : 1500,
 				'animation_delay'    => isset($settings['animation_delay']['size']) ? (float) $settings['animation_delay']['size'] : 0,
-				'animation_curve'    => $settings['animation_curve'],
+				'animation_curve'    => isset( $settings['animation_curve'] ) ? $settings['animation_curve'] : 'ease-in-out',
 			];
 			$this->add_render_attribute( 'wrapper', 'data-settings', wp_json_encode( $frontend_settings ) );
 		}

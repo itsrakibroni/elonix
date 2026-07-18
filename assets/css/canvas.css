@@ -1,0 +1,53 @@
+.es-archive-canvas-content,
+.es-search-canvas-content,
+.es-single-canvas-content {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin: 0 !important;
+	padding: 0 !important;
+}
+
+/* Break out of any width-constrained parent containers dynamically */
+.es-archive-parent-fluid,
+.es-search-parent-fluid,
+.es-single-parent-fluid {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	float: none !important;
+	flex: none !important;
+}
+
+/* Browser fallback using CSS :has selector */
+div:has(> .es-archive-canvas-content),
+section:has(> .es-archive-canvas-content),
+article:has(> .es-archive-canvas-content),
+.site-content:has(.es-archive-canvas-content),
+.content-area:has(.es-archive-canvas-content),
+.container:has(.es-archive-canvas-content),
+#content:has(.es-archive-canvas-content),
+div:has(> .es-search-canvas-content),
+section:has(> .es-search-canvas-content),
+article:has(> .es-search-canvas-content),
+.site-content:has(.es-search-canvas-content),
+.content-area:has(.es-search-canvas-content),
+.container:has(.es-search-canvas-content),
+#content:has(.es-search-canvas-content),
+div:has(> .es-single-canvas-content),
+section:has(> .es-single-canvas-content),
+article:has(> .es-single-canvas-content),
+.site-content:has(.es-single-canvas-content),
+.content-area:has(.es-single-canvas-content),
+.container:has(.es-single-canvas-content),
+#content:has(.es-single-canvas-content) {
+	width: 100% !important;
+	max-width: 100% !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding-left: 0 !important;
+	padding-right: 0 !important;
+	float: none !important;
+}

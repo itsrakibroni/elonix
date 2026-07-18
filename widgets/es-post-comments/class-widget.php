@@ -22,6 +22,15 @@ class Elonix_Toolkit_Post_Comments_Widget extends Elonix_Widget_Base {
 
 	public static $has_rendered = false;
 
+	public function __construct( $data = [], $args = null ) {
+		parent::__construct( $data, $args );
+		wp_register_style( 'elonix-post-comments', ELONIX_ACC_URL . 'assets/css/widget-post-comments.css', [], ELONIX_VERSION );
+	}
+
+	public function get_style_depends() {
+		return [ 'elonix-post-comments' ];
+	}
+
 	public function get_name() {
 		return 'es-post-comments';
 	}

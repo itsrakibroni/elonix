@@ -1,0 +1,20 @@
+.es-comment-list { list-style: none; padding: 0; margin: 0; }
+.es-comment-card { display: flex; flex-wrap: nowrap; gap: 20px; transition: all 0.3s ease; margin-bottom: 25px; }
+.es-comment-avatar { flex-shrink: 0; display: inline-block; position: relative; }
+.es-comment-avatar img.avatar { position: static !important; left: auto !important; right: auto !important; top: auto !important; bottom: auto !important; margin: 0 !important; display: block; box-sizing: border-box; object-fit: cover; max-width: 100%; }
+.es-comment-body { flex: 1; min-width: 0; }
+.es-comment-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 10px; }
+.es-comment-author-info { display: flex; flex-direction: column; }
+.es-comment-author { font-weight: 600; margin-bottom: 2px; }
+.es-comment-meta a { font-size: 0.9em; opacity: 0.7; text-decoration: none; }
+.es-comment-reply a { display: inline-block; transition: all 0.3s ease; text-decoration: none; }
+.es-comment-content p { margin-bottom: 15px; }
+.es-comment-content p:last-child { margin-bottom: 0; }
+.es-comment-respond { margin-top: 40px; }
+.es-comment-form { display: flex; flex-direction: column; gap: 15px; }
+.es-comment-form p { margin: 0; }
+.es-comment-form input[type='text'], .es-comment-form input[type='email'], .es-comment-form input[type='url'], .es-comment-form textarea { width: 100%; box-sizing: border-box; transition: all 0.3s ease; }
+@media (max-width: 767px) {
+	.es-comment-card { flex-direction: column; gap: 15px; }
+	.es-comment-header { flex-direction: column; gap: 10px; }
+}

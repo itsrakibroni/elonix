@@ -376,56 +376,7 @@ class Elonix_Toolkit_Error_Code_Widget extends Elonix_Widget_Base {
 			$wrapper_style = 'position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: -1; opacity: 0.15; pointer-events: none; width: auto; max-width: 100%; text-align: center;';
 		}
 
-		// Internal CSS definitions for keyframe animations (injected once cleanly inline)
 		?>
-		<style>
-		@keyframes es-float {
-			0% { transform: translateY(0px); }
-			50% { transform: translateY(-12px); }
-			100% { transform: translateY(0px); }
-		}
-		@keyframes es-pulse {
-			0% { transform: scale(1); }
-			50% { transform: scale(1.06); }
-			100% { transform: scale(1); }
-		}
-		.es-error-code.effect-floating {
-			animation: es-float 4s ease-in-out infinite;
-			display: inline-block;
-		}
-		.es-error-code.effect-pulse {
-			animation: es-pulse 2.5s ease-in-out infinite;
-			display: inline-block;
-		}
-		.es-error-code.effect-floating.effect-pulse {
-			animation: es-float 4s ease-in-out infinite, es-pulse 2.5s ease-in-out infinite;
-		}
-		.es-error-code.effect-outline {
-			color: transparent !important;
-			-webkit-text-fill-color: transparent !important;
-		}
-		.es-error-code.effect-glass {
-			background: rgba(255, 255, 255, 0.08);
-			backdrop-filter: blur(12px);
-			-webkit-backdrop-filter: blur(12px);
-			border: 1px solid rgba(255, 255, 255, 0.15);
-			border-radius: 12px;
-			padding: 12px 28px;
-			display: inline-block;
-			box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.08);
-		}
-		.screen-reader-text {
-			position: absolute;
-			width: 1px;
-			height: 1px;
-			padding: 0;
-			margin: -1px;
-			overflow: hidden;
-			clip: rect(0, 0, 0, 0);
-			border: 0;
-		}
-		</style>
-
 		<div class="<?php echo esc_attr( implode( ' ', $wrapper_classes ) ); ?>" style="<?php echo esc_attr( $wrapper_style ); ?>">
 			<div class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" aria-hidden="true" style="<?php echo esc_attr( $gradient_style ); ?>">
 				<?php echo esc_html( $code ); ?>
