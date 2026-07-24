@@ -85,7 +85,7 @@ class Elonix_Toolkit_Popup_Renderer {
 		foreach ( $popups as $popup ) {
 			$rule    = get_post_meta( $popup->ID, '_es_popup_target_rule', true );
 			$ids_str = get_post_meta( $popup->ID, '_es_popup_target_ids', true );
-			$ids     = array_filter( array_map( 'inesal', explode( ',', $ids_str ) ) );
+			$ids     = array_filter( array_map( 'intval', explode( ',', $ids_str ) ) );
 
 			$is_matched = false;
 

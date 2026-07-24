@@ -62,6 +62,8 @@ if ( $show_header ) {
 		margin-right: 0 !important;
 		padding-left: 0 !important;
 		padding-right: 0 !important;
+	}
+</style>
 
 <main id="es-archive-primary" class="es-archive-canvas-content es-builder-container elementor-template-full-width" role="main" aria-label="<?php esc_attr_e( 'Archive Content', 'elonix' ); ?>">
 	<?php

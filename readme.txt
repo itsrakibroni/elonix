@@ -128,6 +128,25 @@ Go to **Elonix > Template Library**, browse the available templates, and click *
 4. Widget Panel — 30+ custom widgets available inside Elementor.
 5. Template Library — One-click import of pre-built page templates.
 
+
+== Source Code & Build Tools ==
+
+This plugin includes minified/compiled assets. The source code and build information for these files is available below:
+
+**Third-party libraries:**
+
+* Select2 (assets/js/vendor/select2.min.js) - Version 4.1.0-rc.0
+  Source: https://github.com/select2/select2
+  License: MIT
+
+* Marquee (assets/js/marquee.min.js)
+  Source: https://github.com/aamirafridi/jQuery.Marquee
+  License: MIT
+
+**Plugin JavaScript (assets/frontend/js/, assets/admin/js/):**
+  Source repository: https://github.com/itsrakibroni/elonix
+  Build tool: None - authored directly as readable ES5 JavaScript.
+
 == Changelog ==
 
 = 1.0.0 =

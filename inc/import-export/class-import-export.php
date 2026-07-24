@@ -81,12 +81,15 @@ class Elonix_Toolkit_Import_Export {
 			return;
 		}
 
-		$file_path = sanitize_text_field( wp_unslash( $_FILES['import_file']['tmp_name'] ) );
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+		$file_path = sanitize_text_field( $_FILES['import_file']['tmp_name'] );
 		$file_name = isset( $_FILES['import_file']['name'] ) ? sanitize_file_name( wp_unslash( $_FILES['import_file']['name'] ) ) : '';
 
 		// Validate file MIME type using WordPress core function
 		$allowed_mime_types = apply_filters( 'elonix_import_allowed_mime_types', array( 'json' ) );
-		$wp_filetype        = wp_check_filetype_and_ext( $file_path, $file_name );
+		$mimes              = get_allowed_mime_types();
+		$mimes['json']      = 'application/json';
+		$wp_filetype        = wp_check_filetype( $file_name, $mimes );
 		if ( empty( $wp_filetype['type'] ) || ! in_array( $wp_filetype['ext'], $allowed_mime_types, true ) ) {
 			add_settings_error( 'elonix_import_export', 'invalid_mime', esc_html__( 'Invalid file type detected. Only JSON files are allowed.', 'elonix' ), 'error' );
 			return;
@@ -101,6 +104,9 @@ class Elonix_Toolkit_Import_Export {
 
 		// phpcs:ignore WordPress.WP.AlternativeFunctions.file_get_contents_file_get_contents
 		$file_content = file_get_contents( $file_path );
+		
+		// Remove UTF-8 BOM if present to prevent json_decode failures
+		$file_content = preg_replace( '/^[\xef\xbb\xbf]+/', '', $file_content );
 		$import_data  = json_decode( $file_content, true );
 
 		// Validate JSON encoding
@@ -158,6 +164,11 @@ class Elonix_Toolkit_Import_Export {
 		header( 'Expires: 0' );
 		header( 'Cache-Control: must-revalidate, post-check=0, pre-check=0' );
 		header( 'Pragma: public' );
+
+		// Clean any prior output buffers to ensure pure JSON
+		if ( ob_get_length() ) {
+			ob_clean();
+		}
 
 		echo wp_json_encode( $data, JSON_PRETTY_PRINT );
 		exit;
