@@ -407,9 +407,10 @@ if ( ! function_exists( 'elonix_advanced_search_query' ) ) :
 	function elonix_advanced_search_query( $query ) {
 		if ( $query->is_search() ) {
 			// category terms search.
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			// Read-only search-query filter; value is sanitize_text_field()'d and only used inside a WP_Query tax_query array (parameterised), never output.
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only, see note above.
 			if ( isset( $_GET['category'] ) && ! empty( $_GET['category'] ) ) {
-				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only, see note above.
 				$category = isset( $_GET['category'] ) ? sanitize_text_field( wp_unslash( $_GET['category'] ) ) : '';
 				$query->set(
 					'tax_query',
@@ -426,11 +427,11 @@ if ( ! function_exists( 'elonix_advanced_search_query' ) ) :
 					return;
 				}
 				// Make sure this isn't the WooCommerce product search form
-				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing check, compared against a fixed string.
 				if ( isset( $_GET['post_type'] ) && ( $_GET['post_type'] == 'product' ) ) {
 					return;
 				}
-				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only routing check, compared against a fixed string.
 				if ( isset( $_GET['post_type'] ) && ( $_GET['post_type'] == 'service' ) ) {
 					return;
 				}
@@ -494,7 +495,7 @@ function elonix_activate() {
 		if ( ! is_array( $cpt_support ) ) {
 			$cpt_support = array( 'page', 'post' );
 		}
-		$builder_cpts = array( 'es_header', 'es_footer', 'es_popup', 'es_archive', 'es_search_template' );
+		$builder_cpts = array( 'elonix_header', 'elonix_footer', 'elonix_popup', 'elonix_archive', 'es_search_template' );
 		if ( array_diff( $builder_cpts, $cpt_support ) ) {
 			$post_types = get_post_types( array( 'public' => true ), 'names' );
 			update_option( 'elementor_cpt_support', array_values( array_unique( array_merge( $cpt_support, $post_types, $builder_cpts ) ) ) );

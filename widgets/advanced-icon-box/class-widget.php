@@ -160,8 +160,8 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 		$this->end_controls_section();
 
 		// Button Section Integration - Reuse existing Button Component logic
-		if ( function_exists( 'Elementor\es_button_controls' ) ) {
-			\Elementor\es_button_controls( $this, 'btn', esc_html__( 'Button Settings', 'elonix' ) );
+		if ( function_exists( 'Elonix_Toolkit_Compat\es_button_controls' ) ) {
+			\Elonix_Toolkit_Compat\es_button_controls( $this, 'btn', esc_html__( 'Button Settings', 'elonix' ) );
 		}
 
 		// Style Section - Icon Style
@@ -561,9 +561,9 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 						</p>
 					<?php endif; ?>
 
-					<?php if ( function_exists( 'Elementor\es_render_button' ) ) : ?>
+					<?php if ( function_exists( 'Elonix_Toolkit_Compat\es_render_button' ) ) : ?>
 						<div class="elonix-icon-box-button">
-							<?php \Elementor\es_render_button( $settings, 'btn' ); ?>
+							<?php \Elonix_Toolkit_Compat\es_render_button( $settings, 'btn' ); ?>
 						</div>
 					<?php endif; ?>
 				</div>
@@ -589,9 +589,9 @@ class Elonix_Toolkit_Icon_Box_Widget extends Elonix_Widget_Base {
 						</p>
 					<?php endif; ?>
 
-					<?php if ( function_exists( 'Elementor\es_render_button' ) ) : ?>
+					<?php if ( function_exists( 'Elonix_Toolkit_Compat\es_render_button' ) ) : ?>
 						<div class="elonix-icon-box-button">
-							<?php \Elementor\es_render_button( $settings, 'btn' ); ?>
+							<?php \Elonix_Toolkit_Compat\es_render_button( $settings, 'btn' ); ?>
 						</div>
 					<?php endif; ?>
 				</div>

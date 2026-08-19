@@ -198,7 +198,7 @@ jQuery(window).on("elementor/frontend/init", () => {
       }
 
       const formData = new FormData();
-      formData.append("action", "es_live_search");
+      formData.append("action", "elonix_live_search");
       formData.append("nonce", nonce);
       formData.append("term", term);
       formData.append("limit", limit);

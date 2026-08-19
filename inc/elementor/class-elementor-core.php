@@ -320,6 +320,20 @@ class Elonix_Toolkit_Elementor_Core {
 			}
 		";
 		wp_add_inline_style( 'elementor-editor', $custom_css );
+
+		// SEO warning: flag duplicate <h1> tags while editing (see widgets/advanced-post-title).
+		// Runs once per editor load rather than once per widget instance.
+		$h1_warning_js = "
+			jQuery( document ).ready( function( $ ) {
+				setTimeout( function() {
+					var h1Count = $( 'iframe' ).contents().find( 'h1' ).length || $( 'h1' ).length;
+					if ( h1Count > 1 ) {
+						$( '.elonix-seo-warning' ).show();
+					}
+				}, 1500 );
+			} );
+		";
+		wp_add_inline_script( 'elementor-editor', $h1_warning_js );
 	}
 
 	/**

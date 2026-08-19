@@ -17,15 +17,15 @@ class Elonix_Toolkit_Archive_Admin {
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		// Custom Columns Hooks
-		add_filter( 'manage_es_archive_posts_columns', array( $this, 'register_custom_columns' ) );
-		add_action( 'manage_es_archive_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
+		add_filter( 'manage_elonix_archive_posts_columns', array( $this, 'register_custom_columns' ) );
+		add_action( 'manage_elonix_archive_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
 
 		// Custom Meta Box Hooks
 		add_action( 'add_meta_boxes', array( $this, 'add_archive_settings_metabox' ) );
-		add_action( 'save_post_es_archive', array( $this, 'save_archive_settings' ) );
+		add_action( 'save_post_elonix_archive', array( $this, 'save_archive_settings' ) );
 
 		// Duplicate AJAX cloner hooks
-		add_action( 'wp_ajax_es_duplicate_archive', array( $this, 'duplicate_archive_template' ) );
+		add_action( 'wp_ajax_elonix_duplicate_archive', array( $this, 'duplicate_archive_template' ) );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class Elonix_Toolkit_Archive_Admin {
 	 */
 	public function enqueue_admin_assets( $hook ) {
 		global $post;
-		if ( ! $post || 'es_archive' !== $post->post_type ) {
+		if ( ! $post || 'elonix_archive' !== $post->post_type ) {
 			return;
 		}
 
@@ -85,7 +85,7 @@ class Elonix_Toolkit_Archive_Admin {
 			'es_archive_settings_metabox',
 			esc_html__( 'Archive Builder Settings', 'elonix' ),
 			array( $this, 'render_settings_metabox' ),
-			'es_archive',
+			'elonix_archive',
 			'normal',
 			'high'
 		);
@@ -206,12 +206,12 @@ class Elonix_Toolkit_Archive_Admin {
 	}
 
 	/**
-	 * Inject dynamic "Duplicate" link inside row actions of es_archive list table.
+	 * Inject dynamic "Duplicate" link inside row actions of elonix_archive list table.
 	 */
 	public function inject_duplicate_link( $actions, $post ) {
-		if ( 'es_archive' === $post->post_type ) {
+		if ( 'elonix_archive' === $post->post_type ) {
 			$nonce                   = wp_create_nonce( 'es_duplicate_archive_' . $post->ID );
-			$url                     = admin_url( 'admin-ajax.php?action=es_duplicate_archive&post_id=' . $post->ID . '&nonce=' . $nonce );
+			$url                     = admin_url( 'admin-ajax.php?action=elonix_duplicate_archive&post_id=' . $post->ID . '&nonce=' . $nonce );
 			$actions['es_duplicate'] = sprintf(
 				'<a href="%s" aria-label="%s">%s</a>',
 				esc_url( $url ),
@@ -238,7 +238,7 @@ class Elonix_Toolkit_Archive_Admin {
 		}
 
 		$post = get_post( $post_id );
-		if ( ! $post || 'es_archive' !== $post->post_type ) {
+		if ( ! $post || 'elonix_archive' !== $post->post_type ) {
 			wp_die( esc_html__( 'Original template not found.', 'elonix' ) );
 		}
 
@@ -246,7 +246,7 @@ class Elonix_Toolkit_Archive_Admin {
 		$new_post_args = array(
 			'post_title'  => $post->post_title . esc_html__( ' (Copy)', 'elonix' ),
 			'post_status' => 'draft',
-			'post_type'   => 'es_archive',
+			'post_type'   => 'elonix_archive',
 			'post_author' => get_current_user_id(),
 		);
 
@@ -277,7 +277,7 @@ class Elonix_Toolkit_Archive_Admin {
 		}
 
 		// Redirect back to templates list
-		wp_safe_redirect( admin_url( 'edit.php?post_type=es_archive' ) );
+		wp_safe_redirect( admin_url( 'edit.php?post_type=elonix_archive' ) );
 		exit;
 	}
 }

@@ -44,7 +44,7 @@ class Admin_Page {
 	}
 
 	private function is_screen_loader_context() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only context detection, not a state-changing action.
 		if ( isset( $_GET['page'] ) && 'elonix-screen-loader' === sanitize_text_field( wp_unslash( $_GET['page'] ) ) ) {
 			return true;
 		}
@@ -101,7 +101,7 @@ class Admin_Page {
 	}
 
 	public function handle_reset() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- initial routing check only; real nonce + capability check follow on the next lines before any state change.
 		if ( isset( $_GET['page'] ) && 'elonix-screen-loader' === sanitize_text_field( wp_unslash( $_GET['page'] ) ) && isset( $_GET['reset'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['reset'] ) ) ) {
 			if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'elonix_screen_loader_reset' ) ) {
 				wp_die( esc_html__( 'Security check failed.', 'elonix' ) );
@@ -347,7 +347,7 @@ class Admin_Page {
 			wp_die( esc_html__( 'You do not have sufficient permissions to access this page.', 'elonix' ) );
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only notice display, gated by manage_options above.
 		if ( isset( $_GET['reset_success'] ) && '1' === sanitize_text_field( wp_unslash( $_GET['reset_success'] ) ) ) {
 			echo '<div class="notice notice-success is-dismissible"><p>' . esc_html__( 'Screen Loader settings have been reset.', 'elonix' ) . '</p></div>';
 		}

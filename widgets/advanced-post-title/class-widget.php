@@ -1156,16 +1156,6 @@ class Elonix_Toolkit_Post_Title_Widget extends Elonix_Widget_Base {
 			<div class="elonix-seo-warning" style="display:none; color:#c7254e; background:#f9f2f4; border:1px solid #d9534f; padding:10px; margin:10px 0; border-radius:4px; font-size:13px; font-family:sans-serif;">
 				<strong>SEO WARNING:</strong> Multiple &lt;h1&gt; tags detected on this page. For best SEO practices, only one H1 tag should exist per page. Consider changing this widget's HTML Tag to H2, H3 or "Auto Detect".
 			</div>
-			<script>
-				jQuery(document).ready(function($) {
-					setTimeout(function() {
-						var h1Count = $('iframe').contents().find('h1').length || $('h1').length;
-						if ( h1Count > 1 ) {
-							$('.elonix-seo-warning').show();
-						}
-					}, 1500);
-				});
-			</script>
 			<?php
 		}
 

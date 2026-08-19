@@ -288,9 +288,9 @@ class Elonix_Dynamic_Data {
 	public function get_search_query() {
 		if ( is_search() ) {
 			return get_search_query();
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only search-term fallback display.
 		} elseif ( isset( $_GET['s'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only search-term fallback display.
 			return sanitize_text_field( wp_unslash( $_GET['s'] ) );
 		}
 		return '';

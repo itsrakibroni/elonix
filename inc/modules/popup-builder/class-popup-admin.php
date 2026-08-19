@@ -17,12 +17,12 @@ class Elonix_Toolkit_Popup_Admin {
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		// Custom Columns Hooks
-		add_filter( 'manage_es_popup_posts_columns', array( $this, 'register_custom_columns' ) );
-		add_action( 'manage_es_popup_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
+		add_filter( 'manage_elonix_popup_posts_columns', array( $this, 'register_custom_columns' ) );
+		add_action( 'manage_elonix_popup_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
 
 		// Custom Meta Box Hooks
 		add_action( 'add_meta_boxes', array( $this, 'add_popup_settings_metabox' ) );
-		add_action( 'save_post_es_popup', array( $this, 'save_popup_settings' ) );
+		add_action( 'save_post_elonix_popup', array( $this, 'save_popup_settings' ) );
 
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_scripts' ) );
 	}
@@ -32,7 +32,7 @@ class Elonix_Toolkit_Popup_Admin {
 	 */
 	public function enqueue_admin_scripts( $hook ) {
 		global $post;
-		if ( ! $post || 'es_popup' !== $post->post_type ) {
+		if ( ! $post || 'elonix_popup' !== $post->post_type ) {
 			return;
 		}
 
@@ -54,7 +54,7 @@ class Elonix_Toolkit_Popup_Admin {
 	 */
 	public function enqueue_admin_assets( $hook ) {
 		global $post;
-		if ( ! $post || 'es_popup' !== $post->post_type ) {
+		if ( ! $post || 'elonix_popup' !== $post->post_type ) {
 			return;
 		}
 
@@ -140,7 +140,7 @@ class Elonix_Toolkit_Popup_Admin {
 			'es_popup_settings_metabox',
 			esc_html__( 'Popup Configuration Settings (MVP v1)', 'elonix' ),
 			array( $this, 'render_settings_metabox' ),
-			'es_popup',
+			'elonix_popup',
 			'normal',
 			'high'
 		);

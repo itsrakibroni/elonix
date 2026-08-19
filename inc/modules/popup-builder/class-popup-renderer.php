@@ -39,13 +39,13 @@ class Elonix_Toolkit_Popup_Renderer {
 		}
 
 		// Elementor AJAX request check
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor AJAX routing check.
 		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && strpos( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), 'elementor' ) !== false ) {
 			return false;
 		}
 
 		// Also check query parameter flags
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview routing check.
 		if ( isset( $_GET['elementor-preview'] ) || ( isset( $_GET['action'] ) && 'elementor' === sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) {
 			return false;
 		}
@@ -70,7 +70,7 @@ class Elonix_Toolkit_Popup_Renderer {
 
 		$popups = get_posts(
 			array(
-				'post_type'      => 'es_popup',
+				'post_type'      => 'elonix_popup',
 				'post_status'    => 'publish',
 				'posts_per_page' => -1,
 			)
@@ -270,8 +270,7 @@ class Elonix_Toolkit_Popup_Renderer {
 					<button class="es-popup-close-btn" aria-label="<?php esc_attr_e( 'Close Popup', 'elonix' ); ?>">&times;</button>
 					<div class="es-popup-content">
 						<?php
-						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-						echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $popup->ID );
+						echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $popup->ID ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor's own rendering API; escaping is handled internally by Elementor per-widget.
 						?>
 					</div>
 				</div>

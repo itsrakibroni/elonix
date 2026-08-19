@@ -54,7 +54,7 @@ if ( ! empty( $custom_header_code ) ) {
 $template_id = Elonix_Settings::get( 'es_404_selected_page_id' );
 if ( $template_id ) {
 	echo '<main class="es-404-page-content es-builder-container" role="main">';
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor's own rendering API; escaping is handled internally by Elementor per-widget.
 	echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id );
 	echo '</main>';
 }

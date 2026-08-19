@@ -63,11 +63,11 @@ class Elonix_Toolkit_404_Router {
 							return;
 						}
 					}
-					// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview routing check.
 					if ( isset( $_GET['elementor-preview'] ) || ( isset( $_GET['action'] ) && 'elementor' === sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) {
 						return;
 					}
-					// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+					// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor AJAX routing check.
 					if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && strpos( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), 'elementor' ) !== false ) {
 						return;
 					}
@@ -143,13 +143,13 @@ class Elonix_Toolkit_404_Router {
 		}
 
 		// Also check query parameters representing editor or preview session
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview routing check.
 		if ( isset( $_GET['elementor-preview'] ) || ( isset( $_GET['action'] ) && 'elementor' === sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) {
 			return false;
 		}
 
 		// Rule 3: Never execute 404 template hijacks during Elementor AJAX
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor AJAX routing check.
 		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && strpos( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), 'elementor' ) !== false ) {
 			return false;
 		}
@@ -223,7 +223,7 @@ class Elonix_Toolkit_404_Router {
 		if ( ! empty( $excluded_queries ) ) {
 			$params_list = array_map( 'trim', explode( ',', $excluded_queries ) );
 			foreach ( $params_list as $param ) {
-				// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+				// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- presence-only check against an admin-configured exclusion list; no request value is read.
 				if ( ! empty( $param ) && isset( $_GET[ $param ] ) ) {
 					return true;
 				}

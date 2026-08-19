@@ -45,8 +45,8 @@ class Elonix_Toolkit_Search_Results_AJAX_Handler {
 	 * Called from elonix.php at plugins_loaded priority 25.
 	 */
 	public static function register_hooks() {
-		add_action( 'wp_ajax_es_search_results_fetch', array( __CLASS__, 'ajax_fetch_results' ) );
-		add_action( 'wp_ajax_nopriv_es_search_results_fetch', array( __CLASS__, 'ajax_fetch_results' ) );
+		add_action( 'wp_ajax_elonix_search_results_fetch', array( __CLASS__, 'ajax_fetch_results' ) );
+		add_action( 'wp_ajax_nopriv_elonix_search_results_fetch', array( __CLASS__, 'ajax_fetch_results' ) );
 	}
 
 	/**
@@ -72,7 +72,8 @@ class Elonix_Toolkit_Search_Results_AJAX_Handler {
 		}
 
 		// ── Read and sanitize parameters ───────────────────────────────────────
-		$settings_raw = isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ? wp_unslash( $_POST['settings'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- passed through sanitize_settings() on the next line, which recursively sanitizes every key/value; post_status is separately whitelisted via sanitize_post_status(), which only allows 'private' for users with edit_posts.
+		$settings_raw = isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ? wp_unslash( $_POST['settings'] ) : array();
 		$settings     = Elonix_Toolkit_Search_Results_Query_Helper::sanitize_settings( $settings_raw );
 
 		$paged       = isset( $_POST['paged'] ) ? max( 1, absint( $_POST['paged'] ) ) : 1;

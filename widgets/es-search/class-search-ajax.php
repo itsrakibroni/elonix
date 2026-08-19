@@ -15,8 +15,8 @@ class Elonix_Toolkit_Search_AJAX_Handler {
 	 * Constructor.
 	 */
 	public function __construct() {
-		add_action( 'wp_ajax_es_live_search', array( $this, 'handle_live_search' ) );
-		add_action( 'wp_ajax_nopriv_es_live_search', array( $this, 'handle_live_search' ) );
+		add_action( 'wp_ajax_elonix_live_search', array( $this, 'handle_live_search' ) );
+		add_action( 'wp_ajax_nopriv_elonix_live_search', array( $this, 'handle_live_search' ) );
 	}
 
 	/**

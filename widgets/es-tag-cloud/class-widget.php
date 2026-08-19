@@ -1404,32 +1404,32 @@ class Elonix_Toolkit_Tag_Cloud_Widget extends Elonix_Widget_Base {
 		}
 
 		?>
-		<<?php echo esc_attr( $tag_tag ); ?> <?php echo $href_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" data-term-id="<?php echo esc_attr( $term['id'] ); ?>"<?php echo $tooltip_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?><?php echo $tag_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+		<<?php echo esc_attr( $tag_tag ); ?> <?php echo $href_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_url() above. ?> class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>" data-term-id="<?php echo esc_attr( $term['id'] ); ?>"<?php echo $tooltip_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_attr() above. ?><?php echo $tag_style; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf( '%d' ) above, integer-cast. ?>>
 			
 			<?php if ( 'icon_tags' === $layout && ! empty( $icon_html ) ) : ?>
-				<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_attr()/esc_url() above. ?>
 			<?php endif; ?>
 
 			<?php if ( 'icon_tags' !== $layout && ! empty( $icon_html ) && ! empty( $settings['icon_position'] ) && 'before' === $settings['icon_position'] ) : ?>
-				<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_attr()/esc_url() above. ?>
 			<?php endif; ?>
 
 			<?php if ( 'icon_tags' !== $layout && ! empty( $icon_html ) && ! empty( $settings['icon_position'] ) && 'above' === $settings['icon_position'] ) : ?>
-				<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_attr()/esc_url() above. ?>
 			<?php endif; ?>
 
 			<span class="es-tag-text"><?php echo esc_html( $term['name'] ); ?></span>
 
 			<?php if ( ! empty( $count_html ) ) : ?>
-				<?php echo $count_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo $count_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf( '%d' ) above, integer-cast. ?>
 			<?php endif; ?>
 
 			<?php if ( ! empty( $badge_html ) ) : ?>
-				<?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_html() above. ?>
 			<?php endif; ?>
 
 			<?php if ( 'icon_tags' !== $layout && ! empty( $icon_html ) && ! empty( $settings['icon_position'] ) && 'after' === $settings['icon_position'] ) : ?>
-				<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_attr()/esc_url() above. ?>
 			<?php endif; ?>
 
 		</<?php echo esc_attr( $tag_tag ); ?>>
@@ -1445,7 +1445,7 @@ class Elonix_Toolkit_Tag_Cloud_Widget extends Elonix_Widget_Base {
 		$tag_tag    = ( 'link' !== $settings['interaction_mode'] ) ? 'button' : 'a';
 		$href_attr  = ( 'a' === $tag_tag ) ? sprintf( ' href="%s"', esc_url( $term['url'] ) ) : ' type="button"';
 		?>
-		<<?php echo esc_attr( $tag_tag ); ?> <?php echo $href_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="es-tag-card-item es-tag-item" data-term-id="<?php echo esc_attr( $term['id'] ); ?>">
+		<<?php echo esc_attr( $tag_tag ); ?> <?php echo $href_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_url() above. ?> class="es-tag-card-item es-tag-item" data-term-id="<?php echo esc_attr( $term['id'] ); ?>">
 			<?php if ( ! empty( $image_url ) ) : ?>
 				<div class="es-tag-card-image" style="background-image: url('<?php echo esc_url( $image_url ); ?>');"></div>
 			<?php endif; ?>
@@ -1475,7 +1475,7 @@ class Elonix_Toolkit_Tag_Cloud_Widget extends Elonix_Widget_Base {
 		$href_attr = ( 'a' === $tag_tag ) ? sprintf( ' href="%s"', esc_url( $term['url'] ) ) : ' type="button"';
 		?>
 		<div class="es-tag-topic-block">
-			<<?php echo esc_attr( $tag_tag ); ?> <?php echo $href_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="es-tag-topic-parent es-tag-item" data-term-id="<?php echo esc_attr( $term['id'] ); ?>">
+			<<?php echo esc_attr( $tag_tag ); ?> <?php echo $href_attr; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_url() above. ?> class="es-tag-topic-parent es-tag-item" data-term-id="<?php echo esc_attr( $term['id'] ); ?>">
 				<span class="es-tag-text"><?php echo esc_html( $term['name'] ); ?></span>
 				<?php if ( ! empty( $term['count'] ) ) : ?>
 					<span class="es-tag-count"><?php echo intval( $term['count'] ); ?></span>
@@ -1488,7 +1488,7 @@ class Elonix_Toolkit_Tag_Cloud_Widget extends Elonix_Widget_Base {
 						<?php
 						$child_href = ( 'a' === $tag_tag ) ? sprintf( ' href="%s"', esc_url( $child['url'] ) ) : ' type="button"';
 						?>
-						<<?php echo esc_attr( $tag_tag ); ?> <?php echo $child_href; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?> class="es-tag-topic-child es-tag-item" data-term-id="<?php echo esc_attr( $child['id'] ); ?>">
+						<<?php echo esc_attr( $tag_tag ); ?> <?php echo $child_href; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_url() above. ?> class="es-tag-topic-child es-tag-item" data-term-id="<?php echo esc_attr( $child['id'] ); ?>">
 							<span class="es-tag-text"><?php echo esc_html( $child['name'] ); ?></span>
 							<span class="es-tag-count"><?php echo intval( $child['count'] ); ?></span>
 						</<?php echo esc_attr( $tag_tag ); ?>>

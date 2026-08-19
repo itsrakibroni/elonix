@@ -54,42 +54,6 @@ $show_debug = ( class_exists( 'Elonix_Settings' ) && \Elonix_Settings::is_templa
 	<meta charset="<?php bloginfo( 'charset' ); ?>">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<?php wp_head(); ?>
-	<style>
-		html, body {
-			margin: 0 !important;
-			padding: 0 !important;
-			width: 100% !important;
-			height: 100% !important;
-			background: #f1f5f9 !important;
-		}
-		.es-site-header {
-			width: 100% !important;
-		}
-		<?php if ( $show_debug ) : ?>
-		.es-preview-debug-bar {
-			background: #1e293b;
-			color: #f1f5f9;
-			padding: 10px 20px;
-			font-family: Consolas, Monaco, monospace;
-			font-size: 12px;
-			border-bottom: 2px solid #ef4444;
-			display: flex;
-			gap: 20px;
-			flex-wrap: wrap;
-			z-index: 999999;
-			position: relative;
-		}
-		.es-preview-debug-bar span {
-			font-weight: bold;
-		}
-		.es-preview-debug-bar .success {
-			color: #22c55e;
-		}
-		.es-preview-debug-bar .failure {
-			color: #ef4444;
-		}
-		<?php endif; ?>
-	</style>
 </head>
 <body <?php body_class(); ?>>
 	<?php wp_body_open(); ?>
@@ -113,12 +77,12 @@ $show_debug = ( class_exists( 'Elonix_Settings' ) && \Elonix_Settings::is_templa
 	<?php
 	// Output content exactly as Elementor outputs it
 	// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound -- Template scope variable.
-	$is_header = ( 'es_header' === $template_type );
+	$is_header = ( 'elonix_header' === $template_type );
 	if ( $is_header ) {
 		echo '<header class="es-site-header">';
 	}
 
-	echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+	echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor's own rendering API (get_builder_content); escaping is handled internally by Elementor per-widget.
 
 	if ( $is_header ) {
 		echo '</header>';

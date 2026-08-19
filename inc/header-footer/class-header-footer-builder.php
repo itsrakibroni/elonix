@@ -142,7 +142,7 @@ class Elonix_Header_Footer_Builder {
 			);
 
 			register_post_type(
-				'es_header',
+				'elonix_header',
 				array(
 					'labels'              => $header_labels,
 					'public'              => true,
@@ -191,7 +191,7 @@ class Elonix_Header_Footer_Builder {
 			);
 
 			register_post_type(
-				'es_footer',
+				'elonix_footer',
 				array(
 					'labels'              => $footer_labels,
 					'public'              => true,
@@ -229,12 +229,10 @@ class Elonix_Header_Footer_Builder {
 	 */
 	public function restrict_template_frontend_view() {
 		// Do not redirect if we are viewing the template preview endpoint
-		// Do not redirect if we are viewing the template preview endpoint
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-		if ( isset( $_GET['es_preview'] ) ) {
+		if ( isset( $_GET['es_preview'] ) && $this->is_preview_request_authorized( intval( wp_unslash( $_GET['es_preview'] ) ) ) ) {
 			return;
 		}
-		$layout_types = array( 'es_header', 'es_footer' );
+		$layout_types = array( 'elonix_header', 'elonix_footer' );
 		if ( is_singular( $layout_types ) ) {
 			// Allow administrators or users with post editing capabilities to view (for Elementor editing & previewing)
 			if ( ! current_user_can( 'edit_posts' ) ) {
@@ -245,14 +243,12 @@ class Elonix_Header_Footer_Builder {
 	}
 
 	public function hijack_preview_query( $query ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( ! is_admin() && $query->is_main_query() && isset( $_GET['es_preview'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$template_id = intval( wp_unslash( $_GET['es_preview'] ) );
-			if ( $template_id ) {
+			if ( $template_id && $this->is_preview_request_authorized( $template_id ) ) {
 				$post = get_post( $template_id );
-				if ( $post && in_array( $post->post_type, array( 'es_header', 'es_footer' ), true ) ) {
-					$module = ( 'es_header' === $post->post_type ) ? 'header_builder' : 'footer_builder';
+				if ( $post && in_array( $post->post_type, array( 'elonix_header', 'elonix_footer' ), true ) ) {
+					$module = ( 'elonix_header' === $post->post_type ) ? 'header_builder' : 'footer_builder';
 					if ( ! Elonix_Toolkit_Module_Manager::is_module_enabled( $module ) ) {
 						return;
 					}
@@ -277,20 +273,37 @@ class Elonix_Header_Footer_Builder {
 	}
 
 	/**
+	 * Verify that the current request is allowed to preview a given (possibly unpublished)
+	 * header/footer template: a valid nonce plus edit rights on that specific post.
+	 * Centralised here so hijack_preview_query() and load_preview_template() stay in sync.
+	 *
+	 * @param int $template_id Post ID being requested for preview.
+	 * @return bool
+	 */
+	private function is_preview_request_authorized( $template_id ) {
+		if ( ! isset( $_GET['_wpnonce'] ) ) {
+			return false;
+		}
+		$nonce = sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) );
+		if ( ! wp_verify_nonce( $nonce, 'elonix_header_footer_preview' ) ) {
+			return false;
+		}
+		return current_user_can( 'edit_post', $template_id );
+	}
+
+	/**
 	 * Override the loaded template on preview requests to load our dedicated preview-template.php.
 	 *
 	 * @param string $template Path to the template file.
 	 * @return string Path to the preview template file.
 	 */
 	public function load_preview_template( $template ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 		if ( isset( $_GET['es_preview'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
 			$template_id = intval( wp_unslash( $_GET['es_preview'] ) );
-			if ( $template_id ) {
+			if ( $template_id && $this->is_preview_request_authorized( $template_id ) ) {
 				$post = get_post( $template_id );
-				if ( $post && in_array( $post->post_type, array( 'es_header', 'es_footer' ), true ) ) {
-					$module = ( 'es_header' === $post->post_type ) ? 'header_builder' : 'footer_builder';
+				if ( $post && in_array( $post->post_type, array( 'elonix_header', 'elonix_footer' ), true ) ) {
+					$module = ( 'elonix_header' === $post->post_type ) ? 'header_builder' : 'footer_builder';
 					if ( ! Elonix_Toolkit_Module_Manager::is_module_enabled( $module ) ) {
 						return $template;
 					}
@@ -311,7 +324,7 @@ class Elonix_Header_Footer_Builder {
 	 * @return bool False if it is a template preview request, original value otherwise.
 	 */
 	public function disable_preview_admin_bar( $show ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- cosmetic only (hides admin bar chrome); presence check, no data read or output.
 		if ( isset( $_GET['es_preview'] ) ) {
 			return false;
 		}
@@ -322,7 +335,7 @@ class Elonix_Header_Footer_Builder {
 	 * Remove native WordPress admin bar render actions during template preview.
 	 */
 	public function remove_preview_admin_bar_actions() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- cosmetic only (hides admin bar chrome); presence check, no data read or output.
 		if ( isset( $_GET['es_preview'] ) ) {
 			remove_action( 'wp_footer', 'wp_admin_bar_render', 1000 );
 			remove_action( 'wp_head', 'wp_admin_bar_header' );
@@ -334,7 +347,7 @@ class Elonix_Header_Footer_Builder {
 	 * Dequeue WordPress admin bar styles and scripts to prevent any visual leaks.
 	 */
 	public function dequeue_preview_admin_bar_assets() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- cosmetic only (dequeues admin-bar assets); presence check, no data read or output.
 		if ( isset( $_GET['es_preview'] ) ) {
 			wp_dequeue_style( 'admin-bar' );
 			wp_dequeue_script( 'admin-bar' );
@@ -368,7 +381,7 @@ class Elonix_Header_Footer_Builder {
 	 * @return array Cleaned body classes.
 	 */
 	public function remove_preview_admin_bar_body_classes( $classes ) {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- cosmetic only (body class list); presence check, no data read or output.
 		if ( isset( $_GET['es_preview'] ) ) {
 			$classes = array_diff( $classes, array( 'admin-bar', 'wp-toolbar' ) );
 		}

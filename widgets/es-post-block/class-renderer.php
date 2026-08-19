@@ -78,7 +78,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				<div class="es-post-block-thumbnail">
 					<!-- Redundant tab stops fixed by removing keyboard focus and hiding from screen readers. Screen readers read title or read more button. -->
 					<a href="<?php echo esc_url( $item['url'] ); ?>" tabindex="-1" aria-hidden="true">
-						<?php echo $item['thumbnail']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo $item['thumbnail']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_the_post_thumbnail() is WP core's own trusted, pre-built markup. ?>
 					</a>
 					<?php self::render_smart_badges( $item, $settings ); ?>
 				</div>
@@ -139,7 +139,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				if ( ! empty( $badge_text ) ) {
 					printf(
 						'<div class="es-post-block-badge-wrapper"><span class="es-post-block-badge">%s%s</span></div>',
-						self::get_icon_markup( $settings, 'badge_icon' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						self::get_icon_markup( $settings, 'badge_icon' ), // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_icon_markup() uses Elementor's own trusted Icons_Manager::render_icon().
 						esc_html( $badge_text )
 					);
 				}
@@ -218,7 +218,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				?>
 				<div class="es-post-block-readmore">
 					<a href="<?php echo esc_url( $item['url'] ); ?>" class="es-readmore-btn es-icon-pos-<?php echo esc_attr( $icon_position ); ?>">
-						<?php echo 'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo 'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $text_markup is esc_html()'d, $icon_markup is Elementor's trusted Icons_Manager output. ?>
 					</a>
 				</div>
 				<?php
@@ -276,7 +276,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				?>
 				<div class="es-post-block-share<?php echo esc_attr( $class_suffix ); ?>">
 					<span class="es-share-label">
-						<?php echo 'after' === $icon_position ? $label_markup . $icon_markup : $icon_markup . $label_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo 'after' === $icon_position ? $label_markup . $icon_markup : $icon_markup . $label_markup; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $label_markup is esc_html()'d, $icon_markup is Elementor's trusted Icons_Manager output. ?>
 					</span>
 					<a href="<?php echo esc_url( 'https://www.facebook.com/sharer/sharer.php?u=' . rawurlencode( $item['url'] ) ); ?>" target="_blank" rel="noopener" class="es-share-btn fb" aria-label="<?php esc_attr_e( 'Share on Facebook', 'elonix' ); ?>">F</a>
 					<a href="<?php echo esc_url( 'https://twitter.com/intent/tweet?url=' . rawurlencode( $item['url'] ) ); ?>" target="_blank" rel="noopener" class="es-share-btn tw" aria-label="<?php esc_attr_e( 'Share on Twitter', 'elonix' ); ?>">T</a>
@@ -309,7 +309,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				printf(
 					'<span class="es-meta-item es-meta-author%s">%s</span>',
 					esc_attr( $class_suffix ),
-					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $text_markup is esc_html()'d, $icon_markup is Elementor's trusted Icons_Manager output.
 				);
 				break;
 
@@ -319,7 +319,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				printf(
 					'<span class="es-meta-item es-meta-date%s">%s</span>',
 					esc_attr( $class_suffix ),
-					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $text_markup is esc_html()'d, $icon_markup is Elementor's trusted Icons_Manager output.
 				);
 				break;
 
@@ -329,7 +329,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				printf(
 					'<span class="es-meta-item es-meta-modified-date%s">%s</span>',
 					esc_attr( $class_suffix ),
-					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $text_markup is esc_html()'d, $icon_markup is Elementor's trusted Icons_Manager output.
 				);
 				break;
 
@@ -344,7 +344,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				printf(
 					'<span class="es-meta-item es-meta-comments%s">%s</span>',
 					esc_attr( $class_suffix ),
-					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $text_markup is esc_html()'d, $icon_markup is Elementor's trusted Icons_Manager output.
 				);
 				break;
 
@@ -355,7 +355,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				printf(
 					'<span class="es-meta-item es-meta-reading%s">%s</span>',
 					esc_attr( $class_suffix ),
-					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $text_markup is esc_html()'d, $icon_markup is Elementor's trusted Icons_Manager output.
 				);
 				break;
 
@@ -366,7 +366,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 				printf(
 					'<span class="es-meta-item es-meta-views%s">%s</span>',
 					esc_attr( $class_suffix ),
-					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					'after' === $icon_position ? $text_markup . $icon_markup : $icon_markup . $text_markup // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $text_markup is esc_html()'d, $icon_markup is Elementor's trusted Icons_Manager output.
 				);
 				break;
 		}
@@ -402,7 +402,7 @@ class Elonix_Toolkit_Post_Block_Renderer {
 		if ( ! empty( $badge_list ) ) {
 			printf(
 				'<div class="es-post-block-smart-badges">%s</div>',
-				implode( '', $badge_list ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				implode( '', $badge_list ) // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- every $badge_list entry is static markup plus esc_html__() text.
 			);
 		}
 	}

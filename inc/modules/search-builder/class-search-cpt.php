@@ -48,7 +48,7 @@ class Elonix_Search_CPT {
 			'public'             => false,
 			'publicly_queryable' => true,
 			'show_ui'            => true,
-			'show_in_menu'       => 'elonix',
+			'show_in_menu'       => false, // Explicit "Search Builder" submenu is registered centrally in class-admin-menu.php instead.
 			'query_var'          => true,
 			'rewrite'            => array( 'slug' => 'es_search_template' ),
 			'capability_type'    => 'post',

@@ -20,7 +20,7 @@ class Elonix_Toolkit_Popup_CPT {
 	}
 
 	/**
-	 * Register es_popup Custom Post Type.
+	 * Register elonix_popup Custom Post Type.
 	 */
 	public function register_post_type() {
 		$labels = array(
@@ -46,7 +46,7 @@ class Elonix_Toolkit_Popup_CPT {
 			'show_ui'            => true,
 			'show_in_menu'       => 'elonix', // Nest inside main Elonix menu
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'es_popup' ),
+			'rewrite'            => array( 'slug' => 'elonix_popup' ),
 			'capability_type'    => 'post',
 			'has_archive'        => false,
 			'hierarchical'       => false,
@@ -54,19 +54,19 @@ class Elonix_Toolkit_Popup_CPT {
 			'supports'           => array( 'title', 'elementor' ), // Supports Title & Elementor
 		);
 
-		register_post_type( 'es_popup', $args );
+		register_post_type( 'elonix_popup', $args );
 	}
 
 	/**
-	 * Ensure Elementor CPT support option registers es_popup templates automatically.
+	 * Ensure Elementor CPT support option registers elonix_popup templates automatically.
 	 */
 	public function add_elementor_support() {
 		$cpts = get_option( 'elementor_cpt_support' );
 		if ( ! is_array( $cpts ) ) {
 			$cpts = array( 'post', 'page' );
 		}
-		if ( ! in_array( 'es_popup', $cpts, true ) ) {
-			$cpts[] = 'es_popup';
+		if ( ! in_array( 'elonix_popup', $cpts, true ) ) {
+			$cpts[] = 'elonix_popup';
 			update_option( 'elementor_cpt_support', $cpts );
 		}
 	}

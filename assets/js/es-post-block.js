@@ -114,7 +114,7 @@ jQuery(window).on("elementor/frontend/init", () => {
       }
       // Formulate AJAX Body parameters
       const formData = new FormData();
-      formData.append("action", wrap.getAttribute("data-action") || "es_post_block_fetch_posts");
+      formData.append("action", wrap.getAttribute("data-action") || "elonix_post_block_fetch_posts");
       formData.append("security", wrap.getAttribute("data-nonce"));
       formData.append("paged", currentPage);
       formData.append("category", activeCategory);

@@ -51,8 +51,7 @@ if ( $show_header ) {
 <main id="es-single-primary" class="es-single-canvas-content es-builder-container elementor-template-full-width" role="main" aria-label="<?php esc_attr_e( 'Single Content', 'elonix' ); ?>">
 	<?php
 	// Print the Elementor custom layout template content
-	// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
-	echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id );
+	echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor's own rendering API; escaping is handled internally by Elementor per-widget.
 	?>
 </main>
 

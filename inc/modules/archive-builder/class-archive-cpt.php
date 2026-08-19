@@ -20,7 +20,7 @@ class Elonix_Toolkit_Archive_CPT {
 	}
 
 	/**
-	 * Register CPT es_archive.
+	 * Register CPT elonix_archive.
 	 */
 	public function register_post_type() {
 		$labels = array(
@@ -46,26 +46,26 @@ class Elonix_Toolkit_Archive_CPT {
 			'show_ui'            => true,
 			'show_in_menu'       => 'elonix', // Nest inside main Elonix menu
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'es_archive' ),
+			'rewrite'            => array( 'slug' => 'elonix_archive' ),
 			'capability_type'    => 'post',
 			'has_archive'        => false,
 			'hierarchical'       => false,
 			'supports'           => array( 'title', 'editor' ),
 		);
 
-		register_post_type( 'es_archive', $args );
+		register_post_type( 'elonix_archive', $args );
 	}
 
 	/**
-	 * Ensure Elementor CPT support option registers es_archive templates automatically.
+	 * Ensure Elementor CPT support option registers elonix_archive templates automatically.
 	 */
 	public function add_elementor_support() {
 		$cpts = get_option( 'elementor_cpt_support' );
 		if ( ! is_array( $cpts ) ) {
 			$cpts = array( 'post', 'page' );
 		}
-		if ( ! in_array( 'es_archive', $cpts, true ) ) {
-			$cpts[] = 'es_archive';
+		if ( ! in_array( 'elonix_archive', $cpts, true ) ) {
+			$cpts[] = 'elonix_archive';
 			update_option( 'elementor_cpt_support', $cpts );
 		}
 	}

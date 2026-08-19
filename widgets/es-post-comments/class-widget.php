@@ -375,6 +375,6 @@ class Elonix_Toolkit_Post_Comments_Widget extends Elonix_Widget_Base {
 		$is_editor = Plugin::$instance->editor->is_edit_mode();
 		
 		// Render using the decoupled service layer
-		echo Elonix_Toolkit_Post_Comments_Renderer::render_comments_area( $settings, $is_editor ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo Elonix_Toolkit_Post_Comments_Renderer::render_comments_area( $settings, $is_editor ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- template uses WP core's comment_text()/get_comment_author_link() plus esc_html()/esc_attr() throughout; see class-renderer.php.
 	}
 }

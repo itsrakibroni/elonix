@@ -34,11 +34,11 @@ class Elonix_Newsletter_Widget extends WP_Widget {
 			$action_url = '#';
 		}
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- standard WP_Widget wrapper markup, supplied by the theme's register_sidebar(), not user input.
 		echo $args['before_widget'];
 
 		if ( $title ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- before/after_title are standard WP_Widget theme wrapper markup; $title is esc_html()'d.
 			echo $args['before_title'] . esc_html( $title ) . $args['after_title'];
 		}
 		?>
@@ -66,7 +66,7 @@ class Elonix_Newsletter_Widget extends WP_Widget {
 			<?php endif; ?>
 		</div>
 		<?php
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- standard WP_Widget wrapper markup, supplied by the theme's register_sidebar(), not user input.
 		echo $args['after_widget'];
 	}
 

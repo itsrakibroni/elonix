@@ -28,12 +28,12 @@ class Assignment {
 	public function create_builder_assignment( $elementor_post_id, $type, $make_active = false ) {
 		$type = Type_Normalizer::normalize_template_type( $type );
 		$post_type_map = array(
-			'header'  => 'es_header',
-			'footer'  => 'es_footer',
-			'archive' => 'es_archive',
-			'single'  => 'es_single',
+			'header'  => 'elonix_header',
+			'footer'  => 'elonix_footer',
+			'archive' => 'elonix_archive',
+			'single'  => 'elonix_single',
 			'search'  => 'es_search_template',
-			'popup'   => 'es_popup',
+			'popup'   => 'elonix_popup',
 		);
 
 		if ( ! isset( $post_type_map[ $type ] ) ) {

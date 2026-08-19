@@ -21,7 +21,7 @@ class Elonix_Assignment_Admin {
 	}
 
 	private function __construct() {
-		$post_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template' );
+		$post_types = array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template' );
 		
 		foreach ( $post_types as $pt ) {
 			add_filter( "manage_{$pt}_posts_columns", array( $this, 'register_columns' ) );
@@ -82,7 +82,7 @@ class Elonix_Assignment_Admin {
 	}
 
 	public function custom_row_actions( $actions, $post ) {
-		$supported_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template' );
+		$supported_types = array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template' );
 		if ( ! in_array( $post->post_type, $supported_types, true ) ) {
 			return $actions;
 		}

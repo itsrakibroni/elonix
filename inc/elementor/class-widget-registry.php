@@ -480,9 +480,9 @@ class Elonix_Toolkit_Widget_Registry {
 
 /**
  * Global static helper wrapper class to support simple registration format:
- * Widget_Registry::register(...)
+ * Elonix_Toolkit_Widget_Registry_Helper::register(...)
  */
-class Widget_Registry {
+class Elonix_Toolkit_Widget_Registry_Helper {
 
 	public static function register( $slug, $args ) {
 		return Elonix_Toolkit_Widget_Registry::instance()->register( $slug, $args );

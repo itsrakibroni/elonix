@@ -2939,11 +2939,13 @@ namespace {
 // BACKWARD COMPATIBILITY COMPONENT WRAPPERS
 // =========================================================================
 
-namespace Elementor {
+namespace Elonix_Toolkit_Compat {
 
+	use Elementor\Controls_Manager;
+	use Elementor\Icons_Manager;
 	use Elonix_Button_Helper;
 
-	if ( ! function_exists( 'Elementor\es_button_controls' ) ) {
+	if ( ! function_exists( __NAMESPACE__ . '\es_button_controls' ) ) {
 		/**
 		 * Wrapper function to register controls dynamically in components.
 		 */
@@ -3024,7 +3026,7 @@ namespace Elementor {
 		}
 	}
 
-	if ( ! function_exists( 'Elementor\es_render_button' ) ) {
+	if ( ! function_exists( __NAMESPACE__ . '\es_render_button' ) ) {
 		/**
 		 * Wrapper function to render component buttons dynamically.
 		 */
@@ -3097,7 +3099,7 @@ namespace Elementor {
 			}
 			?>
 			<div class="theme-btn-wrapper">
-				<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+				<?php // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $url is esc_url()'d above; $target/$rel_attr/$download_attr/$aria_attr/$role_attr are esc_attr()'d or fixed static strings, built above. ?>
 				<a href="<?php echo $url; ?>" class="<?php echo esc_attr( implode( ' ', $classes ) ); ?>"<?php echo $target . $rel_attr . $download_attr . $aria_attr . $role_attr; ?>>
 					<?php
 					if ( 'modern-cta' === $preset ) :

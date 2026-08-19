@@ -82,10 +82,10 @@ if ( ! class_exists( 'Elonix_Advanced_Categories' ) ) {
 			$title = apply_filters( 'widget_title', $title, $instance, $this->id_base );
 
 			// Output Widget Wrapper
-			echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $args['before_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- standard WP_Widget wrapper markup, supplied by the theme's register_sidebar(), not user input.
 
 			if ( $title ) {
-				echo $args['before_title'] . esc_html( $title ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $args['before_title'] . esc_html( $title ) . $args['after_title']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- before/after_title are standard WP_Widget theme wrapper markup; $title is esc_html()'d.
 			}
 
 			echo '<div class="widget-box">';
@@ -161,7 +161,7 @@ if ( ! class_exists( 'Elonix_Advanced_Categories' ) ) {
 
 			echo '</div>'; // End .widget-box
 
-			echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $args['after_widget']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- standard WP_Widget wrapper markup, supplied by the theme's register_sidebar(), not user input.
 		}
 
 		public function update( $new_instance, $old_instance ) {

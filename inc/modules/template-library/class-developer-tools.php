@@ -43,8 +43,8 @@ class Developer_Tools {
 		$post_type = $screen ? $screen->post_type : '';
 
 		$supported_post_types = array(
-			'es_header', 'es_footer', 'es_single',
-			'es_archive', 'es_search_template', 'es_popup', 'es_404_template', 'es_loop'
+			'elonix_header', 'elonix_footer', 'elonix_single',
+			'elonix_archive', 'es_search_template', 'elonix_popup', 'es_404_template', 'es_loop'
 		);
 
 		$supported_hooks = array(
@@ -261,7 +261,7 @@ class Developer_Tools {
 		$screen = get_current_screen();
 		if ( ! $screen ) return;
 
-		$supported_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template', 'es_popup', 'es_404_template', 'es_loop' );
+		$supported_types = array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template', 'elonix_popup', 'es_404_template', 'es_loop' );
 		$supported_screens = array( 'elonix_page_elonix-header-footer', 'elonix_page_elonix-templates' );
 
 		if ( ! in_array( $screen->post_type, $supported_types, true ) && ! in_array( $screen->id, $supported_screens, true ) ) {

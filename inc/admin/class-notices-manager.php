@@ -49,7 +49,7 @@ class Elonix_Admin_Notices_Manager {
 		}
 
 		// Fallback check using query parameter
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only screen-detection check (are we on our own admin page), sanitized, not output.
 		if ( isset( $_GET['page'] ) && strpos( sanitize_text_field( wp_unslash( $_GET['page'] ) ), 'elonix' ) === 0 ) {
 			return true;
 		}

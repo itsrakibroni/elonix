@@ -95,7 +95,7 @@ jQuery(document).ready(function($) {
 		$('#es_create_modal').find('form')[0].reset();
 		$('#es_create_modal').find('.es-modal-condition-select').val('').trigger('change');
 		$('#es_create_modal').find('.es-select2-ajax-search').val(null).trigger('change');
-		$('#template_type').val('es_header');
+		$('#template_type').val('elonix_header');
 		$('.es-modal-tab-link[data-tab="create_new"]').click();
 		$('#es_create_modal').addClass('open');
 		setupFocusTrap($('#es_create_modal'));
@@ -107,7 +107,7 @@ jQuery(document).ready(function($) {
 		$('#es_create_modal').find('form')[0].reset();
 		$('#es_create_modal').find('.es-modal-condition-select').val('').trigger('change');
 		$('#es_create_modal').find('.es-select2-ajax-search').val(null).trigger('change');
-		$('#template_type').val('es_footer');
+		$('#template_type').val('elonix_footer');
 		$('.es-modal-tab-link[data-tab="create_new"]').click();
 		$('#es_create_modal').addClass('open');
 		setupFocusTrap($('#es_create_modal'));
@@ -283,9 +283,9 @@ jQuery(document).ready(function($) {
 	});
 
 	// JS Search Filter (searches template name, shortcode ID, or literal shortcode syntax, or type)
-	$('#es_live_search').on('keyup', function() {
+	$('#elonix_live_search').on('keyup', function() {
 		var searchValue = $(this).val().toLowerCase().trim();
-		// Regex helper to extract ID if user types something like [es_header id="12"]
+		// Regex helper to extract ID if user types something like [elonix_header id="12"]
 		var idMatch = searchValue.match(/\bid\s*=\s*["']?(\d+)["']?/);
 		var idSearch = idMatch ? idMatch[1] : ($.isNumeric(searchValue) ? searchValue : '');
 
@@ -293,8 +293,8 @@ jQuery(document).ready(function($) {
 			var $row = $(this);
 			var rowTitle = $row.data('title') || '';
 			var rowId = String($row.data('id') || '');
-			var rowType = $row.data('type') || ''; // 'es_header' or 'es_footer'
-			var typeFriendly = ('es_header' === rowType) ? 'header' : 'footer';
+			var rowType = $row.data('type') || ''; // 'elonix_header' or 'elonix_footer'
+			var typeFriendly = ('elonix_header' === rowType) ? 'header' : 'footer';
 
 			var matches = false;
 			if (rowTitle.indexOf(searchValue) > -1) {

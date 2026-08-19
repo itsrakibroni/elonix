@@ -75,7 +75,7 @@ class Elonix_Target_Rules {
 				}
 			} else {
 				$post_types    = get_post_types( array( 'public' => true ), 'objects' );
-				$exclude_types = array( 'es_header', 'es_footer', 'attachment' );
+				$exclude_types = array( 'elonix_header', 'elonix_footer', 'attachment' );
 				foreach ( $exclude_types as $ex ) {
 					unset( $post_types[ $ex ] );
 				}
@@ -241,7 +241,7 @@ class Elonix_Target_Rules {
 		// Auto Detect public Custom Post Types
 		$post_types = get_post_types( array( 'public' => true ), 'objects' );
 		foreach ( $post_types as $slug => $pt ) {
-			if ( in_array( $slug, array( 'post', 'page', 'attachment', 'es_header', 'es_footer' ), true ) ) {
+			if ( in_array( $slug, array( 'post', 'page', 'attachment', 'elonix_header', 'elonix_footer' ), true ) ) {
 				continue;
 			}
 			$opt_values = array(

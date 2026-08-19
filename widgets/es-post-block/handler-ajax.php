@@ -18,8 +18,8 @@ class Elonix_Toolkit_Post_Block_AJAX {
 	 * Constructor: Register actions.
 	 */
 	public function __construct() {
-		add_action( 'wp_ajax_es_post_block_fetch_posts', array( $this, 'ajax_fetch_posts' ) );
-		add_action( 'wp_ajax_nopriv_es_post_block_fetch_posts', array( $this, 'ajax_fetch_posts' ) );
+		add_action( 'wp_ajax_elonix_post_block_fetch_posts', array( $this, 'ajax_fetch_posts' ) );
+		add_action( 'wp_ajax_nopriv_elonix_post_block_fetch_posts', array( $this, 'ajax_fetch_posts' ) );
 	}
 
 	/**
@@ -34,7 +34,8 @@ class Elonix_Toolkit_Post_Block_AJAX {
 		}
 
 		// 2. Read parameters
-		$settings_raw = isset( $_POST['settings'] ) ? wp_unslash( $_POST['settings'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- passed through validate_ajax_settings() below, which whitelists every key and type-casts/sanitizes each one individually.
+		$settings_raw = isset( $_POST['settings'] ) ? wp_unslash( $_POST['settings'] ) : array();
 		$paged        = isset( $_POST['paged'] ) ? intval( $_POST['paged'] ) : 1;
 		$category     = isset( $_POST['category'] ) ? intval( $_POST['category'] ) : 0;
 		$tag          = isset( $_POST['tag'] ) ? intval( $_POST['tag'] ) : 0;
@@ -48,8 +49,9 @@ class Elonix_Toolkit_Post_Block_AJAX {
 		// Standardize and strictly validate settings using a whitelist
 		$settings = self::validate_ajax_settings( $settings_raw );
 
-		// Decode original archive variables to preserve archive template context in AJAX
-		$archive_vars_raw = isset( $_POST['archive_vars'] ) ? wp_unslash( $_POST['archive_vars'] ) : ''; // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// Decode original archive variables to preserve archive template context in AJAX.
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- structurally decoded only; Elonix_Query_Context::resolve_context() forces post_status to 'publish' for any request without edit_posts (see class-query-context.php), and overwrites posts_per_page from the whitelisted $settings['limit'] cap, so this can't be used to leak unpublished content or bypass the page-size cap regardless of what's supplied here.
+		$archive_vars_raw = isset( $_POST['archive_vars'] ) ? wp_unslash( $_POST['archive_vars'] ) : '';
 		$archive_vars     = array();
 		if ( ! empty( $archive_vars_raw ) ) {
 			$archive_vars = json_decode( $archive_vars_raw, true );

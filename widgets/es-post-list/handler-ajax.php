@@ -18,8 +18,8 @@ class Elonix_Toolkit_Post_List_AJAX {
 	 * Constructor: Register actions.
 	 */
 	public function __construct() {
-		add_action( 'wp_ajax_es_post_list_fetch_posts', array( $this, 'ajax_fetch_posts' ) );
-		add_action( 'wp_ajax_nopriv_es_post_list_fetch_posts', array( $this, 'ajax_fetch_posts' ) );
+		add_action( 'wp_ajax_elonix_post_list_fetch_posts', array( $this, 'ajax_fetch_posts' ) );
+		add_action( 'wp_ajax_nopriv_elonix_post_list_fetch_posts', array( $this, 'ajax_fetch_posts' ) );
 	}
 
 	/**
@@ -30,7 +30,8 @@ class Elonix_Toolkit_Post_List_AJAX {
 		check_ajax_referer( 'es-post-list-nonce', 'security' );
 
 		// 2. Read parameters
-		$settings_raw = isset( $_POST['settings'] ) ? wp_unslash( $_POST['settings'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- every key/value is sanitize_key()/sanitize_text_field()'d two lines below before use; post_status can never come from user input (Elonix_Query_Context hardcodes it), so this can't be used to leak unpublished content.
+		$settings_raw = isset( $_POST['settings'] ) ? wp_unslash( $_POST['settings'] ) : array();
 		$paged        = isset( $_POST['paged'] ) ? intval( $_POST['paged'] ) : 1;
 		$category     = isset( $_POST['category'] ) ? intval( $_POST['category'] ) : 0;
 		$search       = isset( $_POST['search'] ) ? sanitize_text_field( wp_unslash( $_POST['search'] ) ) : '';

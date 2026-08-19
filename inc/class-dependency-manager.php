@@ -267,7 +267,7 @@ class Elonix_Toolkit_Dependency_Manager {
 			isset( $_GET['action'] ) &&
 			'deactivate' === $_GET['action'] &&
 			isset( $_GET['plugin'] ) &&
-			self::ELEMENTOR_PLUGIN_BASENAME === wp_unslash( $_GET['plugin'] ) // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+			self::ELEMENTOR_PLUGIN_BASENAME === sanitize_text_field( wp_unslash( $_GET['plugin'] ) )
 		) {
 			// Verify the WordPress-generated nonce for this specific deactivation URL.
 			// If the nonce is absent or invalid this is not a legitimate request; pass through.
@@ -289,55 +289,57 @@ class Elonix_Toolkit_Dependency_Manager {
 		}
 
 		// ---- Bulk deactivation (Bulk Actions > Deactivate → POST request) ----
-		// WordPress uses two action slots: top dropdown ('action') and bottom ('action2').
-		$bulk_action = '';
-		if ( isset( $_POST['action'] ) && '-1' !== $_POST['action'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$bulk_action = sanitize_key( $_POST['action'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		} elseif ( isset( $_POST['action2'] ) && '-1' !== $_POST['action2'] ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-			$bulk_action = sanitize_key( $_POST['action2'] ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
-		}
-
-		if (
-			'deactivate-selected' === $bulk_action &&
-			isset( $_POST['checked'] ) &&
-			is_array( $_POST['checked'] ) &&
-			in_array(
-				self::ELEMENTOR_PLUGIN_BASENAME,
-				array_map( 'sanitize_text_field', wp_unslash( $_POST['checked'] ) ),
-				true
-			)
-		) {
-			// Verify the bulk-plugins nonce that WordPress sets for the plugins list form.
+		// Verify the bulk-plugins nonce FIRST, before reading any bulk-action POST data.
+		if ( isset( $_POST['action'] ) || isset( $_POST['action2'] ) ) {
 			if (
 				! isset( $_POST['_wpnonce'] ) ||
 				! wp_verify_nonce(
-					sanitize_key( $_POST['_wpnonce'] ),
+					sanitize_key( wp_unslash( $_POST['_wpnonce'] ) ),
 					'bulk-plugins'
 				)
 			) {
 				return;
 			}
 
-			// Deactivate every other selected plugin except Elementor.
-			$checked       = array_map( 'sanitize_text_field', wp_unslash( $_POST['checked'] ) );
-			$to_deactivate = array_values(
-				array_filter(
-					$checked,
-					function ( $basename ) {
-						return self::ELEMENTOR_PLUGIN_BASENAME !== $basename;
-					}
-				)
-			);
-
-			if ( ! empty( $to_deactivate ) ) {
-				deactivate_plugins( $to_deactivate );
+			// WordPress uses two action slots: top dropdown ('action') and bottom ('action2').
+			$bulk_action = '';
+			if ( isset( $_POST['action'] ) && '-1' !== $_POST['action'] ) {
+				$bulk_action = sanitize_key( wp_unslash( $_POST['action'] ) );
+			} elseif ( isset( $_POST['action2'] ) && '-1' !== $_POST['action2'] ) {
+				$bulk_action = sanitize_key( wp_unslash( $_POST['action2'] ) );
 			}
 
-			set_transient( self::TRANSIENT_BLOCKED_DEACTIVATION, '1', 60 );
+			if (
+				'deactivate-selected' === $bulk_action &&
+				isset( $_POST['checked'] ) &&
+				is_array( $_POST['checked'] ) &&
+				in_array(
+					self::ELEMENTOR_PLUGIN_BASENAME,
+					array_map( 'sanitize_text_field', wp_unslash( $_POST['checked'] ) ),
+					true
+				)
+			) {
+				// Deactivate every other selected plugin except Elementor.
+				$checked       = array_map( 'sanitize_text_field', wp_unslash( $_POST['checked'] ) );
+				$to_deactivate = array_values(
+					array_filter(
+						$checked,
+						function ( $basename ) {
+							return self::ELEMENTOR_PLUGIN_BASENAME !== $basename;
+						}
+					)
+				);
 
-			// Redirect back — WordPress will not process the bulk action further.
-			wp_safe_redirect( admin_url( 'plugins.php' ) );
-			exit;
+				if ( ! empty( $to_deactivate ) ) {
+					deactivate_plugins( $to_deactivate );
+				}
+
+				set_transient( self::TRANSIENT_BLOCKED_DEACTIVATION, '1', 60 );
+
+				// Redirect back — WordPress will not process the bulk action further.
+				wp_safe_redirect( admin_url( 'plugins.php' ) );
+				exit;
+			}
 		}
 	}
 
@@ -453,12 +455,12 @@ class Elonix_Toolkit_Dependency_Manager {
 						<strong><?php esc_html_e( 'Required by:', 'elonix' ); ?></strong>
 						<?php
 						// $dependents_list is safe — each item was escaped with esc_html above.
-						echo $dependents_list; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo $dependents_list; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- each item was escaped with esc_html() above.
 						echo ' &#8212; ';
 						printf(
 							/* translators: %s: comma-separated list of plugin names that require Elementor. */
 							esc_html__( 'This plugin cannot be deactivated while it is required by: %s.', 'elonix' ),
-							$dependents_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							$dependents_list // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- each item was escaped with esc_html() above.
 						);
 						?>
 					</p>

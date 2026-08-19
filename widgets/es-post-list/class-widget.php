@@ -1782,10 +1782,10 @@ class Elonix_Toolkit_Post_List_Widget extends Elonix_Widget_Base {
 			<?php if ( $show_thumbnail && ! empty( $item['thumbnail'] ) ) : ?>
 				<div class="es-post-thumbnail">
 					<a href="<?php echo esc_url( $item['url'] ); ?>">
-						<?php echo $item['thumbnail']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo $item['thumbnail']; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- get_the_post_thumbnail() is WP core's own trusted, pre-built markup. ?>
 					</a>
 					<?php if ( ! empty( $badge_html ) ) : ?>
-						<?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>
+						<?php echo $badge_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via sprintf() with esc_html() above. ?>
 					<?php endif; ?>
 				</div>
 			<?php elseif ( ! empty( $badge_html ) ) : ?>
@@ -1840,7 +1840,7 @@ class Elonix_Toolkit_Post_List_Widget extends Elonix_Widget_Base {
 								foreach ( $item['categories'] as $cat ) {
 									$cat_links[] = sprintf( '<a href="%s">%s</a>', esc_url( $cat['url'] ), esc_html( $cat['name'] ) );
 								}
-								echo implode( ', ', $cat_links ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+								echo implode( ', ', $cat_links ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- every $cat_links entry is built via sprintf() with esc_url()/esc_html() above.
 								?>
 							</span>
 						<?php endif; ?>

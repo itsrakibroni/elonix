@@ -31,10 +31,11 @@ class Elonix_Toolkit_Post_Comments_Pagination {
 
 	public function get_current_page() {
 		// Respect our custom es_cpage parameter first to avoid redirect_canonical issues
-		if ( isset( $_GET['es_cpage'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$page = (int) wp_unslash( $_GET['es_cpage'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
-		} elseif ( isset( $_GET['cpage'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$page = (int) wp_unslash( $_GET['cpage'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// Read-only pagination (mirrors WP core's own 'cpage' comment-pagination query var); intval-cast, never output.
+		if ( isset( $_GET['es_cpage'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only pagination, see note above.
+			$page = (int) wp_unslash( $_GET['es_cpage'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- (int) cast is sufficient sanitization.
+		} elseif ( isset( $_GET['cpage'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only pagination, see note above.
+			$page = (int) wp_unslash( $_GET['cpage'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- (int) cast is sufficient sanitization.
 		} else {
 			$page = get_query_var( 'cpage' );
 		}

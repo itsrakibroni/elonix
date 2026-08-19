@@ -27,7 +27,7 @@ class Elonix_Admin_UI {
 		$this->display_conditions = $display_conditions;
 
 		// Add custom columns to all builder CPT list tables
-		$post_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template' );
+		$post_types = array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template' );
 		foreach ( $post_types as $pt ) {
 			add_filter( "manage_{$pt}_posts_columns", array( $this, 'register_custom_columns' ), 11 );
 			add_action( "manage_{$pt}_posts_custom_column", array( $this, 'render_custom_columns_data' ), 11, 2 );
@@ -114,7 +114,7 @@ class Elonix_Admin_UI {
 	 */
 	public function enqueue_navbar_styles( $hook ) {
 		global $post;
-		if ( ! $post || ! in_array( $post->post_type, array( 'es_header', 'es_footer' ), true ) ) {
+		if ( ! $post || ! in_array( $post->post_type, array( 'elonix_header', 'elonix_footer' ), true ) ) {
 			return;
 		}
 
@@ -132,35 +132,43 @@ class Elonix_Admin_UI {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
-		$post_id   = isset( $_GET['post'] ) ? intval( wp_unslash( $_GET['post'] ) ) : ( isset( $_POST['post_ID'] ) ? intval( wp_unslash( $_POST['post_ID'] ) ) : 0 );
+		// Read-only display; this is the same "post" value WordPress core already used to gate
+		// access to this post.php screen (it would have died earlier if the user couldn't edit
+		// this post), so a nonce doesn't add anything here. Re-check the capability explicitly
+		// anyway as defense-in-depth before we use the ID for anything.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing -- read-only display, see note above.
+		$post_id = isset( $_GET['post'] ) ? intval( wp_unslash( $_GET['post'] ) ) : ( isset( $_POST['post_ID'] ) ? intval( wp_unslash( $_POST['post_ID'] ) ) : 0 );
+		if ( $post_id && ! current_user_can( 'edit_post', $post_id ) ) {
+			return;
+		}
+
 		$post_type = '';
 		if ( $post_id ) {
 			$post_type = get_post_type( $post_id );
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing -- read-only display, see note above.
 		} elseif ( isset( $_GET['post_type'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended, WordPress.Security.NonceVerification.Missing -- read-only display, see note above.
 			$post_type = sanitize_key( wp_unslash( $_GET['post_type'] ) );
 		}
 
-		if ( ! in_array( $post_type, array( 'es_header', 'es_footer' ), true ) ) {
+		if ( ! in_array( $post_type, array( 'elonix_header', 'elonix_footer' ), true ) ) {
 			return;
 		}
 
 		// Retrieve post details
 		$post_title = $post_id ? get_the_title( $post_id ) : esc_html__( 'New Template', 'elonix' );
-		$type_label = ( 'es_header' === $post_type ) ? esc_html__( 'Header', 'elonix' ) : esc_html__( 'Footer', 'elonix' );
+		$type_label = ( 'elonix_header' === $post_type ) ? esc_html__( 'Header', 'elonix' ) : esc_html__( 'Footer', 'elonix' );
 
 		// Preserve tab state URL
 		$back_url = admin_url( 'admin.php?page=elonix-header-footer' );
-		if ( 'es_header' === $post_type ) {
-			$back_url = add_query_arg( 'es_type', 'es_header', $back_url );
-		} elseif ( 'es_footer' === $post_type ) {
-			$back_url = add_query_arg( 'es_type', 'es_footer', $back_url );
+		if ( 'elonix_header' === $post_type ) {
+			$back_url = add_query_arg( 'es_type', 'elonix_header', $back_url );
+		} elseif ( 'elonix_footer' === $post_type ) {
+			$back_url = add_query_arg( 'es_type', 'elonix_footer', $back_url );
 		}
 
 		// Secure preview URL
-		$preview_url = $post_id ? add_query_arg( 'es_preview', $post_id, home_url( '/' ) ) : '';
+		$preview_url = $post_id ? wp_nonce_url( add_query_arg( 'es_preview', $post_id, home_url( '/' ) ), 'elonix_header_footer_preview' ) : '';
 
 		?>
 		<div class="es-admin-nav-bar" style="background: #fff; border: 1px solid #ccd0d4; padding: 15px 20px; margin: 10px 20px 20px 0; border-radius: 4px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen-Sans, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;">
@@ -262,7 +270,8 @@ class Elonix_Admin_UI {
 		if ( empty( $outputs ) ) {
 			echo '<span class="es-dashboard-condition-empty" style="color: var(--es-slate-400); font-style: italic; font-size: 12.5px;">' . esc_html__( 'No conditions set (Draft)', 'elonix' ) . '</span>';
 		} else {
-			echo '<div class="es-dashboard-conditions-list" style="font-size: 13px; font-weight: 500; color: var(--es-slate-600); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">' . implode( ' <span class="es-meta-divider" style="color: var(--es-slate-200); font-size: 8px;">•</span> ', $outputs ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- every $outputs entry is built from get_location_with_icon(), which escapes internally (esc_attr/esc_html), plus static markup.
+			echo '<div class="es-dashboard-conditions-list" style="font-size: 13px; font-weight: 500; color: var(--es-slate-600); display: flex; align-items: center; gap: 8px; flex-wrap: wrap;">' . implode( ' <span class="es-meta-divider" style="color: var(--es-slate-200); font-size: 8px;">•</span> ', $outputs ) . '</div>';
 		}
 	}
 
@@ -279,10 +288,10 @@ class Elonix_Admin_UI {
 			case 'es_shortcode':
 				$post_type = get_post_type( $post_id );
 				$shortcode = '';
-				if ( 'es_header' === $post_type ) {
-					$shortcode = '[es_header id="' . $post_id . '"]';
-				} elseif ( 'es_footer' === $post_type ) {
-					$shortcode = '[es_footer id="' . $post_id . '"]';
+				if ( 'elonix_header' === $post_type ) {
+					$shortcode = '[elonix_header id="' . $post_id . '"]';
+				} elseif ( 'elonix_footer' === $post_type ) {
+					$shortcode = '[elonix_footer id="' . $post_id . '"]';
 				}
 				if ( ! empty( $shortcode ) ) {
 					?>
@@ -346,7 +355,8 @@ class Elonix_Admin_UI {
 				if ( empty( $outputs ) ) {
 					echo '<span style="color: var(--es-slate-400); font-style: italic; font-size: 12px;">' . esc_html__( 'No conditions set (Draft)', 'elonix' ) . '</span>';
 				} else {
-					echo '<div class="es-display-condition-wrapper">' . implode( '', $outputs ) . '</div>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- each $outputs entry is built from esc_html__()/esc_html() and get_location_with_icon(), which escapes internally.
+					echo '<div class="es-display-condition-wrapper">' . implode( '', $outputs ) . '</div>';
 				}
 				break;
 		}
@@ -356,7 +366,7 @@ class Elonix_Admin_UI {
 	 * Custom Row Actions links in CPT tables.
 	 */
 	public function custom_row_actions( $actions, $post ) {
-		if ( ! in_array( $post->post_type, array( 'es_header', 'es_footer' ), true ) ) {
+		if ( ! in_array( $post->post_type, array( 'elonix_header', 'elonix_footer' ), true ) ) {
 			return $actions;
 		}
 
@@ -403,7 +413,7 @@ class Elonix_Admin_UI {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- this only reads which action-key was requested; every branch below verifies its own action-specific nonce before doing anything.
 		$action = isset( $_GET['action'] ) ? sanitize_text_field( wp_unslash( $_GET['action'] ) ) : '';
 
 		// 1. BULK ACTIONS
@@ -504,9 +514,13 @@ class Elonix_Admin_UI {
 
 		// 4. EXPORT ALL ACTION
 		if ( 'es_export_all_templates' === $action ) {
+			if ( ! isset( $_GET['_wpnonce'] ) || ! wp_verify_nonce( sanitize_text_field( wp_unslash( $_GET['_wpnonce'] ) ), 'es_export_all_templates' ) ) {
+				return;
+			}
+
 			$posts = get_posts(
 				array(
-					'post_type'      => array( 'es_header', 'es_footer' ),
+					'post_type'      => array( 'elonix_header', 'elonix_footer' ),
 					'post_status'    => array( 'publish', 'draft' ),
 					'posts_per_page' => -1,
 				)
@@ -606,7 +620,7 @@ class Elonix_Admin_UI {
 			$open_el   = isset( $_POST['open_elementor'] ) ? '1' === sanitize_text_field( wp_unslash( $_POST['open_elementor'] ) ) : false;
 			$specifics = isset( $_POST['display_condition_specific'] ) && is_array( $_POST['display_condition_specific'] ) ? array_map( 'sanitize_text_field', wp_unslash( $_POST['display_condition_specific'] ) ) : array();
 
-			$allowed_types = array( 'es_header', 'es_footer' );
+			$allowed_types = array( 'elonix_header', 'elonix_footer' );
 
 			if ( in_array( $type, $allowed_types, true ) ) {
 				$post_content = '';
@@ -633,7 +647,7 @@ class Elonix_Admin_UI {
 				if ( ! is_wp_error( $new_post_id ) ) {
 					update_post_meta( $new_post_id, '_elementor_edit_mode', 'builder' );
 
-					$doc_type = ( 'es_header' === $type ) ? 'header' : 'footer';
+					$doc_type = ( 'elonix_header' === $type ) ? 'header' : 'footer';
 					update_post_meta( $new_post_id, '_elementor_template_type', $doc_type );
 					update_post_meta( $new_post_id, '_es_priority', $priority );
 
@@ -792,8 +806,8 @@ class Elonix_Admin_UI {
 		$footer_active = Elonix_Toolkit_Module_Manager::is_module_enabled( 'footer_builder' );
 
 		// Stats Counts
-		$header_counts = wp_count_posts( 'es_header' );
-		$footer_counts = wp_count_posts( 'es_footer' );
+		$header_counts = wp_count_posts( 'elonix_header' );
+		$footer_counts = wp_count_posts( 'elonix_footer' );
 
 		$total_headers     = intval( $header_counts->publish ) + intval( $header_counts->draft );
 		$total_footers     = intval( $footer_counts->publish ) + intval( $footer_counts->draft );
@@ -806,7 +820,7 @@ class Elonix_Admin_UI {
 		$global_header_name = esc_html__( 'None assigned', 'elonix' );
 		$global_headers     = get_posts(
 			array(
-				'post_type'      => 'es_header',
+				'post_type'      => 'elonix_header',
 				'post_status'    => 'publish',
 				'posts_per_page' => 1,
 				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for querying layouts based on condition keys.
@@ -827,7 +841,7 @@ class Elonix_Admin_UI {
 		$global_footer_name = esc_html__( 'None assigned', 'elonix' );
 		$global_footers     = get_posts(
 			array(
-				'post_type'      => 'es_footer',
+				'post_type'      => 'elonix_footer',
 				'post_status'    => 'publish',
 				'posts_per_page' => 1,
 				// phpcs:ignore WordPress.DB.SlowDBQuery.slow_db_query_meta_query -- Required for querying layouts based on condition keys.
@@ -844,13 +858,15 @@ class Elonix_Admin_UI {
 			$global_footer_name = $global_footers[0]->post_title;
 		}
 
-		// Pagination & Filters Setup
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// Pagination & Filters Setup — read-only GET filters for the admin list view, same
+		// pattern WP core's own post-list screens use (?post_status=draft etc.); nothing here
+		// changes state, so a nonce isn't meaningful.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only list filter, see note above.
 		$status_filter = isset( $_GET['es_status'] ) ? sanitize_text_field( wp_unslash( $_GET['es_status'] ) ) : 'all';
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only list filter, see note above.
 		$type_filter = isset( $_GET['es_type'] ) ? sanitize_text_field( wp_unslash( $_GET['es_type'] ) ) : 'all';
 
-		$query_types = ( 'all' === $type_filter ) ? array( 'es_header', 'es_footer' ) : array( $type_filter );
+		$query_types = ( 'all' === $type_filter ) ? array( 'elonix_header', 'elonix_footer' ) : array( $type_filter );
 
 		if ( 'trash' === $status_filter ) {
 			$query_status = array( 'trash' );
@@ -861,7 +877,7 @@ class Elonix_Admin_UI {
 		}
 
 		$per_page = 10;
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only pagination, intval-cast.
 		$paged  = isset( $_GET['paged'] ) ? max( 1, intval( wp_unslash( $_GET['paged'] ) ) ) : 1;
 		$offset = ( $paged - 1 ) * $per_page;
 
@@ -879,10 +895,12 @@ class Elonix_Admin_UI {
 		$total_items   = $layouts_query->found_posts;
 		$total_pages   = ceil( $total_items / $per_page );
 
-		// Notifications notices
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// Notifications notices — standard Post/Redirect/Get pattern (e.g. after duplicating,
+		// the redirect target includes ?es_status=duplicated&count=3 to show a one-time notice).
+		// Read-only, and every $notice_html branch below wraps its dynamic text in esc_html()/esc_html__().
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only, see note above.
 		$notice_status = isset( $_GET['es_status'] ) ? sanitize_text_field( wp_unslash( $_GET['es_status'] ) ) : '';
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only, intval-cast, see note above.
 		$count       = isset( $_GET['count'] ) ? intval( wp_unslash( $_GET['count'] ) ) : 1;
 		$notice_html = '';
 		if ( 'imported' === $notice_status ) {
@@ -912,7 +930,7 @@ class Elonix_Admin_UI {
 		// Existing layouts for duplicating selection
 		$existing_layouts = get_posts(
 			array(
-				'post_type'      => array( 'es_header', 'es_footer' ),
+				'post_type'      => array( 'elonix_header', 'elonix_footer' ),
 				'post_status'    => array( 'publish', 'draft' ),
 				'posts_per_page' => -1,
 			)
@@ -925,7 +943,8 @@ class Elonix_Admin_UI {
 			<!-- Render WordPress notices dynamically -->
 			<?php
 			if ( ! empty( $notice_html ) ) {
-				echo $notice_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $notice_html is built entirely from esc_html()/esc_html__() wrapped text plus static markup (see construction above).
+				echo $notice_html;
 			}
 			?>
 
@@ -955,7 +974,7 @@ class Elonix_Admin_UI {
 						<?php esc_html_e( 'Import Template', 'elonix' ); ?>
 					</button>
 
-					<a href="<?php echo esc_url( admin_url( 'admin.php?action=es_export_all_templates' ) ); ?>" class="es-btn es-btn-secondary" title="<?php esc_attr_e( 'Export layout templates to JSON', 'elonix' ); ?>">
+					<a href="<?php echo esc_url( wp_nonce_url( admin_url( 'admin.php?action=es_export_all_templates' ), 'es_export_all_templates' ) ); ?>" class="es-btn es-btn-secondary" title="<?php esc_attr_e( 'Export layout templates to JSON', 'elonix' ); ?>">
 						<span class="dashicons dashicons-download" style="font-size:16px; margin-top:2px;"></span>
 						<?php esc_html_e( 'Export Templates', 'elonix' ); ?>
 					</a>
@@ -1039,13 +1058,13 @@ class Elonix_Admin_UI {
 						echo esc_url(
 							add_query_arg(
 								array(
-									'es_type'   => 'es_header',
+									'es_type'   => 'elonix_header',
 									'es_status' => 'all',
 								)
 							)
 						);
 						?>
-									" class="es-filter-link <?php echo ( 'es_header' === $type_filter ) ? 'active' : ''; ?>">
+									" class="es-filter-link <?php echo ( 'elonix_header' === $type_filter ) ? 'active' : ''; ?>">
 							<?php esc_html_e( 'Headers', 'elonix' ); ?>
 							<span style="font-weight:400; color:var(--es-slate-400);"> (<?php echo (int) $total_headers; ?>)</span>
 						</a>
@@ -1056,13 +1075,13 @@ class Elonix_Admin_UI {
 						echo esc_url(
 							add_query_arg(
 								array(
-									'es_type'   => 'es_footer',
+									'es_type'   => 'elonix_footer',
 									'es_status' => 'all',
 								)
 							)
 						);
 						?>
-									" class="es-filter-link <?php echo ( 'es_footer' === $type_filter ) ? 'active' : ''; ?>">
+									" class="es-filter-link <?php echo ( 'elonix_footer' === $type_filter ) ? 'active' : ''; ?>">
 							<?php esc_html_e( 'Footers', 'elonix' ); ?>
 							<span style="font-weight:400; color:var(--es-slate-400);"> (<?php echo (int) $total_footers; ?>)</span>
 						</a>
@@ -1122,7 +1141,7 @@ class Elonix_Admin_UI {
 					<!-- Search container -->
 					<div class="es-search-bar">
 						<span class="dashicons dashicons-search search-icon"></span>
-						<input type="text" id="es_live_search" placeholder="<?php esc_attr_e( 'Search templates...', 'elonix' ); ?>" aria-label="<?php esc_attr_e( 'Search template list', 'elonix' ); ?>">
+						<input type="text" id="elonix_live_search" placeholder="<?php esc_attr_e( 'Search templates...', 'elonix' ); ?>" aria-label="<?php esc_attr_e( 'Search template list', 'elonix' ); ?>">
 					</div>
 				</div>
 
@@ -1221,9 +1240,9 @@ class Elonix_Admin_UI {
 								<?php else : ?>
 									<?php
 									foreach ( $layouts as $tpl ) :
-										$type_label = ( 'es_header' === $tpl->post_type ) ? 'Header' : 'Footer';
-										$type_badge = ( 'es_header' === $tpl->post_type ) ? 'es-badge-header' : 'es-badge-footer';
-										$type_icon  = ( 'es_header' === $tpl->post_type ) ? 'dashicons-editor-kitchensink' : 'dashicons-editor-insertmore';
+										$type_label = ( 'elonix_header' === $tpl->post_type ) ? 'Header' : 'Footer';
+										$type_badge = ( 'elonix_header' === $tpl->post_type ) ? 'es-badge-header' : 'es-badge-footer';
+										$type_icon  = ( 'elonix_header' === $tpl->post_type ) ? 'dashicons-editor-kitchensink' : 'dashicons-editor-insertmore';
 
 										$priority = get_post_meta( $tpl->ID, '_es_priority', true );
 										$status   = get_post_status( $tpl->ID );
@@ -1243,8 +1262,8 @@ class Elonix_Admin_UI {
 											}
 										}
 
-										$shortcode = ( 'es_header' === $tpl->post_type ) ? '[es_header id="' . $tpl->ID . '"]' : '[es_footer id="' . $tpl->ID . '"]';
-										$php_code  = ( 'es_header' === $tpl->post_type ) ? '<?php elonix_render_header(' . $tpl->ID . '); ?>' : '<?php elonix_render_footer(' . $tpl->ID . '); ?>';
+										$shortcode = ( 'elonix_header' === $tpl->post_type ) ? '[elonix_header id="' . $tpl->ID . '"]' : '[elonix_footer id="' . $tpl->ID . '"]';
+										$php_code  = ( 'elonix_header' === $tpl->post_type ) ? '<?php elonix_render_header(' . $tpl->ID . '); ?>' : '<?php elonix_render_footer(' . $tpl->ID . '); ?>';
 
 										$modified_time = get_the_modified_date( 'U', $tpl->ID );
 										$time_diff     = human_time_diff( $modified_time, current_time( 'timestamp' ) ) . ' ' . esc_html__( 'ago', 'elonix' );
@@ -1480,11 +1499,11 @@ class Elonix_Admin_UI {
 											<?php
 											if ( $header_active ) :
 												?>
-												<option value="es_header"><?php esc_html_e( 'Header', 'elonix' ); ?></option><?php endif; ?>
+												<option value="elonix_header"><?php esc_html_e( 'Header', 'elonix' ); ?></option><?php endif; ?>
 											<?php
 											if ( $footer_active ) :
 												?>
-												<option value="es_footer"><?php esc_html_e( 'Footer', 'elonix' ); ?></option><?php endif; ?>
+												<option value="elonix_footer"><?php esc_html_e( 'Footer', 'elonix' ); ?></option><?php endif; ?>
 										</select>
 									</div>
 
@@ -1591,8 +1610,8 @@ class Elonix_Admin_UI {
 							<div class="es-field">
 								<label for="quick_edit_type"><?php esc_html_e( 'Template Type', 'elonix' ); ?></label>
 								<select id="quick_edit_type" name="template_type" class="es-select">
-									<option value="es_header"><?php esc_html_e( 'Header', 'elonix' ); ?></option>
-									<option value="es_footer"><?php esc_html_e( 'Footer', 'elonix' ); ?></option>
+									<option value="elonix_header"><?php esc_html_e( 'Header', 'elonix' ); ?></option>
+									<option value="elonix_footer"><?php esc_html_e( 'Footer', 'elonix' ); ?></option>
 								</select>
 							</div>
 

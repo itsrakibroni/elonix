@@ -26,7 +26,7 @@ class Elonix_Search_Admin {
 		add_action( 'add_meta_boxes', array( $this, 'add_search_settings_metabox' ) );
 		add_action( 'save_post_es_search_template', array( $this, 'save_search_settings' ) );
 
-		add_action( 'wp_ajax_es_duplicate_search_template', array( $this, 'duplicate_search_template' ) );
+		add_action( 'wp_ajax_elonix_duplicate_search_template', array( $this, 'duplicate_search_template' ) );
 	}
 
 	/**
@@ -199,7 +199,7 @@ class Elonix_Search_Admin {
 	public function inject_duplicate_link( $actions, $post ) {
 		if ( 'es_search_template' === $post->post_type ) {
 			$nonce                          = wp_create_nonce( 'es_duplicate_search_template_' . $post->ID );
-			$url                            = admin_url( 'admin-ajax.php?action=es_duplicate_search_template&post_id=' . $post->ID . '&nonce=' . $nonce );
+			$url                            = admin_url( 'admin-ajax.php?action=elonix_duplicate_search_template&post_id=' . $post->ID . '&nonce=' . $nonce );
 			$actions['es_duplicate_search'] = sprintf(
 				'<a href="%s" aria-label="%s">%s</a>',
 				esc_url( $url ),

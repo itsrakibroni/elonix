@@ -71,7 +71,7 @@ class Elonix_Rendering_Engine {
 			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_header' ) ?? 'yes' ) ) {
 				return true;
 			}
-			$header_id = \Elonix_Assignment_Engine::instance()->get_matching_template( 'es_header' );
+			$header_id = \Elonix_Assignment_Engine::instance()->get_matching_template( 'elonix_header' );
 			if ( $header_id ) {
 				$this->render_elementor_content( $header_id );
 				return true;
@@ -80,7 +80,7 @@ class Elonix_Rendering_Engine {
 			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_footer' ) ?? 'yes' ) ) {
 				return true;
 			}
-			$footer_id = \Elonix_Assignment_Engine::instance()->get_matching_template( 'es_footer' );
+			$footer_id = \Elonix_Assignment_Engine::instance()->get_matching_template( 'elonix_footer' );
 			if ( $footer_id ) {
 				$this->render_elementor_content( $footer_id );
 				return true;
@@ -102,10 +102,11 @@ class Elonix_Rendering_Engine {
 		}
 
 		// Support for Layout Template Preview Changes mode
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// Cosmetic only: enqueues Elementor's per-post CSS file for smoother preview loading. Actual
+		// content access is separately gated by Elonix_Toolkit_Header_Footer_Builder::is_preview_request_authorized().
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- cosmetic CSS enqueue only, see note above.
 		if ( isset( $_GET['es_preview'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$preview_id = intval( wp_unslash( $_GET['es_preview'] ) );
+			$preview_id = intval( wp_unslash( $_GET['es_preview'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- cosmetic CSS enqueue only, see note above.
 			if ( $preview_id ) {
 				$css_file = new \Elementor\Core\Files\CSS\Post( $preview_id );
 				$css_file->enqueue();
@@ -113,8 +114,21 @@ class Elonix_Rendering_Engine {
 				// Enqueue widget styles pre-emptively in head to prevent FOUC
 				$this->enqueue_template_widget_styles( $preview_id );
 
+				// Base layout CSS for the standalone preview page (see preview-template.php).
+				wp_register_style( 'elonix-preview-page', false, array(), ELONIX_VERSION );
+				wp_enqueue_style( 'elonix-preview-page' );
+				wp_add_inline_style(
+					'elonix-preview-page',
+					'html, body { margin: 0 !important; padding: 0 !important; width: 100% !important; height: 100% !important; background: #f1f5f9 !important; }
+					.es-site-header { width: 100% !important; }
+					.es-preview-debug-bar { background: #1e293b; color: #f1f5f9; padding: 10px 20px; font-family: Consolas, Monaco, monospace; font-size: 12px; border-bottom: 2px solid #ef4444; display: flex; gap: 20px; flex-wrap: wrap; z-index: 999999; position: relative; }
+					.es-preview-debug-bar span { font-weight: bold; }
+					.es-preview-debug-bar .success { color: #22c55e; }
+					.es-preview-debug-bar .failure { color: #ef4444; }'
+				);
+
 				$post_type = get_post_type( $preview_id );
-				if ( 'es_header' === $post_type && class_exists( 'Elonix_Toolkit_Assets_Manager' ) ) {
+				if ( 'elonix_header' === $post_type && class_exists( 'Elonix_Toolkit_Assets_Manager' ) ) {
 					Elonix_Toolkit_Assets_Manager::enqueue_module_assets( 'header_builder' );
 				}
 				return;
@@ -122,7 +136,7 @@ class Elonix_Rendering_Engine {
 		}
 
 		// Enqueue Header CSS
-		$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
+		$header_id = $this->display_conditions->get_active_template_id( 'elonix_header' );
 		if ( $header_id ) {
 			$css_file = new \Elementor\Core\Files\CSS\Post( $header_id );
 			$css_file->enqueue();
@@ -137,7 +151,7 @@ class Elonix_Rendering_Engine {
 		}
 
 		// Enqueue Footer CSS
-		$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
+		$footer_id = $this->display_conditions->get_active_template_id( 'elonix_footer' );
 		if ( $footer_id ) {
 			$css_file = new \Elementor\Core\Files\CSS\Post( $footer_id );
 			$css_file->enqueue();
@@ -219,13 +233,13 @@ class Elonix_Rendering_Engine {
 		self::$rendered_templates[] = $template_id;
 
 		$post_type = get_post_type( $template_id );
-		$is_header = ( 'es_header' === $post_type );
+		$is_header = ( 'elonix_header' === $post_type );
 
 		if ( $is_header ) {
 			echo '<header class="es-site-header">';
 		}
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor's own rendering API; escaping is handled internally by Elementor per-widget.
 		echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $template_id );
 
 		if ( $is_header ) {
@@ -237,7 +251,7 @@ class Elonix_Rendering_Engine {
 	 * Render custom header contents.
 	 */
 	public function render_custom_header() {
-		$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
+		$header_id = $this->display_conditions->get_active_template_id( 'elonix_header' );
 		if ( $header_id ) {
 			$this->render_elementor_content( $header_id );
 		}
@@ -247,7 +261,7 @@ class Elonix_Rendering_Engine {
 	 * Render custom footer contents.
 	 */
 	public function render_custom_footer() {
-		$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
+		$footer_id = $this->display_conditions->get_active_template_id( 'elonix_footer' );
 		if ( $footer_id ) {
 			$this->render_elementor_content( $footer_id );
 		}
@@ -263,8 +277,8 @@ class Elonix_Rendering_Engine {
 		$show_header = ! ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_header' ) ?? 'yes' ) );
 		$show_footer = ! ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_footer' ) ?? 'yes' ) );
 
-		$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
-		$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
+		$header_id = $this->display_conditions->get_active_template_id( 'elonix_header' );
+		$footer_id = $this->display_conditions->get_active_template_id( 'elonix_footer' );
 
 		// If no custom templates, fall back to theme defaults
 		if ( ! $header_id && ! $footer_id ) {
@@ -368,7 +382,7 @@ class Elonix_Rendering_Engine {
 				if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_header' ) ?? 'yes' ) ) {
 					return '';
 				}
-				$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
+				$header_id = $this->display_conditions->get_active_template_id( 'elonix_header' );
 				if ( $header_id ) {
 					ob_start();
 					$this->render_elementor_content( $header_id );
@@ -380,7 +394,7 @@ class Elonix_Rendering_Engine {
 				if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_footer' ) ?? 'yes' ) ) {
 					return '';
 				}
-				$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
+				$footer_id = $this->display_conditions->get_active_template_id( 'elonix_footer' );
 				if ( $footer_id ) {
 					ob_start();
 					$this->render_elementor_content( $footer_id );
@@ -397,18 +411,11 @@ class Elonix_Rendering_Engine {
 	 * This prevents any "Sorry, content area was not found" errors by bypassing the theme's singular layout.
 	 */
 	public function override_editor_canvas( $template ) {
-		$layout_types = array( 'es_header', 'es_footer' );
-		if ( is_singular( $layout_types ) ) {
-			if ( defined( 'ELEMENTOR_PATH' ) ) {
-				$canvas = ELEMENTOR_PATH . 'modules/page-templates/templates/canvas.php';
-				if ( file_exists( $canvas ) ) {
-					return $canvas;
-				}
-			}
-			// Fallback standard plugin directory path
-			$canvas_fallback = WP_PLUGIN_DIR . '/elementor/modules/page-templates/templates/canvas.php';
-			if ( file_exists( $canvas_fallback ) ) {
-				return $canvas_fallback;
+		$layout_types = array( 'elonix_header', 'elonix_footer' );
+		if ( is_singular( $layout_types ) && defined( 'ELEMENTOR_PATH' ) ) {
+			$canvas = ELEMENTOR_PATH . 'modules/page-templates/templates/canvas.php';
+			if ( file_exists( $canvas ) ) {
+				return $canvas;
 			}
 		}
 		return $template;
@@ -425,7 +432,7 @@ class Elonix_Rendering_Engine {
 			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_header' ) ?? 'yes' ) ) {
 				return true;
 			}
-			$header_id = $this->display_conditions->get_active_template_id( 'es_header' );
+			$header_id = $this->display_conditions->get_active_template_id( 'elonix_header' );
 			if ( $header_id ) {
 				$this->render_elementor_content( $header_id );
 				return true;
@@ -434,7 +441,7 @@ class Elonix_Rendering_Engine {
 			if ( $is_404_template && 'no' === ( Elonix_Settings::get( 'es_404_show_footer' ) ?? 'yes' ) ) {
 				return true;
 			}
-			$footer_id = $this->display_conditions->get_active_template_id( 'es_footer' );
+			$footer_id = $this->display_conditions->get_active_template_id( 'elonix_footer' );
 			if ( $footer_id ) {
 				$this->render_elementor_content( $footer_id );
 				return true;

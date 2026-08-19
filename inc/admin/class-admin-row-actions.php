@@ -30,7 +30,7 @@ class Elonix_Admin_Row_Actions {
 	public function enqueue_styles( $hook ) {
 		$screen               = get_current_screen();
 		$post_type            = $screen ? $screen->post_type : '';
-		$supported_post_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template', 'es_popup', 'es_404_template', 'es_loop' );
+		$supported_post_types = array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template', 'elonix_popup', 'es_404_template', 'es_loop' );
 
 		// Only enqueue on our specific list tables, header/footer page, or the edit page
 		$is_valid = false;
@@ -189,10 +189,10 @@ class Elonix_Admin_Row_Actions {
 			esc_html__( 'Settings', 'elonix' )
 		);
 
-		$shortcode = ( 'es_header' === $post->post_type ) ? '[es_header id="' . $post->ID . '"]' : '[es_footer id="' . $post->ID . '"]';
-		$php_code  = ( 'es_header' === $post->post_type ) ? '<?php elonix_render_header(' . $post->ID . '); ?>' : '<?php elonix_render_footer(' . $post->ID . '); ?>';
+		$shortcode = ( 'elonix_header' === $post->post_type ) ? '[elonix_header id="' . $post->ID . '"]' : '[elonix_footer id="' . $post->ID . '"]';
+		$php_code  = ( 'elonix_header' === $post->post_type ) ? '<?php elonix_render_header(' . $post->ID . '); ?>' : '<?php elonix_render_footer(' . $post->ID . '); ?>';
 
-		if ( ! in_array( $post->post_type, array( 'es_header', 'es_footer' ), true ) ) {
+		if ( ! in_array( $post->post_type, array( 'elonix_header', 'elonix_footer' ), true ) ) {
 			$shortcode = '[es_template id="' . $post->ID . '"]';
 			$php_code  = '<?php echo do_shortcode(\'[es_template id="' . $post->ID . '"]\'); ?>';
 		}
@@ -249,13 +249,13 @@ class Elonix_Admin_Row_Actions {
 
 		// Builder Matrix (In Order)
 		$matrix = array(
-			'es_header'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'shortcode', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'es_footer'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'shortcode', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'es_single'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'es_archive'         => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'elonix_header'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'shortcode', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'elonix_footer'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'shortcode', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'elonix_single'          => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'elonix_archive'         => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
 			'es_search_template' => array( 'edit_elementor', 'preview', 'assign', 'settings', 'export', 'export_package', 'add_to_library', 'trash' ),
 			'es_404_template'    => array( 'edit_elementor', 'preview', 'assign', 'settings', 'export', 'export_package', 'add_to_library', 'trash' ),
-			'es_popup'           => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
+			'elonix_popup'           => array( 'edit_elementor', 'preview', 'assign', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
 			'es_loop'            => array( 'edit_elementor', 'preview', 'settings', 'duplicate', 'export', 'export_package', 'add_to_library', 'trash' ),
 		);
 
@@ -267,7 +267,7 @@ class Elonix_Admin_Row_Actions {
 				// Remove preview for header/footer as they are usually not standalone. But the user's updated expected examples say:
 				// Header: Edit, Assign, Duplicate, Export, Export Package, Add to Library, Delete. (No Preview)
 				// Footer: Same as Header.
-				if ( in_array( $post_type, array( 'es_header', 'es_footer' ), true ) && 'preview' === $key ) {
+				if ( in_array( $post_type, array( 'elonix_header', 'elonix_footer' ), true ) && 'preview' === $key ) {
 					continue;
 				}
 				$actions[ $key ] = $all_actions[ $key ];
@@ -300,7 +300,7 @@ class Elonix_Admin_Row_Actions {
 		do_action( 'elonix/admin/action_before_render', $post );
 
 		if ( $primary_action ) {
-			echo $this->es_kses_post( $primary_action ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			echo $this->es_kses_post( $primary_action ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- es_kses_post() wraps wp_kses_allowed_html( 'post' ), a proper WP escaping mechanism.
 		}
 
 		if ( ! empty( $actions ) ) {
@@ -308,7 +308,7 @@ class Elonix_Admin_Row_Actions {
 			echo '<button type="button" class="es-actions-dropdown-trigger" aria-label="' . esc_attr__( 'More actions', 'elonix' ) . '"><span class="dashicons dashicons-ellipsis"></span></button>';
 			echo '<div class="es-actions-dropdown-menu">';
 			foreach ( $actions as $action ) {
-				echo $this->es_kses_post( $action ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo $this->es_kses_post( $action ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- es_kses_post() wraps wp_kses_allowed_html( 'post' ), a proper WP escaping mechanism.
 			}
 			echo '</div>';
 			echo '</div>';
@@ -322,7 +322,7 @@ class Elonix_Admin_Row_Actions {
 	 * Filter for native WP list tables.
 	 */
 	public function filter_native_row_actions( $actions, $post ) {
-		$supported_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template', 'es_popup', 'es_404_template', 'es_loop' );
+		$supported_types = array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template', 'elonix_popup', 'es_404_template', 'es_loop' );
 		if ( ! in_array( $post->post_type, $supported_types, true ) ) {
 			return $actions; // Preserve other post types
 		}

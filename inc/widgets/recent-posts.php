@@ -38,12 +38,12 @@ class elonix_posts_thumbs extends WP_Widget {
 		}
 
 		// Widget Wrapper Start
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- standard WP_Widget wrapper markup, supplied by the theme's register_sidebar(), not user input.
 		echo $before_widget;
 
 		// Title Output (Usually <h4>)
 		if ( $title ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- before/after_title are standard WP_Widget theme wrapper markup; $title is esc_html()'d.
 			echo $before_title . esc_html( $title ) . $after_title;
 		}
 
@@ -87,7 +87,7 @@ class elonix_posts_thumbs extends WP_Widget {
 		endif;
 
 		// Widget Wrapper End
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- standard WP_Widget wrapper markup, supplied by the theme's register_sidebar(), not user input.
 		echo $after_widget;
 	}
 

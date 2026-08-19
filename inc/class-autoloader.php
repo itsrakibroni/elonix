@@ -204,7 +204,7 @@ class Autoloader {
 		'Elonix_Toolkit_Widget_Category'              => 'inc/elementor/class-widget-category.php',
 		'Elonix_Toolkit_Widget_Loader'                => 'inc/elementor/class-widget-loader.php',
 		'Elonix_Toolkit_Widget_Registry'              => 'inc/elementor/class-widget-registry.php',
-		'Widget_Registry'                                 => 'inc/elementor/class-widget-registry.php',
+		'Elonix_Toolkit_Widget_Registry_Helper'           => 'inc/elementor/class-widget-registry.php',
 
 		// Legacy WordPress widgets (WP legacy loader)
 		'Elonix_Category_Walker'                      => 'inc/widgets/advanced-categories.php',

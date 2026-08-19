@@ -30,7 +30,7 @@ class Elonix_Toolkit_Import_Export {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only, only decides whether to enqueue a stylesheet.
 		$tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'general';
 		if ( 'import_export' !== $tab ) {
 			return;
@@ -81,7 +81,7 @@ class Elonix_Toolkit_Import_Export {
 			return;
 		}
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.MissingUnslash -- tmp_name is a PHP-generated system temp path, never contains slashed characters.
 		$file_path = sanitize_text_field( $_FILES['import_file']['tmp_name'] );
 		$file_name = isset( $_FILES['import_file']['name'] ) ? sanitize_file_name( wp_unslash( $_FILES['import_file']['name'] ) ) : '';
 

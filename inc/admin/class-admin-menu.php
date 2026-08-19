@@ -65,6 +65,16 @@ class Elonix_Toolkit_Admin_Menu {
 			);
 		}
 
+		if ( Elonix_Toolkit_Module_Manager::is_module_enabled( 'search_builder' ) ) {
+			add_submenu_page(
+				'elonix',
+				esc_html__( 'Search Builder', 'elonix' ),
+				esc_html__( 'Search Builder', 'elonix' ),
+				'manage_options',
+				'edit.php?post_type=es_search_template'
+			);
+		}
+
 		if ( Elonix_Toolkit_Module_Manager::is_module_enabled( 'template_library' ) ) {
 			add_submenu_page(
 				'elonix',
@@ -140,12 +150,12 @@ class Elonix_Toolkit_Admin_Menu {
 		$order = array(
 			'elonix'               => 1,
 			'elonix-header-footer' => 2,
-			'edit.php?post_type=es_archive_template' => 3,
-			'edit.php?post_type=es_single_template'  => 4,
+			'edit.php?post_type=elonix_archive'          => 3,
+			'edit.php?post_type=elonix_single'           => 4,
 			'edit.php?post_type=es_search_template'  => 5,
 			'elonix-404'           => 6,
 			'elonix-templates'     => 7,
-			'edit.php?post_type=es_popup'      => 8,
+			'edit.php?post_type=elonix_popup'      => 8,
 			'elonix-widgets'       => 9,
 			'elonix-modules'       => 10,
 			'elonix-screen-loader' => 11,
@@ -193,23 +203,21 @@ class Elonix_Toolkit_Admin_Menu {
 	public function __construct() {
 		add_action( 'admin_menu', array( $this, 'register_admin_menu' ) );
 		add_action( 'admin_menu', array( $this, 'reorder_admin_menu' ), 999 );
-		add_action( 'admin_head', array( $this, 'admin_menu_styles' ) );
+		add_action( 'admin_enqueue_scripts', array( $this, 'admin_menu_styles' ) );
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_styles' ) );
 	}
 
 	/**
-	 * Enqueue styles for Templates page.
-	 *
-	 * @param string $hook Screen hook.
+	 * Enqueue styles for the plugin's admin menu icon sizing.
 	 */
 	public function admin_menu_styles() {
-		echo '
-		<style>
+		$css = '
 			#toplevel_page_elonix .wp-menu-image img {
 				max-width: 20px;
 				max-height: 20px;
 			}
-		</style>';
+		';
+		wp_add_inline_style( 'admin-menu', $css );
 	}
 	/**
 	 * Enqueue styles for Templates page.

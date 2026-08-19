@@ -769,7 +769,7 @@ class Elonix_Toolkit_Post_Excerpt_Widget extends Elonix_Widget_Base {
 			$excerpt_output = wp_kses_post( $excerpt );
 		}
 
-		echo '<' . $html_tag . ' class="elonix-post-excerpt-content">' . $excerpt_output . '</' . $html_tag . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<' . $html_tag . ' class="elonix-post-excerpt-content">' . $excerpt_output . '</' . $html_tag . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $html_tag is validated via Elementor\Utils::validate_html_tag(), $excerpt_output via wp_kses_post().
 
 		// Read More Link
 		if ( 'yes' === $settings['show_read_more'] ) {
@@ -813,15 +813,15 @@ class Elonix_Toolkit_Post_Excerpt_Widget extends Elonix_Widget_Base {
 					echo ' ';
 				}
 
-				echo '<a href="' . esc_url( $rm_link ) . '" class="elonix-read-more ' . esc_attr( $display_class . $hover_class ) . '"' . $target . $nofollow . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo '<a href="' . esc_url( $rm_link ) . '" class="elonix-read-more ' . esc_attr( $display_class . $hover_class ) . '"' . $target . $nofollow . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $target/$nofollow are fixed static strings from a boolean ternary, no dynamic content.
 
 				if ( 'icon_only' === $settings['read_more_display'] ) {
 					// Icon only ignores text
-					echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built via Elementor's trusted Icons_Manager::render_icon() plus esc_attr() wrapper.
 				} elseif ( 'before' === $settings['read_more_icon_position'] ) {
-						echo $icon_html . ' <span class="elonix-rm-text">' . esc_html( $rm_text ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						echo $icon_html . ' <span class="elonix-rm-text">' . esc_html( $rm_text ) . '</span>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $icon_html built via Elementor's trusted Icons_Manager::render_icon().
 				} else {
-					echo '<span class="elonix-rm-text">' . esc_html( $rm_text ) . '</span> ' . $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+					echo '<span class="elonix-rm-text">' . esc_html( $rm_text ) . '</span> ' . $icon_html; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $icon_html built via Elementor's trusted Icons_Manager::render_icon().
 
 				}
 

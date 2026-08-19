@@ -1923,7 +1923,7 @@ class Elonix_Toolkit_Smart_Contact_Actions_Widget extends Elonix_Widget_Base {
 				$first_item  = ! empty( $settings['action_items'][0] ) ? $settings['action_items'][0] : array();
 				$action_link = $this->get_action_link( $first_item );
 				?>
-				<a href="<?php echo esc_url( $action_link ); ?>" class="es-sca-trigger-btn <?php echo esc_attr( $preset_class ); ?> <?php echo esc_attr( $anim_class ); ?>" aria-label="<?php echo esc_attr( $first_item['label'] ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+				<a href="<?php echo esc_url( $action_link ); ?>" class="es-sca-trigger-btn <?php echo esc_attr( $preset_class ); ?> <?php echo esc_attr( $anim_class ); ?>" aria-label="<?php echo esc_attr( $first_item['label'] ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built above with (int) cast, no raw string interpolation. ?>>
 					<?php if ( ! empty( $first_item['item_icon'] ) ) : ?>
 						<?php Icons_Manager::render_icon( $first_item['item_icon'], array( 'aria-hidden' => 'true' ) ); ?>
 					<?php endif; ?>
@@ -1952,7 +1952,7 @@ class Elonix_Toolkit_Smart_Contact_Actions_Widget extends Elonix_Widget_Base {
 					<?php endforeach; ?>
 				</div>
 
-				<button class="es-sca-trigger-btn <?php echo esc_attr( $preset_class ); ?> <?php echo esc_attr( $anim_class ); ?>" aria-expanded="false" aria-haspopup="true" aria-label="<?php echo esc_attr__( 'Toggle Contact Options', 'elonix' ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+				<button class="es-sca-trigger-btn <?php echo esc_attr( $preset_class ); ?> <?php echo esc_attr( $anim_class ); ?>" aria-expanded="false" aria-haspopup="true" aria-label="<?php echo esc_attr__( 'Toggle Contact Options', 'elonix' ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built above with (int) cast, no raw string interpolation. ?>>
 					<span class="es-sca-trigger-icon-open">
 						<i class="fas fa-comment-alt" aria-hidden="true"></i>
 					</span>
@@ -1965,7 +1965,7 @@ class Elonix_Toolkit_Smart_Contact_Actions_Widget extends Elonix_Widget_Base {
 				</button>
 
 			<?php elseif ( 'vertical' === $settings['layout_type'] || 'horizontal' === $settings['layout_type'] ) : ?>
-				<div class="es-sca-stack-wrapper <?php echo esc_attr( $preset_class ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+				<div class="es-sca-stack-wrapper <?php echo esc_attr( $preset_class ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built above with (int) cast, no raw string interpolation. ?>>
 					<?php
 					foreach ( $settings['action_items'] as $index => $item ) :
 						$item_link  = $this->get_action_link( $item );
@@ -1985,7 +1985,7 @@ class Elonix_Toolkit_Smart_Contact_Actions_Widget extends Elonix_Widget_Base {
 				</div>
 
 			<?php elseif ( 'contact_card' === $settings['layout_type'] ) : ?>
-				<div class="es-sca-card-drawer <?php echo esc_attr( $preset_class ); ?>" style="display: none;" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+				<div class="es-sca-card-drawer <?php echo esc_attr( $preset_class ); ?>" style="display: none;" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built above with (int) cast, no raw string interpolation. ?>>
 					<div class="es-sca-card-header">
 						<h4><?php echo esc_html__( 'Smart Support Hub', 'elonix' ); ?></h4>
 						<p><?php echo esc_html__( 'Choose an agent below to begin talking.', 'elonix' ); ?></p>
@@ -2027,7 +2027,7 @@ class Elonix_Toolkit_Smart_Contact_Actions_Widget extends Elonix_Widget_Base {
 					</div>
 				</div>
 
-				<button class="es-sca-trigger-btn <?php echo esc_attr( $preset_class ); ?> <?php echo esc_attr( $anim_class ); ?>" aria-expanded="false" aria-haspopup="true" aria-label="<?php echo esc_attr__( 'Open Contact Card', 'elonix' ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+				<button class="es-sca-trigger-btn <?php echo esc_attr( $preset_class ); ?> <?php echo esc_attr( $anim_class ); ?>" aria-expanded="false" aria-haspopup="true" aria-label="<?php echo esc_attr__( 'Open Contact Card', 'elonix' ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built above with (int) cast, no raw string interpolation. ?>>
 					<span class="es-sca-trigger-icon-open">
 						<i class="fas fa-envelope-open-text" aria-hidden="true"></i>
 					</span>
@@ -2040,7 +2040,7 @@ class Elonix_Toolkit_Smart_Contact_Actions_Widget extends Elonix_Widget_Base {
 				</button>
 
 			<?php elseif ( 'floating_mini_toolbar' === $settings['layout_type'] || 'mini_toolbar' === $settings['layout_type'] ) : ?>
-				<div class="es-sca-toolbar-panel <?php echo esc_attr( $preset_class ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+				<div class="es-sca-toolbar-panel <?php echo esc_attr( $preset_class ); ?>" <?php echo $style_attrs; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- built above with (int) cast, no raw string interpolation. ?>>
 					<?php
 					foreach ( $settings['action_items'] as $index => $item ) :
 						$item_link  = $this->get_action_link( $item );

@@ -4210,7 +4210,7 @@ class Elonix_Toolkit_Post_Block_Widget extends Elonix_Widget_Base {
 								printf(
 									'<button class="es-page-num %s" %s %s data-paged="%d" aria-label="%s">%d</button>',
 									esc_attr( $active_class ),
-									$aria_current, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									$aria_current, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed static string literal, no dynamic content.
 									esc_attr( $btn_disabled ),
 									intval( $i ),
 									/* translators: %d: string */

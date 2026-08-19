@@ -288,7 +288,7 @@ class Elonix_Toolkit_Settings_Page {
 		}
 
 		$sections = Elonix_Toolkit_Settings_Framework::get_sections();
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only tab display, sanitized and whitelist-checked against $sections below.
 		$active_tab = isset( $_GET['tab'] ) ? sanitize_text_field( wp_unslash( $_GET['tab'] ) ) : 'general';
 
 		if ( ! array_key_exists( $active_tab, $sections ) ) {

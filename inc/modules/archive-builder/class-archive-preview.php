@@ -20,9 +20,9 @@ class Elonix_Toolkit_Archive_Preview {
 	}
 
 	/**
-	 * Check if the current request is editing or previewing a es_archive template.
+	 * Check if the current request is editing or previewing a elonix_archive template.
 	 *
-	 * @return bool True if editing/previewing es_archive template, false otherwise.
+	 * @return bool True if editing/previewing elonix_archive template, false otherwise.
 	 */
 	public function is_editing_archive_template() {
 		if ( is_admin() ) {
@@ -35,21 +35,22 @@ class Elonix_Toolkit_Archive_Preview {
 		}
 
 		$post_id = 0;
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// Read-only: identifies whether we're inside Elementor's own gated preview/editor
+		// context (is_admin() already excluded above); value is intval-cast and only ever used
+		// to look up a post type for a boolean return, never output or acted on.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
 		if ( isset( $_GET['elementor-preview'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$post_id = intval( $_GET['elementor-preview'] );
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+			$post_id = intval( $_GET['elementor-preview'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
 		} elseif ( isset( $_GET['p'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$post_id = intval( $_GET['p'] );
-		} elseif ( is_singular( 'es_archive' ) ) {
+			$post_id = intval( $_GET['p'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
+		} elseif ( is_singular( 'elonix_archive' ) ) {
 			$post_id = get_the_ID();
 		}
 
 		if ( $post_id ) {
 			$post = get_post( $post_id );
-			return ( $post && 'es_archive' === $post->post_type );
+			return ( $post && 'elonix_archive' === $post->post_type );
 		}
 
 		return false;
@@ -68,11 +69,11 @@ class Elonix_Toolkit_Archive_Preview {
 		}
 
 		// Prevent modifying main query type flags inside Elementor contexts to avoid "Content area not found" error
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview routing check.
 		if ( isset( $_GET['elementor-preview'] ) || ( isset( $_GET['action'] ) && 'elementor' === sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) {
 			return;
 		}
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor AJAX routing check.
 		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && strpos( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), 'elementor' ) !== false ) {
 			return;
 		}
@@ -84,11 +85,10 @@ class Elonix_Toolkit_Archive_Preview {
 
 		// Retrieve the target template ID being designed
 		$post_id = 0;
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
 		if ( isset( $_GET['elementor-preview'] ) ) {
-			// phpcs:ignore WordPress.Security.NonceVerification.Recommended
-			$post_id = intval( $_GET['elementor-preview'] );
-		} elseif ( is_singular( 'es_archive' ) ) {
+			$post_id = intval( $_GET['elementor-preview'] ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview context check.
+		} elseif ( is_singular( 'elonix_archive' ) ) {
 			$post_id = get_the_ID();
 		}
 

@@ -17,15 +17,15 @@ class Elonix_Toolkit_Single_Admin {
 	public function __construct() {
 		add_action( 'admin_enqueue_scripts', array( $this, 'enqueue_admin_assets' ) );
 		// Custom Columns Hooks
-		add_filter( 'manage_es_single_posts_columns', array( $this, 'register_custom_columns' ) );
-		add_action( 'manage_es_single_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
+		add_filter( 'manage_elonix_single_posts_columns', array( $this, 'register_custom_columns' ) );
+		add_action( 'manage_elonix_single_posts_custom_column', array( $this, 'render_custom_columns' ), 10, 2 );
 
 		// Custom Meta Box Hooks
 		add_action( 'add_meta_boxes', array( $this, 'add_single_settings_metabox' ) );
-		add_action( 'save_post_es_single', array( $this, 'save_single_settings' ) );
+		add_action( 'save_post_elonix_single', array( $this, 'save_single_settings' ) );
 
 		// Duplicate AJAX cloner hooks
-		add_action( 'wp_ajax_es_duplicate_single', array( $this, 'duplicate_single_template' ) );
+		add_action( 'wp_ajax_elonix_duplicate_single', array( $this, 'duplicate_single_template' ) );
 	}
 
 	/**
@@ -37,7 +37,7 @@ class Elonix_Toolkit_Single_Admin {
 	 */
 	public function enqueue_admin_assets( $hook ) {
 		global $post;
-		if ( ! $post || 'es_single' !== $post->post_type ) {
+		if ( ! $post || 'elonix_single' !== $post->post_type ) {
 			return;
 		}
 
@@ -85,7 +85,7 @@ class Elonix_Toolkit_Single_Admin {
 			'es_single_settings_metabox',
 			esc_html__( 'Single Builder Settings', 'elonix' ),
 			array( $this, 'render_settings_metabox' ),
-			'es_single',
+			'elonix_single',
 			'normal',
 			'high'
 		);
@@ -210,9 +210,9 @@ class Elonix_Toolkit_Single_Admin {
 	 * Inject duplicate template action link in list table.
 	 */
 	public function inject_duplicate_link( $actions, $post ) {
-		if ( current_user_can( 'edit_posts' ) && 'es_single' === $post->post_type ) {
+		if ( current_user_can( 'edit_posts' ) && 'elonix_single' === $post->post_type ) {
 			$nonce                = wp_create_nonce( 'es_duplicate_single_nonce' );
-			$url                  = admin_url( 'admin-ajax.php?action=es_duplicate_single&post_id=' . $post->ID . '&_wpnonce=' . $nonce );
+			$url                  = admin_url( 'admin-ajax.php?action=elonix_duplicate_single&post_id=' . $post->ID . '&_wpnonce=' . $nonce );
 			$actions['duplicate'] = '<a href="' . esc_url( $url ) . '" title="' . esc_attr__( 'Duplicate this single template', 'elonix' ) . '" rel="permalink">' . esc_html__( 'Duplicate', 'elonix' ) . '</a>';
 		}
 		return $actions;
@@ -237,7 +237,7 @@ class Elonix_Toolkit_Single_Admin {
 		}
 
 		$post = get_post( $post_id );
-		if ( ! $post || 'es_single' !== $post->post_type ) {
+		if ( ! $post || 'elonix_single' !== $post->post_type ) {
 			wp_die( esc_html__( 'Invalid source post.', 'elonix' ) );
 		}
 

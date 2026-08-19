@@ -153,11 +153,11 @@ class Elonix_Toolkit_404_Admin {
 		$settings['es_404_disable_url_guessing'] = isset( $_POST['es_404_disable_url_guessing'] ) ? 'yes' : 'no';
 		$settings['es_404_custom_status_code']   = isset( $_POST['es_404_custom_status_code'] ) ? intval( $_POST['es_404_custom_status_code'] ) : 404;
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized on the next line via array_map( 'sanitize_text_field', ... ).
 		$excluded_roles                         = isset( $_POST['es_404_excluded_user_roles'] ) ? (array) wp_unslash( $_POST['es_404_excluded_user_roles'] ) : array();
 		$settings['es_404_excluded_user_roles'] = array_map( 'sanitize_text_field', $excluded_roles );
 
-		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- sanitized on the next line via array_map( 'sanitize_text_field', ... ).
 		$excluded_post_types                    = isset( $_POST['es_404_excluded_post_types'] ) ? (array) wp_unslash( $_POST['es_404_excluded_post_types'] ) : array();
 		$settings['es_404_excluded_post_types'] = array_map( 'sanitize_text_field', $excluded_post_types );
 
@@ -199,9 +199,10 @@ class Elonix_Toolkit_404_Admin {
 	 * Output Settings Page Layout.
 	 */
 	public function render_admin_page() {
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// Read-only admin UI display params (which tab to show, post-save status notice).
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only display, sanitize_key-cast.
 		$active_tab = isset( $_GET['tab'] ) ? sanitize_key( wp_unslash( $_GET['tab'] ) ) : 'general';
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only display, sanitize_key-cast.
 		$status = isset( $_GET['status'] ) ? sanitize_key( wp_unslash( $_GET['status'] ) ) : '';
 
 		// Get all pages to populate selected pages dropdown list

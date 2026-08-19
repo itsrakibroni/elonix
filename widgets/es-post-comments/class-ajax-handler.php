@@ -9,22 +9,25 @@ if ( ! defined( 'ABSPATH' ) ) {
 
 class Elonix_Toolkit_Post_Comments_Ajax {
 	public function __construct() {
-		add_action( 'wp_ajax_es_submit_comment', array( $this, 'ajax_submit_comment' ) );
-		add_action( 'wp_ajax_nopriv_es_submit_comment', array( $this, 'ajax_submit_comment' ) );
+		add_action( 'wp_ajax_elonix_submit_comment', array( $this, 'ajax_submit_comment' ) );
+		add_action( 'wp_ajax_nopriv_elonix_submit_comment', array( $this, 'ajax_submit_comment' ) );
 	}
 
 	public function ajax_submit_comment() {
 		check_ajax_referer( 'elonix_comment_nonce', 'nonce' );
 
-		// Native WP validation, spam protection, and insertion
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		// Nonce already verified above via check_ajax_referer(). $_POST is passed through
+		// wholesale because wp_handle_comment_submission() is WordPress core's own comment
+		// pipeline — it performs its own sanitization, validation, flood control, and spam
+		// checks internally, the same as the native (non-AJAX) comment form uses.
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified above via check_ajax_referer().
 		$comment = wp_handle_comment_submission( wp_unslash( $_POST ) );
 
 		if ( is_wp_error( $comment ) ) {
 			wp_send_json_error( $comment->get_error_message() );
 		}
 
-		// phpcs:ignore WordPress.Security.NonceVerification.Missing
+		// phpcs:ignore WordPress.Security.NonceVerification.Missing -- nonce verified above via check_ajax_referer(); value is cast with intval().
 		$avatar_size = isset( $_POST['es_avatar_size'] ) ? intval( wp_unslash( $_POST['es_avatar_size'] ) ) : 60;
 
 		$GLOBALS['comment'] = $comment;

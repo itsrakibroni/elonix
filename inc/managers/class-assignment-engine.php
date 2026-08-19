@@ -228,7 +228,7 @@ class Elonix_Assignment_Engine {
 			}
 		}
 		
-		if ( is_singular( array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template', 'es_404_template' ) ) ) {
+		if ( is_singular( array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template', 'es_404_template' ) ) ) {
 			return 0; // Disable recursive embedding when editing any template
 		}
 

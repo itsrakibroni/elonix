@@ -16,18 +16,18 @@ class Elonix_Toolkit_Popup_AJAX {
 	 */
 	public function __construct() {
 		// Register Duplicate AJAX trigger
-		add_action( 'wp_ajax_es_duplicate_popup', array( $this, 'duplicate_popup_template' ) );
+		add_action( 'wp_ajax_elonix_duplicate_popup', array( $this, 'duplicate_popup_template' ) );
 
 		// Add quick duplicate links inside post rows in list table
 	}
 
 	/**
-	 * Inject dynamic "Duplicate" link inside row actions of es_popup.
+	 * Inject dynamic "Duplicate" link inside row actions of elonix_popup.
 	 */
 	public function inject_duplicate_link( $actions, $post ) {
-		if ( 'es_popup' === $post->post_type ) {
+		if ( 'elonix_popup' === $post->post_type ) {
 			$nonce                   = wp_create_nonce( 'es_duplicate_popup_' . $post->ID );
-			$url                     = admin_url( 'admin-ajax.php?action=es_duplicate_popup&post_id=' . $post->ID . '&nonce=' . $nonce );
+			$url                     = admin_url( 'admin-ajax.php?action=elonix_duplicate_popup&post_id=' . $post->ID . '&nonce=' . $nonce );
 			$actions['es_duplicate'] = sprintf(
 				'<a href="%s" aria-label="%s">%s</a>',
 				esc_url( $url ),
@@ -54,7 +54,7 @@ class Elonix_Toolkit_Popup_AJAX {
 		}
 
 		$post = get_post( $post_id );
-		if ( ! $post || 'es_popup' !== $post->post_type ) {
+		if ( ! $post || 'elonix_popup' !== $post->post_type ) {
 			wp_die( esc_html__( 'Original template not found.', 'elonix' ) );
 		}
 
@@ -62,7 +62,7 @@ class Elonix_Toolkit_Popup_AJAX {
 		$new_post_args = array(
 			'post_title'  => $post->post_title . esc_html__( ' (Copy)', 'elonix' ),
 			'post_status' => 'draft', // Force as draft first
-			'post_type'   => 'es_popup',
+			'post_type'   => 'elonix_popup',
 			'post_author' => get_current_user_id(),
 		);
 
@@ -95,7 +95,7 @@ class Elonix_Toolkit_Popup_AJAX {
 		}
 
 		// Redirect back to templates list
-		wp_safe_redirect( admin_url( 'edit.php?post_type=es_popup' ) );
+		wp_safe_redirect( admin_url( 'edit.php?post_type=elonix_popup' ) );
 		exit;
 	}
 }

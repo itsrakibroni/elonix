@@ -20,7 +20,7 @@ class Elonix_Toolkit_Single_CPT {
 	}
 
 	/**
-	 * Register CPT es_single.
+	 * Register CPT elonix_single.
 	 */
 	public function register_post_type() {
 		$labels = array(
@@ -46,26 +46,26 @@ class Elonix_Toolkit_Single_CPT {
 			'show_ui'            => true,
 			'show_in_menu'       => 'elonix', // Nest inside main Elonix menu
 			'query_var'          => true,
-			'rewrite'            => array( 'slug' => 'es_single' ),
+			'rewrite'            => array( 'slug' => 'elonix_single' ),
 			'capability_type'    => 'post',
 			'has_archive'        => false,
 			'hierarchical'       => false,
 			'supports'           => array( 'title', 'editor' ),
 		);
 
-		register_post_type( 'es_single', $args );
+		register_post_type( 'elonix_single', $args );
 	}
 
 	/**
-	 * Ensure Elementor CPT support option registers es_single templates automatically.
+	 * Ensure Elementor CPT support option registers elonix_single templates automatically.
 	 */
 	public function add_elementor_support() {
 		$cpts = get_option( 'elementor_cpt_support' );
 		if ( ! is_array( $cpts ) ) {
 			$cpts = array( 'post', 'page' );
 		}
-		if ( ! in_array( 'es_single', $cpts, true ) ) {
-			$cpts[] = 'es_single';
+		if ( ! in_array( 'elonix_single', $cpts, true ) ) {
+			$cpts[] = 'elonix_single';
 			update_option( 'elementor_cpt_support', $cpts );
 		}
 	}

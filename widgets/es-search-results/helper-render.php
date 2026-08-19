@@ -472,7 +472,7 @@ class Elonix_Toolkit_Search_Results_Render_Helper {
 				<?php endif; ?>
 				<?php if ( 'numeric' === $type ) : ?>
 					<?php for ( $i = 1; $i <= $max_pages; $i++ ) : ?>
-						<a class="es-search-results-page-link <?php echo $i === $paged ? 'is-active' : ''; ?>" href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>" <?php echo $i === $paged ? 'aria-current="page"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped ?>>
+						<a class="es-search-results-page-link <?php echo $i === $paged ? 'is-active' : ''; ?>" href="<?php echo esc_url( get_pagenum_link( $i ) ); ?>" <?php echo $i === $paged ? 'aria-current="page"' : ''; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed static string literal, no dynamic content. ?>>
 							<?php echo esc_html( $i ); ?>
 						</a>
 					<?php endfor; ?>

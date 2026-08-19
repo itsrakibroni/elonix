@@ -2675,7 +2675,7 @@ class Elonix_Toolkit_Search_Results_Widget extends Elonix_Toolkit_Post_Block_Wid
 			data-nonce="<?php echo esc_attr( $nonce ); ?>"
 			data-ajax-url="<?php echo esc_url( admin_url( 'admin-ajax.php' ) ); ?>"
 			data-max-pages="<?php echo esc_attr( $max_pages ); ?>"
-			data-action="es_search_results_fetch"
+			data-action="elonix_search_results_fetch"
 			data-i18n="
 			<?php
 				echo esc_attr(
@@ -2835,7 +2835,7 @@ class Elonix_Toolkit_Search_Results_Widget extends Elonix_Toolkit_Post_Block_Wid
 								printf(
 									'<button class="es-page-num %s" %s %s data-paged="%d" aria-label="%s">%d</button>',
 									esc_attr( $active_class ),
-									$aria_current, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+									$aria_current, // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- fixed static string literal, no dynamic content.
 									esc_attr( $btn_disabled ),
 									intval( $i ),
 									/* translators: %d: string */
@@ -2933,8 +2933,8 @@ class Elonix_Toolkit_Search_Results_Widget extends Elonix_Toolkit_Post_Block_Wid
 	 * Register AJAX hooks.
 	 */
 	public static function register_ajax_hooks() {
-		add_action( 'wp_ajax_es_search_results_fetch', array( __CLASS__, 'ajax_fetch_results' ) );
-		add_action( 'wp_ajax_nopriv_es_search_results_fetch', array( __CLASS__, 'ajax_fetch_results' ) );
+		add_action( 'wp_ajax_elonix_search_results_fetch', array( __CLASS__, 'ajax_fetch_results' ) );
+		add_action( 'wp_ajax_nopriv_elonix_search_results_fetch', array( __CLASS__, 'ajax_fetch_results' ) );
 	}
 
 	/**
@@ -2945,7 +2945,8 @@ class Elonix_Toolkit_Search_Results_Widget extends Elonix_Toolkit_Post_Block_Wid
 	public static function ajax_fetch_results() {
 		check_ajax_referer( 'es-search-results-nonce', 'security' );
 
-		$settings_raw = isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ? wp_unslash( $_POST['settings'] ) : array(); // phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized
+		// phpcs:ignore WordPress.Security.ValidatedSanitizedInput.InputNotSanitized -- passed through sanitize_settings() on the next line, which recursively sanitizes every key/value; post_status is separately whitelisted via sanitize_post_status().
+		$settings_raw = isset( $_POST['settings'] ) && is_array( $_POST['settings'] ) ? wp_unslash( $_POST['settings'] ) : array();
 		$settings     = Elonix_Toolkit_Search_Results_Query_Helper::sanitize_settings( $settings_raw );
 
 		$paged       = isset( $_POST['paged'] ) ? max( 1, absint( wp_unslash( $_POST['paged'] ) ) ) : 1;

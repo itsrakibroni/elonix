@@ -185,7 +185,7 @@
 			$btn.find('.es-gallery__spinner').show();
 
 			var data = {
-				action: 'es_gallery_load_more',
+				action: 'elonix_gallery_load_more',
 				post_id: ajaxSettings.post_id,
 				widget_id: ajaxSettings.widget_id,
 				nonce: ajaxSettings.nonce,

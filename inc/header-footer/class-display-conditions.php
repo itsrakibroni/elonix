@@ -31,7 +31,7 @@ class Elonix_Display_Conditions {
 	 */
 	public function enqueue_metabox_assets( $hook ) {
 		global $post;
-		$layout_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template' );
+		$layout_types = array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template' );
 		if ( ! $post || ! in_array( $post->post_type, $layout_types, true ) ) {
 			return;
 		}
@@ -67,7 +67,7 @@ wp_localize_script(
 	 * Register the metabox.
 	 */
 	public function add_layout_meta_boxes() {
-		$layout_types = array( 'es_header', 'es_footer', 'es_single', 'es_archive', 'es_search_template' );
+		$layout_types = array( 'elonix_header', 'elonix_footer', 'elonix_single', 'elonix_archive', 'es_search_template' );
 		foreach ( $layout_types as $pt ) {
 			if ( post_type_exists( $pt ) ) {
 				add_meta_box(
@@ -402,14 +402,14 @@ wp_localize_script(
 		}
 
 		// Disable matches recursively during editing
-		if ( is_singular( array( 'es_header', 'es_footer' ) ) ) {
+		if ( is_singular( array( 'elonix_header', 'elonix_footer' ) ) ) {
 			return 0;
 		}
 
-		if ( 'es_header' === $post_type && ! Elonix_Toolkit_Module_Manager::is_module_enabled( 'header_builder' ) ) {
+		if ( 'elonix_header' === $post_type && ! Elonix_Toolkit_Module_Manager::is_module_enabled( 'header_builder' ) ) {
 			return 0;
 		}
-		if ( 'es_footer' === $post_type && ! Elonix_Toolkit_Module_Manager::is_module_enabled( 'footer_builder' ) ) {
+		if ( 'elonix_footer' === $post_type && ! Elonix_Toolkit_Module_Manager::is_module_enabled( 'footer_builder' ) ) {
 			return 0;
 		}
 
@@ -466,7 +466,7 @@ wp_localize_script(
 	 */
 	public function render_js_templates_and_scripts() {
 		global $post;
-		$layout_types = array( 'es_header', 'es_footer' );
+		$layout_types = array( 'elonix_header', 'elonix_footer' );
 		if ( ! $post || ! in_array( $post->post_type, $layout_types, true ) ) {
 			return;
 		}

@@ -11,8 +11,8 @@
  *   2. Handle the search-results-specific filter sidebar toggle.
  *
  * AJAX Load More / Infinite Scroll / Numeric Pagination is handled by
- * es-post-block.js which reads data-action="es_search_results_fetch" from the
- * wrapper element and POSTs to that action instead of es_post_block_fetch_posts.
+ * es-post-block.js which reads data-action="elonix_search_results_fetch" from the
+ * wrapper element and POSTs to that action instead of elonix_post_block_fetch_posts.
  *
  * @package Elonix_Toolkit
  */

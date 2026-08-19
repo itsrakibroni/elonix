@@ -202,7 +202,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 
 		$class_attr = ! empty( $class ) ? ' class="' . esc_attr( $class ) . '"' : '';
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $tag is esc_attr()'d and whitelisted above, $class_attr is esc_attr()'d.
 		echo '<' . esc_attr( $tag ) . $class_attr . '>';
 		echo wp_kses_post( $settings[ $setting_key ] );
 		echo '</' . esc_attr( $tag ) . '>';
@@ -227,7 +227,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 		$target     = ! empty( $button_link['is_external'] ) ? ' target="_blank"' : '';
 		$nofollow   = ! empty( $button_link['nofollow'] ) ? ' rel="nofollow"' : '';
 
-		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- url is esc_url()'d; class_attr is esc_attr()'d; target/nofollow are fixed static strings.
 		echo '<a href="' . esc_url( $button_link['url'] ) . '"' . $class_attr . $target . $nofollow . '>';
 		echo esc_html( $button_text );
 		echo '</a>';
@@ -256,7 +256,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 			echo wp_get_attachment_image( $image['id'], $size, false, $attr );
 		} elseif ( ! empty( $image['url'] ) ) {
 			$class_attr = ! empty( $class ) ? ' class="' . esc_attr( $class ) . '"' : '';
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- url is esc_url()'d; class_attr is esc_attr()'d.
 			echo '<img src="' . esc_url( $image['url'] ) . '" alt=""' . $class_attr . ' />';
 		}
 	}
@@ -277,7 +277,7 @@ abstract class Elonix_Widget_Base extends \Elementor\Widget_Base {
 		$class_attr = ! empty( $class ) ? ' class="' . esc_attr( $class ) . '"' : '';
 
 		if ( is_array( $icon ) && ! empty( $icon['value'] ) ) {
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- class_attr is esc_attr()'d; icon rendered via Elementor's trusted Icons_Manager below.
 			echo '<span' . $class_attr . '>';
 			\Elementor\Icons_Manager::render_icon( $icon, array( 'aria-hidden' => 'true' ) );
 			echo '</span>';

@@ -37,7 +37,7 @@ document.addEventListener('DOMContentLoaded', function() {
 				}
 
 				const formData = new FormData(form);
-				formData.append('action', 'es_submit_comment');
+				formData.append('action', 'elonix_submit_comment');
 				if (typeof es_post_comments_ajax !== 'undefined' && es_post_comments_ajax.nonce) {
 					formData.append('nonce', es_post_comments_ajax.nonce);
 				}

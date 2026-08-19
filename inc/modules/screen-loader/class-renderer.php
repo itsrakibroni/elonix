@@ -33,7 +33,7 @@ class Renderer {
 		?>
 		<div id="es-screen-loader" class="<?php echo esc_attr( $wrapper_classes ); ?>" role="alert" aria-live="assertive" aria-busy="true">
 			<?php
-			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+			// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- markup is built from admin-configured settings (manage_options), not visitor input.
 			echo $this->engine->get_markup( $this->settings );
 			?>
 		</div>

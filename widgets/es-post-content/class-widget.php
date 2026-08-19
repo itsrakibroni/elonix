@@ -694,7 +694,7 @@ class Elonix_Toolkit_Post_Content_Widget extends Elonix_Widget_Base {
 
 			// Prevent infinite recursion: If the current post is a Elonix Single Template,
 			// we must NOT render its own content. Instead, we should render the preview target.
-			if ( 'es_single' === get_post_type( $post_id ) ) {
+			if ( 'elonix_single' === get_post_type( $post_id ) ) {
 				$preview_id = get_post_meta( $post_id, '_es_single_preview_id', true );
 				if ( ! empty( $preview_id ) && get_post( $preview_id ) ) {
 					$post_id = intval( $preview_id );
@@ -732,20 +732,20 @@ class Elonix_Toolkit_Post_Content_Widget extends Elonix_Widget_Base {
 			// 1. Render Before Content Slot
 			if ( ! empty( $settings['before_content_template'] ) ) {
 				if ( class_exists( '\Elementor\Plugin' ) ) {
-					echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $settings['before_content_template'] ); // phpcs:ignore
+					echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $settings['before_content_template'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor's own rendering API; escaping is handled internally by Elementor per-widget.
 				}
 			}
 
 			// 2. Open Wrapper
 			if ( $enable_wrapper ) {
-				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $wrapper_classes is esc_attr'd inline; $wrapper_id_attr was built with esc_attr() above.
 				echo '<div class="' . esc_attr( implode( ' ', $wrapper_classes ) ) . '"' . $wrapper_id_attr . '>';
 			}
 
 			if ( 0 === $post_id ) {
 				echo '<div class="es-dummy-content"><p style="padding: 30px; text-align: center; border: 2px dashed #ccc; color: #777;">' . esc_html__( 'Post Content will appear here. Please publish a post to see the preview.', 'elonix' ) . '</p></div>';
 			} elseif ( post_password_required( $post_id ) ) {
-				echo get_the_password_form( $post_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+				echo get_the_password_form( $post_id ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- WP core function returns pre-built, trusted markup.
 			} else {
 				$queried_post = get_post( $post_id );
 				if ( $queried_post instanceof \WP_Post ) {
@@ -761,11 +761,14 @@ class Elonix_Toolkit_Post_Content_Widget extends Elonix_Widget_Base {
 					// Determine if we are previewing a completely different post inside the editor
 					$is_previewing_different_post = false;
 					if ( class_exists( '\Elementor\Plugin' ) && \Elementor\Plugin::$instance->preview->is_preview_mode() ) {
+						// Reached only inside Elementor's own is_preview_mode() gate above; the value is
+						// intval-cast and used solely for an (int) !== (int) comparison below — never
+						// echoed, queried, or acted on — so a nonce adds no protection here.
 						$elementor_preview_id = 0;
-						if ( isset( $_GET['elementor-preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-							$elementor_preview_id = intval( wp_unslash( $_GET['elementor-preview'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended
-						} elseif ( isset( $_POST['editor_post_id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing
-							$elementor_preview_id = intval( wp_unslash( $_POST['editor_post_id'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing
+						if ( isset( $_GET['elementor-preview'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only, intval-cast, see note above.
+							$elementor_preview_id = intval( wp_unslash( $_GET['elementor-preview'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- read-only, intval-cast, see note above.
+						} elseif ( isset( $_POST['editor_post_id'] ) ) { // phpcs:ignore WordPress.Security.NonceVerification.Missing -- read-only, intval-cast, see note above.
+							$elementor_preview_id = intval( wp_unslash( $_POST['editor_post_id'] ) ); // phpcs:ignore WordPress.Security.NonceVerification.Missing -- read-only, intval-cast, see note above.
 						} else {
 							$elementor_preview_id = \Elementor\Plugin::$instance->editor->get_post_id();
 						}
@@ -779,13 +782,14 @@ class Elonix_Toolkit_Post_Content_Widget extends Elonix_Widget_Base {
 						$document = \Elementor\Plugin::$instance->documents->get( $post_id );
 						if ( $document && $document->is_built_with_elementor() ) {
 							// Render visual elements manually since the_content ignores it in preview mode.
-							echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $post_id, true ); // phpcs:ignore
+							echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $post_id, true ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor's own rendering API; escaping is handled internally by Elementor per-widget.
 						} else {
 							$content = get_the_content();
 							// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WordPress Core hook
 							$content = apply_filters( 'the_content', $content );
 							$content = str_replace( ']]>', ']]&gt;', $content );
-							echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+							// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Same pattern WP core's the_content() uses; content is sanitized at save time (KSES), not display time, so esc_html() here would break legitimate post HTML.
+							echo $content;
 						}
 					} else {
 						$content = get_the_content();
@@ -794,7 +798,8 @@ class Elonix_Toolkit_Post_Content_Widget extends Elonix_Widget_Base {
 						// phpcs:ignore WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound -- WordPress Core hook
 						$content = apply_filters( 'the_content', $content );
 						$content = str_replace( ']]>', ']]&gt;', $content );
-						echo $content; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+						// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Same pattern WP core's the_content() uses; content is sanitized at save time (KSES), not display time, so esc_html() here would break legitimate post HTML.
+						echo $content;
 					}
 
 					// Restore immediately
@@ -815,7 +820,7 @@ class Elonix_Toolkit_Post_Content_Widget extends Elonix_Widget_Base {
 			// 4. Render After Content Slot
 			if ( ! empty( $settings['after_content_template'] ) ) {
 				if ( class_exists( '\Elementor\Plugin' ) ) {
-					echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $settings['after_content_template'] ); // phpcs:ignore
+					echo \Elementor\Plugin::$instance->frontend->get_builder_content_for_display( $settings['after_content_template'] ); // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- Elementor's own rendering API; escaping is handled internally by Elementor per-widget.
 				}
 			}
 		} finally {

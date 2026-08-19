@@ -135,13 +135,21 @@ This plugin includes minified/compiled assets. The source code and build informa
 
 **Third-party libraries:**
 
-* Select2 (assets/js/vendor/select2.min.js) - Version 4.1.0-rc.0
+* Select2 (assets/js/vendor/select2.min.js) - Version 4.1.0
   Source: https://github.com/select2/select2
   License: MIT
 
 * Marquee (assets/js/marquee.min.js)
   Source: https://github.com/aamirafridi/jQuery.Marquee
   License: MIT
+
+* Isotope PACKAGED (assets/js/isotope.pkgd.min.js) - Version 3.0.6
+  Source: https://github.com/metafizzy/isotope
+  License: GPLv3 (see https://isotope.metafizzy.co/license.html)
+
+* QRious (assets/js/vendor/qrious.min.js) - Version 4.0.2
+  Source: https://github.com/neocotic/qrious
+  License: GPLv3
 
 **Plugin JavaScript (assets/frontend/js/, assets/admin/js/):**
   Source repository: https://github.com/itsrakibroni/elonix

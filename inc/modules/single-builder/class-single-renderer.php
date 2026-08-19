@@ -42,18 +42,18 @@ class Elonix_Toolkit_Single_Renderer {
 		}
 
 		// Prevent single template from hijacking itself (fallback to preview engine)
-		if ( 'es_single' === get_post_type() ) {
+		if ( 'elonix_single' === get_post_type() ) {
 			return false;
 		}
 
 		// 2. Elementor Query parameters check (Keep edit mode protection)
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview routing check.
 		if ( isset( $_GET['action'] ) && 'elementor' === sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) {
 			return false;
 		}
 
 		// 3. Elementor AJAX requests check
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor AJAX routing check.
 		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && strpos( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), 'elementor' ) !== false ) {
 			return false;
 		}
@@ -70,7 +70,7 @@ class Elonix_Toolkit_Single_Renderer {
 		}
 
 		// Prevent overriding Elonix Archive or Search Builder or Popups
-		if ( is_singular( array( 'es_archive', 'es_search', 'es_single', 'elementor_library' ) ) ) {
+		if ( is_singular( array( 'elonix_archive', 'es_search', 'elonix_single', 'elementor_library' ) ) ) {
 			return false;
 		}
 
@@ -90,7 +90,7 @@ class Elonix_Toolkit_Single_Renderer {
 	 */
 	public function get_active_matched_single() {
 		if ( class_exists( 'Elonix_Assignment_Engine' ) ) {
-			return \Elonix_Assignment_Engine::instance()->get_matching_template( 'es_single' );
+			return \Elonix_Assignment_Engine::instance()->get_matching_template( 'elonix_single' );
 		}
 		return 0;
 	}

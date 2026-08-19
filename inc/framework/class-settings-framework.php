@@ -175,7 +175,7 @@ class Elonix_Toolkit_Settings_Framework {
 		}
 
 		echo '<label class="elonix-switch">';
-		echo '<input type="checkbox" name="' . esc_attr( $name ) . '" value="1" ' . $checked . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<input type="checkbox" name="' . esc_attr( $name ) . '" value="1" ' . $checked . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $checked is WP core's checked() helper or a fixed string; $name is esc_attr()'d.
 		echo '<span class="slider round"></span>';
 		echo '</label>';
 
@@ -243,7 +243,7 @@ class Elonix_Toolkit_Settings_Framework {
 		$checked    = checked( $value, '1', false );
 		$label_text = isset( $field['label_text'] ) ? $field['label_text'] : '';
 		echo '<label>';
-		echo '<input type="checkbox" name="' . esc_attr( $name ) . '" value="1" ' . $checked . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped
+		echo '<input type="checkbox" name="' . esc_attr( $name ) . '" value="1" ' . $checked . '>'; // phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped -- $checked is WP core's checked() helper or a fixed string; $name is esc_attr()'d.
 		echo ' ' . esc_html( $label_text );
 		echo '</label>';
 		if ( ! empty( $field['description'] ) ) {

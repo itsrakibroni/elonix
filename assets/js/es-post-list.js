@@ -88,7 +88,7 @@ jQuery( window ).on(
 				}
 				// Construct Form Data parameters recursively
 				const formData = new FormData();
-				formData.append( 'action', 'es_post_list_fetch_posts' );
+				formData.append( 'action', 'elonix_post_list_fetch_posts' );
 				formData.append( 'security', wrap.getAttribute( 'data-nonce' ) );
 				formData.append( 'paged', currentPage );
 				const appendSettings = ( obj, prefix = '' ) => {

@@ -44,13 +44,13 @@ class Elonix_Toolkit_Archive_Renderer {
 		}
 
 		// 2. Elementor Query parameters check
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor preview routing check.
 		if ( isset( $_GET['elementor-preview'] ) || ( isset( $_GET['action'] ) && 'elementor' === sanitize_text_field( wp_unslash( $_GET['action'] ) ) ) ) {
 			return false;
 		}
 
 		// 3. Elementor AJAX requests check
-		// phpcs:ignore WordPress.Security.NonceVerification.Recommended
+		// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Read-only Elementor AJAX routing check.
 		if ( wp_doing_ajax() && isset( $_REQUEST['action'] ) && strpos( sanitize_text_field( wp_unslash( $_REQUEST['action'] ) ), 'elementor' ) !== false ) {
 			return false;
 		}
@@ -75,7 +75,7 @@ class Elonix_Toolkit_Archive_Renderer {
 	 */
 	public function get_active_matched_archive() {
 		if ( class_exists( 'Elonix_Assignment_Engine' ) ) {
-			return \Elonix_Assignment_Engine::instance()->get_matching_template( 'es_archive' );
+			return \Elonix_Assignment_Engine::instance()->get_matching_template( 'elonix_archive' );
 		}
 		return 0;
 	}

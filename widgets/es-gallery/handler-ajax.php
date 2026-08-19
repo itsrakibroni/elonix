@@ -14,8 +14,8 @@ if ( ! defined( 'ABSPATH' ) ) {
 class Elonix_Toolkit_Gallery_AJAX {
 
 	public function __construct() {
-		add_action( 'wp_ajax_es_gallery_load_more', array( $this, 'ajax_load_more' ) );
-		add_action( 'wp_ajax_nopriv_es_gallery_load_more', array( $this, 'ajax_load_more' ) );
+		add_action( 'wp_ajax_elonix_gallery_load_more', array( $this, 'ajax_load_more' ) );
+		add_action( 'wp_ajax_nopriv_elonix_gallery_load_more', array( $this, 'ajax_load_more' ) );
 	}
 
 	public function ajax_load_more() {

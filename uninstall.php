@@ -24,7 +24,7 @@ function elonix_uninstall_logic() {
 	}
 
 	// 1. Delete all posts of custom post types registered by this plugin
-	$post_types = array( 'es_header', 'es_footer', 'es_popup', 'es_archive' );
+	$post_types = array( 'elonix_header', 'elonix_footer', 'elonix_popup', 'elonix_archive' );
 	foreach ( $post_types as $post_type ) {
 		$posts = get_posts(
 			array(
