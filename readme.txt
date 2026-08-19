@@ -82,6 +82,23 @@ Elonix – Toolkit for Elementor includes 40+ dynamic tags including:
 * Elementor (Free) 3.0 or higher
 * PHP 8.2 or higher
 
+== Third-Party Services ==
+
+This plugin provides social sharing widgets (such as the Post Share and Post Block widgets) that generate standard HTML links to third-party platforms. When a user clicks these links, they are redirected to the respective third-party service to complete the sharing action. 
+
+No automatic data transmission occurs in the background, and no tracking scripts or iframes from these services are loaded on your site. Only the post title and URL are passed via standard URL parameters to the sharing endpoint when the user explicitly clicks the button.
+
+These external services are governed by their own Privacy Policies and Terms of Service:
+* Facebook: https://www.facebook.com/policy.php
+* Twitter / X: https://twitter.com/en/privacy
+* WhatsApp: https://www.whatsapp.com/legal/privacy-policy
+* Telegram: https://telegram.org/privacy
+* LinkedIn: https://www.linkedin.com/legal/privacy-policy
+* Reddit: https://www.reddit.com/policies/privacy-policy
+* Pinterest: https://policy.pinterest.com/en/privacy-policy
+* Tumblr: https://www.tumblr.com/privacy
+* VK: https://vk.com/privacy
+
 == Installation ==
 
 1. Upload the entire `elonix` folder to the `/wp-content/plugins/` directory, OR install via **Plugins > Add New** in your WordPress dashboard.

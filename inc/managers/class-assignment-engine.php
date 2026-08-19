@@ -38,15 +38,15 @@ class Elonix_Assignment_Engine {
 			wp_enqueue_style( 'elonix-select2', ELONIX_ACC_URL . 'assets/css/vendor/select2.min.css', array(), '4.0.13' );
 		}
 
-		wp_enqueue_style( 'es-assignment-engine', ELONIX_ACC_URL . 'assets/admin/css/assignment-engine.css', array(), ELONIX_VERSION );
-		wp_enqueue_script( 'es-assignment-engine', ELONIX_ACC_URL . 'assets/admin/js/assignment-engine.js', array( 'jquery', 'wp-util' ), ELONIX_VERSION, true );
+		wp_enqueue_style( 'elonix-assignment-engine', ELONIX_ACC_URL . 'assets/admin/css/assignment-engine.css', array(), ELONIX_VERSION );
+		wp_enqueue_script( 'elonix-assignment-engine', ELONIX_ACC_URL . 'assets/admin/js/assignment-engine.js', array( 'jquery', 'wp-util' ), ELONIX_VERSION, true );
 		
 		$rule_options = array();
 		if ( class_exists( 'Elonix_Target_Rules' ) ) {
 			$rule_options = Elonix_Target_Rules::get_location_selections();
 		}
 
-		wp_localize_script( 'es-assignment-engine', 'esAssignmentEngine', array(
+		wp_localize_script( 'elonix-assignment-engine', 'esAssignmentEngine', array(
 			'ajax_url'     => admin_url( 'admin-ajax.php' ),
 			'admin_url'    => admin_url(),
 			'nonce'        => wp_create_nonce( 'es_assignment_nonce' ),

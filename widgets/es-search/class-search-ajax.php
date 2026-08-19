@@ -29,13 +29,13 @@ class Elonix_Toolkit_Search_AJAX_Handler {
 		}
 
 		// 2. Validate capability
-		if ( ! current_user_can( 'read' ) && ! is_user_logged_in() && 'yes' !== get_option( 'es_search_allow_guests', 'yes' ) ) {
+		if ( ! current_user_can( 'read' ) && ! is_user_logged_in() && 'yes' !== get_option( 'elonix_search_allow_guests', 'yes' ) ) {
 			wp_send_json_error( array( 'message' => esc_html__( 'Unauthorized access.', 'elonix' ) ), 401 );
 		}
 
 		// 3. Enforce Rate Limiting (Max 30 searches per minute per IP)
 		$ip       = isset( $_SERVER['REMOTE_ADDR'] ) ? sanitize_text_field( wp_unslash( $_SERVER['REMOTE_ADDR'] ) ) : '127.0.0.1';
-		$rate_key = 'es_search_rate_' . md5( $ip );
+		$rate_key = 'elonix_search_rate_' . md5( $ip );
 		$requests = (int) get_transient( $rate_key );
 
 		if ( $requests > 30 ) {

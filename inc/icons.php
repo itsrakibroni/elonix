@@ -193,21 +193,21 @@ class Elonix_Custom_Icons {
 	public function enqueue_styles() {
 		// These styles are for the live site.
 		// The editor will enqueue them via the 'enqueue' key in the tab registration.
-		if ( ! wp_style_is( 'es-boxicons', 'enqueued' ) ) {
-			wp_enqueue_style( 'es-boxicons', $this->plugin_url . 'assets/icons/boxicons/boxicons.min.css', array(), ELONIX_VERSION );
+		if ( ! wp_style_is( 'elonix-boxicons', 'enqueued' ) ) {
+			wp_enqueue_style( 'elonix-boxicons', $this->plugin_url . 'assets/icons/boxicons/boxicons.min.css', array(), ELONIX_VERSION );
 		}
-		if ( ! wp_style_is( 'es-boxicons-brands', 'enqueued' ) ) {
-			wp_enqueue_style( 'es-boxicons-brands', $this->plugin_url . 'assets/icons/boxicons/boxicons-brands.min.css', array(), ELONIX_VERSION );
+		if ( ! wp_style_is( 'elonix-boxicons-brands', 'enqueued' ) ) {
+			wp_enqueue_style( 'elonix-boxicons-brands', $this->plugin_url . 'assets/icons/boxicons/boxicons-brands.min.css', array(), ELONIX_VERSION );
 		}
 	}
 
 	public function enqueue_editor_styles() {
 		// Enqueue styles for the editor, as they are also needed there.
-		if ( ! wp_style_is( 'es-boxicons-editor', 'enqueued' ) ) {
-			wp_enqueue_style( 'es-boxicons-editor', $this->plugin_url . 'assets/icons/boxicons/boxicons.min.css', array(), ELONIX_VERSION );
+		if ( ! wp_style_is( 'elonix-boxicons-editor', 'enqueued' ) ) {
+			wp_enqueue_style( 'elonix-boxicons-editor', $this->plugin_url . 'assets/icons/boxicons/boxicons.min.css', array(), ELONIX_VERSION );
 		}
-		if ( ! wp_style_is( 'es-boxicons-brands-editor', 'enqueued' ) ) {
-			wp_enqueue_style( 'es-boxicons-brands-editor', $this->plugin_url . 'assets/icons/boxicons/boxicons-brands.min.css', array(), ELONIX_VERSION );
+		if ( ! wp_style_is( 'elonix-boxicons-brands-editor', 'enqueued' ) ) {
+			wp_enqueue_style( 'elonix-boxicons-brands-editor', $this->plugin_url . 'assets/icons/boxicons/boxicons-brands.min.css', array(), ELONIX_VERSION );
 		}
 		if ( ! wp_style_is( 'elonix-editor-style', 'enqueued' ) ) {
 			wp_enqueue_style( 'elonix-editor-style', $this->plugin_url . 'assets/css/editor-style.css', array(), ELONIX_VERSION );

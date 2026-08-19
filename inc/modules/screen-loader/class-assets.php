@@ -307,20 +307,20 @@ class Assets {
 
 	public function enqueue_scripts() {
 		// Enqueue the critical CSS via a dummy handle
-		wp_register_style( 'es-screen-loader-critical', false );
-		wp_enqueue_style( 'es-screen-loader-critical' );
-		wp_add_inline_style( 'es-screen-loader-critical', $this->get_critical_css() );
+		wp_register_style( 'elonix-screen-loader-critical', false );
+		wp_enqueue_style( 'elonix-screen-loader-critical' );
+		wp_add_inline_style( 'elonix-screen-loader-critical', $this->get_critical_css() );
 
 		// Enqueue the early JS via a dummy handle in the head
-		wp_register_script( 'es-screen-loader-early', false );
-		wp_enqueue_script( 'es-screen-loader-early' );
-		wp_add_inline_script( 'es-screen-loader-early', $this->get_early_js() );
+		wp_register_script( 'elonix-screen-loader-early', false );
+		wp_enqueue_script( 'elonix-screen-loader-early' );
+		wp_add_inline_script( 'elonix-screen-loader-early', $this->get_early_js() );
 
 		// Enqueue the main vanilla JS controller deferred.
-		wp_register_script( 'es-screen-loader-js', ELONIX_ACC_URL . 'assets/js/screen-loader.js', array(), ELONIX_VERSION, true );
+		wp_register_script( 'elonix-screen-loader-js', ELONIX_ACC_URL . 'assets/js/screen-loader.js', array(), ELONIX_VERSION, true );
 
 		wp_localize_script(
-			'es-screen-loader-js',
+			'elonix-screen-loader-js',
 			'esScreenLoaderConfig',
 			array(
 				'timeout'       => absint( $this->settings['timeout'] ),
@@ -329,11 +329,11 @@ class Assets {
 			)
 		);
 
-		wp_enqueue_script( 'es-screen-loader-js' );
+		wp_enqueue_script( 'elonix-screen-loader-js' );
 	}
 
 	public function add_defer_attribute( $tag, $handle ) {
-		if ( 'es-screen-loader-js' === $handle ) {
+		if ( 'elonix-screen-loader-js' === $handle ) {
 			return str_replace( ' src', ' defer="defer" src', $tag );
 		}
 		return $tag;
